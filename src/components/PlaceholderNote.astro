@@ -1,0 +1,97 @@
+---
+/**
+ * Review-build annotation, overlaid on a slot that is waiting for real assets.
+ *
+ * GATED TO THE DEMO BUILD. It renders on capuamedia.github.io and never on
+ * cpf-masonry.com — a "PLACEHOLDER" banner reaching the live site would be
+ * worse than the placeholder it is flagging. The gate is the same IS_DEMO flag
+ * that drives the noindex and the Disallow robots.txt, so it cannot drift out
+ * of sync with which build is which.
+ *
+ * Dismissible, because the point of a review build is to judge the design, and
+ * a banner permanently covering the hero prevents exactly that. The dismissal
+ * is per-tab (sessionStorage) so a fresh visit shows it again — otherwise the
+ * one person who dismissed it a week ago forgets the slot is unfinished.
+ */
+import { IS_DEMO } from '../lib/urls';
+
+interface Props {
+  label?: string;
+  headline: string;
+  detail?: string;
+  /** Unique per instance, so dismissing one does not hide the others. */
+  id: string;
+}
+
+const { label = 'Placeholder', headline, detail, id } = Astro.props;
+---
+
+{
+  IS_DEMO && (
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 z-30 flex justify-center px-4 pt-6 sm:pt-10"
+      data-placeholder={id}
+    >
+      <div class="pointer-events-auto w-full max-w-xl border-4 border-cpf-yellow bg-cpf-black/85 shadow-2xl backdrop-blur-sm">
+        {/* Hazard stripes — reads as "site notice", not as part of the design. */}
+        <div
+          class="h-2.5 w-full"
+          style="background:repeating-linear-gradient(45deg,#FFD200 0 10px,#111111 10px 20px)"
+          aria-hidden="true"
+        />
+
+        <div class="px-5 py-4 text-center sm:px-7 sm:py-5">
+          <p class="font-display text-xs font-semibold uppercase tracking-[0.28em] text-cpf-yellow">
+            {label}
+          </p>
+          <p class="mt-1.5 font-display text-2xl font-bold uppercase leading-tight text-white sm:text-3xl">
+            {headline}
+          </p>
+          {detail && (
+            <p class="mx-auto mt-2.5 max-w-md text-sm leading-relaxed text-white/75">{detail}</p>
+          )}
+
+          <button
+            type="button"
+            data-placeholder-dismiss={id}
+            class="mt-4 border border-white/35 px-3.5 py-1.5 font-display text-xs font-semibold uppercase tracking-widest text-white/80 transition-colors hover:border-white hover:text-white"
+          >
+            Hide this note
+          </button>
+        </div>
+
+        <div
+          class="h-2.5 w-full"
+          style="background:repeating-linear-gradient(45deg,#FFD200 0 10px,#111111 10px 20px)"
+          aria-hidden="true"
+        />
+      </div>
+    </div>
+  )
+}
+
+{
+  IS_DEMO && (
+    <script is:inline>
+      (() => {
+        for (const btn of document.querySelectorAll('[data-placeholder-dismiss]')) {
+          const id = btn.getAttribute('data-placeholder-dismiss');
+          const box = document.querySelector(`[data-placeholder="${id}"]`);
+          if (!box) continue;
+          const key = 'cpf-placeholder-' + id;
+          try {
+            if (sessionStorage.getItem(key) === 'hidden') box.hidden = true;
+          } catch {
+            /* private mode or blocked storage — just show it */
+          }
+          btn.addEventListener('click', () => {
+            box.hidden = true;
+            try {
+              sessionStorage.setItem(key, 'hidden');
+            } catch {}
+          });
+        }
+      })();
+    </script>
+  )
+}

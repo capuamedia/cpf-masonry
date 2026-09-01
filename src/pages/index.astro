@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import Reviews from '../components/Reviews.astro';
+import PlaceholderNote from '../components/PlaceholderNote.astro';
 import { A } from '../lib/assets';
 import { BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
@@ -79,6 +80,18 @@ const description =
       aria-hidden="true"
     >
     </div>
+
+    {/*
+      Sits in the upper band of the hero, which is empty — the headline block is
+      bottom-aligned — so it flags the slot without covering the thing being
+      reviewed. Demo build only; see PlaceholderNote.astro.
+    */}
+    <PlaceholderNote
+      id="hero"
+      label="Placeholder — review build"
+      headline="Replace with drone footage"
+      detail="Static hero for now: this is the highest-resolution photograph that survived the old site, at 1900px. Drone video will fill this slot properly."
+    />
 
     <div class="relative mx-auto flex min-h-[78svh] max-w-7xl flex-col justify-end px-4 pb-14 pt-28 sm:px-6 md:min-h-[82svh]">
       <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cpf-yellow">

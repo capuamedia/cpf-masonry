@@ -72,6 +72,38 @@ Drop new files into `src/assets/`, add them to `src/lib/assets.ts` with a real
 alt description, and raise the `displayW` at the call site. The build guard will
 tell you immediately if a slot asks for more than the file can carry.
 
+### Drone footage for the hero — what to bring back
+
+The homepage hero is flagged with a placeholder on the review build. A few
+things decide whether the footage actually works there, and they are cheap to
+get right on the day and impossible to fix afterwards:
+
+- **Shoot landscape, 4K, 24 or 30fps.** Delivered at ~1920px wide. Vertical
+  footage cannot fill a full-width hero.
+- **Slow moves only.** A gentle push-in or a lateral drift. Fast motion falls
+  apart at the bitrate a web hero can afford, and looks cheap in a way a still
+  photograph never does.
+- **10–20 seconds, and make it loop.** Start and end on near-identical framing
+  so the cut is invisible. One continuous move beats three cuts.
+- **Keep the lower third calm.** The headline, the phone number and two buttons
+  sit over the bottom of the frame under a dark scrim. Busy or bright detail
+  down there fights the text. Sky, roofline or open ground low in frame is ideal.
+- **Golden hour, not midday.** Every salvaged photo in this set is harsh midday
+  sun, which flattens the surface texture that actually sells masonry. Low sun
+  rakes across stamped concrete and stone and is the single biggest quality
+  difference available.
+- **Best subjects:** a pull-back reveal off a finished driveway or patio; a slow
+  rise over the Dos Vientos retaining walls; an orbit of an outdoor kitchen or
+  fireplace. The ballfields are worth a pass too — they are the institutional
+  credibility and there is currently no wide shot of Viewpoint School at all.
+- **Grab full-resolution stills while up there.** They solve item 2 in the same
+  trip, and a hero needs a poster frame regardless.
+
+On the build side, a video hero will autoplay muted, loop, and carry
+`playsinline`, with the poster frame shown to anyone on `prefers-reduced-motion`
+or a slow connection — so the still photograph stays part of the design rather
+than being thrown away.
+
 ---
 
 ## 3. Check phone camera rolls and Google Photos backups

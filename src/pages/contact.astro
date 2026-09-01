@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
+import Reviews from '../components/Reviews.astro';
 import { BUSINESS, SITE_URL } from '../lib/site';
 
 /**
@@ -132,4 +133,10 @@ const description =
       </div>
     </div>
   </div>
+
+  <Reviews
+    eyebrow="Before you call"
+    heading="Read the reviews first"
+    intro="Every review below comes straight from the Yelp and Google listings."
+  />
 </Layout>

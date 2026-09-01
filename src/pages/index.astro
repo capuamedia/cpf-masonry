@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
+import Reviews from '../components/Reviews.astro';
 import { A } from '../lib/assets';
 import { BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
@@ -300,6 +301,11 @@ const description =
       </a>
     </p>
   </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <!-- Placed immediately before the call-to-action: social proof lands hardest
+       at the point someone is deciding whether to pick up the phone. -->
+  <Reviews />
 
   <!-- ================= CTA ================= -->
   <section class="bg-cpf-black py-16 text-center text-white">

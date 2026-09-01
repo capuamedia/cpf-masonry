@@ -1,0 +1,70 @@
+---
+/**
+ * Elfsight All-in-One Reviews — "CPF Duo" widget, pulling the Yelp and Google
+ * listings together.
+ *
+ * Real reviews beat any claim the site can make about itself, so this sits
+ * immediately before the call-to-action on the pages where someone is deciding
+ * whether to phone.
+ *
+ * Notes on how it is embedded:
+ *  - platform.js is `async` and the widget carries `data-elfsight-app-lazy`, so
+ *    it does not block first paint and only initialises near the viewport.
+ *  - The container reserves a min-height. Third-party embeds are the usual
+ *    cause of layout shift on an otherwise CLS-free page, and everything else
+ *    here declares explicit dimensions.
+ *  - preconnect is emitted so the CDN handshake overlaps with page render.
+ *
+ * If the widget is ever removed, the static rating summary in the footer and on
+ * the contact page still stands on its own.
+ */
+interface Props {
+  heading?: string;
+  eyebrow?: string;
+  intro?: string;
+  /** Set false on a surface that already sits on --color-surface. */
+  tinted?: boolean;
+}
+
+const {
+  heading = 'What our customers say',
+  eyebrow = 'Reviews',
+  intro = 'Rated 5.0 on both Yelp and Google. These come straight from those listings — nothing on this page is written by us.',
+  tinted = true,
+} = Astro.props;
+---
+
+<section class={tinted ? 'border-t border-line bg-surface py-20' : 'py-20'}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="eyebrow">{eyebrow}</p>
+      <h2 class="mt-2 text-[var(--text-h2)] font-semibold uppercase">{heading}</h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-soft">{intro}</p>
+    </div>
+
+    <!-- Elfsight All-in-One Reviews | CPF Duo -->
+    <div
+      class="mt-10 min-h-[420px]"
+      data-elfsight-container
+    >
+      <div class="elfsight-app-2039d26f-733e-4d1f-9c68-4bdaa8e5a85e" data-elfsight-app-lazy></div>
+    </div>
+
+    <noscript>
+      <p class="mt-6 text-center text-muted">
+        Reviews need JavaScript to load. CPF is rated 5.0 on
+        <a class="text-cpf-red underline" href="https://www.yelp.com/" rel="noopener nofollow">Yelp</a>
+        and 5.0 on Google.
+      </p>
+    </noscript>
+  </div>
+</section>
+
+{/*
+  Loader lives with the widget rather than in the global <head>, so the pages
+  that do not show reviews never pay for the connection, and pulling the embed
+  out later is a single-file change.
+*/}
+<link rel="preconnect" href="https://elfsightcdn.com" crossorigin />
+<link rel="preconnect" href="https://core.service.elfsight.com" crossorigin />
+<script src="https://elfsightcdn.com/platform.js" async is:inline></script>

@@ -21,9 +21,12 @@ const fullTitle = title === 'home' ? `${BUSINESS.name} | Conejo Valley` : `${tit
  *
  * The aggregateRating combines the Yelp and Google listings. Both are 5.0, and
  * the counts are cited as-found (26 + 8). The Yelp count is approximate — see
- * NOTES.md item 7. Only the Google Business Profile address is published: the
- * Yelp listing carries a different one, and two conflicting addresses actively
- * hurt local ranking.
+ * NOTES.md item 7.
+ *
+ * The address is the owner-confirmed current one (Calle Tulipan, Thousand Oaks),
+ * which matches Yelp. The Google Business Profile still shows a superseded
+ * Newbury Park address and needs correcting — NOTES.md item 8. Publishing the
+ * stale one here to match a stale listing would be the wrong trade.
  */
 const schema = {
   '@context': 'https://schema.org',
@@ -105,7 +108,7 @@ const schema = {
     <meta name="twitter:card" content="summary_large_image" />
 
     <meta name="geo.region" content="US-CA" />
-    <meta name="geo.placename" content="Newbury Park, California" />
+    <meta name="geo.placename" content="Thousand Oaks, California" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

@@ -30,21 +30,29 @@ export const BUSINESS = {
   license: '878989',
   licenseLabel: 'CA Contractor License #878989',
 
-  /** Google Business Profile address. */
+  /**
+   * CONFIRMED BY THE OWNER, 2026-09-01. This is the current trading address,
+   * and it matches what Yelp already shows.
+   *
+   * The Google Business Profile still carries the old Newbury Park address; it
+   * is out of date, not an alternative. The site publishes the correct address
+   * only. A website showing a stale address is worse than disagreeing with a
+   * listing — the listing can be corrected, a customer already driving to the
+   * wrong house cannot.
+   *
+   * See NOTES.md item 8. The GBP listing needs updating to match; account
+   * access is being resolved.
+   */
   address: {
-    street: '2996 Molly Ct',
-    locality: 'Newbury Park',
+    street: '1210 Calle Tulipan',
+    locality: 'Thousand Oaks',
     region: 'CA',
-    postal: '91320',
+    postal: '91360',
     country: 'US',
   },
 
-  /**
-   * TODO(owner): The Yelp listing shows a different address (1210 Calle Tulipan,
-   * Thousand Oaks, CA). Only the GBP address is published here — one canonical
-   * address is a ranking signal, two conflicting ones are a liability.
-   */
-  addressAlt: '1210 Calle Tulipan, Thousand Oaks, CA',
+  /** Superseded. Recorded only so nobody restores it from the stale GBP listing. */
+  addressFormer: '2996 Molly Ct, Newbury Park, CA 91320',
 
   serviceArea: [
     'Newbury Park',

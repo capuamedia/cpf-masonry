@@ -109,6 +109,9 @@ starts from zero. These three listings are the fastest route back.
 
 1. **Google Business Profile → cpf-masonry.com.** Highest value single action on
    this list. It is a direct authoritative signal and it feeds the local pack.
+   **Fix the address in the same visit** — it still shows the old Newbury Park
+   one (item 8). Two corrections, one login, and access is currently blocked, so
+   this is the item to unblock first.
 2. **Yelp** — the listing already outranks the dead site for the brand name.
 3. **Houzz** — same, and check which phone number it shows while you are in there
    (see item 1).
@@ -145,16 +148,46 @@ suppressed.
 
 ---
 
-## 8. Two different addresses exist. Only one is published.
+## 8. The Google Business Profile address is out of date
 
-| Source | Address |
-|---|---|
-| Google Business Profile | 2996 Molly Ct, Newbury Park, CA 91320 — **published** |
-| Yelp | 1210 Calle Tulipan, Thousand Oaks, CA — held back |
+**Resolved on the site; still outstanding on the listing.**
 
-Local ranking depends on a consistent name/address/phone across the web, and two
-conflicting addresses actively hurt. Decide which is correct and make the other
-listing match it. Both are in `src/lib/site.ts`.
+The current trading address is **1210 Calle Tulipan, Thousand Oaks, CA 91360**,
+confirmed by the owner on 2026-09-01. The site publishes that everywhere — footer,
+contact page, `LocalBusiness` structured data and the `geo.placename` meta.
+
+| Source | Address | State |
+|---|---|---|
+| This website | 1210 Calle Tulipan, Thousand Oaks, CA 91360 | correct |
+| Yelp | 1210 Calle Tulipan, Thousand Oaks, CA | already correct |
+| Google Business Profile | 2996 Molly Ct, Newbury Park, CA 91320 | **stale — needs changing** |
+
+**Why this one matters more than it looks.** Google Business Profile is the
+single strongest local ranking signal a contractor has, and it is the address
+Google Maps will navigate a customer to. Right now the GBP address and the
+website disagree, and consistent name/address/phone across the web is a direct
+ranking factor. Until the profile is corrected, expect the local pack to
+under-perform for Thousand Oaks searches.
+
+The site is **not** going to mirror the stale address to match the listing — a
+website sending someone to the wrong house is worse than a listing that
+disagrees, because the listing can be fixed and a drive cannot be un-driven.
+
+Access to the Google Business Profile is being sorted out. Two things worth
+knowing while that happens:
+
+- If the profile cannot be recovered through the normal login, Google has a
+  **claim / ownership-request flow** for exactly this situation: request access
+  as a new owner and Google contacts the current listed owner. If they do not
+  respond within seven days, ownership can transfer. Start it early — the clock
+  only runs once the request is filed.
+- The **address change itself may trigger re-verification** (postcard or video).
+  Budget a couple of weeks between regaining access and the corrected address
+  going live.
+
+Both addresses are recorded in `src/lib/site.ts` — the former one is kept there
+deliberately, labelled as superseded, so nobody restores it later from the old
+listing thinking the site is wrong.
 
 ---
 

@@ -1,0 +1,48 @@
+CPF Custom Concrete and Masonry — recovered image set
+Source: Google Images cache (encrypted-tbn0.gstatic.com)
+Recovered: 2026-08-26
+
+WHY THESE SIZES: cpfmasonry.com is returning a cPanel "Account Suspended"
+page. Every original /wp-content/uploads/ URL 302-redirects to
+/cgi-sys/suspendedpage.cgi, so the full-resolution originals are not
+reachable. These are the largest copies Google retained.
+
+Filenames match the original WordPress upload paths, so they can be
+dropped back into a rebuild at the same names.
+
+  01  Dos-Vientos-Property-Retaining-Wall-and-Driveway   678x452
+  02  CPF-Backstop                                       678x452
+  03  cpf-viewpoint-school-5                             678x452
+  04  cpf-custom-concrete-5                              678x452
+  05  Dos-Vientos-Property-Line-Retaining-Wall           678x452
+  06  cpf-viewpoint-school-10                            678x452
+  07  CPF-Beautiful-Stamped-Concrete-Driveway            678x452
+  08  cpf-viewpoint-school-7                             678x452
+  09  outdoor-kitchen-fireplace-7                        678x452
+  10  outdoor-kitchen-fireplace-6                        678x452
+  11  cpf-custom-concrete-driveway-4                     678x452
+  12  cpf-custom-concrete-driveway-1                     678x452
+  13  CPF-Shed                                           678x452
+  14  outdoor-kitchen-fireplace-8                        678x452
+  15  CPF-Outfield-Wall                                  678x452
+  16  outdoor-kitchen-fireplace-3                        678x452
+  17  CPF-Dugout-Front                                   320x213
+  18  CPF-Dugout-Footer                                  320x213
+  19  CPF-Dugout-Back                                    320x213
+  extra  IMG_0763                                        447x447
+  extra  cpf-stone-work-villa                            738x264  (slider image)
+  extra  slider-cpf-concrete-counter                     738x264  (slider image)
+
+ORIGINAL PATHS (for reference / for a future recovery):
+  http://cpfmasonry.com/wp-content/uploads/2016/01/  outdoor-kitchen-fireplace-3,-6,-7,-8; IMG_0763; slider-cpf-concrete-counter
+  http://cpfmasonry.com/wp-content/uploads/2016/02/  cpf-custom-concrete-5; cpf-custom-concrete-driveway-1,-4; cpf-stone-work-villa
+  http://cpfmasonry.com/wp-content/uploads/2016/05/  CPF-Backstop; CPF-Shed; CPF-Outfield-Wall; CPF-Dugout-Front/-Footer/-Back;
+                                                     CPF-Beautiful-Stamped-Concrete-Driveway; Dos-Vientos-Property-Retaining-Wall-and-Driveway;
+                                                     Dos-Vientos-Property-Line-Retaining-Wall
+  http://cpfmasonry.com/wp-content/uploads/2016/10/  cpf-viewpoint-school-5,-7,-10
+
+KNOWN INDEXED PAGES (site structure, for the rebuild):
+  /masonry/
+  /custom-concrete/
+  /featured-project-triunfo-ymca-baseball-fields/
+  /featured-project-robertson-family-field-viewpoint-school/

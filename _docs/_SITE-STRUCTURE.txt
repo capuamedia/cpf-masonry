@@ -1,0 +1,50 @@
+CPF Custom Concrete and Masonry — site structure recovered from Google's index
+Captured 2026-08-26
+
+BUSINESS DETAILS FOUND IN THE INDEX
+  Name:   CPF Custom Concrete and Masonry
+  Phone:  (805) 498-4852
+  Email:  partially indexed only — snippet ends "...11@GMAIL.COM"
+  Tagline: "Your go-to provider of custom concrete, stonemasonry, backyard kitchens and more."
+
+PAGES GOOGLE HAS INDEXED (6)
+  /masonry/
+      Title: CPF Custom Concrete and Masonry
+      Copy:  "CPF Masonry is your go-to contractor for all things masonry."
+
+  /services/
+      Title: Services - CPF Custom Concrete and Masonry
+
+  /custom-concrete/
+      Title: CPF Custom Concrete and Masonry
+      Copy:  "Custom designed and poured concrete driveways, pavers, water
+              features and more!"
+
+  /contact-us/
+      Title: Contact Us - CPF Custom Concrete and Masonry
+
+  /featured-project-triunfo-ymca-baseball-fields/
+      Title: Featured Project - Triunfo YMCA Baseball Fields
+      Copy:  "The Triunfo YMCA Baseball Fields are a prime example of our
+              capabilities to visualize and deliver a community project. We
+              worked directly with the YMCA and ..."
+
+  /featured-project-robertson-family-field-viewpoint-school/
+      Title: Featured Project - Robertson Family Field at Viewpoint School
+      Copy:  "Following the success of our Triunfo YMCA Playfields Project, we
+              just put the wraps on our latest Baseball Field Project at
+              Viewpoint School in Calabasas CA."
+
+SERVICE CATEGORIES (inferred from page names + image filenames)
+  - Custom / stamped concrete driveways and pavers
+  - Retaining walls (Dos Vientos projects)
+  - Outdoor kitchens, fireplaces and fire pits
+  - Concrete countertops
+  - Stone work
+  - Water features / fountains
+  - Commercial + community ballfield work (backstops, dugouts, outfield walls)
+
+NOT YET RECOVERED
+  Full page body copy. The Wayback Machine has captures of this site as recent
+  as 2026-06-08, but archive.org was returning 429 to this network throughout
+  the recovery session. A retry is worth doing from a different IP.

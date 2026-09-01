@@ -1,0 +1,123 @@
+@import 'tailwindcss';
+
+/*
+  CPF Custom Concrete and Masonry — design tokens.
+
+  Palette is sampled from the logo, but deliberately RATIONED. The logo is a
+  hot-rod flame job; used at page scale that reads as a 2004 truck wrap rather
+  than a contractor you would trust with a foundation. So:
+
+    - flames stay inside the logo, nowhere else
+    - red is an accent on actions and rules, never a large field
+    - the page ground is warm grey and off-white
+    - the stone and concrete photography carries the tone
+
+  Warm neutrals (not blue-greys) because every photograph in the set is shot in
+  California midday sun on tan stone, red clay brick and buff concrete. A cool
+  grey chrome fights that; a warm one sits under it.
+*/
+
+@theme {
+  /* --- brand, from the logo ------------------------------------------------ */
+  --color-cpf-red: #e01b22;
+  --color-cpf-red-dark: #b01319;
+  --color-cpf-orange: #f26722;
+  --color-cpf-yellow: #ffd200;
+  --color-cpf-black: #111111;
+  --color-cpf-chrome: #9aa0a6;
+
+  /* --- warm neutral ground ------------------------------------------------- */
+  --color-ground: #faf8f5;
+  --color-surface: #ffffff;
+  --color-sand: #f2ede5;
+  --color-line: #e2ddd4;
+  --color-line-strong: #cec7bb;
+  --color-ink: #16150f;
+  --color-ink-soft: #3c3931;
+  --color-muted: #6d685e;
+
+  /* --- type ---------------------------------------------------------------- */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Barlow', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --text-hero: clamp(2.5rem, 6.5vw, 5rem);
+  --text-h1: clamp(2.1rem, 4.6vw, 3.5rem);
+  --text-h2: clamp(1.65rem, 3vw, 2.5rem);
+
+  --radius-card: 3px;
+}
+
+/* Dark mode is intentionally not implemented. This is a contractor's shopfront
+   viewed overwhelmingly on a phone in daylight; a single well-lit treatment is
+   the right call, and a half-tested dark theme would only muddy the photos. */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* Room for the sticky mobile call bar so it never covers the footer. */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+/* Visible focus everywhere — this site is used one-handed, outdoors, in sun. */
+:focus-visible {
+  outline: 3px solid var(--color-cpf-red);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --- small shared primitives ---------------------------------------------- */
+
+.eyebrow {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--color-cpf-red);
+}
+
+.rule-red {
+  width: 3rem;
+  height: 3px;
+  background: var(--color-cpf-red);
+  border: 0;
+}
+
+.prose-cpf p { margin-block: 1rem; }
+.prose-cpf h2 { margin-block: 2.25rem 0.75rem; }
+.prose-cpf h3 { margin-block: 1.75rem 0.5rem; }
+.prose-cpf ul { margin-block: 1rem; padding-left: 1.15rem; list-style: disc; }
+.prose-cpf li { margin-block: 0.35rem; }
+.prose-cpf strong { font-weight: 600; color: var(--color-ink); }

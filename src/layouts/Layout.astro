@@ -135,24 +135,20 @@ const schema = {
     <main id="main"><slot /></main>
     <Footer />
 
-    <!-- Sticky call bar. For a contractor the call IS the conversion, and this
-         site is overwhelmingly read one-handed on a phone. -->
-    <div
-      data-cpf-callbar
-      class="fixed inset-x-0 bottom-0 z-50 border-t border-black/20 bg-cpf-black/95 backdrop-blur md:hidden"
-    >
-      <a
-        href={BUSINESS.phoneHref}
-        class="flex items-center justify-center gap-3 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white"
-      >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2Z"/>
-        </svg>
-        Call {BUSINESS.phone}
-      </a>
-    </div>
+    <!--
+      The sticky bottom call bar was removed deliberately.
 
-    <!-- Floating reviews badge, sitewide. Kept clear of the call bar above. -->
+      It competed with the Elfsight floating reviews badge for the bottom of a
+      phone screen, and the badge could not be moved out of the way: it mounts
+      inside a shadow root, so no stylesheet of ours can reach it. Rather than
+      keep a fragile script reaching into another vendor's shadow DOM on every
+      mutation, the bottom of the viewport is now the badge's, and the call CTA
+      lives in the sticky header — which is always on screen, carries the phone
+      number, and is a red button against a warm-grey ground.
+
+      The removed bar and the shadow-DOM workaround are in git history if the
+      trade ever needs revisiting.
+    -->
     <ReviewsBadge />
 
     <!-- Lightbox. Vanilla, ~1KB, and only ever attached to buttons emitted by

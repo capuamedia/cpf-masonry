@@ -2,152 +2,32 @@
 /**
  * Elfsight floating reviews badge — sitewide.
  *
- * COLLISION WITH THE CALL BAR
- * ---------------------------
- * This site pins a sticky call bar to the bottom of the viewport below 768px.
- * For a contractor the phone call IS the conversion, so the badge gives way —
- * never the call button.
+ * Nothing else competes for the bottom of the viewport any more: the sticky
+ * mobile call bar was removed in favour of this, on the reasoning that the
+ * header CTA is always on screen and social proof earns the corner. So the
+ * badge simply sits where Elfsight puts it and needs no positioning help.
  *
- * Three things had to be established before this could be fixed properly, all
- * read out of the widget's own config and bundle rather than guessed:
+ * If a bottom-anchored element is ever reintroduced, know this before trying to
+ * move the badge around it:
  *
- * 1. The Elfsight dashboard cannot fix it. The badge is configured
- *    `bottom-right` with a 20px offset, but the bundle throws that away below
- *    its mobile breakpoint and hardcodes a bottom-centred position:
- *        re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
- *    So the editor setting moves it on desktop and does nothing on mobile,
- *    which is the only viewport where the two overlap.
+ *   - Elfsight has no per-breakpoint position setting. `badgeFloatingPosition`
+ *     is a single value, and the bundle discards it below its mobile
+ *     breakpoint, hardcoding a bottom-centred position instead:
+ *         re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
+ *     `badgeVisibilityOnDevices` lets you show or hide per device, but not
+ *     place it differently — which is the setting this actually needed.
  *
- * 2. Class names are useless as selectors. The widget is styled-components, so
- *    every class is a build hash that changes on their next release.
+ *   - CSS cannot reach it. The widget mounts into attachShadow({mode:'open'}),
+ *     and shadow DOM encapsulates styles, so an external stylesheet has no
+ *     effect at all regardless of selector.
  *
- * 3. CSS cannot reach it at all. The widget mounts into
- *    `attachShadow({ mode: 'open' })`, and shadow DOM encapsulates styles — an
- *    earlier attempt at a plain stylesheet override had no effect whatsoever,
- *    which is why the badge did not move a single pixel.
+ *   - Class names are build hashes from styled-components and change between
+ *     releases, so they are not a stable hook either.
  *
- * `mode: 'open'` does leave the shadow root reachable from script, so the fix
- * is a small enhancement that injects a stylesheet INTO each shadow root and
- * nudges any stubborn fixed element directly. It re-runs on mutation and on
- * resize, because the widget mounts late and re-renders on breakpoint changes.
- *
- * TO TUNE: change --cpf-badge-clearance below. It is the only number here.
+ * The scripted workaround that injected styles into the shadow root is in git
+ * history. It worked in principle but meant reaching into a vendor's shadow DOM
+ * on every mutation, which is not worth carrying to avoid a layout decision.
  */
 ---
 
 <div class="elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1" data-elfsight-app-lazy></div>
-
-<style is:global>
-  :root {
-    /*
-      Call bar is ~56px (py-3.5 twice, plus a ~28px content line). This clears
-      it with a comfortable gap rather than a hairline, so the badge reads as a
-      separate element sitting above the bar.
-    */
-    --cpf-badge-clearance: calc(6.5rem + env(safe-area-inset-bottom, 0px));
-  }
-
-  /* Light-DOM path, for the parts of the widget that render outside the shadow
-     root. Harmless when the shadow path is the one doing the work. */
-  @media (max-width: 767px) {
-    .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 [style*='position:fixed'],
-    .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 [style*='position: fixed'] {
-      bottom: var(--cpf-badge-clearance) !important;
-    }
-    .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 {
-      z-index: 40; /* call bar is z-50 — if they ever meet, the call wins */
-    }
-  }
-</style>
-
-<script is:inline>
-  (() => {
-    const HOST = '.elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1';
-    const MOBILE = '(max-width: 767px)';
-    const VAR = 'var(--cpf-badge-clearance)';
-    /* Anything sitting lower than this is treated as colliding with the bar. */
-    const FLOOR_PX = 56;
-
-    const styled = new WeakSet();
-
-    /* Shadow roots are style-encapsulated, so the rule has to go inside each
-       one. Custom properties DO inherit across the boundary, so the clearance
-       value still resolves from :root. */
-    function injectInto(root) {
-      if (!root || styled.has(root)) return;
-      styled.add(root);
-      const s = document.createElement('style');
-      s.setAttribute('data-cpf-badge-clearance', '');
-      s.textContent =
-        '@media ' + MOBILE + '{' +
-        '[style*="position:fixed"],[style*="position: fixed"]' +
-        '{bottom:' + VAR + ' !important}}';
-      root.appendChild(s);
-    }
-
-    function descend(node, depth) {
-      if (!node || depth > 12) return;
-      if (node.shadowRoot) {
-        injectInto(node.shadowRoot);
-        descend(node.shadowRoot, depth + 1);
-      }
-      const kids = node.children;
-      if (kids) for (let i = 0; i < kids.length; i++) descend(kids[i], depth + 1);
-    }
-
-    /* Direct fallback for anything the injected stylesheet still misses — for
-       instance a wrapper whose position is set via the CSSOM rather than an
-       inline style attribute. */
-    function nudge(scope, depth) {
-      if (!scope || depth > 12) return;
-      const els = scope.querySelectorAll ? scope.querySelectorAll('*') : [];
-      for (let i = 0; i < els.length; i++) {
-        const el = els[i];
-        /* Never touch our own call bar. */
-        if (el.closest && el.closest('[data-cpf-callbar]')) continue;
-        let cs;
-        try { cs = getComputedStyle(el); } catch { continue; }
-        if (cs.position === 'fixed') {
-          const b = parseFloat(cs.bottom);
-          if (!isNaN(b) && b < FLOOR_PX) {
-            el.style.setProperty('bottom', VAR, 'important');
-          }
-        }
-        if (el.shadowRoot) nudge(el.shadowRoot, depth + 1);
-      }
-    }
-
-    let queued = false;
-    function run() {
-      queued = false;
-      const host = document.querySelector(HOST);
-      if (!host) return;
-      descend(host, 0);
-      if (!window.matchMedia(MOBILE).matches) return;
-      nudge(host, 0);
-      /* The widget portals popup content to <body>; check only direct children
-         so this stays cheap. */
-      const top = document.body.children;
-      for (let i = 0; i < top.length; i++) {
-        const el = top[i];
-        if (el.hasAttribute('data-cpf-callbar') || el.tagName === 'SCRIPT') continue;
-        if (el.shadowRoot) nudge(el.shadowRoot, 0);
-      }
-    }
-
-    function schedule() {
-      if (queued) return;
-      queued = true;
-      requestAnimationFrame(run);
-    }
-
-    new MutationObserver(schedule).observe(document.documentElement, {
-      childList: true,
-      subtree: true,
-    });
-    addEventListener('resize', schedule, { passive: true });
-    schedule();
-    /* The widget is lazy-mounted, so catch it after it appears. */
-    [300, 900, 2000, 4000, 7000].forEach((t) => setTimeout(schedule, t));
-  })();
-</script>

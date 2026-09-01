@@ -9,6 +9,9 @@ const isActive = (href: string) => path === withBase(href) || path.startsWith(wi
 <header class="sticky top-0 z-40 border-b border-line bg-ground/95 backdrop-blur">
   <div class="mx-auto flex max-w-7xl items-center gap-4 px-4 py-3 sm:px-6">
     <a href={withBase('/')} class="flex shrink-0 items-center gap-3" aria-label={`${BUSINESS.name} — home`}>
+      {/* alt="" is deliberate: the <a> carries the accessible name via
+          aria-label, so describing the mark too would make a screen reader
+          announce the business name twice. Decorative, not missing. */}
       <img
         src={withBase('/logo-mark.svg')}
         alt=""

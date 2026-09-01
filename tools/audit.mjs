@@ -72,6 +72,12 @@ for (const p of pages) {
         missingDims++; bad(`${route} <img> without width/height (layout shift)`);
       }
     }
+    /* src="" resolves against the document URL, so the browser re-fetches the
+       page as an image. Missing src is inert but invalid. Catch both. */
+    const srcAttr = tag.match(/\ssrc="([^"]*)"/);
+    if (srcAttr && srcAttr[1].trim() === '') {
+      bad(`${route} <img> has empty src="" — this re-fetches the page URL`);
+    }
     if (/loading="lazy"/.test(tag)) lazy++;
     if (/loading="eager"/.test(tag)) eager++;
   }

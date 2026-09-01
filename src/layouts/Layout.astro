@@ -163,7 +163,13 @@ const schema = {
       aria-label="Enlarged photograph"
     >
       <figure class="m-0">
-        <img id="lb-img" src="" alt="" class="max-h-[80dvh] w-auto max-w-full object-contain" />
+        {/*
+          No src attribute until the lightbox opens. `src=""` is not an empty
+          image — it resolves against the document URL, so the browser re-fetches
+          the current page as if it were an image, on every page load. The close
+          handler removes the attribute again rather than setting it to ''.
+        */}
+        <img id="lb-img" alt="" class="max-h-[80dvh] w-auto max-w-full object-contain" />
         <figcaption
           id="lb-cap"
           class="mx-auto mt-2 max-w-2xl bg-cpf-black/80 px-4 py-2 text-center text-sm text-white"
@@ -194,7 +200,8 @@ const schema = {
           }
           if (e.target.id === 'lb-close' || e.target === dlg) dlg.close();
         });
-        dlg.addEventListener('close', () => { img.src = ''; });
+        /* removeAttribute, not src = '' — the latter re-fetches the page URL. */
+        dlg.addEventListener('close', () => { img.removeAttribute('src'); });
       })();
     </script>
   </body>

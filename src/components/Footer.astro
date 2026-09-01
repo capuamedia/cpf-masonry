@@ -10,9 +10,17 @@ const services = [
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-24 border-t-4 border-cpf-red bg-cpf-black text-white/80">
+{/*
+  No top margin. Every page ends with either the black CTA band or a padded
+  section, and a 96px band of cream ground sandwiched between two black blocks
+  read as a rendering fault rather than as spacing. The red top border is the
+  separator; the CTA's py-16 and the footer's py-14 supply the breathing room.
+*/}
+<footer class="border-t-4 border-cpf-red bg-cpf-black text-white/80">
   <div class="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
     <div>
+      {/* alt="" is deliberate — decorative. The business name, license and
+          address all appear as text in this footer already. */}
       <img src={withBase('/logo-mark.svg')} alt="" width="120" height="80" class="h-14 w-auto" loading="lazy" />
       <p class="mt-4 max-w-xs text-sm leading-relaxed">
         Foundations, stamped concrete, natural stone, block walls and brick

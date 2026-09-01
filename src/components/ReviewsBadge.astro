@@ -35,3 +35,27 @@
 ---
 
 <div class="elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1" data-elfsight-app-lazy></div>
+
+<style is:global>
+  /*
+    This container sits in normal flow immediately after </footer>, and Elfsight
+    renders into it — so whatever it injects contributes layout height and shows
+    up as dead scroll space below the footer.
+
+    The badge itself is `position: fixed`, so the container never needs to
+    occupy flow. Zeroing its height removes the gap without touching the badge.
+
+    NOTE this is NOT the forbidden override described above. That was about
+    repositioning the badge, which is impossible from here (shadow DOM) and
+    would fight the Elfsight settings. This only stops an empty wrapper from
+    taking up space, and does not affect where the badge lands.
+
+    Deliberately NOT `position: fixed` on this element: that would create a
+    containing block for its fixed descendants and re-anchor the badge to a 0px
+    box instead of the viewport.
+  */
+  .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 {
+    height: 0;
+    overflow: visible;
+  }
+</style>

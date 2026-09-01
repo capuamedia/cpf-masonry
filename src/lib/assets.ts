@@ -108,7 +108,7 @@ export const A = {
   herringboneClose: a(y13, 'yelp',
     'Red brick paving laid in a herringbone pattern, photographed close'),
   herringboneWet: a(y16, 'yelp',
-    'Herringbone brick paving with a damp finish showing the clay colour variation'),
+    'Herringbone brick paving with a damp finish showing the clay color variation'),
   roseFrontage: a(y15, 'yelp',
     'Front of a Conejo Valley home with rose beds, a black metal fence and a paved drive'),
   curvedRoseWalk: a(y17, 'yelp',

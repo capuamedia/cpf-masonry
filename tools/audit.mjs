@@ -34,7 +34,7 @@ for (const p of pages) {
       if (!biz) bad(`${route} JSON-LD missing LocalBusiness`);
       else {
         if (!biz.telephone) bad(`${route} LocalBusiness missing telephone`);
-        if (!biz.hasCredential) bad(`${route} LocalBusiness missing licence`);
+        if (!biz.hasCredential) bad(`${route} LocalBusiness missing license`);
       }
     } catch (e) { bad(`${route} JSON-LD does not parse: ${e.message}`); }
   }
@@ -52,8 +52,8 @@ for (const p of pages) {
     if (html.includes(dead)) bad(`${route} publishes SUPERSEDED phone number ${dead}`);
   }
 
-  // --- licence in footer ---
-  if (!html.includes('878989')) bad(`${route} missing licence number`);
+  // --- license in footer ---
+  if (!html.includes('878989')) bad(`${route} missing license number`);
 
   // --- images ---
   for (const m of html.matchAll(/<img\b[^>]*>/g)) {

@@ -64,7 +64,7 @@ No React. The before/after slider and the lightbox are vanilla.
 | — | Hero carries a "replace with drone footage" placeholder, **demo build only**. |
 
 Business facts are **single-sourced in `src/lib/site.ts`**. Nothing hardcodes
-the phone, address, or licence. Change it there.
+the phone, address, or license. Change it there.
 
 Superseded values are deliberately kept in that file as `phoneFormer` and
 `addressFormer`, so nobody "corrects" the site back to a stale listing.
@@ -249,7 +249,7 @@ client-facing document:
 ## 9. Working agreements
 
 - Run `npm run audit` before every push. It checks JSON-LD parses on all 10
-  pages, canonicals, `tel:` links, licence number, alt text, dimensions, AVIF +
+  pages, canonicals, `tel:` links, license number, alt text, dimensions, AVIF +
   WebP output, superseded phone numbers, and measures every generated image to
   prove nothing was upscaled.
 - This machine is **Windows with PowerShell 5.1** — no `&&`, no `||`, no

@@ -5,7 +5,7 @@ const { data, info } = await sharp(SRC).raw().toBuffer({ resolveWithObject: true
 const { width, height, channels } = info;
 console.log('size', width, height, 'channels', channels);
 
-// Quantise to a coarse grid and count, to find the dominant flat colours.
+// Quantise to a coarse grid and count, to find the dominant flat colors.
 const counts = new Map();
 for (let i = 0; i < width * height; i++) {
   const r = data[i * channels], g = data[i * channels + 1], b = data[i * channels + 2];

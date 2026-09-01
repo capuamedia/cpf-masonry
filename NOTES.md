@@ -246,7 +246,7 @@ knowing while that happens:
   going live.
 
 Both addresses are recorded in `src/lib/site.ts` — the former one is kept there
-deliberately, labelled as superseded, so nobody restores it later from the old
+deliberately, labeled as superseded, so nobody restores it later from the old
 listing thinking the site is wrong.
 
 ---

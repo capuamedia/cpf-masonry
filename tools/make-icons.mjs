@@ -40,7 +40,7 @@ const entries = sizes.map((s, i) => {
   e.writeUInt8(s >= 256 ? 0 : s, 1);   // height
   e.writeUInt8(0, 2);                  // palette size
   e.writeUInt8(0, 3);                  // reserved
-  e.writeUInt16LE(1, 4);               // colour planes
+  e.writeUInt16LE(1, 4);               // color planes
   e.writeUInt16LE(32, 6);              // bits per pixel
   e.writeUInt32LE(pngs[i].length, 8);  // payload size
   e.writeUInt32LE(offset, 12);         // payload offset

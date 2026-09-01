@@ -9,7 +9,7 @@
  *
  * Notes on how it is embedded:
  *  - platform.js is `async` and the widget carries `data-elfsight-app-lazy`, so
- *    it does not block first paint and only initialises near the viewport.
+ *    it does not block first paint and only initializes near the viewport.
  *  - The container reserves a min-height. Third-party embeds are the usual
  *    cause of layout shift on an otherwise CLS-free page, and everything else
  *    here declares explicit dimensions.

@@ -8,29 +8,30 @@
  * For a contractor the phone call IS the conversion, so the badge gives way —
  * never the call button.
  *
- * Why this needs a CSS override rather than an Elfsight dashboard setting:
- * the widget's own configuration is `bottom-right` with a 20px vertical offset,
- * but the bundle discards that on small screens and hardcodes a bottom-centred
- * position instead:
+ * Three things had to be established before this could be fixed properly, all
+ * read out of the widget's own config and bundle rather than guessed:
  *
- *   re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
+ * 1. The Elfsight dashboard cannot fix it. The badge is configured
+ *    `bottom-right` with a 20px offset, but the bundle throws that away below
+ *    its mobile breakpoint and hardcodes a bottom-centred position:
+ *        re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
+ *    So the editor setting moves it on desktop and does nothing on mobile,
+ *    which is the only viewport where the two overlap.
  *
- * — where `i` is the configured value. So changing the offset in the Elfsight
- * editor moves it on desktop and does nothing on mobile, which is the only
- * place the two actually collide.
+ * 2. Class names are useless as selectors. The widget is styled-components, so
+ *    every class is a build hash that changes on their next release.
  *
- * Why the selector targets inline styles rather than class names: the widget is
- * built with styled-components, so every class is a generated hash that changes
- * between releases. The positioning, however, is applied as an inline style —
+ * 3. CSS cannot reach it at all. The widget mounts into
+ *    `attachShadow({ mode: 'open' })`, and shadow DOM encapsulates styles — an
+ *    earlier attempt at a plain stylesheet override had no effect whatsoever,
+ *    which is why the badge did not move a single pixel.
  *
- *   e.split('-').length === 1 ? { position: 'fixed', [e]: '20px' } : { ... }
+ * `mode: 'open'` does leave the shadow root reachable from script, so the fix
+ * is a small enhancement that injects a stylesheet INTO each shadow root and
+ * nudges any stubborn fixed element directly. It re-runs on mutation and on
+ * resize, because the widget mounts late and re-renders on breakpoint changes.
  *
- * — which is stable, because it is the widget's actual behaviour rather than an
- * implementation detail of its build. Both serialisations of the style
- * attribute are matched: React writes `position:fixed` without a space, and the
- * browser rewrites it with one as soon as anything touches the CSSOM.
- *
- * TO TUNE: change --cpf-badge-clearance below. That is the only number here.
+ * TO TUNE: change --cpf-badge-clearance below. It is the only number here.
  */
 ---
 
@@ -39,34 +40,114 @@
 <style is:global>
   :root {
     /*
-      Sticky call bar height: py-3.5 top and bottom (1.75rem) plus a ~1.75rem
-      content line = 3.5rem, then the iOS home-indicator inset, then a 1.25rem
-      gap so the badge reads as a separate element rather than stacked on it.
+      Call bar is ~56px (py-3.5 twice, plus a ~28px content line). This clears
+      it with a comfortable gap rather than a hairline, so the badge reads as a
+      separate element sitting above the bar.
     */
-    --cpf-badge-clearance: calc(4.75rem + env(safe-area-inset-bottom, 0px));
+    --cpf-badge-clearance: calc(6.5rem + env(safe-area-inset-bottom, 0px));
   }
 
+  /* Light-DOM path, for the parts of the widget that render outside the shadow
+     root. Harmless when the shadow path is the one doing the work. */
   @media (max-width: 767px) {
-    /* Scoped form: the wrapper still inside our container. */
     .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 [style*='position:fixed'],
-    .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 [style*='position: fixed'],
-    /*
-      Fallback for when the widget portals its wrapper out to <body>, which it
-      does for popup content. Keyed on the widget's own 20px offset so it cannot
-      match anything of ours — the call bar is positioned with Tailwind classes,
-      not an inline style, so it is untouched by this.
-    */
-    body > [style*='position:fixed'][style*='bottom:20px'],
-    body > [style*='position: fixed'][style*='bottom: 20px'] {
+    .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 [style*='position: fixed'] {
       bottom: var(--cpf-badge-clearance) !important;
     }
-  }
-
-  /* Keep the badge under the call bar in stacking order too, so if it ever does
-     overlap, the call button stays tappable. The bar sits at z-50. */
-  @media (max-width: 767px) {
     .elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1 {
-      z-index: 40;
+      z-index: 40; /* call bar is z-50 — if they ever meet, the call wins */
     }
   }
 </style>
+
+<script is:inline>
+  (() => {
+    const HOST = '.elfsight-app-b264d3c7-506f-49e7-989e-31b7555fa5b1';
+    const MOBILE = '(max-width: 767px)';
+    const VAR = 'var(--cpf-badge-clearance)';
+    /* Anything sitting lower than this is treated as colliding with the bar. */
+    const FLOOR_PX = 56;
+
+    const styled = new WeakSet();
+
+    /* Shadow roots are style-encapsulated, so the rule has to go inside each
+       one. Custom properties DO inherit across the boundary, so the clearance
+       value still resolves from :root. */
+    function injectInto(root) {
+      if (!root || styled.has(root)) return;
+      styled.add(root);
+      const s = document.createElement('style');
+      s.setAttribute('data-cpf-badge-clearance', '');
+      s.textContent =
+        '@media ' + MOBILE + '{' +
+        '[style*="position:fixed"],[style*="position: fixed"]' +
+        '{bottom:' + VAR + ' !important}}';
+      root.appendChild(s);
+    }
+
+    function descend(node, depth) {
+      if (!node || depth > 12) return;
+      if (node.shadowRoot) {
+        injectInto(node.shadowRoot);
+        descend(node.shadowRoot, depth + 1);
+      }
+      const kids = node.children;
+      if (kids) for (let i = 0; i < kids.length; i++) descend(kids[i], depth + 1);
+    }
+
+    /* Direct fallback for anything the injected stylesheet still misses — for
+       instance a wrapper whose position is set via the CSSOM rather than an
+       inline style attribute. */
+    function nudge(scope, depth) {
+      if (!scope || depth > 12) return;
+      const els = scope.querySelectorAll ? scope.querySelectorAll('*') : [];
+      for (let i = 0; i < els.length; i++) {
+        const el = els[i];
+        /* Never touch our own call bar. */
+        if (el.closest && el.closest('[data-cpf-callbar]')) continue;
+        let cs;
+        try { cs = getComputedStyle(el); } catch { continue; }
+        if (cs.position === 'fixed') {
+          const b = parseFloat(cs.bottom);
+          if (!isNaN(b) && b < FLOOR_PX) {
+            el.style.setProperty('bottom', VAR, 'important');
+          }
+        }
+        if (el.shadowRoot) nudge(el.shadowRoot, depth + 1);
+      }
+    }
+
+    let queued = false;
+    function run() {
+      queued = false;
+      const host = document.querySelector(HOST);
+      if (!host) return;
+      descend(host, 0);
+      if (!window.matchMedia(MOBILE).matches) return;
+      nudge(host, 0);
+      /* The widget portals popup content to <body>; check only direct children
+         so this stays cheap. */
+      const top = document.body.children;
+      for (let i = 0; i < top.length; i++) {
+        const el = top[i];
+        if (el.hasAttribute('data-cpf-callbar') || el.tagName === 'SCRIPT') continue;
+        if (el.shadowRoot) nudge(el.shadowRoot, 0);
+      }
+    }
+
+    function schedule() {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(run);
+    }
+
+    new MutationObserver(schedule).observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+    addEventListener('resize', schedule, { passive: true });
+    schedule();
+    /* The widget is lazy-mounted, so catch it after it appears. */
+    [300, 900, 2000, 4000, 7000].forEach((t) => setTimeout(schedule, t));
+  })();
+</script>

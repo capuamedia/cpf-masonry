@@ -137,7 +137,10 @@ const schema = {
 
     <!-- Sticky call bar. For a contractor the call IS the conversion, and this
          site is overwhelmingly read one-handed on a phone. -->
-    <div class="fixed inset-x-0 bottom-0 z-50 border-t border-black/20 bg-cpf-black/95 backdrop-blur md:hidden">
+    <div
+      data-cpf-callbar
+      class="fixed inset-x-0 bottom-0 z-50 border-t border-black/20 bg-cpf-black/95 backdrop-blur md:hidden"
+    >
       <a
         href={BUSINESS.phoneHref}
         class="flex items-center justify-center gap-3 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white"

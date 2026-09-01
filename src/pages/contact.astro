@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import { BUSINESS, SITE_URL } from '../lib/site';
+
+/**
+ * TODO_FORM — no form endpoint is configured, so no form is rendered.
+ *
+ * A contact form that silently drops enquiries is strictly worse for a
+ * contractor than no form at all: the homeowner believes they made contact and
+ * never hears back. The email address also did not survive (TODO_EMAIL), so
+ * there is nowhere to route submissions yet.
+ *
+ * To switch it on: set FORM_ENDPOINT to a real handler (Cloudflare Pages
+ * Functions, Formspree, Basin) and confirm BUSINESS.email in src/lib/site.ts.
+ */
+const FORM_ENDPOINT: string | null = null;
+
+const description =
+  'Contact CPF Custom Concrete and Masonry in Newbury Park. Call (805) 498-4852 for concrete, masonry, retaining walls and outdoor kitchens across the Conejo Valley. CA License #878989.';
+---
+
+<Layout
+  title="Contact"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'ContactPage',
+      name: `Contact ${BUSINESS.name}`,
+      mainEntity: { '@id': `${SITE_URL}/#business` },
+    },
+  ]}
+>
+  <PageHeader
+    eyebrow="Contact"
+    title="Tell us what you're building"
+    intro="A phone call is the fastest way to get a straight answer on scope, price and a completion date."
+  />
+
+  <div class="mx-auto grid max-w-6xl gap-12 px-4 py-16 sm:px-6 md:grid-cols-2">
+    <div>
+      <h2 class="text-[var(--text-h2)] font-semibold uppercase">Call</h2>
+      <hr class="rule-red mt-4" />
+
+      <a
+        href={BUSINESS.phoneHref}
+        class="mt-6 inline-flex items-center gap-3 bg-cpf-red px-6 py-4 font-display text-2xl font-semibold uppercase tracking-wide text-white transition-colors hover:bg-cpf-red-dark sm:text-3xl"
+      >
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2Z"/>
+        </svg>
+        {BUSINESS.phone}
+      </a>
+
+      <p class="mt-6 leading-relaxed text-ink-soft">
+        Useful things to have ready: where the property is, roughly what you want
+        built, and when you need it finished. If you have photographs of the area,
+        even phone snaps, they save a visit.
+      </p>
+
+      {
+        BUSINESS.email ? (
+          <p class="mt-6">
+            <a href={`mailto:${BUSINESS.email}`} class="text-lg text-cpf-red underline">{BUSINESS.email}</a>
+          </p>
+        ) : (
+          /* TODO_EMAIL — Google's index preserved only a fragment ending
+             "11@GMAIL.COM". Publishing a guess would bounce enquiries into
+             nowhere, so the page stays phone-first until it is confirmed. */
+          <p class="mt-6 border-l-2 border-line pl-4 text-sm leading-relaxed text-muted">
+            Email is not published on this site yet. Phone is the fastest route
+            and reaches the same person.
+          </p>
+        )
+      }
+
+      {
+        FORM_ENDPOINT && (
+          <form action={FORM_ENDPOINT} method="POST" class="mt-8 space-y-4">
+            <div>
+              <label for="name" class="block font-display text-sm font-semibold uppercase tracking-wider">Name</label>
+              <input id="name" name="name" required class="mt-1 w-full border border-line-strong bg-surface px-3 py-2.5" />
+            </div>
+            <div>
+              <label for="phone" class="block font-display text-sm font-semibold uppercase tracking-wider">Phone</label>
+              <input id="phone" name="phone" type="tel" required class="mt-1 w-full border border-line-strong bg-surface px-3 py-2.5" />
+            </div>
+            <div>
+              <label for="msg" class="block font-display text-sm font-semibold uppercase tracking-wider">What are you building?</label>
+              <textarea id="msg" name="message" rows="5" required class="mt-1 w-full border border-line-strong bg-surface px-3 py-2.5" />
+            </div>
+            <button type="submit" class="bg-cpf-red px-6 py-3 font-display text-lg font-semibold uppercase tracking-wide text-white hover:bg-cpf-red-dark">
+              Send
+            </button>
+          </form>
+        )
+      }
+    </div>
+
+    <div>
+      <h2 class="text-[var(--text-h2)] font-semibold uppercase">Where we are</h2>
+      <hr class="rule-red mt-4" />
+
+      <address class="mt-6 text-lg not-italic leading-relaxed text-ink-soft">
+        <strong class="font-display font-semibold uppercase tracking-wide text-ink">{BUSINESS.name}</strong><br />
+        {BUSINESS.address.street}<br />
+        {BUSINESS.address.locality}, {BUSINESS.address.region} {BUSINESS.address.postal}
+      </address>
+
+      <p class="mt-6 font-display text-base uppercase tracking-[0.14em] text-muted">
+        {BUSINESS.licenseLabel}
+      </p>
+
+      <h3 class="mt-10 font-display text-xl font-semibold uppercase tracking-wide">Service area</h3>
+      <ul class="mt-4 grid grid-cols-2 gap-x-6 gap-y-1.5">
+        {
+          BUSINESS.serviceArea.map((area) => (
+            <li class="flex gap-2 text-ink-soft">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 bg-cpf-red" aria-hidden="true" />
+              {area}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 border-t border-line pt-6">
+        <h3 class="font-display text-xl font-semibold uppercase tracking-wide">Reviews</h3>
+        <p class="mt-3 leading-relaxed text-muted">
+          CPF holds 5.0 stars on both Yelp ({BUSINESS.ratings.yelp.count} reviews)
+          and Google ({BUSINESS.ratings.google.count} reviews).
+        </p>
+      </div>
+    </div>
+  </div>
+</Layout>

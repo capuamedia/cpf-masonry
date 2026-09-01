@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import { A } from '../lib/assets';
+import { BUSINESS } from '../lib/site';
+
+const description =
+  'CPF Custom Concrete and Masonry is an independent consulting and contracting company serving Newbury Park, Thousand Oaks and the Conejo Valley under California contractor license #878989.';
+---
+
+<Layout title="About" description={description}>
+  <PageHeader
+    eyebrow="About"
+    title="An independent contractor in the Conejo Valley"
+    intro="Foundations, stamped concrete, natural stone, block walls and brick — from large-scale renovations to smaller residential jobs."
+    asset={A.stoneEntry}
+    displayW={1024}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <p>
+      CPF Custom Concrete and Masonry is an independent consulting and contracting
+      company specialising in foundations, stamped concrete, natural stone, block
+      walls and brick products. Clients enjoy the peace of mind that comes with a
+      guaranteed completion date and full insurance coverage. Project expertise
+      ranges from large-scale renovations to smaller residential jobs, with
+      tenacious attention to detail and pride of accomplishment on every one.
+    </p>
+
+    <h2>Licensed in California since long before this website</h2>
+    <p>
+      CPF has operated in the Conejo Valley under
+      <strong>California contractor license #{BUSINESS.license}</strong>, which is
+      a matter of public record and can be checked in about thirty seconds on the
+      <a
+        href="https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx"
+        rel="noopener"
+        target="_blank">CSLB licence lookup</a
+      >. This site is new; the business is not. If you want to verify who you are
+      talking to before you call, that is the fastest way to do it.
+    </p>
+
+    <h2>What we actually do</h2>
+    <p>
+      Most of the work is residential hardscape across Newbury Park, Thousand Oaks,
+      Westlake Village, Calabasas and Camarillo — driveways, patios, retaining
+      walls, outdoor kitchens and fireplaces. Alongside that, CPF has delivered two
+      community and institutional ballfield projects: the Triunfo YMCA baseball
+      fields, and Robertson Family Field at Viewpoint School in Calabasas.
+    </p>
+    <p>
+      Those two matter more than their size suggests. Institutional clients award
+      work on scheduling and insurance as much as on craft, and they do not hand a
+      live school campus to a contractor who might overrun. It is the same promise
+      a homeowner is buying: the job gets finished, on the date agreed.
+    </p>
+
+    <h2>Two things worth knowing before you call</h2>
+    <ul>
+      <li>
+        <strong>Guaranteed completion date.</strong> Agreed at quoting, not hoped
+        for afterwards. A contractor who turns up when he said he would is the
+        thing most people are actually worried about.
+      </li>
+      <li>
+        <strong>Full insurance coverage.</strong> On every job, residential and
+        commercial.
+      </li>
+    </ul>
+
+    <h2>Where we work</h2>
+    <p>
+      {BUSINESS.serviceArea.slice(0, 5).join(', ')} and the wider Conejo Valley.
+      If you are just outside that, call and ask — it depends on the job.
+    </p>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+    <div class="grid gap-8 sm:grid-cols-3">
+      {
+        [
+          { asset: A.dosVientosWall, caption: 'Retaining walls, Dos Vientos, Newbury Park' },
+          { asset: A.stampedDriveway, caption: 'Stamped concrete driveways' },
+          { asset: A.brickFireplaceMantel, caption: 'Outdoor fireplaces and kitchens' },
+        ].map((item, i) => (
+          <figure>
+            <Img
+              asset={item.asset}
+              displayW={500}
+              sizes="(max-width: 640px) 100vw, 33vw"
+              label={`about strip ${i}`}
+              imgClass="aspect-[3/2] w-full object-cover"
+            />
+            <figcaption class="mt-3 text-sm text-muted">{item.caption}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

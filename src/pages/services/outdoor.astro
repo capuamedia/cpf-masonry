@@ -1,0 +1,68 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { A } from '../../lib/assets';
+
+const showcase = [
+  { asset: A.stoneFireplaceTall, caption: 'Stacked-stone fireplace with an arched firebox and raised hearth.' },
+  { asset: A.poolFireplace, caption: 'Cast stone fireplace and chimney set beside the pool.' },
+  { asset: A.brickFireplaceMantel, caption: 'Stone and brick fireplace with a timber mantel under a covered patio.' },
+  { asset: A.firePitSeating, caption: 'Round fire pit with a curved stone seating wall, poolside.' },
+  { asset: A.concreteCounter, caption: 'Outdoor kitchen counter with a stainless built-in.' },
+  { asset: A.stoneVilla, caption: 'Stone columns carrying a covered outdoor living space.' },
+];
+
+const gallery = [
+  A.pergolaLounge, A.patioSteps, A.poolWaterFeature,
+  A.pergolaPatio, A.gazeboLawn, A.waterGarden,
+];
+---
+
+<ServiceLayout
+  title="Outdoor Kitchens & Fireplaces"
+  eyebrow="Outdoor living"
+  intro="Backyard kitchens, fireplaces, fire pits and counters — built in stone and brick to work with the pool, the patio and the planting that are already there."
+  description="Outdoor kitchen Westlake Village and backyard fireplaces across Thousand Oaks, Calabasas and the Conejo Valley. Fire pits, seating walls, stone counters and BBQ surrounds, built by a licensed masonry contractor."
+  headerAsset={A.pergolaLounge}
+  serviceName="Outdoor kitchens, fireplaces and fire pits"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Patios, pools and outdoor living"
+>
+  <h2>Backyard kitchens across Westlake Village and the Conejo Valley</h2>
+  <p>
+    An outdoor kitchen is masonry with appliances in it. The structure — the
+    block core, the counter substrate, the veneer, the drainage under the slab —
+    is what decides whether it still looks right in ten years, and it is entirely
+    invisible by the time the grill goes in.
+  </p>
+  <p>
+    CPF builds backyard kitchens, fireplaces, fire pits, seating walls and
+    counters as part of the wider hardscape, so the paving, the pool surround and
+    the cooking end read as one piece of work rather than three projects that
+    happened to land in the same garden.
+  </p>
+
+  <h3>What that covers</h3>
+  <ul>
+    <li><strong>Outdoor kitchens and BBQ surrounds</strong> — block core, veneer, and counters cut to the appliances.</li>
+    <li><strong>Fireplaces and chimneys</strong> — stacked stone, cast stone or brick, with proper flue detailing.</li>
+    <li><strong>Fire pits and seating walls</strong> — sized so people can actually sit round them.</li>
+    <li><strong>Counters</strong> — poured concrete or stone, sealed for outdoor use.</li>
+    <li><strong>Patio and pergola bases</strong> — the flatwork and footings underneath.</li>
+  </ul>
+
+  <h3>Building around a pool</h3>
+  <p>
+    A lot of this work happens within a few feet of water, which changes things:
+    setting out around existing coping, keeping the pool clean through a masonry
+    build, and choosing finishes that survive chlorine and wet feet. It is worth
+    saying out loud at the quoting stage rather than discovering on day three.
+  </p>
+
+  <h2>Guaranteed completion, fully insured</h2>
+  <p>
+    Nobody wants a half-built fireplace in the garden over summer. Every job
+    carries a <strong>guaranteed completion date</strong> and <strong>full
+    insurance coverage</strong>.
+  </p>
+</ServiceLayout>

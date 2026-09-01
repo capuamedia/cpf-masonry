@@ -1,0 +1,78 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { A } from '../../lib/assets';
+
+const showcase = [
+  { asset: A.dosVientosWall, caption: 'Stacked stone property-line retaining wall, Dos Vientos, Newbury Park.' },
+  { asset: A.dosVientosDrive, caption: 'Stone-faced retaining wall curving with the driveway line.' },
+  { asset: A.outfieldWall, caption: 'Curved segmental block retaining wall along an outfield boundary.' },
+  { asset: A.oaksMonument, caption: 'Stone and stucco monument signage set into landscaping.' },
+  { asset: A.stoneVilla, caption: 'Stone columns carrying a covered patio.' },
+  { asset: A.ymcaBackstop, caption: 'Red brick backstop wall at the Triunfo YMCA fields.' },
+];
+
+const gallery = [
+  A.stoneEntry, A.brickWallTrees, A.herringboneWet,
+  A.brickWallHouse, A.fencedWalkway, A.stakedTrees, A.entryCourtyard,
+];
+---
+
+<ServiceLayout
+  title="Block, Brick & Natural Stone"
+  eyebrow="Masonry"
+  intro="CPF is your go-to contractor for all things masonry — foundations, retaining walls, block, brick and natural stone across Thousand Oaks and the Conejo Valley."
+  description="Masonry contractor Thousand Oaks: block walls, brick, natural stone veneer and retaining walls across the Conejo Valley and Newbury Park. Foundations, property-line walls, engineered and insured. CA License #878989."
+  headerAsset={A.brickWallHouse}
+  serviceName="Masonry, block walls and natural stone"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Walls, veneer and brickwork"
+>
+  <h2>A masonry contractor for the Conejo Valley</h2>
+  <p>
+    CPF is an independent consulting and contracting company specialising in
+    foundations, stamped concrete, natural stone, block walls and brick products.
+    Project expertise ranges from large-scale renovations down to smaller
+    residential jobs — the same crew builds a garden wall and a ballfield
+    retaining structure.
+  </p>
+
+  <h3>Retaining walls</h3>
+  <p>
+    A retaining wall is a structure holding back a measurable quantity of earth,
+    and the failures are almost never in the face — they are in the footing, the
+    drainage behind it, or the reinforcement that was left out because it does not
+    show. Walls get built for the ground they are actually sitting in: segmental
+    block, poured concrete, or stone-faced over a structural core, with drainage
+    and backfill detailed as part of the job.
+  </p>
+  <p>
+    The <a href="/projects/">Dos Vientos property-line walls</a> are a good
+    example — a long run following a driveway grade, faced in stone so it reads as
+    landscape rather than as engineering.
+  </p>
+
+  <h3>Block walls</h3>
+  <ul>
+    <li><strong>Property-line and privacy walls</strong> — including replacing failed timber fencing.</li>
+    <li><strong>Split-face and precision block</strong>, capped and finished.</li>
+    <li><strong>Seating and planter walls</strong> tied into patios.</li>
+  </ul>
+
+  <h3>Brick and natural stone</h3>
+  <p>
+    Brick is unforgiving: coursing, joint width and the colour of the mortar are
+    all visible for the life of the wall, and nothing hides a rushed job like a
+    long straight run in sunlight. Natural stone and veneer work is the same
+    argument in a different material — the joints and the pattern of the stone
+    selection are the craft.
+  </p>
+
+  <h2>Guaranteed completion, fully insured</h2>
+  <p>
+    Masonry blocks access while it is happening. Every job carries a
+    <strong>guaranteed completion date</strong> and <strong>full insurance
+    coverage</strong>, with tenacious attention to detail and pride of
+    accomplishment on the finished work.
+  </p>
+</ServiceLayout>

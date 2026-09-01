@@ -1,0 +1,121 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Img from '../../components/Img.astro';
+import { A } from '../../lib/assets';
+import { SITE_URL } from '../../lib/site';
+import { withBase } from '../../lib/urls';
+
+const field = [
+  { asset: A.viewpointDiamond, caption: 'The completed diamond, red warning-track and green playing surface.' },
+  { asset: A.viewpointHomePlate, caption: 'Home plate and infield after handover.' },
+  { asset: A.viewpointOutfield, caption: 'Outfield turf and boundary netting.' },
+];
+
+const description =
+  'Featured project: Robertson Family Field at Viewpoint School, Calabasas. A full baseball field build following the Triunfo YMCA playfields project.';
+---
+
+<Layout
+  title="Robertson Family Field, Viewpoint School"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'CreativeWork',
+      name: 'Robertson Family Field at Viewpoint School',
+      about: 'Baseball field construction for a private school campus in Calabasas, California.',
+      creator: { '@id': `${SITE_URL}/#business` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Projects', item: `${SITE_URL}/projects/` },
+        { '@type': 'ListItem', position: 2, name: 'Robertson Family Field, Viewpoint School' },
+      ],
+    },
+  ]}
+>
+  {/*
+    Deliberately a type-led header with no photograph.
+
+    Every surviving image of this project is 678x452 off the old site, and the
+    tier ceiling is 500px rendered. Filling a 1400px page header would mean
+    either a 2.1x upscale or borrowing a residential patio photo from the Yelp
+    set — and putting somebody's backyard at the top of a school ballfield page
+    is a straightforward misrepresentation. Section 9: if a slot cannot be
+    filled with a real photo of the work, redesign the slot.
+  */}
+  <PageHeader
+    eyebrow="Featured project · Institutional"
+    title="Robertson Family Field, Viewpoint School"
+    intro="Following the success of our Triunfo YMCA playfields project, we put the wraps on a baseball field build at Viewpoint School in Calabasas, California."
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <p>
+      Viewpoint School came after Triunfo. A private school campus in Calabasas
+      awarded CPF the Robertson Family Field build on the strength of the YMCA
+      playfields — which is the useful thing about institutional work: the second
+      one is won by the first one.
+    </p>
+    <p>
+      A school field carries a constraint a community field does not. The work has
+      to fit the academic calendar, on a live campus, with the site secure and the
+      dates immovable. That is a scheduling problem as much as a construction one,
+      and it is the reason a <strong>guaranteed completion date</strong> and
+      <strong>full insurance coverage</strong> are what get a contractor onto a
+      campus in the first place.
+    </p>
+
+    <h2>Two institutional references</h2>
+    <p>
+      Between Triunfo YMCA and Viewpoint School, CPF holds two community and
+      institutional references — the kind most residential masonry contractors
+      cannot show a homeowner. If the crew can be trusted on a school campus
+      against a fixed handover date, a driveway or a retaining wall is a
+      straightforward proposition.
+    </p>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+    <h2 class="text-[var(--text-h2)] font-semibold uppercase">The finished field</h2>
+    <hr class="rule-red mt-4" />
+    <p class="mt-4 max-w-2xl text-sm leading-relaxed text-muted">
+      These frames survive only as low-resolution copies from the original site,
+      so they are shown small deliberately — enlarging them would show you the
+      compression rather than the work.
+    </p>
+    <ul class="mt-8 grid gap-8 sm:grid-cols-3">
+      {
+        field.map((f, i) => (
+          <li>
+            <Img
+              asset={f.asset}
+              displayW={500}
+              sizes="(max-width: 640px) 100vw, 33vw"
+              label={`viewpoint field ${i}`}
+              imgClass="aspect-[3/2] w-full object-cover"
+            />
+            <p class="mt-3 text-sm leading-relaxed text-muted">{f.caption}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-t border-line bg-surface py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p class="text-lg">
+        <a
+          href={withBase('/projects/triunfo-ymca-baseball-fields/')}
+          class="font-display font-semibold uppercase tracking-wide text-cpf-red hover:underline"
+        >
+          &larr; Back to the Triunfo YMCA Baseball Fields
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

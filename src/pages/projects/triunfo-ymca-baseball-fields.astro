@@ -1,0 +1,150 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Img from '../../components/Img.astro';
+import { A } from '../../lib/assets';
+import { SITE_URL } from '../../lib/site';
+import { withBase } from '../../lib/urls';
+
+const structures = [
+  { asset: A.ymcaBackstop, caption: 'Red brick backstop wall carrying the chain-link behind home plate.' },
+  { asset: A.outfieldWall, caption: 'Curved segmental block retaining wall along the outfield boundary.' },
+  { asset: A.ymcaShed, caption: 'Equipment shed and enclosure at the edge of the field.' },
+];
+
+/**
+ * The three dugout frames survive only at 320x213 — the smallest files in the
+ * whole set. They are capped at 300px rendered by the "tiny" tier, shown once,
+ * here, as a small inline trio, and nowhere else on the site.
+ */
+const dugout = [A.dugoutFooter, A.dugoutFront, A.dugoutBack];
+
+const description =
+  'Featured project: the Triunfo YMCA baseball fields. Brick backstops, dugouts, block outfield walls and concrete flatwork, delivered directly with the YMCA in the Conejo Valley.';
+---
+
+<Layout
+  title="Triunfo YMCA Baseball Fields"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'CreativeWork',
+      name: 'Triunfo YMCA Baseball Fields',
+      about: 'Community baseball field construction: brick backstops, dugouts, block retaining walls and concrete flatwork.',
+      creator: { '@id': `${SITE_URL}/#business` },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Projects', item: `${SITE_URL}/projects/` },
+        { '@type': 'ListItem', position: 2, name: 'Triunfo YMCA Baseball Fields' },
+      ],
+    },
+  ]}
+>
+  <PageHeader
+    eyebrow="Featured project · Community"
+    title="Triunfo YMCA Baseball Fields"
+    intro="A prime example of our capabilities to visualise and deliver a community project — worked directly with the YMCA."
+    asset={A.brickWallRailing}
+    displayW={1900}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <p>
+      The Triunfo YMCA baseball fields are the job CPF points at when a client
+      asks whether a residential mason can handle something larger. It is a
+      community facility, used constantly, built to be walked on by hundreds of
+      people a week — and the masonry has to survive that without a maintenance
+      budget behind it.
+    </p>
+    <p>
+      CPF worked directly with the YMCA on the build: brick backstop walls,
+      dugouts, block retaining structures around the outfield, and the concrete
+      flatwork — walkways, steps and pads — that ties the whole facility together
+      and makes it accessible.
+    </p>
+
+    <h2>What the job involved</h2>
+    <ul>
+      <li><strong>Brick backstop walls</strong> — the structure carrying the chain-link behind home plate, taking impact for the life of the field.</li>
+      <li><strong>Dugouts</strong> — poured footings, brick base courses, and perforated screens over bench seating.</li>
+      <li><strong>Block outfield walls</strong> — curved segmental retaining walls following the boundary grade.</li>
+      <li><strong>Concrete flatwork</strong> — spectator walkways, steps and equipment pads.</li>
+    </ul>
+
+    <h2>Why it matters for a residential client</h2>
+    <p>
+      Institutional work is awarded on scheduling and insurance as much as on the
+      masonry itself. A community organisation cannot have a field out of use into
+      the season, which is the same reason a homeowner cannot have a driveway open
+      for a month. The <strong>guaranteed completion date</strong> is not a
+      marketing line here — it is the condition the job was won on.
+    </p>
+  </article>
+
+  <section class="mx-auto max-w-7xl px-4 pb-4 sm:px-6">
+    <h2 class="text-[var(--text-h2)] font-semibold uppercase">Structures on the field</h2>
+    <hr class="rule-red mt-4" />
+    <ul class="mt-8 grid gap-8 sm:grid-cols-3">
+      {
+        structures.map((s, i) => (
+          <li>
+            <Img
+              asset={s.asset}
+              displayW={500}
+              sizes="(max-width: 640px) 100vw, 33vw"
+              label={`ymca structure ${i}`}
+              imgClass="aspect-[3/2] w-full object-cover"
+            />
+            <p class="mt-3 text-sm leading-relaxed text-muted">{s.caption}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+    <h2 class="font-display text-xl font-semibold uppercase tracking-wide">The dugouts, footing to finish</h2>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+      Three frames from the build sequence — the poured footing and brick base
+      course, the finished front with its screen, and the rear elevation with
+      steps and railing.
+    </p>
+    <ul class="mt-6 flex flex-wrap gap-5">
+      {
+        dugout.map((asset, i) => (
+          <li class="w-[min(300px,calc(50%-0.625rem))]">
+            <Img
+              asset={asset}
+              displayW={300}
+              sizes="300px"
+              label={`ymca dugout ${i}`}
+              imgClass="aspect-[3/2] w-full object-cover"
+            />
+            <p class="mt-2 text-xs leading-snug text-muted">{asset.alt}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="border-t border-line bg-surface py-12">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p class="text-lg">
+        <a
+          href={withBase('/projects/robertson-family-field-viewpoint-school/')}
+          class="font-display font-semibold uppercase tracking-wide text-cpf-red hover:underline"
+        >
+          Next: Robertson Family Field at Viewpoint School &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Planning something at this scale?"
+    body="Community, institutional or residential — the same crew, the same guaranteed completion date."
+  />
+</Layout>

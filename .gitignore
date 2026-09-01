@@ -6,3 +6,6 @@ dist/
 .env
 .env.*
 .netlify/
+
+# scratch renders used to eyeball the logo trace
+tools/_*.png

@@ -1,0 +1,188 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { BUSINESS, AGGREGATE_RATING, SITE_URL } from '../lib/site';
+import { canonicalURL, withBase, IS_DEMO } from '../lib/urls';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Adds BreadcrumbList + a page-specific graph node. */
+  extraSchema?: Record<string, unknown>[];
+}
+
+const { title, description, extraSchema = [] } = Astro.props;
+const canonical = canonicalURL(Astro.url.pathname);
+const fullTitle = title === 'home' ? `${BUSINESS.name} | Conejo Valley` : `${title} | ${BUSINESS.name}`;
+
+/**
+ * LocalBusiness graph.
+ *
+ * The aggregateRating combines the Yelp and Google listings. Both are 5.0, and
+ * the counts are cited as-found (26 + 8). The Yelp count is approximate — see
+ * NOTES.md item 7. Only the Google Business Profile address is published: the
+ * Yelp listing carries a different one, and two conflicting addresses actively
+ * hurt local ranking.
+ */
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': ['GeneralContractor', 'LocalBusiness'],
+      '@id': `${SITE_URL}/#business`,
+      name: BUSINESS.name,
+      description: BUSINESS.tagline,
+      url: SITE_URL,
+      telephone: BUSINESS.phone,
+      image: `${SITE_URL}/logo.svg`,
+      logo: `${SITE_URL}/logo.svg`,
+      priceRange: '$$-$$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: BUSINESS.address.street,
+        addressLocality: BUSINESS.address.locality,
+        addressRegion: BUSINESS.address.region,
+        postalCode: BUSINESS.address.postal,
+        addressCountry: BUSINESS.address.country,
+      },
+      areaServed: BUSINESS.serviceArea.map((n) => ({
+        '@type': 'City',
+        name: n,
+        containedInPlace: { '@type': 'AdministrativeArea', name: 'Ventura County, California' },
+      })),
+      hasCredential: {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'California State License Board Contractor License',
+        identifier: BUSINESS.license,
+      },
+      knowsAbout: [
+        'Stamped concrete', 'Concrete driveways', 'Concrete countertops',
+        'Block retaining walls', 'Brick masonry', 'Natural stone veneer',
+        'Outdoor kitchens', 'Outdoor fireplaces', 'Fire pits', 'Paver walkways',
+      ],
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: AGGREGATE_RATING.value,
+        reviewCount: AGGREGATE_RATING.count,
+        bestRating: 5,
+      },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_URL}/#website`,
+      url: SITE_URL,
+      name: BUSINESS.name,
+      publisher: { '@id': `${SITE_URL}/#business` },
+    },
+    ...extraSchema,
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    {/* The GitHub Pages review build must never compete with the new domain. */}
+    {IS_DEMO && <meta name="robots" content="noindex, nofollow" />}
+
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={withBase('/apple-touch-icon.png')} />
+    <meta name="theme-color" content="#e01b22" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:site_name" content={BUSINESS.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="geo.region" content="US-CA" />
+    <meta name="geo.placename" content="Newbury Park, California" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+  </head>
+
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-cpf-red focus:px-4 focus:py-2 focus:text-white"
+      >Skip to content</a
+    >
+
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
+
+    <!-- Sticky call bar. For a contractor the call IS the conversion, and this
+         site is overwhelmingly read one-handed on a phone. -->
+    <div class="fixed inset-x-0 bottom-0 z-50 border-t border-black/20 bg-cpf-black/95 backdrop-blur md:hidden">
+      <a
+        href={BUSINESS.phoneHref}
+        class="flex items-center justify-center gap-3 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2Z"/>
+        </svg>
+        Call {BUSINESS.phone}
+      </a>
+    </div>
+
+    <!-- Lightbox. Vanilla, ~1KB, and only ever attached to buttons emitted by
+         Img.astro — which refuses to emit one for the 678px tier. -->
+    <dialog
+      id="lb"
+      class="max-h-[92dvh] max-w-[94vw] border-0 bg-transparent p-0 backdrop:bg-black/85"
+      aria-label="Enlarged photograph"
+    >
+      <figure class="m-0">
+        <img id="lb-img" src="" alt="" class="max-h-[80dvh] w-auto max-w-full object-contain" />
+        <figcaption
+          id="lb-cap"
+          class="mx-auto mt-2 max-w-2xl bg-cpf-black/80 px-4 py-2 text-center text-sm text-white"
+        >
+        </figcaption>
+      </figure>
+      <button
+        id="lb-close"
+        class="absolute right-2 top-2 flex h-11 w-11 items-center justify-center bg-cpf-black/80 text-2xl leading-none text-white"
+        aria-label="Close"
+      >&times;</button>
+    </dialog>
+
+    <script is:inline>
+      (() => {
+        const dlg = document.getElementById('lb');
+        if (!dlg) return;
+        const img = document.getElementById('lb-img');
+        const cap = document.getElementById('lb-cap');
+        document.addEventListener('click', (e) => {
+          const btn = e.target.closest('[data-lightbox]');
+          if (btn) {
+            img.src = btn.dataset.full;
+            img.alt = btn.dataset.alt || '';
+            cap.textContent = btn.dataset.alt || '';
+            dlg.showModal();
+            return;
+          }
+          if (e.target.id === 'lb-close' || e.target === dlg) dlg.close();
+        });
+        dlg.addEventListener('close', () => { img.src = ''; });
+      })();
+    </script>
+  </body>
+</html>

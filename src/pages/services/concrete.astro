@@ -1,0 +1,71 @@
+---
+import ServiceLayout from '../../layouts/ServiceLayout.astro';
+import { A } from '../../lib/assets';
+
+const showcase = [
+  { asset: A.stampedDriveway, caption: 'Stamped and coloured driveway with a scored border, Conejo Valley.' },
+  { asset: A.spanishDrive, caption: 'Poured driveway and flagstone walkway to a Spanish-style frontage.' },
+  { asset: A.dosVientosDrive, caption: 'Stamped driveway running beside a stone-faced retaining wall, Dos Vientos.' },
+  { asset: A.fountainPavers, caption: 'Tiered fountain set into a paver surround with planted beds.' },
+  { asset: A.concreteCounter, caption: 'Poured outdoor kitchen counter with a stainless built-in.' },
+  { asset: A.polishedCounter, caption: 'Polished concrete counter finished to a wet look.' },
+];
+
+const gallery = [
+  A.herringboneClose, A.roseWalkway, A.curvedDrive,
+  A.paverDrive, A.herringboneWet, A.driveApron, A.potteryEntry,
+];
+---
+
+<ServiceLayout
+  title="Custom & Stamped Concrete"
+  eyebrow="Concrete"
+  intro="Custom designed and poured concrete driveways, pavers, water features and more — across Newbury Park, Thousand Oaks and the wider Conejo Valley."
+  description="Stamped concrete Newbury Park and custom poured concrete across Thousand Oaks and the Conejo Valley: driveways, pavers, patios, countertops and water features. Licensed, insured, guaranteed completion dates."
+  headerAsset={A.curvedRoseWalk}
+  serviceName="Custom and stamped concrete"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Flatwork, pavers and finishes"
+>
+  <h2>Stamped concrete in Newbury Park and Thousand Oaks</h2>
+  <p>
+    Concrete is the largest single surface most homes have, and it is the one
+    people look at every day on the way to the front door. A driveway that cracks
+    along the wrong line, or a patio that holds water in the middle, is expensive
+    to put right — so the value sits in the sub-base, the reinforcement and the
+    joint layout long before anyone sees a finish.
+  </p>
+  <p>
+    CPF designs and pours custom concrete: driveways and aprons, patios, paver
+    walkways, poured countertops, and water features. Stamped and coloured
+    finishes are chosen against the house — the roof tile, the stone, the render —
+    rather than off a chart, because a stamp that fights the elevation reads as
+    obviously applied.
+  </p>
+
+  <h3>What that covers</h3>
+  <ul>
+    <li><strong>Driveways and aprons</strong> — formed, reinforced and poured, with jointing set out to control where it cracks.</li>
+    <li><strong>Stamped and coloured flatwork</strong> — patterns and release colours matched to the house.</li>
+    <li><strong>Patios and paver walkways</strong> — laid on a proper base so they stay flat.</li>
+    <li><strong>Poured countertops</strong> — indoor and outdoor, sealed for the weather they will actually see.</li>
+    <li><strong>Water features and fountains</strong> — formed, plumbed and finished.</li>
+  </ul>
+
+  <h3>Working on a slope</h3>
+  <p>
+    Much of the Conejo Valley is built on grade. Flatwork on a slope is a drainage
+    problem before it is a concrete problem: where the water goes at the bottom of
+    a driveway decides whether the slab lasts. Falls, drains and the transition
+    into the retaining structure get designed together, not bolted on afterwards.
+  </p>
+
+  <h2>Guaranteed completion, fully insured</h2>
+  <p>
+    A concrete pour takes the driveway out of use, and an open form is not
+    something anyone wants sitting for a fortnight. Every CPF job carries a
+    <strong>guaranteed completion date</strong> and <strong>full insurance
+    coverage</strong>, which is the part homeowners actually worry about.
+  </p>
+</ServiceLayout>

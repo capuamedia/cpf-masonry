@@ -1,0 +1,110 @@
+---
+/**
+ * Draggable before/after comparison. Vanilla — no framework needed.
+ *
+ * The handle IS a range input rather than a div with pointer listeners, so it
+ * is keyboard operable and screen-reader announced for free, and it keeps
+ * working if the enhancement script never runs (the input still moves the
+ * clip). Both photographs also remain in the DOM as ordinary images, so the
+ * work is visible with JavaScript disabled.
+ */
+import Img from './Img.astro';
+import type { Pair } from '../lib/pairs';
+
+interface Props {
+  pair: Pair;
+  id: string;
+}
+const { pair, id } = Astro.props;
+const W = 900; // section 4 slot table: before/after pairs cap at 900px
+---
+
+<figure class="not-prose">
+  <div
+    class="ba relative select-none overflow-hidden bg-sand"
+    data-ba
+    style="--pos:50%"
+  >
+    <!-- AFTER sits underneath, full width, and sets the box height. -->
+    <Img
+      asset={pair.after}
+      displayW={W}
+      sizes="(max-width: 900px) 100vw, 900px"
+      label={`before-after after (${id})`}
+      imgClass="block w-full h-auto"
+    />
+
+    <!-- BEFORE is clipped from the left edge to the divider. -->
+    <div
+      class="absolute inset-0 [clip-path:inset(0_calc(100%-var(--pos))_0_0)]"
+      aria-hidden="true"
+    >
+      <Img
+        asset={pair.before}
+        displayW={W}
+        sizes="(max-width: 900px) 100vw, 900px"
+        label={`before-after before (${id})`}
+        class="h-full"
+        imgClass="block w-full h-full object-cover"
+      />
+    </div>
+
+    <!-- Divider -->
+    <div
+      class="pointer-events-none absolute inset-y-0 w-1 -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgba(0,0,0,.35)]"
+      style="left:var(--pos)"
+      aria-hidden="true"
+    >
+      <span
+        class="absolute top-1/2 left-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-cpf-black shadow-lg"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M9.5 7 5 12l4.5 5V7Zm5 0v10l4.5-5-4.5-5Z" />
+        </svg>
+      </span>
+    </div>
+
+    <span
+      class="pointer-events-none absolute left-3 top-3 bg-cpf-black/80 px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white"
+      >Before</span
+    >
+    <span
+      class="pointer-events-none absolute right-3 top-3 bg-cpf-red px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white"
+      >After</span
+    >
+
+    <label class="sr-only" for={`ba-${id}`}>
+      Reveal more of the before or after photograph
+    </label>
+    <input
+      id={`ba-${id}`}
+      type="range"
+      min="0"
+      max="100"
+      value="50"
+      step="1"
+      data-ba-input
+      class="absolute inset-0 h-full w-full cursor-ew-resize appearance-none bg-transparent
+             [&::-webkit-slider-thumb]:h-full [&::-webkit-slider-thumb]:w-11 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:cursor-ew-resize [&::-webkit-slider-thumb]:bg-transparent
+             [&::-moz-range-thumb]:h-full [&::-moz-range-thumb]:w-11 [&::-moz-range-thumb]:border-0 [&::-moz-range-thumb]:bg-transparent"
+    />
+  </div>
+
+  <figcaption class="mt-3 text-sm leading-relaxed text-muted">
+    <strong class="font-display text-base font-semibold uppercase tracking-wide text-ink"
+      >{pair.title}.</strong
+    >{' '}{pair.caption}
+  </figcaption>
+</figure>
+
+<script is:inline>
+  (() => {
+    for (const box of document.querySelectorAll('[data-ba]')) {
+      const input = box.querySelector('[data-ba-input]');
+      if (!input) continue;
+      const sync = () => box.style.setProperty('--pos', input.value + '%');
+      input.addEventListener('input', sync);
+      sync();
+    }
+  })();
+</script>

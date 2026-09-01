@@ -1,0 +1,86 @@
+---
+/**
+ * The only way an image gets onto this site.
+ *
+ * Every call runs through plan() in src/lib/images.ts, which THROWS if the slot
+ * asks for more than 2x the source's intrinsic width, or breaches the per-tier
+ * ceiling. That is deliberate: the whole photo set is salvaged, resolution is
+ * the binding constraint on the design, and a build that fails loudly is worth
+ * far more than a page that quietly looks cheap.
+ */
+import { Picture } from 'astro:assets';
+import type { Asset } from '../lib/assets';
+import { plan, canLightbox } from '../lib/images';
+
+interface Props {
+  asset: Asset;
+  /** Largest CSS width this slot is ever laid out at. Drives the guard. */
+  displayW: number;
+  /** Responsive sizes attribute. Defaults to the display width. */
+  sizes?: string;
+  /** Slot name, surfaced in the error if the guard trips. */
+  label: string;
+  class?: string;
+  /** Hero only — everything else stays lazy. */
+  eager?: boolean;
+  /** Opt in to click-to-enlarge. Ignored for tiers that may not be enlarged. */
+  lightbox?: boolean;
+  /** Tailwind aspect/object classes applied to the <img> itself. */
+  imgClass?: string;
+}
+
+const {
+  asset,
+  displayW,
+  sizes,
+  label,
+  class: className = '',
+  eager = false,
+  lightbox = false,
+  imgClass = '',
+} = Astro.props;
+
+const widths = plan(asset.img, asset.tier, displayW, label);
+const enlargeable = lightbox && canLightbox(asset.tier);
+---
+
+{
+  enlargeable ? (
+    <button
+      type="button"
+      class={`group relative block w-full cursor-zoom-in overflow-hidden bg-sand ${className}`}
+      data-lightbox
+      data-full={asset.img.src}
+      data-alt={asset.alt}
+      aria-label={`Enlarge: ${asset.alt}`}
+    >
+      <Picture
+        src={asset.img}
+        widths={widths}
+        sizes={sizes ?? `${displayW}px`}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        alt={asset.alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding={eager ? 'sync' : 'async'}
+        class={`transition-transform duration-500 group-hover:scale-[1.03] ${imgClass}`}
+      />
+      <span class="pointer-events-none absolute inset-0 ring-1 ring-inset ring-black/10" />
+    </button>
+  ) : (
+    <div class={`overflow-hidden bg-sand ${className}`}>
+      <Picture
+        src={asset.img}
+        widths={widths}
+        sizes={sizes ?? `${displayW}px`}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        alt={asset.alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding={eager ? 'sync' : 'async'}
+        {...(eager ? { fetchpriority: 'high' } : {})}
+        class={imgClass}
+      />
+    </div>
+  )
+}

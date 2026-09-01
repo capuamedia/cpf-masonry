@@ -7,7 +7,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "audit": "astro build && node tools/audit.mjs",
+    "logo": "node tools/trace-logo.mjs && node tools/make-icons.mjs"
   },
   "dependencies": {
     "astro": "^5.14.1",

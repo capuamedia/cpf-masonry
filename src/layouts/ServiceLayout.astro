@@ -1,0 +1,101 @@
+---
+import Layout from './Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import type { Asset } from '../lib/assets';
+import { SITE_URL } from '../lib/site';
+
+interface Props {
+  title: string;
+  eyebrow: string;
+  intro: string;
+  description: string;
+  headerAsset: Asset;
+  /** 678px tier — capped at 500px rendered, never clickable. */
+  showcase: { asset: Asset; caption: string }[];
+  /** Yelp/large tier — clickable. */
+  gallery: Asset[];
+  galleryHeading: string;
+  serviceName: string;
+}
+
+const { title, eyebrow, intro, description, headerAsset, showcase, gallery, galleryHeading, serviceName } =
+  Astro.props;
+---
+
+<Layout
+  title={title}
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'Service',
+      name: serviceName,
+      serviceType: serviceName,
+      description,
+      provider: { '@id': `${SITE_URL}/#business` },
+      areaServed: [
+        'Newbury Park', 'Thousand Oaks', 'Westlake Village', 'Calabasas', 'Camarillo',
+      ].map((n) => ({ '@type': 'City', name: n })),
+    },
+  ]}
+>
+  <PageHeader eyebrow={eyebrow} title={title} intro={intro} asset={headerAsset} />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <slot />
+  </article>
+
+  {
+    showcase.length > 0 && (
+      <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6">
+        <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {showcase.map((item, i) => (
+            <li>
+              {/*
+                678px source. Capped at 500px rendered and deliberately NOT
+                clickable — enlarging it would only show the reader the
+                compression. See src/lib/images.ts.
+              */}
+              <Img
+                asset={item.asset}
+                displayW={500}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                label={`${title} showcase ${i}`}
+                imgClass="aspect-[3/2] w-full object-cover"
+              />
+              <p class="mt-3 text-sm leading-relaxed text-muted">{item.caption}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    gallery.length > 0 && (
+      <section class="border-t border-line bg-surface py-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 class="text-[var(--text-h2)] font-semibold uppercase">{galleryHeading}</h2>
+          <hr class="rule-red mt-4" />
+          <div class="mt-8 columns-2 gap-4 sm:gap-5 lg:columns-3">
+            {gallery.map((asset, i) => (
+              <div class="mb-4 break-inside-avoid sm:mb-5">
+                <Img
+                  asset={asset}
+                  displayW={500}
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 380px"
+                  label={`${title} gallery ${i}`}
+                  lightbox
+                  imgClass="w-full h-auto"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <CtaBand />
+</Layout>

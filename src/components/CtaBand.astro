@@ -1,0 +1,35 @@
+---
+import { BUSINESS } from '../lib/site';
+import { withBase } from '../lib/urls';
+
+interface Props {
+  heading?: string;
+  body?: string;
+}
+const {
+  heading = 'Get a date, not a maybe',
+  body = 'Tell us what you are building and where. You will get a straight answer on scope, price and when it will be finished.',
+} = Astro.props;
+---
+
+<section class="bg-cpf-black py-16 text-center text-white">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6">
+    <h2 class="text-[var(--text-h2)] font-semibold uppercase">{heading}</h2>
+    <p class="mt-4 text-lg text-white/80">{body}</p>
+    <div class="mt-8 flex flex-wrap justify-center gap-3">
+      <a
+        href={BUSINESS.phoneHref}
+        class="bg-cpf-red px-7 py-4 font-display text-xl font-semibold uppercase tracking-wide text-white hover:bg-cpf-red-dark"
+        >{BUSINESS.phone}</a
+      >
+      <a
+        href={withBase('/contact/')}
+        class="border-2 border-white/70 px-7 py-4 font-display text-xl font-semibold uppercase tracking-wide text-white hover:bg-white hover:text-ink"
+        >Contact</a
+      >
+    </div>
+    <p class="mt-6 font-display text-sm uppercase tracking-[0.16em] text-white/55">
+      {BUSINESS.licenseLabel} &middot; Fully insured
+    </p>
+  </div>
+</section>

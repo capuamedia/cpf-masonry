@@ -1,0 +1,174 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Img from '../../components/Img.astro';
+import BeforeAfter from '../../components/BeforeAfter.astro';
+import { A } from '../../lib/assets';
+import { withBase } from '../../lib/urls';
+import { CONFIRMED_PAIRS } from '../../lib/pairs';
+
+const featured = [
+  {
+    href: '/projects/triunfo-ymca-baseball-fields/',
+    eyebrow: 'Community project',
+    title: 'Triunfo YMCA Baseball Fields',
+    blurb:
+      'Backstops, dugouts, outfield walls and the concrete flatwork tying them together — worked directly with the YMCA.',
+    asset: A.ymcaBackstop,
+  },
+  {
+    href: '/projects/robertson-family-field-viewpoint-school/',
+    eyebrow: 'Institutional',
+    title: 'Robertson Family Field, Viewpoint School',
+    blurb:
+      'The Calabasas follow-up to Triunfo — a full field build on a private school campus.',
+    asset: A.viewpointDiamond,
+  },
+];
+
+/** Tier 1 + 2 only. These are the files that survive being enlarged. */
+const enlargeable = [
+  A.pergolaLounge, A.roseWalkway, A.poolWaterFeature, A.herringboneClose,
+  A.patioSteps, A.curvedRoseWalk, A.gazeboLawn, A.stoneEntry,
+  A.waterGarden, A.brickWallTrees, A.curvedDrive, A.herringboneWet,
+  A.roseFrontage, A.fencedWalkway, A.paverDrive, A.entryCourtyard,
+  A.potteryEntry, A.driveApron, A.pergolaPatio, A.brickWallHouse,
+  A.stakedTrees,
+];
+
+/**
+ * Tier 4 — the company's own old site. Better subjects, worse pixels. Rendered
+ * at 500px and NOT clickable, and deliberately not styled to look clickable:
+ * no zoom cursor, no hover scale, no ring.
+ */
+const archive = [
+  { asset: A.stoneFireplaceTall, caption: 'Stacked-stone fireplace with arched firebox' },
+  { asset: A.poolFireplace, caption: 'Cast stone fireplace beside the pool' },
+  { asset: A.firePitSeating, caption: 'Fire pit and curved seating wall' },
+  { asset: A.brickFireplaceMantel, caption: 'Brick and stone fireplace with timber mantel' },
+  { asset: A.dosVientosWall, caption: 'Dos Vientos property-line retaining wall' },
+  { asset: A.dosVientosDrive, caption: 'Dos Vientos retaining wall and driveway' },
+  { asset: A.stampedDriveway, caption: 'Stamped concrete driveway' },
+  { asset: A.spanishDrive, caption: 'Driveway and flagstone walk, Spanish-style frontage' },
+  { asset: A.fountainPavers, caption: 'Fountain set into paver surround' },
+  { asset: A.oaksMonument, caption: 'The Oaks monument signage' },
+  { asset: A.concreteCounter, caption: 'Poured outdoor kitchen counter' },
+  { asset: A.outfieldWall, caption: 'Segmental block outfield wall' },
+];
+
+const description =
+  'Project gallery: stamped concrete driveways, block and stone retaining walls, outdoor kitchens and fireplaces, and two community ballfield builds across the Conejo Valley.';
+---
+
+<Layout title="Projects" description={description}>
+  <PageHeader
+    eyebrow="Selected work"
+    title="Projects"
+    intro="Residential hardscape across the Conejo Valley, plus two community and institutional ballfield builds."
+    asset={A.patioSteps}
+  />
+
+  <!-- Featured -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <ul class="grid gap-10 md:grid-cols-2">
+      {
+        featured.map((p) => (
+          <li class="group">
+            <a href={withBase(p.href)} class="block">
+              <Img
+                asset={p.asset}
+                displayW={500}
+                sizes="(max-width: 768px) 100vw, 50vw"
+                label={`projects featured: ${p.title}`}
+                imgClass="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <p class="mt-4 eyebrow">{p.eyebrow}</p>
+              <h2 class="mt-1.5 font-display text-2xl font-semibold uppercase leading-tight group-hover:text-cpf-red">
+                {p.title}
+              </h2>
+              <p class="mt-2 leading-relaxed text-muted">{p.blurb}</p>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <!-- Before / after -->
+  {
+    CONFIRMED_PAIRS.length > 0 && (
+      <section class="border-y border-line bg-surface py-16">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6">
+          <h2 class="text-[var(--text-h2)] font-semibold uppercase">Before and after</h2>
+          <hr class="rule-red mt-4" />
+          <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
+            Drag the handle to see what the site looked like before the crew started.
+          </p>
+          <div class="mt-10 grid gap-12 lg:grid-cols-2">
+            {CONFIRMED_PAIRS.map((pair, i) => (
+              <BeforeAfter pair={pair} id={`proj-${i}`} />
+            ))}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  <!-- Enlargeable gallery -->
+  <section class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <h2 class="text-[var(--text-h2)] font-semibold uppercase">Recent residential work</h2>
+    <hr class="rule-red mt-4" />
+    <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
+      Paving, walls, patios and water features around Newbury Park, Thousand Oaks
+      and Westlake Village. Tap any photograph to enlarge it.
+    </p>
+    <div class="mt-8 columns-2 gap-4 sm:gap-5 lg:columns-3 xl:columns-4">
+      {
+        enlargeable.map((asset, i) => (
+          <div class="mb-4 break-inside-avoid sm:mb-5">
+            <Img
+              asset={asset}
+              displayW={500}
+              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
+              label={`projects gallery ${i}`}
+              lightbox
+              imgClass="w-full h-auto"
+            />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Archive -->
+  <section class="border-t border-line bg-surface py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <h2 class="text-[var(--text-h2)] font-semibold uppercase">From the archive</h2>
+      <hr class="rule-red mt-4" />
+      <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
+        Earlier jobs — outdoor kitchens, fireplaces, retaining walls and stamped
+        driveways. These are shown small because they survive only as low-resolution
+        copies; the work itself is still standing across the Conejo Valley.
+      </p>
+      <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {
+          archive.map((item, i) => (
+            <li>
+              <Img
+                asset={item.asset}
+                displayW={500}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
+                label={`projects archive ${i}`}
+                imgClass="aspect-[3/2] w-full object-cover"
+              />
+              <p class="mt-2 text-sm text-muted">{item.caption}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Layout>

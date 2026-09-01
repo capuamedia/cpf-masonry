@@ -1,0 +1,16 @@
+---
+/**
+ * Loads the Elfsight platform once, sitewide.
+ *
+ * It used to live inside Reviews.astro, which was right when reviews appeared
+ * on two pages. The floating badge is sitewide, so the loader has to be too —
+ * and it must not be emitted twice on the pages that carry both.
+ *
+ * `async` so it never blocks first paint; each widget also carries
+ * `data-elfsight-app-lazy` so it only initialises near the viewport.
+ */
+---
+
+<link rel="preconnect" href="https://elfsightcdn.com" crossorigin />
+<link rel="preconnect" href="https://core.service.elfsight.com" crossorigin />
+<script src="https://elfsightcdn.com/platform.js" async is:inline></script>

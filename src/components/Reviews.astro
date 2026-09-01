@@ -61,10 +61,7 @@ const {
 </section>
 
 {/*
-  Loader lives with the widget rather than in the global <head>, so the pages
-  that do not show reviews never pay for the connection, and pulling the embed
-  out later is a single-file change.
+  No loader here. platform.js is emitted once sitewide by ElfsightLoader.astro
+  in the layout, because the floating badge needs it on every page — emitting it
+  here as well would double it up on the two pages carrying both widgets.
 */}
-<link rel="preconnect" href="https://elfsightcdn.com" crossorigin />
-<link rel="preconnect" href="https://core.service.elfsight.com" crossorigin />
-<script src="https://elfsightcdn.com/platform.js" async is:inline></script>

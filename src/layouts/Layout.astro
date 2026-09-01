@@ -2,6 +2,8 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ElfsightLoader from '../components/ElfsightLoader.astro';
+import ReviewsBadge from '../components/ReviewsBadge.astro';
 import { BUSINESS, AGGREGATE_RATING, SITE_URL } from '../lib/site';
 import { canonicalURL, withBase, IS_DEMO } from '../lib/urls';
 
@@ -118,6 +120,8 @@ const schema = {
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+
+    <ElfsightLoader />
   </head>
 
   <body>
@@ -144,6 +148,9 @@ const schema = {
         Call {BUSINESS.phone}
       </a>
     </div>
+
+    <!-- Floating reviews badge, sitewide. Kept clear of the call bar above. -->
+    <ReviewsBadge />
 
     <!-- Lightbox. Vanilla, ~1KB, and only ever attached to buttons emitted by
          Img.astro — which refuses to emit one for the 678px tier. -->

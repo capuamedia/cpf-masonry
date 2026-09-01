@@ -63,7 +63,14 @@ body {
   font-size: 1.0625rem;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  /* Room for the sticky mobile call bar so it never covers the footer. */
   padding-bottom: env(safe-area-inset-bottom);
+}
+
+@media (max-width: 767px) {
+  body {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
 }
 
 h1, h2, h3, h4 {

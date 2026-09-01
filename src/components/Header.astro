@@ -45,21 +45,15 @@ const isActive = (href: string) => path === withBase(href) || path.startsWith(wi
       </ul>
     </nav>
 
-    {/*
-      With the sticky bottom bar gone, this is the only always-visible CTA on
-      the site, so it carries the number itself rather than the word "Call" —
-      a phone number is a call to action, "Call" is a label. It stays legible
-      down to a 320px viewport: logo ~54px + gap + this button ~156px.
-    */}
     <a
       href={BUSINESS.phoneHref}
-      aria-label={`Call ${BUSINESS.name} on ${BUSINESS.phone}`}
-      class="ml-auto inline-flex shrink-0 items-center gap-2 bg-cpf-red px-3 py-2.5 font-display text-sm font-semibold uppercase tracking-wide text-white transition-colors hover:bg-cpf-red-dark sm:px-4 sm:text-base md:ml-0"
+      class="ml-auto inline-flex items-center gap-2 bg-cpf-red px-4 py-2.5 font-display text-base font-semibold uppercase tracking-wide text-white transition-colors hover:bg-cpf-red-dark md:ml-0"
     >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="shrink-0">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1l-2.3 2.2Z"/>
       </svg>
-      <span class="whitespace-nowrap">{BUSINESS.phone}</span>
+      <span class="hidden sm:inline">{BUSINESS.phone}</span>
+      <span class="sm:hidden">Call</span>
     </a>
   </div>
 

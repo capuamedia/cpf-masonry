@@ -2,31 +2,30 @@
 /**
  * Elfsight floating reviews badge — sitewide.
  *
- * Nothing else competes for the bottom of the viewport any more: the sticky
- * mobile call bar was removed in favour of this, on the reasoning that the
- * header CTA is always on screen and social proof earns the corner. So the
- * badge simply sits where Elfsight puts it and needs no positioning help.
+ * POSITIONING IS CONFIGURED IN ELFSIGHT, NOT HERE. Deliberately.
  *
- * If a bottom-anchored element is ever reintroduced, know this before trying to
- * move the badge around it:
+ * Elfsight exposes separate mobile and desktop settings for the badge, so the
+ * clearance above the sticky call bar is set in their editor on the mobile
+ * layout. That is why this component is a bare div: there is no CSS override
+ * and no script.
  *
- *   - Elfsight has no per-breakpoint position setting. `badgeFloatingPosition`
- *     is a single value, and the bundle discards it below its mobile
- *     breakpoint, hardcoding a bottom-centred position instead:
- *         re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
- *     `badgeVisibilityOnDevices` lets you show or hide per device, but not
- *     place it differently — which is the setting this actually needed.
+ * DO NOT reintroduce a CSS or JS override for the badge's offset. An earlier
+ * attempt forced `bottom: <clearance> !important` onto the widget, and the
+ * consequence is worse than the original problem — it silently overrides
+ * whatever is configured in Elfsight, so changing the offset in their editor
+ * appears to do nothing and the next person debugs the dashboard for an hour.
  *
- *   - CSS cannot reach it. The widget mounts into attachShadow({mode:'open'}),
- *     and shadow DOM encapsulates styles, so an external stylesheet has no
- *     effect at all regardless of selector.
+ * Two facts worth keeping, since both cost time to establish:
  *
- *   - Class names are build hashes from styled-components and change between
- *     releases, so they are not a stable hook either.
+ *   - The widget mounts into `attachShadow({ mode: 'open' })`. Shadow DOM
+ *     encapsulates styles, so an external stylesheet cannot reach it at all,
+ *     no matter how the selector is written. Anything that appears to work from
+ *     the outside is acting on a light-DOM wrapper, not the badge.
+ *   - Its class names come from styled-components and are build hashes that
+ *     change between releases, so they were never a stable hook either.
  *
- * The scripted workaround that injected styles into the shadow root is in git
- * history. It worked in principle but meant reaching into a vendor's shadow DOM
- * on every mutation, which is not worth carrying to avoid a layout decision.
+ * Between those two, every in-code route to moving this badge is either
+ * impossible or fragile. The vendor setting is the correct place, and it exists.
  */
 ---
 

@@ -15,15 +15,30 @@ had made contact.
 - Set it in `src/lib/site.ts` → `BUSINESS.email`. The footer and contact page
   already branch on it and will start showing it automatically.
 
-**Two phone numbers exist and only one is published:**
+**The phone number is settled. The listings are not.**
 
-| Number | Source | Status |
+Current number, confirmed by the owner 2026-09-01 and published sitewide:
+**(805) 402-4211**.
+
+| Number | Where it still appears | Action |
 |---|---|---|
-| (805) 498-4852 | the original cpfmasonry.com | published sitewide |
-| (805) 496-3766 | Houzz listing | **held back** — in `site.ts` but not rendered |
+| **(805) 402-4211** | this website | correct — nothing to do |
+| (805) 498-4852 | Google Business Profile, Yelp, Houzz | **superseded — replace** |
+| (805) 496-3766 | Houzz | **superseded — replace** |
 
-If the Houzz number is the live one, swap them in `src/lib/site.ts`. Publishing
-both invites calls to a dead line.
+Every listing on the web currently points at a number the business no longer
+uses. That is worse than a stale address: an address sends someone to the wrong
+street, a dead phone number loses the enquiry outright, and paid or organic
+traffic that finds CPF through the local pack will hit the old line first.
+
+Both superseded numbers are recorded in `src/lib/site.ts` as `phoneFormer`, and
+`tools/audit.mjs` now **fails the build** if either reappears anywhere in the
+output — so a stale number cannot creep back in from an old listing or a
+copy-paste. Verified: reinstating the old number breaks the build on all ten
+pages.
+
+To change the number again, edit `BUSINESS.phone` and `BUSINESS.phoneHref` in
+`src/lib/site.ts`. Nothing else hardcodes it.
 
 ---
 
@@ -101,11 +116,24 @@ but shows completed work.
 
 ---
 
-## 5. Update the website URL on Google Business Profile, Yelp and Houzz
+## 5. Listings cleanup — URL, phone and address, all three
 
 Do this **at launch, the same day**. Section 8 of the brief is right: the old
 domain is gone and its search equity is not recoverable, so cpf-masonry.com
 starts from zero. These three listings are the fastest route back.
+
+**Three separate corrections have accumulated. Do them in one pass per listing:**
+
+| | Google Business Profile | Yelp | Houzz |
+|---|---|---|---|
+| Website URL → cpf-masonry.com | needed | needed | needed |
+| Phone → (805) 402-4211 | needed | needed | needed |
+| Address → 1210 Calle Tulipan, Thousand Oaks 91360 | needed | already correct | check |
+
+Consistent name/address/phone across the web is a direct local ranking factor,
+and right now all three fields disagree with the site on at least one listing.
+The phone is the most urgent of the three — a wrong address costs a visit, a
+wrong number costs the enquiry entirely.
 
 1. **Google Business Profile → cpf-masonry.com.** Highest value single action on
    this list. It is a direct authoritative signal and it feeds the local pack.

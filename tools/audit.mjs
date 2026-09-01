@@ -45,10 +45,12 @@ for (const p of pages) {
   else if (!can[1].startsWith('https://cpf-masonry.com/')) bad(`${route} canonical not on production origin: ${can[1]}`);
 
   // --- a tel: link must exist (the call is the conversion) ---
-  if (!html.includes('href="tel:+18054984852"')) bad(`${route} has no tel: link`);
+  if (!html.includes('href="tel:+18054024211"')) bad(`${route} has no tel: link`);
 
-  // --- the unverified second number must NOT be published ---
-  if (html.includes('496-3766')) bad(`${route} publishes the UNVERIFIED second phone number`);
+  // --- no superseded number may ever reappear in the output ---
+  for (const dead of ['498-4852', '18054984852', '496-3766', '18054963766']) {
+    if (html.includes(dead)) bad(`${route} publishes SUPERSEDED phone number ${dead}`);
+  }
 
   // --- licence in footer ---
   if (!html.includes('878989')) bad(`${route} missing licence number`);

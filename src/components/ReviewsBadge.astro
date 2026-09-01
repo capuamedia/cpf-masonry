@@ -2,20 +2,25 @@
 /**
  * Elfsight floating reviews badge — sitewide.
  *
- * POSITIONING IS CONFIGURED IN ELFSIGHT, NOT HERE. Deliberately.
+ * CURRENTLY SET TO DESKTOP ONLY in Elfsight (`badgeVisibilityOnDevices`), so it
+ * does not render on mobile at all. On phones the reviews still appear in the
+ * full inline section on the homepage and contact page, which is the better
+ * presentation anyway — readable cards rather than a pill that must be tapped.
  *
- * Elfsight exposes separate mobile and desktop settings for the badge, so the
- * clearance above the sticky call bar is set in their editor on the mobile
- * layout. That is why this component is a bare div: there is no CSS override
- * and no script.
+ * Why not just position it on mobile: Elfsight's editor has a mobile/desktop
+ * PREVIEW toggle, but it is preview only. The underlying settings are shared,
+ * and the widget hardcodes its mobile position regardless:
+ *     re ? { position: 'bottom', verticalOffset: 20, horizontalOffset: 0 } : i
+ * Position and size edits made against the mobile preview do nothing. Confirmed
+ * both in the bundle and by the owner testing it in the dashboard.
  *
- * DO NOT reintroduce a CSS or JS override for the badge's offset. An earlier
- * attempt forced `bottom: <clearance> !important` onto the widget, and the
- * consequence is worse than the original problem — it silently overrides
- * whatever is configured in Elfsight, so changing the offset in their editor
- * appears to do nothing and the next person debugs the dashboard for an hour.
+ * That left it sitting on top of the sticky call bar, and on a contractor's
+ * site the phone call is the conversion, so the badge was switched off there.
  *
- * Two facts worth keeping, since both cost time to establish:
+ * DO NOT "fix" this with a CSS or JS override. An earlier attempt forced
+ * `bottom: <clearance> !important` onto the widget; it did not work, and if it
+ * ever did it would silently beat the Elfsight settings, so changing anything in
+ * their editor would appear to do nothing. Two facts, both expensive to learn:
  *
  *   - The widget mounts into `attachShadow({ mode: 'open' })`. Shadow DOM
  *     encapsulates styles, so an external stylesheet cannot reach it at all,

@@ -9,16 +9,26 @@ export const BUSINESS = {
   tagline:
     'Your go-to provider of custom concrete, stonemasonry, backyard kitchens and more.',
 
-  /** Primary — the number carried on the original cpfmasonry.com site. */
-  phone: '(805) 498-4852',
-  phoneHref: 'tel:+18054984852',
+  /**
+   * CONFIRMED BY THE OWNER, 2026-09-01. The current number, and the only one
+   * published anywhere on this site.
+   *
+   * Change it here and it updates the header, footer, every CTA band, the
+   * contact page, the meta description and the LocalBusiness structured data.
+   * There are no hardcoded copies — tools/audit.mjs fails the build if an
+   * superseded number reappears in the output.
+   */
+  phone: '(805) 402-4211',
+  phoneHref: 'tel:+18054024211',
 
   /**
-   * TODO(owner): VERIFY. A second number appears on the Houzz listing. Which of
-   * the two is currently answered is unconfirmed, so it is deliberately NOT
-   * rendered anywhere on the site yet. Confirm before publishing it.
+   * Superseded. Recorded so nobody restores one from a stale listing, and so
+   * NOTES.md item 1 has the full set to correct across the web.
+   *
+   *   (805) 498-4852 — the original cpfmasonry.com site; still on the listings
+   *   (805) 496-3766 — the Houzz listing; never published by this site
    */
-  phoneSecondary: '(805) 496-3766',
+  phoneFormer: ['(805) 498-4852', '(805) 496-3766'],
 
   /**
    * TODO_EMAIL — Google's index preserved only a fragment ending "11@GMAIL.COM".

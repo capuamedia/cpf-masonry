@@ -1,6 +1,7 @@
 ---
 import ServiceLayout from '../../layouts/ServiceLayout.astro';
 import { A } from '../../lib/assets';
+import { withBase } from '../../lib/urls';
 
 const showcase = [
   { asset: A.dosVientosWall, caption: 'Stacked stone property-line retaining wall, Dos Vientos, Newbury Park.' },
@@ -47,7 +48,7 @@ const gallery = [
     and backfill detailed as part of the job.
   </p>
   <p>
-    The <a href="/projects/">Dos Vientos property-line walls</a> are a good
+    The <a href={withBase('/projects/')}>Dos Vientos property-line walls</a> are a good
     example — a long run following a driveway grade, faced in stone so it reads as
     landscape rather than as engineering.
   </p>

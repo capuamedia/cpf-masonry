@@ -1,0 +1,4 @@
+# Review build - not the live site.
+# The live site is https://cpf-masonry.com
+User-agent: *
+Disallow: /

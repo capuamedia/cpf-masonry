@@ -4,17 +4,17 @@ import PageHeader from '../components/PageHeader.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Img from '../components/Img.astro';
 import { A } from '../lib/assets';
-import { BUSINESS } from '../lib/site';
+import { BUSINESS, YEARS_IN_BUSINESS } from '../lib/site';
 
 const description =
-  'CPF Custom Concrete and Masonry is an independent consulting and contracting company serving Newbury Park, Thousand Oaks and the Conejo Valley under California contractor license #878989.';
+  `Building in the Conejo Valley since ${BUSINESS.founded}. CPF Custom Concrete and Masonry is an independent consulting and contracting company serving Newbury Park, Thousand Oaks and Westlake Village under California contractor license #878989.`;
 ---
 
 <Layout title="About" description={description}>
   <PageHeader
     eyebrow="About"
-    title="An independent contractor in the Conejo Valley"
-    intro="Foundations, stamped concrete, natural stone, block walls and brick — from large-scale renovations to smaller residential jobs."
+    title={`Building in the Conejo Valley since ${BUSINESS.founded}`}
+    intro={`${YEARS_IN_BUSINESS} years of foundations, stamped concrete, natural stone, block walls and brick — from large-scale renovations to smaller residential jobs.`}
     asset={A.stoneEntry}
     displayW={1024}
   />
@@ -29,17 +29,28 @@ const description =
       tenacious attention to detail and pride of accomplishment on every one.
     </p>
 
-    <h2>Licensed in California since long before this website</h2>
+    <h2>In the Conejo Valley since {BUSINESS.founded}</h2>
     <p>
-      CPF has operated in the Conejo Valley under
-      <strong>California contractor license #{BUSINESS.license}</strong>, which is
-      a matter of public record and can be checked in about thirty seconds on the
+      CPF has been building here for <strong>{YEARS_IN_BUSINESS} years</strong>.
+      That covers several housing booms, a couple of recessions, and a great many
+      contractors who came and went in between — which is most of what a homeowner
+      is really asking when they ask how long you have been doing this.
+    </p>
+    <p>
+      It also means the work is checkable. The retaining walls in Dos Vientos, the
+      ballfields at Triunfo YMCA and Viewpoint School, the driveways and outdoor
+      kitchens across Newbury Park and Thousand Oaks — they are all still standing,
+      and most of them are a short drive away.
+    </p>
+    <p>
+      This website is new. The business is not. If you want to confirm that before
+      you call, <strong>California contractor license #{BUSINESS.license}</strong>
+      is a matter of public record and takes about thirty seconds to check on the
       <a
         href="https://www.cslb.ca.gov/onlineservices/checklicenseII/checklicense.aspx"
         rel="noopener"
         target="_blank">CSLB license lookup</a
-      >. This site is new; the business is not. If you want to verify who you are
-      talking to before you call, that is the fastest way to do it.
+      >.
     </p>
 
     <h2>What we actually do</h2>

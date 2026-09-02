@@ -60,6 +60,7 @@ No React. The before/after slider and the lightbox are vanilla.
 | Address `2996 Molly Ct, Newbury Park 91320` | **`1210 Calle Tulipan, Thousand Oaks, CA 91360`** — owner-confirmed. Molly Ct is superseded. |
 | "Deploy to Netlify or Cloudflare Pages" | GitHub Pages for the demo, Cloudflare Pages for production. `netlify.toml` was deleted. |
 | Address conflict is an open question | Resolved. Site is correct; the **Google Business Profile** is the stale one. |
+| — | **Founded 1991** — owner-confirmed. Now a first-class fact (`BUSINESS.founded`), surfaced in the hero, trust strip, About page, footer and `foundingDate` schema. |
 | — | Elfsight reviews added: inline section (home + contact) and a floating badge (**desktop only**). |
 | — | Hero carries a "replace with drone footage" placeholder, **demo build only**. |
 
@@ -68,6 +69,10 @@ the phone, address, or license. Change it there.
 
 Superseded values are deliberately kept in that file as `phoneFormer` and
 `addressFormer`, so nobody "corrects" the site back to a stale listing.
+
+`YEARS_IN_BUSINESS` is computed at build time from `BUSINESS.founded`. Prefer
+the literal "since 1991" in body copy — it never goes stale. Use the count only
+where the number itself is the point.
 
 ---
 

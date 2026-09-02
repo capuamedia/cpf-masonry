@@ -150,6 +150,14 @@ but shows completed work.
 
 ## 5. Listings cleanup — URL, phone and address, all three
 
+> **Now live on the site:** trading since **1991**, and the arithmetic
+> (35 years) is computed at build time so it stays current. It appears in the
+> hero, the trust strip, the About page headline, the footer and the
+> `foundingDate` structured data. For a brand-new domain with no search history,
+> this is the strongest single trust signal available — and unlike a review
+> count, a visitor can verify it against the CSLB license record.
+
+
 Do this **at launch, the same day**. Section 8 of the brief is right: the old
 domain is gone and its search equity is not recoverable, so cpf-masonry.com
 starts from zero. These three listings are the fastest route back.

@@ -5,7 +5,7 @@ import BeforeAfter from '../components/BeforeAfter.astro';
 import Reviews from '../components/Reviews.astro';
 import PlaceholderNote from '../components/PlaceholderNote.astro';
 import { A } from '../lib/assets';
-import { BUSINESS } from '../lib/site';
+import { BUSINESS, YEARS_IN_BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
 import { CONFIRMED_PAIRS } from '../lib/pairs';
 
@@ -58,7 +58,7 @@ const gallery = [
 ];
 
 const description =
-  'Masonry and concrete contractor serving Newbury Park, Thousand Oaks and the Conejo Valley. Stamped concrete, block walls, natural stone, outdoor kitchens. Guaranteed completion dates, fully insured. CA License #878989.';
+  'Masonry and concrete contractor in the Conejo Valley since 1991. Stamped concrete, block walls, natural stone and outdoor kitchens across Newbury Park, Thousand Oaks and Westlake Village. Guaranteed completion dates, fully insured. CA License #878989.';
 ---
 
 <Layout title="home" description={description}>
@@ -122,6 +122,8 @@ const description =
       </div>
 
       <p class="mt-6 font-display text-sm uppercase tracking-[0.16em] text-white/75">
+        Building in the Conejo Valley since {BUSINESS.founded}
+        <span class="mx-2 text-white/40">&middot;</span>
         {BUSINESS.licenseLabel}
       </p>
     </div>
@@ -132,10 +134,10 @@ const description =
     <ul class="mx-auto grid max-w-7xl grid-cols-2 gap-px bg-line px-0 sm:grid-cols-4">
       {
         [
+          { k: `Since ${BUSINESS.founded}`, v: `${YEARS_IN_BUSINESS} years in the valley` },
           { k: 'Guaranteed', v: 'Completion dates' },
           { k: 'Fully', v: 'Insured' },
           { k: '5.0 stars', v: 'Yelp & Google' },
-          { k: 'Licensed', v: `CSLB #${BUSINESS.license}` },
         ].map((s) => (
           <li class="bg-surface px-4 py-6 text-center">
             <p class="font-display text-2xl font-semibold uppercase leading-none text-cpf-red">{s.k}</p>
@@ -153,8 +155,8 @@ const description =
       The trade most homeowners worry about is the one that turns up
     </h2>
     <p class="mt-5 text-lg leading-relaxed text-ink-soft">
-      CPF specializes in foundations, stamped concrete, natural stone, block walls
-      and brick products. Project expertise runs from large-scale renovations to
+      CPF has specialized in foundations, stamped concrete, natural stone, block
+      walls and brick products across the Conejo Valley since 1991. Project expertise runs from large-scale renovations to
       smaller residential jobs, and clients get the peace of mind that comes with a
       guaranteed completion date and full insurance coverage — with tenacious
       attention to detail and pride of accomplishment on every pour and every course.

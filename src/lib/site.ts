@@ -41,6 +41,17 @@ export const BUSINESS = {
   licenseLabel: 'CA Contractor License #878989',
 
   /**
+   * CONFIRMED BY THE OWNER, 2026-09-01. Trading in the Conejo Valley since 1991.
+   *
+   * This is the strongest trust signal the business has, and it does a specific
+   * job here: cpf-masonry.com is a brand-new domain with zero search equity and
+   * no history a visitor can see. "Since 1991" is the thing that tells a
+   * homeowner the business is not new, and it is independently checkable against
+   * the CSLB license record.
+   */
+  founded: 1991,
+
+  /**
    * CONFIRMED BY THE OWNER, 2026-09-01. This is the current trading address,
    * and it matches what Yelp already shows.
    *
@@ -78,6 +89,16 @@ export const BUSINESS = {
     google: { value: 5.0, count: 8, approximate: false },
   },
 } as const;
+
+/**
+ * Years trading, computed at build time.
+ *
+ * Prefer the literal "since 1991" in body copy — it never goes stale. Use this
+ * only where the count itself is the point ("35 years"), and be aware it is
+ * only correct as of the last build. The site is static and rebuilt on every
+ * deploy, so in practice it rolls over within a deploy cycle of New Year.
+ */
+export const YEARS_IN_BUSINESS = new Date().getFullYear() - BUSINESS.founded;
 
 /** Combined rating, honestly cited. 26 is approximate — see NOTES.md. */
 export const AGGREGATE_RATING = {

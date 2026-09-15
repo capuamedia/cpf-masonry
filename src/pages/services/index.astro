@@ -13,7 +13,7 @@ const services = [
     blurb:
       'Custom designed and poured concrete driveways, pavers, patios, water features and countertops. Stamped and colored finishes chosen to sit with the house, not fight it.',
     bullets: ['Driveways and aprons', 'Stamped and colored flatwork', 'Paver walkways and patios', 'Poured countertops', 'Fountains and water features'],
-    asset: A.stampedDriveway,
+    asset: A.beautifulStampedConcreteDriveway,
   },
   {
     href: '/masonry/',
@@ -21,7 +21,7 @@ const services = [
     blurb:
       'Foundations, retaining walls, property-line block walls, brick and natural stone veneer — engineered and built to hold a Conejo Valley slope for the long run.',
     bullets: ['Foundations and footings', 'Segmental and poured retaining walls', 'Property-line block walls', 'Brick walls and paving', 'Natural stone and veneer'],
-    asset: A.dosVientosWall,
+    asset: A.hillsideBlockRetainingWallConstruction,
   },
   {
     href: '/custom-concrete-driveways/',
@@ -45,7 +45,7 @@ const services = [
     blurb:
       'Rubble and ashlar stonemasonry: veneer, garden and retaining walls, walkways, pillars and water features — with design and conceptual drawings if you need them.',
     bullets: ['Stone veneer', 'Garden and retaining walls', 'Stone walkways', 'Pillars and mailbox monuments', 'Water features'],
-    asset: A.customStoneWallLinedDriveway,
+    asset: A.naturalStoneStepsStackedStoneRetainingWall,
   },
   {
     href: '/grading-and-excavation/',
@@ -61,7 +61,7 @@ const services = [
     blurb:
       'Backyard kitchens, fireplaces, fire pits, seating walls and counters, built in stone and brick to work with the pool, the patio and the planting already there.',
     bullets: ['Outdoor kitchens and BBQ surrounds', 'Fireplaces and chimneys', 'Fire pits and seating walls', 'Concrete and stone counters', 'Pergola and patio bases'],
-    asset: A.stoneFireplaceTall,
+    asset: A.dosVientosOutdoorKitchenTiledCounter,
   },
 ];
 
@@ -84,43 +84,52 @@ const description =
     eyebrow="What we build"
     title="Concrete and masonry services"
     intro="From a single poured countertop to a full property-line retaining wall — the same crew, owner supervised, licensed under C-29 masonry and C-8 concrete."
-    asset={A.roseFrontage}
+    asset={A.stoneRetainingWallAndStampedConcreteDriveway}
   />
 
+  {/*
+    A card grid, not the alternating image/text list this page used to be.
+    That layout gives each service a full screen-height row, which was fine for
+    three services and is a seven-screen scroll for seven. This is a hub: people
+    arrive to find the one they want and leave. Scanning beats reading here.
+  */}
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-    <ul class="space-y-16">
+    <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
       {
-        services.map((s, i) => (
-          <li class="grid items-center gap-8 md:grid-cols-2 md:gap-12">
-            <div class={i % 2 ? 'md:order-2' : ''}>
-              <a href={withBase(s.href)} class="group block">
-                <Img
-                  asset={s.asset}
-                  displayW={500}
-                  sizes="(max-width: 768px) 100vw, 480px"
-                  label={`services overview: ${s.title}`}
-                  imgClass="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
-              </a>
-            </div>
-            <div class={i % 2 ? 'md:order-1' : ''}>
-              <h2 class="text-[var(--text-h2)] font-semibold uppercase leading-tight">
+        services.map((s) => (
+          <li class="group flex flex-col border border-line bg-surface transition-colors hover:border-cpf-red">
+            <a href={withBase(s.href)} class="block overflow-hidden" tabindex="-1" aria-hidden="true">
+              <Img
+                asset={s.asset}
+                displayW={500}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
+                label={`services overview: ${s.title}`}
+                imgClass="aspect-[3/2] w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+              />
+            </a>
+
+            <div class="flex flex-1 flex-col p-6">
+              <h2 class="text-xl font-semibold uppercase leading-tight">
                 <a href={withBase(s.href)} class="hover:text-cpf-red">{s.title}</a>
               </h2>
-              <hr class="rule-red mt-4" />
-              <p class="mt-4 text-lg leading-relaxed text-ink-soft">{s.blurb}</p>
-              <ul class="mt-5 grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
+              <hr class="rule-red mt-3" />
+              <p class="mt-4 leading-relaxed text-ink-soft">{s.blurb}</p>
+
+              <ul class="mt-5 space-y-1.5">
                 {s.bullets.map((b) => (
-                  <li class="flex gap-2 text-muted">
-                    <span class="mt-2 h-1.5 w-1.5 shrink-0 bg-cpf-red" aria-hidden="true" />
+                  <li class="flex gap-2 text-sm text-muted">
+                    <span class="mt-1.5 h-1.5 w-1.5 shrink-0 bg-cpf-red" aria-hidden="true" />
                     {b}
                   </li>
                 ))}
               </ul>
-              <p class="mt-6">
+
+              {/* mt-auto pins the action to the bottom so the row of cards lines
+                  up regardless of how much blurb each one carries. */}
+              <p class="mt-auto pt-6">
                 <a
                   href={withBase(s.href)}
-                  class="inline-block bg-cpf-red px-5 py-3 font-display text-base font-semibold uppercase tracking-wide text-white hover:bg-cpf-red-dark"
+                  class="font-display text-base font-semibold uppercase tracking-wide text-cpf-red group-hover:underline"
                 >
                   {s.title} &rarr;
                 </a>

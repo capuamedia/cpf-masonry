@@ -137,6 +137,27 @@ import r_dosVientosBarbecueAndRefrigeratedStorage from '../assets/recovered/dos-
 import r_dosVientosSerpentineTiledCountertop from '../assets/recovered/dos-vientos-serpentine-tiled-countertop.jpg';
 import r_dosVientosOutdoorKitchenCornerView from '../assets/recovered/dos-vientos-outdoor-kitchen-corner-view.jpg';
 
+
+// -- current work, 2025-2026, 1242-4284px ------------------------------------
+// Shot by the owner and handed over 2026-09-15. These are the highest-
+// resolution files on the site by a wide margin and the only ones showing
+// work from the last two years, so they get the header and hero slots.
+// Two carry a bottom crop where a finger caught the lens; nothing is upscaled.
+import cBlockRetainingWallBrickCapDriveway from '../assets/current/block-retaining-wall-brick-cap-driveway.jpg';
+import cBlockWallBrickCapRaisedPlanter from '../assets/current/block-wall-brick-cap-raised-planter.jpg';
+import cBrickEntryWalkwayCurvedPlanterWalls from '../assets/current/brick-entry-walkway-curved-planter-walls.jpg';
+import cCurvedStructuralRetainingWallFinishedFace from '../assets/current/curved-structural-retaining-wall-finished-face.jpg';
+import cFlagstoneCappedSeatWallDetail from '../assets/current/flagstone-capped-seat-wall-detail.jpg';
+import cFlagstonePatioBackyardDiningArea from '../assets/current/flagstone-patio-backyard-dining-area.jpg';
+import cFlagstonePatioNaturalStonePaving from '../assets/current/flagstone-patio-natural-stone-paving.jpg';
+import cFlagstonePatioStepsAndSeatWall from '../assets/current/flagstone-patio-steps-and-seat-wall.jpg';
+import cHillsideBlockRetainingWallConstruction from '../assets/current/hillside-block-retaining-wall-construction.jpg';
+import cNaturalStoneStepsStackedStoneRetainingWall from '../assets/current/natural-stone-steps-stacked-stone-retaining-wall.jpg';
+import cReinforcedRetainingWallFootingAndDrainage from '../assets/current/reinforced-retaining-wall-footing-and-drainage.jpg';
+import cRiverRockFeatureWallBathroomStoneTile from '../assets/current/river-rock-feature-wall-bathroom-stone-tile.jpg';
+import cSandstoneStepLandingFlagstonePath from '../assets/current/sandstone-step-landing-flagstone-path.jpg';
+import cTallStructuralRetainingWallHillside from '../assets/current/tall-structural-retaining-wall-hillside.jpg';
+
 import logoJpg from '../assets/logo/cpf-logo-1080.jpg';
 
 export interface Asset {
@@ -421,6 +442,36 @@ export const A = {
     "Serpentine tiled countertop of the outdoor kitchen seen from above"),
   dosVientosOutdoorKitchenCornerView: a(r_dosVientosOutdoorKitchenCornerView,
     "Outdoor kitchen counter curving back toward the house, with shade umbrellas over the tiled bar top"),
+
+  // ---- current work 2025-2026 ----
+  blockRetainingWallBrickCapDriveway: a(cBlockRetainingWallBrickCapDriveway,
+    'Block retaining wall with a brick cap turning the corner alongside a paver driveway'),
+  blockWallBrickCapRaisedPlanter: a(cBlockWallBrickCapRaisedPlanter,
+    'Split-face block garden wall with a red brick cap, holding a raised planter of roses'),
+  brickEntryWalkwayCurvedPlanterWalls: a(cBrickEntryWalkwayCurvedPlanterWalls,
+    'Brick entry walkway laid in herringbone between curved brick planter walls'),
+  curvedStructuralRetainingWallFinishedFace: a(cCurvedStructuralRetainingWallFinishedFace,
+    'Curved structural retaining wall with the finished face turned to the slope'),
+  flagstoneCappedSeatWallDetail: a(cFlagstoneCappedSeatWallDetail,
+    'Seat wall rendered in white and capped with cut flagstone, beside a matching patio'),
+  flagstonePatioBackyardDiningArea: a(cFlagstonePatioBackyardDiningArea,
+    'Flagstone patio across a back garden with dining furniture and mature planting'),
+  flagstonePatioNaturalStonePaving: a(cFlagstonePatioNaturalStonePaving,
+    'Irregular flagstone patio laid tight with fine mortar joints, running to a clipped hedge'),
+  flagstonePatioStepsAndSeatWall: a(cFlagstonePatioStepsAndSeatWall,
+    'Flagstone patio with stepped changes of level and a rendered seat wall'),
+  hillsideBlockRetainingWallConstruction: a(cHillsideBlockRetainingWallConstruction,
+    'Tall reinforced block retaining wall built into a hillside above a valley view'),
+  naturalStoneStepsStackedStoneRetainingWall: a(cNaturalStoneStepsStackedStoneRetainingWall,
+    'Sandstone steps rising between curved stacked-stone retaining walls'),
+  reinforcedRetainingWallFootingAndDrainage: a(cReinforcedRetainingWallFootingAndDrainage,
+    'Reinforced retaining wall under construction, showing the footing, rebar and drainage course'),
+  riverRockFeatureWallBathroomStoneTile: a(cRiverRockFeatureWallBathroomStoneTile,
+    'River rock feature wall and glass block window behind a freestanding bath, on stone tile'),
+  sandstoneStepLandingFlagstonePath: a(cSandstoneStepLandingFlagstonePath,
+    'Sandstone landing and flagstone path meeting a stacked-stone wall'),
+  tallStructuralRetainingWallHillside: a(cTallStructuralRetainingWallHillside,
+    'Structural retaining wall running the length of a hillside cut'),
 
 } as const;
 

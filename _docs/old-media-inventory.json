@@ -1,0 +1,2262 @@
+{
+  "pages": [
+    {
+      "url": "/",
+      "title": "Home",
+      "imgCount": 0
+    },
+    {
+      "url": "/services/",
+      "title": "Services",
+      "imgCount": 6
+    },
+    {
+      "url": "/custom-concrete/",
+      "title": "Custom Concrete",
+      "imgCount": 33
+    },
+    {
+      "url": "/custom-concrete-driveways/",
+      "title": "Custom Concrete Driveways",
+      "imgCount": 32
+    },
+    {
+      "url": "/concrete-countertops/",
+      "title": "Concrete Countertops",
+      "imgCount": 23
+    },
+    {
+      "url": "/masonry/",
+      "title": "Masonry",
+      "imgCount": 19
+    },
+    {
+      "url": "/stonework/",
+      "title": "Stonework",
+      "imgCount": 19
+    },
+    {
+      "url": "/fireplaces-and-barbecues/",
+      "title": "Outdoor Kitchens and Fireplaces",
+      "imgCount": 43
+    },
+    {
+      "url": "/grading-and-excavation/",
+      "title": "Grading and Excavation for Foundations and Retaining Walls",
+      "imgCount": 25
+    },
+    {
+      "url": "/featured-work/",
+      "title": "Featured Work",
+      "imgCount": 0
+    },
+    {
+      "url": "/featured-project-dos-vientos-villa/",
+      "title": "Featured Project – Dos Vientos Villa",
+      "imgCount": 11
+    },
+    {
+      "url": "/featured-project-triunfo-ymca-baseball-fields/",
+      "title": "Featured Project – Triunfo YMCA Baseball Fields",
+      "imgCount": 24
+    },
+    {
+      "url": "/featured-project-robertson-family-field-viewpoint-school/",
+      "title": "Featured Project – Robertson Family Field at Viewpoint School",
+      "imgCount": 63
+    },
+    {
+      "url": "/about-us/",
+      "title": "About Us",
+      "imgCount": 0
+    },
+    {
+      "url": "/contact-us/",
+      "title": "Contact Us",
+      "imgCount": 0
+    }
+  ],
+  "media": [
+    {
+      "file": "2020/08/IMG_4481-2-scaled.jpg",
+      "w": 1920,
+      "h": 2560,
+      "long": 2560,
+      "fmt": "jpeg",
+      "alt": "Polished Stone Countertops",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/DTO-2.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "DTO-2",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/DTO-3.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "DTO-3",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/05/baseball-field-wall.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Block Wall Around Entire Baseball Outfield",
+      "altAlt": [],
+      "pages": [
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Driveway-and-Retaining-Wall.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Driveway-and-Retaining-Wall",
+      "altAlt": [
+        "Stone Property Line Wall and Stamped Concrete Driveway"
+      ],
+      "pages": [
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Front-Yard-Retaining-Wall-and-Property-Line.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Front-Yard-Retaining-Wall-and-Property-Line",
+      "altAlt": [
+        "Front Yard Retaining Wall and Property Line Wall"
+      ],
+      "pages": [
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Property-Line-Retaining-Wall.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Property-Line-Retaining-Wall",
+      "altAlt": [
+        "Stone Property Line Wall and Stamped Concrete Driveway Alt View"
+      ],
+      "pages": [
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Property-Retaining-Wall-and-Driveway.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Property-Retaining-Wall-and-Driveway",
+      "altAlt": [
+        "Stone Property Line Wall and Stamped Concrete Driveway alt view 2"
+      ],
+      "pages": [
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Side-Yard-Block-Wall.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Side-Yard-Block-Wall",
+      "altAlt": [
+        "Side Yard Block Garden Wall"
+      ],
+      "pages": []
+    },
+    {
+      "file": "2016/05/Kubota-Excavation-1.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Kubota Excavation 1",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/05/Kubota-Excavation-2.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Kubota Excavation 2",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/05/Kubota-Excavation-3.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Kubota-Excavation-3",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/05/Kubota-Excavator.jpg",
+      "w": 1920,
+      "h": 1278,
+      "long": 1920,
+      "fmt": "jpeg",
+      "alt": "Kubota Excavator",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/01/DR-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "DR-1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/DR-3.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "DR-3",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/DTO-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF Stone Mailbox",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/The-Oaks-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "The-Oaks-1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/The-Oaks-2.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "The-Oaks-2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Custom commercial sign at oaks mall",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-2.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Concrete Commercial Sign at Monte Vista Church",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-3.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Newbury Park Monte Vista Concrete Sign",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-5.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Oaks mall custom concrete sign",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/05/Black-Concrete-Countertops-with-BBQ.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Black Concrete Countertops with Barbecue",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/05/Black-Concrete-Countertops.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Black Concrete Countertops",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/05/Concrete-and-Stonework-Pool-Progress-Shot.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Concrete and Stonework Pool Progress Shot",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/05/Concrete-Countertop-Texture-Closeup.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Concrete Countertop Closeup",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Backstop.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Triunfo YMCA backstop",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Bathrooms.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Bathrooms",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/05/CPF-Beautiful-Stamped-Concrete-Driveway.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Beautiful Stamped Concrete Driveway",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Dugout-Back.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Dugout-Back",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Dugout-Footer.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Dugout-Footer",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Dugout-Front.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Dugout-Front",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Outfield-Wall.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Outfield-Wall",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/CPF-Shed.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF-Shed",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-triunfo-ymca-baseball-fields/"
+      ]
+    },
+    {
+      "file": "2016/05/Dos-Vientos-Side-Yard-Garden-Wall.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Dos-Vientos-Side-Yard-Garden-Wall",
+      "altAlt": [
+        "Side Yard Block Garden Wall alt view"
+      ],
+      "pages": []
+    },
+    {
+      "file": "2016/05/Kitchen-Concrete-Countertops-Ready-for-Sink.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Kitchen Concrete Countertops Ready for Sink Install",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/05/Stamped-Concrete-Progress-Shot.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Stamped Concrete Progress Shot",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/05/Stamped-Concrete-Walkway-Progress-Shot.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Stamped Concrete Walkway Progress Shot",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-10-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF Outfield Wall for Robertson Family Field",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-10.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Brick Outfield Wall at Viewpoint School",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-18.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF Masonry Outfield Brick Wall Viewpoint School",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-3.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Field View from The Mound",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-5.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Field View from 2nd Base",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-6.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Field Alternate View from Home Plate",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-7.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Field View from Home Plate",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-9.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Open Field View",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-backstop-1.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "Viewpoint School Robertson Field Backstop by CPF Masonry",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-scoreboard.jpg",
+      "w": 1900,
+      "h": 1265,
+      "long": 1900,
+      "fmt": "jpeg",
+      "alt": "CPF Masonry Scoreboard for Robertson Family Field",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2015/10/1400x500.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "1400&#215;500",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cropped-1400x500.jpg",
+      "w": 1400,
+      "h": 400,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "cropped-1400&#215;500.jpg",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/placeholder-stone-slide.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "placeholder-stone-slide",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-sider-patio.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "cpf-sider-patio",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-slider-driveway.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "cpf-slider-driveway",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-slider-stonework.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "cpf-slider-stonework",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/slider-cpf-bbq-2.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "slider-cpf-bbq-2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/slider-cpf-bbq-3.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "slider-cpf-bbq-3",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/slider-cpf-bbq.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "slider-cpf-bbq",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/slider-cpf-concrete-counter.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "slider-cpf-concrete-counter",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/slider-cpf-concrete-countertop.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "slider-cpf-concrete-countertop",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "CPF Stonework in Dos Vientos",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/05/cpf-slider-playfields.jpg",
+      "w": 1400,
+      "h": 500,
+      "long": 1400,
+      "fmt": "jpeg",
+      "alt": "CPF Masonry Triumfo Playfields",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2025/04/IMG_6192.jpg",
+      "w": 911,
+      "h": 1162,
+      "long": 1162,
+      "fmt": "jpeg",
+      "alt": "Screenshot",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/IMG_3004.jpg",
+      "w": 1024,
+      "h": 768,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_3004",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-corner.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-corner",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-fridge.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-fridge",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-pizza-oven-wide.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-pizza-oven-wide",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-pizza-oven.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-pizza-oven",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-top-zoom.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-top-zoom",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-top.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-top",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv-w-fridge.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-w-fridge",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-cystom-bbq-dv.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-fire-magic-bbq-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-fire-magic-bbq",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-fire-magic-bbq-fridge.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-fire-magic-bbq-fridge",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-cystom-fire-magic-bbq.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-fire-magic-bbq",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-multi-wall-close.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-multi-wall-close",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-multi-wall.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-multi-wall",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-pillar-veneer.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-pillar-veneer",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-sidewalk.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-sidewalk",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-wall.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-wall",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-walls-and-more.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-walls-and-more",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv-yard.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-yard",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-dv.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stone-and-concrete-stamped-dw-and-wall.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-stamped-dw-and-wall",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stonework-tk-porch.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stonework-tk-porch",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stonework-tk-veneer.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stonework-tk-veneer",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-stonework-tk-wall.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stonework-tk-wall",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/dr-stone-2.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "dr-stone-2",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/DR-stone.jpg",
+      "w": 1024,
+      "h": 768,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "DR-stone",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/g-stone-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "g-stone-1",
+      "altAlt": [],
+      "pages": [
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/01/IMG_0017.jpg",
+      "w": 1024,
+      "h": 768,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_0017",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/IMG_0018.jpg",
+      "w": 768,
+      "h": 1024,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_0018",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/IMG_0020.jpg",
+      "w": 1024,
+      "h": 768,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_0020",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/IMG_0762.jpg",
+      "w": 1024,
+      "h": 1024,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_0762",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/IMG_0763.jpg",
+      "w": 1024,
+      "h": 1024,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "IMG_0763",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "outdoor-kitchen-fireplace-1",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-3.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Outdoor Stone Fireplace",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/",
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-4.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "outdoor-kitchen-fireplace-4",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-5.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "outdoor-kitchen-fireplace-5",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-6.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Poolside Concrete Fireplace with Pizza Oven",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/",
+        "/fireplaces-and-barbecues/",
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-7.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Detailed Stone Fireplace",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/",
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/01/outdoor-kitchen-fireplace-8.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Backyard Fire Pit",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/",
+        "/masonry/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Outdoor Concrete Countertop Progress Shot 2",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-2.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Outdoor Concrete Countertop Progress Shot",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-3.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Backyard Custom Concrete Countertop Barbecue Setup",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-4.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Backyard Concrete Countertop Fire Feature",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-5.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Closeup Outdoor Concrete Countertop",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-6.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-concrete-counter-6",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-7.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Concrete Kitchen Counter Closeup",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-8.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-concrete-counter-8",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-concrete-counter-9.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Backyard Concrete Countertop Fire Feature",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Paver Driveway with Custom Concrete Water Feature",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-2.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Paver Driveway with Custom Concrete Pillars",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-3.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Concrete Driveway with Stone Retaining Walls",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-4.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Stamped Concrete Driveway and sidewalk features",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-5.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Stamped Concrete Driveway with Stone Retaining Wall",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-6.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "Stamped Concrete Driveway and Retaining Wall",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-custom-concrete-driveway-7.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Paver Driveway",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete-driveways/",
+        "/custom-concrete/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 7",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-2.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 6",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-3.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 4",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-4.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 5",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-5.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 3",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-6.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 2",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-7.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 1",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-excavation-8.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "CPF Excavation Project 7",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/"
+      ]
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-work-villa-1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa-2.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-work-villa-2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa-3.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-work-villa-3",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa-4.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-work-villa-4",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-stone-work-villa-5.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-work-villa-5",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-stone-and-concrete-dv-multi-wall-close-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-multi-wall-close",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/04/cpf-stone-and-concrete-dv-multi-wall-close.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-multi-wall-close",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-stone-and-concrete-dv-sidewalk.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-sidewalk",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-stone-and-concrete-dv-walls-and-more-1.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-walls-and-more",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/04/cpf-stone-and-concrete-dv-walls-and-more.jpg",
+      "w": 1024,
+      "h": 682,
+      "long": 1024,
+      "fmt": "jpeg",
+      "alt": "cpf-stone-and-concrete-dv-walls-and-more",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/DSC06584.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06584",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/04/DSC06615-1.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06615",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/04/DSC06615.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06615",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/DSC06617-1.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06617",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/04/DSC06617.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06617",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/DSC06622.jpg",
+      "w": 822,
+      "h": 547,
+      "long": 822,
+      "fmt": "jpeg",
+      "alt": "DSC06622",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-dos-vientos-villa/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-backstop.jpg",
+      "w": 751,
+      "h": 500,
+      "long": 751,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-school-backstop",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway-1.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway-2.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway2-1.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway2-2.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway2",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-outfield-walkway2.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-outfield-walkway2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-entrance-1.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-school-entrance",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-entrance-2.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-school-entrance",
+      "altAlt": [],
+      "pages": [
+        "/featured-project-robertson-family-field-viewpoint-school/"
+      ]
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-entrance.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-school-entrance",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-school-outfield-wall.jpg",
+      "w": 750,
+      "h": 499,
+      "long": 750,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-school-outfield-wall",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/BBQ-B4_04.jpeg",
+      "w": 640,
+      "h": 427,
+      "long": 640,
+      "fmt": "jpeg",
+      "alt": "BBQ B4_04",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/BBQ-B4_05.jpeg",
+      "w": 640,
+      "h": 427,
+      "long": 640,
+      "fmt": "jpeg",
+      "alt": "BBQ B4_05",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-recent-1.jpg",
+      "w": 600,
+      "h": 240,
+      "long": 600,
+      "fmt": "jpeg",
+      "alt": "cpf-recent-1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/02/cpf-home-recent-image.jpg",
+      "w": 600,
+      "h": 240,
+      "long": 600,
+      "fmt": "jpeg",
+      "alt": "Dos Vientos Villa Feature",
+      "altAlt": [
+        "cpf-home-recent-image"
+      ],
+      "pages": []
+    },
+    {
+      "file": "2016/05/Featured-Project-Triunfo-YMCA.jpg",
+      "w": 600,
+      "h": 240,
+      "long": 600,
+      "fmt": "jpeg",
+      "alt": "Triunfo YMCA Baseball Fields Feature",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/10/cpf-viewpoint-feature.jpg",
+      "w": 600,
+      "h": 240,
+      "long": 600,
+      "fmt": "jpeg",
+      "alt": "cpf-viewpoint-feature",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-icon.png",
+      "w": 512,
+      "h": 512,
+      "long": 512,
+      "fmt": "png",
+      "alt": "cpf-icon",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cropped-cpf-icon.png",
+      "w": 512,
+      "h": 512,
+      "long": 512,
+      "fmt": "png",
+      "alt": "cropped-cpf-icon.png",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cpf-driveway.jpg",
+      "w": 500,
+      "h": 500,
+      "long": 500,
+      "fmt": "jpeg",
+      "alt": "cpf-driveway",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-cystom-bbq-dv-400x300_c.jpg",
+      "w": 400,
+      "h": 300,
+      "long": 400,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-400x300_c",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-cystom-bbq-dv-pizza-oven-400x300_c.jpg",
+      "w": 400,
+      "h": 300,
+      "long": 400,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-bbq-dv-pizza-oven-400x300_c",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/04/cpf-cystom-fire-magic-bbq-fridge-400x300_c.jpg",
+      "w": 400,
+      "h": 300,
+      "long": 400,
+      "fmt": "jpeg",
+      "alt": "cpf-cystom-fire-magic-bbq-fridge-400x300_c",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cpf-driveway-2.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-driveway-2",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/custom-concrete-feature.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "Custom Concrete Feature",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-bbq.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-bbq",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-icon-counter.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-icon-counter",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-icon-grading.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-icon-grading",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-icon-masonry.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-icon-masonry",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-stonework.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "cpf-stonework",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/feature-stonework.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "feature-stonework",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/masonry-featured-image-new.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "Masonry Featured Image",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/05/grading-and-excavation-feature.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "Grading and Excavation Featured Image",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/05/masonry-featured-image.jpg",
+      "w": 250,
+      "h": 150,
+      "long": 250,
+      "fmt": "jpeg",
+      "alt": "Masonry Feature Image",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cpf-driveway-1.jpg",
+      "w": 200,
+      "h": 120,
+      "long": 200,
+      "fmt": "jpeg",
+      "alt": "cpf-driveway-1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/concrete-icon-1.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "Concrete Icon",
+      "altAlt": [],
+      "pages": [
+        "/custom-concrete/",
+        "/services/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-grill-icon.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "cpf-grill-icon",
+      "altAlt": [],
+      "pages": [
+        "/fireplaces-and-barbecues/",
+        "/services/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-icon-concrete-countertops.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "cpf-icon-concrete-countertops",
+      "altAlt": [],
+      "pages": [
+        "/concrete-countertops/",
+        "/services/"
+      ]
+    },
+    {
+      "file": "2016/01/cpf-icon-concretecounters.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "cpf-icon-concretecounters",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-icon-countertops.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "cpf-icon-countertops",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/01/cpf-two-hammers.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "cpf-two-hammers",
+      "altAlt": [],
+      "pages": [
+        "/services/",
+        "/stonework/"
+      ]
+    },
+    {
+      "file": "2016/02/hammers-icon.png",
+      "w": 160,
+      "h": 135,
+      "long": 160,
+      "fmt": "png",
+      "alt": "hammers-icon",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2016/05/grading-and-excavation-icon.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "Grading and Excavation Icon",
+      "altAlt": [],
+      "pages": [
+        "/grading-and-excavation/",
+        "/services/"
+      ]
+    },
+    {
+      "file": "2016/05/masonry-icon.png",
+      "w": 160,
+      "h": 160,
+      "long": 160,
+      "fmt": "png",
+      "alt": "Masonry Icon",
+      "altAlt": [],
+      "pages": [
+        "/masonry/",
+        "/services/"
+      ]
+    },
+    {
+      "file": "2016/01/hammer-two.png",
+      "w": 158,
+      "h": 134,
+      "long": 158,
+      "fmt": "png",
+      "alt": "hammer-two",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/responsive1.png",
+      "w": 150,
+      "h": 150,
+      "long": 150,
+      "fmt": "png",
+      "alt": "responsive1",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/support.png",
+      "w": 150,
+      "h": 150,
+      "long": 150,
+      "fmt": "png",
+      "alt": "support",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/time.png",
+      "w": 150,
+      "h": 150,
+      "long": 150,
+      "fmt": "png",
+      "alt": "time",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cpf-logo-head.png",
+      "w": 120,
+      "h": 141,
+      "long": 141,
+      "fmt": "png",
+      "alt": "cpf-logo-head",
+      "altAlt": [],
+      "pages": []
+    },
+    {
+      "file": "2015/10/cpf-logo-e1446172690488.png",
+      "w": 140,
+      "h": 120,
+      "long": 140,
+      "fmt": "png",
+      "alt": "cpf-logo",
+      "altAlt": [],
+      "pages": []
+    }
+  ]
+}

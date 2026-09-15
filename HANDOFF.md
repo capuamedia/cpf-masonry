@@ -4,6 +4,25 @@
 original build prompt, read this first: several of its assumptions no longer
 hold. Facts here supersede the build prompt wherever they conflict.
 
+---
+
+> ### ⚠️ SUPERSEDED IN PART — read `REBUILD-PLAN-v2.md` first (2026-09-15)
+>
+> The original site was recovered on 2026-09-07 and is live again. That
+> overturns the three things this document is most emphatic about:
+>
+> | This doc says | Now |
+> |---|---|
+> | Publish `(805) 402-4211`; old numbers fail the build | **Publish `(805) 498-4852`** — the business line. 402-4211 is Pat's cell and appears on the contact page only. The audit guard is inverted. |
+> | Canonicals pin `cpf-masonry.com`; new domain, zero equity | **`cpfmasonry.com`** — the rebuild replaces the old site in place and inherits its indexing. `cpf-masonry.com` is dropped. |
+> | Image resolution is the binding constraint (§4) | **Largely lifted.** 191 recovered originals, 48 of them at 1900–1920px. The tier system and the 500px display cap are being retired. |
+> | Email unknown (§7) | **`cpfman11@gmail.com`**, recovered from the live contact page. |
+>
+> Sections 5, 6 and 9 (deploy architecture, the Elfsight and call-bar traps,
+> the working agreements) are all still accurate and still apply.
+
+---
+
 Last updated: 2026-09-01. 14 commits. Site builds clean, audit passes, demo is
 deployed.
 

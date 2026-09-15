@@ -1,6 +1,7 @@
 /** Post-build audit. Checks the shipped HTML, not the source. */
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { LEGACY_URLS } from './legacy-urls.mjs';
 
 const walk = (d, out = []) => {
   for (const e of readdirSync(d)) {
@@ -135,6 +136,25 @@ for (const f of tier4) {
 }
 console.log(`_astro: ${astro.length} files, ${tier4.length} from the 678px tier`);
 console.log(`widest 678px-tier variant: ${widest}px (native ceiling 678) — upscaled: ${over}`);
+
+// --- every legacy URL must still resolve -------------------------------------
+// The rebuild replaces cpfmasonry.com in place. A slug that quietly stops
+// existing is not a cosmetic bug, it is a page's twenty years of search equity
+// dropped on the floor, and it is invisible until the rankings go.
+const pendingUrls = [];
+for (const { url, title, built } of LEGACY_URLS) {
+  const onDisk = join('dist', url === '/' ? '' : url, 'index.html');
+  const present = existsSync(onDisk);
+  if (built && !present) bad(`LEGACY URL MISSING: ${url} (${title}) — was built, now gone`);
+  if (!built && present) bad(`${url} exists but legacy-urls.mjs still marks it unbuilt — flip the flag`);
+  if (!built && !present) pendingUrls.push({ url, title });
+}
+const builtCount = LEGACY_URLS.length - pendingUrls.length;
+console.log(`\nlegacy URLs: ${builtCount}/${LEGACY_URLS.length} resolving`);
+if (pendingUrls.length) {
+  console.log('  still to build (these 404 until they exist):');
+  for (const { url, title } of pendingUrls) console.log(`    ${url.padEnd(58)} ${title}`);
+}
 
 console.log(`\nimages: ${totalImgs}  eager: ${eager}  lazy: ${lazy}`);
 console.log(`formats emitted: ${[...formats].join(', ') || 'none'}`);

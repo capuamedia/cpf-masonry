@@ -3,9 +3,9 @@ import { BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
 
 const services = [
-  { href: '/services/concrete/', label: 'Custom & Stamped Concrete' },
-  { href: '/services/masonry/', label: 'Block, Brick & Stone' },
-  { href: '/services/outdoor/', label: 'Outdoor Kitchens & Fireplaces' },
+  { href: '/custom-concrete/', label: 'Custom & Stamped Concrete' },
+  { href: '/masonry/', label: 'Block, Brick & Stone' },
+  { href: '/fireplaces-and-barbecues/', label: 'Outdoor Kitchens & Fireplaces' },
 ];
 const year = new Date().getFullYear();
 ---
@@ -38,7 +38,7 @@ const year = new Date().getFullYear();
         {services.map((s) => (
           <li><a href={withBase(s.href)} class="hover:text-white hover:underline">{s.label}</a></li>
         ))}
-        <li><a href={withBase('/projects/')} class="hover:text-white hover:underline">Featured Projects</a></li>
+        <li><a href={withBase('/featured-work/')} class="hover:text-white hover:underline">Featured Projects</a></li>
       </ul>
     </div>
 

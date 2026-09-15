@@ -156,9 +156,18 @@ export const AGGREGATE_RATING = {
   count: BUSINESS.ratings.yelp.count + BUSINESS.ratings.google.count,
 };
 
+/**
+ * THESE SLUGS ARE THE ONES THE OLD SITE USED. DO NOT "TIDY" THEM.
+ *
+ * The rebuild replaces cpfmasonry.com in place, and those URLs carry twenty
+ * years of indexing and inbound links. `/about-us/` rather than `/about/`, and
+ * `/featured-work/` rather than `/projects/`, are deliberate: a prettier slug
+ * here costs a page its history. Every legacy URL is listed in
+ * REBUILD-PLAN-v2.md section 3, and the full set is asserted by tools/audit.mjs.
+ */
 export const NAV = [
   { href: '/services/', label: 'Services' },
-  { href: '/projects/', label: 'Projects' },
-  { href: '/about/', label: 'About' },
-  { href: '/contact/', label: 'Contact' },
+  { href: '/featured-work/', label: 'Featured Work' },
+  { href: '/about-us/', label: 'About' },
+  { href: '/contact-us/', label: 'Contact' },
 ] as const;

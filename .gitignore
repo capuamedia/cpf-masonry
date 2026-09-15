@@ -9,3 +9,6 @@ dist/
 
 # scratch renders used to eyeball the logo trace
 tools/_*.png
+
+# raw client drops: originals stay local, only processed derivatives get committed
+new_assets/

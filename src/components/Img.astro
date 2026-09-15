@@ -3,10 +3,8 @@
  * The only way an image gets onto this site.
  *
  * Every call runs through plan() in src/lib/images.ts, which THROWS if the slot
- * asks for more than 2x the source's intrinsic width, or breaches the per-tier
- * ceiling. That is deliberate: the whole photo set is salvaged, resolution is
- * the binding constraint on the design, and a build that fails loudly is worth
- * far more than a page that quietly looks cheap.
+ * asks for more than 2x the source's intrinsic width. A build that fails loudly
+ * is worth far more than a page that quietly looks cheap.
  */
 import { Picture } from 'astro:assets';
 import type { Asset } from '../lib/assets';
@@ -23,7 +21,7 @@ interface Props {
   class?: string;
   /** Hero only — everything else stays lazy. */
   eager?: boolean;
-  /** Opt in to click-to-enlarge. Ignored for tiers that may not be enlarged. */
+  /** Opt in to click-to-enlarge. Ignored for sources too small to be worth it. */
   lightbox?: boolean;
   /** Tailwind aspect/object classes applied to the <img> itself. */
   imgClass?: string;
@@ -40,8 +38,8 @@ const {
   imgClass = '',
 } = Astro.props;
 
-const widths = plan(asset.img, asset.tier, displayW, label);
-const enlargeable = lightbox && canLightbox(asset.tier);
+const widths = plan(asset.img, displayW, label, asset.maxDisplay);
+const enlargeable = lightbox && canLightbox(asset.img);
 ---
 
 {

@@ -3,11 +3,6 @@ import type { ImageMetadata } from 'astro';
 /**
  * IMAGE POLICY — enforced here, in code, not by eye.
  *
- * Every photo on this site was salvaged after the original hosting account was
- * suspended. Resolution is the binding constraint on the whole design, so the
- * rules below THROW at build time rather than degrading quietly. A build that
- * fails is recoverable; a shipped page full of mush is not.
- *
  * Two separate limits, often confused:
  *
  *   1. DISPLAY cap  - how large a source may be *laid out* on the page.
@@ -21,33 +16,46 @@ import type { ImageMetadata } from 'astro';
  *
  * Sharpening after upscaling is never enabled: it amplifies the JPEG artifacts
  * sitting where the detail used to be, and measurably worsened every test in
- * _docs/test-*.jpg.
+ * _docs/test-*.jpg. No AI upscaling either — invented stone texture reads as
+ * plastic to exactly the person evaluating a mason. That is the product.
+ *
+ * WHAT CHANGED, 2026-09-15
+ *
+ * This module used to carry a five-way `Tier` enum — large / yelp / site /
+ * tiny / slider — naming which salvage operation each file came out of, with a
+ * hand-maintained cap per tier. That existed because the originals were gone
+ * and provenance was the only available proxy for quality.
+ *
+ * The originals are back (191 of them, 48 at 1900-1920px), so provenance no
+ * longer predicts anything and the enum was a bookkeeping tax: every new file
+ * had to be classified by hand, and a misfiled one silently got the wrong cap.
+ *
+ * The limits are now derived from the file itself. `img.width` is ground truth,
+ * it cannot drift out of sync with the asset, and a better scan of the same
+ * photograph relaxes its own limits the moment it lands. Same two hard rules,
+ * no classification step.
  */
 
 export const MAX_DISPLAY_UPSCALE = 2;
 
-export type Tier = 'large' | 'yelp' | 'site' | 'tiny' | 'slider';
+/**
+ * Below this, a file is not worth opening full-size: the lightbox would
+ * present a viewer with something no larger than the thumbnail they clicked.
+ *
+ * 1000px preserves the previous behaviour exactly — the old `large` and `yelp`
+ * tiers were the ones allowed to enlarge, and both sat at 1000px or above.
+ */
+export const LIGHTBOX_MIN_NATIVE = 1000;
 
 /**
- * Per-tier ceiling on CSS layout width. `null` means the only limit is the
- * generic 2x display cap above.
+ * Below this, a file is a thumbnail, not a photograph. The recovered media
+ * library contains 250x150 category icons and 400x300 WordPress hard-crops
+ * that will happily render into a feature slot and look like a mistake.
  */
-export const TIER_DISPLAY_CAP: Record<Tier, number | null> = {
-  large: null,
-  yelp: null,
-  /** Section 4 rule 5 — keeps the 678px set genuinely sharp. */
-  site: 500,
-  /** The three 320x213 dugout frames. Triunfo YMCA page only. */
-  tiny: 300,
-  /** 738x264 slider crops — extreme aspect, only ever a thin band. */
-  slider: 738,
-};
+export const FEATURE_MIN_NATIVE = 800;
 
-/** Only these tiers may be opened full-size. Section 4 rule 4. */
-export const LIGHTBOX_TIERS: readonly Tier[] = ['large', 'yelp'];
-
-export function canLightbox(tier: Tier): boolean {
-  return LIGHTBOX_TIERS.includes(tier);
+export function canLightbox(img: ImageMetadata): boolean {
+  return img.width >= LIGHTBOX_MIN_NATIVE;
 }
 
 export class ImagePolicyError extends Error {
@@ -60,16 +68,18 @@ export class ImagePolicyError extends Error {
 /**
  * Validate a slot and return a widths array safe to hand to <Picture>.
  *
- * @param img       the imported ImageMetadata
- * @param tier      which recovery tier the file came from
- * @param displayW  the largest CSS width this slot is ever laid out at
- * @param label     human-readable slot name, used in the error message
+ * @param img        the imported ImageMetadata
+ * @param displayW   the largest CSS width this slot is ever laid out at
+ * @param label      human-readable slot name, used in the error message
+ * @param maxDisplay optional hard ceiling for a file known to be soft at its
+ *                   own resolution — a heavily re-compressed source, say.
+ *                   Rare: the 2x rule is the general case.
  */
 export function plan(
   img: ImageMetadata,
-  tier: Tier,
   displayW: number,
   label: string,
+  maxDisplay?: number,
 ): number[] {
   const native = img.width;
   const hardCap = native * MAX_DISPLAY_UPSCALE;
@@ -83,19 +93,16 @@ export function plan(
     );
   }
 
-  const tierCap = TIER_DISPLAY_CAP[tier];
-  if (tierCap !== null && displayW > tierCap) {
+  if (maxDisplay !== undefined && displayW > maxDisplay) {
     throw new ImagePolicyError(
-      `[${label}] lays out at ${displayW}px but tier "${tier}" is capped at ` +
-        `${tierCap}px. See src/lib/images.ts for why.`,
+      `[${label}] lays out at ${displayW}px but this asset declares a ${maxDisplay}px ` +
+        `ceiling. It is softer than its pixel count suggests — see src/lib/assets.ts.`,
     );
   }
 
   // Generation: 1x and 2x of the display width, clamped to native, deduped.
   const candidates = [displayW, displayW * 2].map((w) => Math.min(w, native));
-  const widths = [...new Set(candidates)].sort((a, b) => a - b);
-
-  return widths;
+  return [...new Set(candidates)].sort((a, b) => a - b);
 }
 
 /** Ratio of real pixels to CSS pixels at the given layout width. */

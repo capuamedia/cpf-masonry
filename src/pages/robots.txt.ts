@@ -5,18 +5,18 @@ import type { APIRoute } from 'astro';
  * locked out of search while production stays fully crawlable.
  *
  * A duplicate of this site ranking on github.io would compete with
- * cpf-masonry.com for its own brand name - see build brief section 8.
+ * cpfmasonry.com for its own brand name, which carries twenty years of indexing.
  */
 const isDemo = process.env.DEPLOY_TARGET === 'github-pages';
 
 const PRODUCTION = `User-agent: *
 Allow: /
 
-Sitemap: https://cpf-masonry.com/sitemap-index.xml
+Sitemap: https://cpfmasonry.com/sitemap-index.xml
 `;
 
 const DEMO = `# Review build - not the live site.
-# The live site is https://cpf-masonry.com
+# The live site is https://cpfmasonry.com
 User-agent: *
 Disallow: /
 `;

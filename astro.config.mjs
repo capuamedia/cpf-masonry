@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 /**
  * DEPLOY TARGETS
  *
- *   Cloudflare Pages (production)  -> cpf-masonry.com, served from root.
+ *   Cloudflare Pages (production)  -> cpfmasonry.com, served from root.
  *   GitHub Pages     (demo/review) -> capuamedia.github.io/<repo>/, served
  *                                     from a subpath, and deliberately noindexed.
  *
@@ -28,16 +28,16 @@ const usesSubpath =
 
 export default defineConfig({
   /**
-   * Canonical origin stays the production domain on EVERY target. Section 8 of
-   * the build brief: cpf-masonry.com starts from zero search equity, so a
-   * github.io copy must never compete with it for the brand name. The demo is
-   * additionally noindexed via src/pages/robots.txt.ts and the <Layout> meta.
+   * Canonical origin stays the production domain on EVERY target. cpfmasonry.com
+   * carries twenty years of indexing, so a github.io copy must never compete
+   * with it for the brand name. The demo is additionally noindexed via
+   * src/pages/robots.txt.ts and the <Layout> meta.
    *
    * NOTE: because `base` is prefixed onto Astro.url.pathname, canonical tags
    * must be built with canonicalURL() from src/lib/urls.ts, which strips it.
    * Do not use `new URL(Astro.url.pathname, Astro.site)` directly.
    */
-  site: 'https://cpf-masonry.com',
+  site: 'https://cpfmasonry.com',
 
   base: usesSubpath ? `/${repoName}` : undefined,
 

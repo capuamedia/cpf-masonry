@@ -31,10 +31,10 @@ export function withBase(path: string): string {
  * Canonical URL for a page, always on the production origin and always with the
  * deploy base stripped.
  *
- * The demo must never present itself as a competing copy: cpf-masonry.com is a
- * brand-new domain with no accumulated equity (build brief section 8), and a
- * github.io duplicate ranking for "CPF masonry" would split what little there
- * is. So canonicals point at production from every target.
+ * The demo must never present itself as a competing copy: a github.io
+ * duplicate ranking for "CPF masonry" would split the twenty years of equity
+ * cpfmasonry.com has accumulated. So canonicals point at production from every
+ * target.
  *
  * Pass Astro.url.pathname.
  */

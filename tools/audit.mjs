@@ -17,11 +17,16 @@ const bad = (m) => { console.log('  FAIL ' + m); fail++; };
 console.log(`Auditing ${pages.length} pages\n`);
 
 let totalImgs = 0, missingAlt = 0, missingDims = 0, lazy = 0, eager = 0;
+const SEP = String.fromCharCode(92);
 const formats = new Set();
 
 for (const p of pages) {
   const html = readFileSync(p, 'utf8');
-  const route = p.replace(/^dist/, '').replace(/index\.html$/, '') || '/';
+  // Normalised to URL separators: on Windows the glob yields "dist\contact\index.html",
+  // which would otherwise print as "\contact\\" in every failure message and defeat
+  // any path-shaped check below.
+  const route =
+    p.split(SEP).join('/').replace(/^dist/, '').replace(/index\.html$/, '') || '/';
 
   // --- JSON-LD must parse and carry the business node ---
   const ld = [...html.matchAll(/<script type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)];
@@ -42,14 +47,24 @@ for (const p of pages) {
   // --- canonical must be on the production origin ---
   const can = html.match(/<link rel="canonical" href="([^"]+)"/);
   if (!can) bad(`${route} missing canonical`);
-  else if (!can[1].startsWith('https://cpf-masonry.com/')) bad(`${route} canonical not on production origin: ${can[1]}`);
+  else if (!can[1].startsWith('https://cpfmasonry.com/')) bad(`${route} canonical not on production origin: ${can[1]}`);
 
   // --- a tel: link must exist (the call is the conversion) ---
-  if (!html.includes('href="tel:+18054024211"')) bad(`${route} has no tel: link`);
+  if (!html.includes('href="tel:+18054984852"')) bad(`${route} has no tel: link`);
 
-  // --- no superseded number may ever reappear in the output ---
-  for (const dead of ['498-4852', '18054984852', '496-3766', '18054963766']) {
-    if (html.includes(dead)) bad(`${route} publishes SUPERSEDED phone number ${dead}`);
+  // --- no dead number may ever reappear in the output ---
+  for (const dead of ['885-8269', '18058858269', '496-3766', '18054963766', '214-1705', '18052141705']) {
+    if (html.includes(dead)) bad(`${route} publishes DEAD phone number ${dead}`);
+  }
+
+  // --- Pat's cell is allowed on the contact page ONLY ---
+  // Two published numbers split the name-address-phone signal, so the cell is
+  // a deliberate single-page exception, not a second NAP number. Matched on
+  // the path rather than pinned to one slug, so it survives /contact/ being
+  // renamed to the legacy /contact-us/ during the URL carryover.
+  const isContact = /(^|\/)contact(-us)?\//.test(route);
+  if (!isContact && (html.includes('402-4211') || html.includes('18054024211'))) {
+    bad(`${route} publishes the owner cell outside the contact page — splits NAP`);
   }
 
   // --- license in footer ---

@@ -9,11 +9,12 @@ import { BUSINESS, SITE_URL } from '../lib/site';
  *
  * A contact form that silently drops enquiries is strictly worse for a
  * contractor than no form at all: the homeowner believes they made contact and
- * never hears back. The email address also did not survive (TODO_EMAIL), so
- * there is nowhere to route submissions yet.
+ * never hears back.
  *
- * To switch it on: set FORM_ENDPOINT to a real handler (Cloudflare Pages
- * Functions, Formspree, Basin) and confirm BUSINESS.email in src/lib/site.ts.
+ * BUSINESS.email is now known (cpfman11@gmail.com, recovered 2026-09-15), so
+ * the only thing still missing is a handler. To switch the form on: set
+ * FORM_ENDPOINT to a real endpoint (Cloudflare Pages Functions, Formspree,
+ * Basin) and verify a test submission actually arrives.
  */
 const FORM_ENDPOINT: string | null = null;
 
@@ -65,15 +66,27 @@ const description =
             <a href={`mailto:${BUSINESS.email}`} class="text-lg text-cpf-red underline">{BUSINESS.email}</a>
           </p>
         ) : (
-          /* TODO_EMAIL — Google's index preserved only a fragment ending
-             "11@GMAIL.COM". Publishing a guess would bounce enquiries into
-             nowhere, so the page stays phone-first until it is confirmed. */
+          /* Safe state: if the address is ever cleared, the page falls back to
+             phone-only rather than publishing a guess that bounces. */
           <p class="mt-6 border-l-2 border-line pl-4 text-sm leading-relaxed text-muted">
             Email is not published on this site yet. Phone is the fastest route
             and reaches the same person.
           </p>
         )
       }
+
+      {/*
+        The ONE place Pat's cell is published. Deliberate owner-access touch,
+        not a second NAP number — tools/audit.mjs fails the build if it appears
+        on any other route. See BUSINESS.phoneOwnerCell.
+      */}
+      <p class="mt-6 border-l-2 border-cpf-red pl-4 leading-relaxed text-ink-soft">
+        Or reach Pat directly at{' '}
+        <a href={BUSINESS.phoneOwnerCellHref} class="font-semibold text-cpf-red underline">
+          {BUSINESS.phoneOwnerCell}
+        </a>. Every project is owner supervised, so you are talking to the person
+        who will be on site.
+      </p>
 
       {
         FORM_ENDPOINT && (

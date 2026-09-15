@@ -1,6 +1,14 @@
 /** Verified business facts. Nothing here is invented — see _docs/ for provenance. */
 
-export const SITE_URL = 'https://cpf-masonry.com';
+/**
+ * The original domain, recovered 2026-09-07 and rebuilt on in place.
+ *
+ * This is NOT a new-domain launch. The site carries twenty years of indexing
+ * and every legacy URL is preserved (see REBUILD-PLAN-v2 section 6), so the
+ * rebuild inherits that equity rather than starting from zero. The interim
+ * cpf-masonry.com domain has been dropped.
+ */
+export const SITE_URL = 'https://cpfmasonry.com';
 
 export const BUSINESS = {
   name: 'CPF Custom Concrete and Masonry',
@@ -10,44 +18,77 @@ export const BUSINESS = {
     'Your go-to provider of custom concrete, stonemasonry, backyard kitchens and more.',
 
   /**
-   * CONFIRMED BY THE OWNER, 2026-09-01. The current number, and the only one
-   * published anywhere on this site.
+   * THE BUSINESS LINE. The single published number, sitewide.
+   *
+   * Resolved 2026-09-15 from the recovered site (REBUILD-PLAN-v2 section 2):
+   * this is what the old contact page led with and what every directory
+   * listing carries. Name-address-phone consistency is a direct local ranking
+   * input, so exactly one number is published here, and it must match the
+   * Google Business Profile, Yelp and Houzz.
    *
    * Change it here and it updates the header, footer, every CTA band, the
    * contact page, the meta description and the LocalBusiness structured data.
-   * There are no hardcoded copies — tools/audit.mjs fails the build if an
+   * There are no hardcoded copies — tools/audit.mjs fails the build if a
    * superseded number reappears in the output.
    */
-  phone: '(805) 402-4211',
-  phoneHref: 'tel:+18054024211',
+  phone: '(805) 498-4852',
+  phoneHref: 'tel:+18054984852',
 
   /**
-   * Superseded. Recorded so nobody restores one from a stale listing, and so
-   * NOTES.md item 1 has the full set to correct across the web.
+   * Pat's direct cell. Deliberately NOT a second NAP number.
    *
-   *   (805) 498-4852 — the original cpfmasonry.com site; still on the listings
-   *   (805) 496-3766 — the Houzz listing; never published by this site
+   * It gets exactly one appearance: a line on the contact page offering direct
+   * owner access. Keep it out of the header, the footer, the schema and every
+   * tel: link in the nav — publishing two numbers splits the NAP signal.
    */
-  phoneFormer: ['(805) 498-4852', '(805) 496-3766'],
+  phoneOwnerCell: '(805) 402-4211',
+  phoneOwnerCellHref: 'tel:+18054024211',
 
   /**
-   * TODO_EMAIL — Google's index preserved only a fragment ending "11@GMAIL.COM".
-   * Do not guess. Contact form and footer read from this; when it is null the
-   * UI falls back to phone-only, which is the safe state.
+   * Dead numbers. Recorded so nobody restores one from a stale listing, and so
+   * NOTES.md has the full set to correct across the web.
+   *
+   *   (805) 885-8269 — appeared once on the old home page; dead
+   *   (805) 496-3766 — the Houzz listing; never published by this site
+   *   (805) 214-1705 — on the Google Business Profile; belongs to nobody here
+   *
+   * Pat's cell (805) 402-4211 is NOT listed here — it is live, just not the
+   * published NAP number. See phoneOwnerCell.
    */
-  email: null as string | null,
+  phoneFormer: ['(805) 885-8269', '(805) 496-3766', '(805) 214-1705'],
+
+  /**
+   * Recovered from the live contact page, 2026-09-15. This resolves the old
+   * TODO: Google's index had preserved only a fragment ending "11@GMAIL.COM",
+   * which this matches.
+   *
+   * The UI branches on this being non-null; the phone-only fallback stays in
+   * place as the safe state if it is ever cleared.
+   */
+  email: 'cpfman11@gmail.com' as string | null,
+
+  /** The owner, named in his own copy. */
+  owner: 'Pat Flaherty',
 
   license: '878989',
   licenseLabel: 'CA Contractor License #878989',
 
   /**
+   * Dual classification, from the owner's own copy. C-29 is masonry, C-8 is
+   * concrete — holding both is the substantive version of "concrete AND
+   * masonry" and is independently checkable against the CSLB record.
+   */
+  licenseClasses: 'C-29 Masonry / C-8 Concrete',
+  licenseClassesShort: 'C-29 / C-8',
+  bonded: 'Licensed, insured & bonded',
+
+  /**
    * CONFIRMED BY THE OWNER, 2026-09-01. Trading in the Conejo Valley since 1991.
    *
-   * This is the strongest trust signal the business has, and it does a specific
-   * job here: cpf-masonry.com is a brand-new domain with zero search equity and
-   * no history a visitor can see. "Since 1991" is the thing that tells a
-   * homeowner the business is not new, and it is independently checkable against
-   * the CSLB license record.
+   * The strongest trust signal the business has, and now doubly earned: the
+   * domain itself carries twenty years of history. "Since 1991" is what tells a
+   * homeowner the business is not new, and it is independently checkable
+   * against the CSLB license record.
    */
   founded: 1991,
 
@@ -75,13 +116,22 @@ export const BUSINESS = {
   /** Superseded. Recorded only so nobody restores it from the stale GBP listing. */
   addressFormer: '2996 Molly Ct, Newbury Park, CA 91320',
 
+  /**
+   * The owner's own list, from the recovered home page copy. Wider than the
+   * Conejo-Valley-only list we had been working from.
+   */
   serviceArea: [
-    'Newbury Park',
     'Thousand Oaks',
+    'Newbury Park',
     'Westlake Village',
-    'Calabasas',
     'Camarillo',
-    'Conejo Valley',
+    'Oxnard',
+    'Ventura',
+    'Moorpark',
+    'Simi Valley',
+    'Agoura Hills',
+    'Calabasas',
+    'the San Fernando Valley',
   ],
 
   ratings: {

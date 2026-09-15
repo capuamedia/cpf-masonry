@@ -65,10 +65,11 @@ import sVilla from '../assets/site-photos/extra-cpf-stone-work-villa.jpg';
 import sSlab from '../assets/site-photos/extra-slider-cpf-concrete-counter.jpg';
 
 
+
 // -- recovered originals from cpfmasonry.com, 822-1920px ----------------------
 // Reinstated 2026-09-15 from the live site's media library. Alt text is the
-// owner's own, taken from the page markup where it existed; the Dos Vientos
-// set had none and is described from the photographs.
+// owner's own wherever the old page markup carried it; the Dos Vientos and
+// excavation sets had none worth keeping and are described from the photographs.
 import r_beautifulStampedConcreteDriveway from '../assets/recovered/beautiful-stamped-concrete-driveway.jpg';
 import r_stampedConcreteWalkwayProgressShot from '../assets/recovered/stamped-concrete-walkway-progress-shot.jpg';
 import r_stampedConcreteProgressShot from '../assets/recovered/stamped-concrete-progress-shot.jpg';
@@ -114,27 +115,27 @@ import r_retainingWallWithCreativeStoneFeatures from '../assets/recovered/retain
 import r_closeUpWallWithCreativeStoneFeatures from '../assets/recovered/close-up-wall-with-creative-stone-features.jpg';
 import r_customStoneWallsAndVeneerFeatures from '../assets/recovered/custom-stone-walls-and-veneer-features.jpg';
 import r_stampedConcreteDrivewayAndCustomStoneRetaining from '../assets/recovered/stamped-concrete-driveway-and-custom-stone-retaining.jpg';
-import r_kubotaExcavator from '../assets/recovered/kubota-excavator.jpg';
-import r_kubotaExcavation1 from '../assets/recovered/kubota-excavation-1.jpg';
-import r_kubotaExcavation2 from '../assets/recovered/kubota-excavation-2.jpg';
-import r_kubotaExcavation3 from '../assets/recovered/kubota-excavation-3.jpg';
-import r_cpfExcavationProject7 from '../assets/recovered/cpf-excavation-project-7.jpg';
-import r_cpfExcavationProject6 from '../assets/recovered/cpf-excavation-project-6.jpg';
-import r_cpfExcavationProject4 from '../assets/recovered/cpf-excavation-project-4.jpg';
-import r_cpfExcavationProject5 from '../assets/recovered/cpf-excavation-project-5.jpg';
-import r_cpfExcavationProject3 from '../assets/recovered/cpf-excavation-project-3.jpg';
-import r_cpfExcavationProject2 from '../assets/recovered/cpf-excavation-project-2.jpg';
-import r_cpfExcavationProject1 from '../assets/recovered/cpf-excavation-project-1.jpg';
-import r_cpfExcavationProject72 from '../assets/recovered/cpf-excavation-project-7-2.jpg';
-import r_stampedConcreteDrivewayEdgedWithStackedStone from '../assets/recovered/stamped-concrete-driveway-edged-with-stacked-stone.jpg';
-import r_coveredPatioOnFlagstonePavingEnclosed from '../assets/recovered/covered-patio-on-flagstone-paving-enclosed.jpg';
-import r_stonePillarsFramingATieredFountain from '../assets/recovered/stone-pillars-framing-a-tiered-fountain.jpg';
-import r_patioEnclosureOfStonePillarsAndRetractable from '../assets/recovered/patio-enclosure-of-stone-pillars-and-retractable.jpg';
-import r_curvedOutdoorKitchenWithATiledCounter from '../assets/recovered/curved-outdoor-kitchen-with-a-tiled-counter.jpg';
-import r_builtInPizzaOven from '../assets/recovered/built-in-pizza-oven.jpg';
-import r_fireMagicGasBarbecueAndBuilt from '../assets/recovered/fire-magic-gas-barbecue-and-built.jpg';
-import r_serpentineTiledCountertopOfTheOutdoorKitchen from '../assets/recovered/serpentine-tiled-countertop-of-the-outdoor-kitchen.jpg';
-import r_outdoorKitchenCounterCurvingBackToward from '../assets/recovered/outdoor-kitchen-counter-curving-back-toward.jpg';
+import r_kubotaTrackLoaderOnSite from '../assets/recovered/kubota-track-loader-on-site.jpg';
+import r_excavatorAndLoaderStrippingFrontYard from '../assets/recovered/excavator-and-loader-stripping-front-yard.jpg';
+import r_trackLoaderCarryingSpoilFromTrench from '../assets/recovered/track-loader-carrying-spoil-from-trench.jpg';
+import r_loaderMovingExcavatedSoilKerbside from '../assets/recovered/loader-moving-excavated-soil-kerbside.jpg';
+import r_brokenConcreteStackedForRemoval from '../assets/recovered/broken-concrete-stacked-for-removal.jpg';
+import r_gradedSubgradeReadyForNewPour from '../assets/recovered/graded-subgrade-ready-for-new-pour.jpg';
+import r_excavatedCutForRetainingWallFooting from '../assets/recovered/excavated-cut-for-retaining-wall-footing.jpg';
+import r_skidSteerWorkingNarrowSideYard from '../assets/recovered/skid-steer-working-narrow-side-yard.jpg';
+import r_concreteStockpiledDuringDrivewayDemolition from '../assets/recovered/concrete-stockpiled-during-driveway-demolition.jpg';
+import r_gradedSlopeWithCobbleDrainageCourse from '../assets/recovered/graded-slope-with-cobble-drainage-course.jpg';
+import r_excavatorLiftingBrokenConcreteSlabs from '../assets/recovered/excavator-lifting-broken-concrete-slabs.jpg';
+import r_barricadedDrivewayDemolitionSpoil from '../assets/recovered/barricaded-driveway-demolition-spoil.jpg';
+import r_dosVientosStampedDrivewayStoneWalls from '../assets/recovered/dos-vientos-stamped-driveway-stone-walls.jpg';
+import r_dosVientosCoveredPatioStonePillars from '../assets/recovered/dos-vientos-covered-patio-stone-pillars.jpg';
+import r_dosVientosPatioFountainSeating from '../assets/recovered/dos-vientos-patio-fountain-seating.jpg';
+import r_dosVientosPatioEnclosureAwning from '../assets/recovered/dos-vientos-patio-enclosure-awning.jpg';
+import r_dosVientosOutdoorKitchenTiledCounter from '../assets/recovered/dos-vientos-outdoor-kitchen-tiled-counter.jpg';
+import r_dosVientosBuiltInPizzaOven from '../assets/recovered/dos-vientos-built-in-pizza-oven.jpg';
+import r_dosVientosBarbecueAndRefrigeratedStorage from '../assets/recovered/dos-vientos-barbecue-and-refrigerated-storage.jpg';
+import r_dosVientosSerpentineTiledCountertop from '../assets/recovered/dos-vientos-serpentine-tiled-countertop.jpg';
+import r_dosVientosOutdoorKitchenCornerView from '../assets/recovered/dos-vientos-outdoor-kitchen-corner-view.jpg';
 
 import logoJpg from '../assets/logo/cpf-logo-1080.jpg';
 
@@ -278,6 +279,7 @@ export const A = {
   polishedCounter: a(sSlab,
     'Polished concrete countertop finished to a wet look'),
 
+
   // ---- custom-concrete-driveways ----
   beautifulStampedConcreteDriveway: a(r_beautifulStampedConcreteDriveway,
     "Beautiful Stamped Concrete Driveway"),
@@ -375,49 +377,49 @@ export const A = {
     "Stamped Concrete Driveway and Custom Stone Retaining Wall"),
 
   // ---- grading-and-excavation ----
-  kubotaExcavator: a(r_kubotaExcavator,
-    "Kubota Excavator"),
-  kubotaExcavation1: a(r_kubotaExcavation1,
-    "Kubota Excavation 1"),
-  kubotaExcavation2: a(r_kubotaExcavation2,
-    "Kubota Excavation 2"),
-  kubotaExcavation3: a(r_kubotaExcavation3,
-    "Kubota-Excavation-3"),
-  cpfExcavationProject7: a(r_cpfExcavationProject7,
-    "CPF Excavation Project 7"),
-  cpfExcavationProject6: a(r_cpfExcavationProject6,
-    "CPF Excavation Project 6"),
-  cpfExcavationProject4: a(r_cpfExcavationProject4,
-    "CPF Excavation Project 4"),
-  cpfExcavationProject5: a(r_cpfExcavationProject5,
-    "CPF Excavation Project 5"),
-  cpfExcavationProject3: a(r_cpfExcavationProject3,
-    "CPF Excavation Project 3"),
-  cpfExcavationProject2: a(r_cpfExcavationProject2,
-    "CPF Excavation Project 2"),
-  cpfExcavationProject1: a(r_cpfExcavationProject1,
-    "CPF Excavation Project 1"),
-  cpfExcavationProject72: a(r_cpfExcavationProject72,
-    "CPF Excavation Project 7"),
+  kubotaTrackLoaderOnSite: a(r_kubotaTrackLoaderOnSite,
+    "Kubota SVL90-2 compact track loader on site at the start of a grading job"),
+  excavatorAndLoaderStrippingFrontYard: a(r_excavatorAndLoaderStrippingFrontYard,
+    "Mini excavator and track loader stripping a front yard, traffic cones set out along the street"),
+  trackLoaderCarryingSpoilFromTrench: a(r_trackLoaderCarryingSpoilFromTrench,
+    "Track loader carrying spoil away from an open trench alongside a clipped hedge"),
+  loaderMovingExcavatedSoilKerbside: a(r_loaderMovingExcavatedSoilKerbside,
+    "Operator moving a full bucket of excavated soil past a coned-off kerbside work area"),
+  brokenConcreteStackedForRemoval: a(r_brokenConcreteStackedForRemoval,
+    "Broken-out concrete stacked for removal on a stripped driveway"),
+  gradedSubgradeReadyForNewPour: a(r_gradedSubgradeReadyForNewPour,
+    "Demolished concrete and graded subgrade in front of a three-car garage, ready for a new pour"),
+  excavatedCutForRetainingWallFooting: a(r_excavatedCutForRetainingWallFooting,
+    "Excavated cut for a retaining wall footing, seen from the operator seat"),
+  skidSteerWorkingNarrowSideYard: a(r_skidSteerWorkingNarrowSideYard,
+    "Skid-steer loader and hand tools working a narrow side yard between house and fence"),
+  concreteStockpiledDuringDrivewayDemolition: a(r_concreteStockpiledDuringDrivewayDemolition,
+    "Broken concrete stockpiled beside the loader during driveway demolition"),
+  gradedSlopeWithCobbleDrainageCourse: a(r_gradedSlopeWithCobbleDrainageCourse,
+    "Crew hand-finishing a graded slope with a cobble drainage course along its base"),
+  excavatorLiftingBrokenConcreteSlabs: a(r_excavatorLiftingBrokenConcreteSlabs,
+    "Excavator lifting out broken concrete slabs during a front-yard removal"),
+  barricadedDrivewayDemolitionSpoil: a(r_barricadedDrivewayDemolitionSpoil,
+    "Barricaded driveway with demolition spoil awaiting haul-off"),
 
   // ---- dos-vientos-villa ----
-  stampedConcreteDrivewayEdgedWithStackedStone: a(r_stampedConcreteDrivewayEdgedWithStackedStone,
+  dosVientosStampedDrivewayStoneWalls: a(r_dosVientosStampedDrivewayStoneWalls,
     "Stamped concrete driveway edged with stacked stone retaining walls, rising to a wrought-iron entry gate"),
-  coveredPatioOnFlagstonePavingEnclosed: a(r_coveredPatioOnFlagstonePavingEnclosed,
+  dosVientosCoveredPatioStonePillars: a(r_dosVientosCoveredPatioStonePillars,
     "Covered patio on flagstone paving, enclosed by stone pillars under a retractable awning"),
-  stonePillarsFramingATieredFountain: a(r_stonePillarsFramingATieredFountain,
+  dosVientosPatioFountainSeating: a(r_dosVientosPatioFountainSeating,
     "Stone pillars framing a tiered fountain, with built-in sectional seating beneath the awning"),
-  patioEnclosureOfStonePillarsAndRetractable: a(r_patioEnclosureOfStonePillarsAndRetractable,
+  dosVientosPatioEnclosureAwning: a(r_dosVientosPatioEnclosureAwning,
     "Patio enclosure of stone pillars and retractable awning, opening onto the house through glass doors"),
-  curvedOutdoorKitchenWithATiledCounter: a(r_curvedOutdoorKitchenWithATiledCounter,
+  dosVientosOutdoorKitchenTiledCounter: a(r_dosVientosOutdoorKitchenTiledCounter,
     "Curved outdoor kitchen with a tiled counter, built-in gas barbecue and stainless sink on a flagstone patio"),
-  builtInPizzaOven: a(r_builtInPizzaOven,
+  dosVientosBuiltInPizzaOven: a(r_dosVientosBuiltInPizzaOven,
     "Built-in pizza oven set into the stucco surround of the outdoor kitchen counter"),
-  fireMagicGasBarbecueAndBuilt: a(r_fireMagicGasBarbecueAndBuilt,
+  dosVientosBarbecueAndRefrigeratedStorage: a(r_dosVientosBarbecueAndRefrigeratedStorage,
     "Fire Magic gas barbecue and built-in refrigerated storage set into the tiled outdoor kitchen"),
-  serpentineTiledCountertopOfTheOutdoorKitchen: a(r_serpentineTiledCountertopOfTheOutdoorKitchen,
+  dosVientosSerpentineTiledCountertop: a(r_dosVientosSerpentineTiledCountertop,
     "Serpentine tiled countertop of the outdoor kitchen seen from above"),
-  outdoorKitchenCounterCurvingBackToward: a(r_outdoorKitchenCounterCurvingBackToward,
+  dosVientosOutdoorKitchenCornerView: a(r_dosVientosOutdoorKitchenCornerView,
     "Outdoor kitchen counter curving back toward the house, with shade umbrellas over the tiled bar top"),
 
 } as const;

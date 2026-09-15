@@ -1,0 +1,99 @@
+---
+/**
+ * Legacy URL: /grading-and-excavation/ (WP page ID 89).
+ *
+ * Title on the old site was the long-tail "Grading and Excavation for
+ * Foundations and Retaining Walls". The <h1> keeps the short form and the
+ * document title keeps the long one, so the page reads well and still matches
+ * what it has always ranked for.
+ *
+ * The full-circle-service argument is the owner's own copy.
+ */
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { A } from '../lib/assets';
+import { withBase } from '../lib/urls';
+
+const showcase = [
+  { asset: A.kubotaTrackLoaderOnSite,
+    caption: 'Kubota SVL90-2 compact track loader — CPF owns the fleet outright.' },
+  { asset: A.excavatorAndLoaderStrippingFrontYard,
+    caption: 'Mini excavator and track loader stripping a front yard together.' },
+  { asset: A.excavatedCutForRetainingWallFooting,
+    caption: 'Excavated cut for a retaining wall footing, seen from the operator seat.' },
+  { asset: A.gradedSlopeWithCobbleDrainageCourse,
+    caption: 'Graded slope hand-finished, with a cobble drainage course along its base.' },
+  { asset: A.gradedSubgradeReadyForNewPour,
+    caption: 'Old driveway broken out and the subgrade graded, ready for a new pour.' },
+  { asset: A.skidSteerWorkingNarrowSideYard,
+    caption: 'Skid-steer working a side yard — access is usually the constraint.' },
+];
+
+const gallery = [
+  A.trackLoaderCarryingSpoilFromTrench,
+  A.loaderMovingExcavatedSoilKerbside,
+  A.brokenConcreteStackedForRemoval,
+  A.concreteStockpiledDuringDrivewayDemolition,
+  A.excavatorLiftingBrokenConcreteSlabs,
+  A.barricadedDrivewayDemolitionSpoil,
+];
+---
+
+<ServiceLayout
+  title="Grading and Excavation"
+  eyebrow="Site Work"
+  intro="CPF comes fully equipped with a complete line of grading and excavation equipment. When we say we will drive your project from concept to completion, we mean it."
+  description="Grading and excavation for foundations and retaining walls across Thousand Oaks, Newbury Park and Ventura County. Own fleet of tractors, excavators and dump trucks — no separate grading contractor to coordinate. CA License #878989, C-29 / C-8."
+  headerAsset={A.excavatorAndLoaderStrippingFrontYard}
+  serviceName="Grading and excavation for foundations and retaining walls"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Demolition, spoil handling and site clearance"
+>
+  <h2>Concept to completion, with our own equipment</h2>
+  <p>
+    Our complete fleet of grading and excavation equipment gives us the tools
+    needed to perfectly prepare your property for its upcoming project. Your
+    project is managed by the best in the business, from start to finish.
+  </p>
+
+  <h2>Why it matters that it is the same company</h2>
+  <p>
+    Preparation is everything in the world of property renovation. Many jobs
+    require the deployment of various different contractors to prepare your
+    property for the project to be done. At CPF, we go the extra mile to cut out
+    that extra step by providing our customers with a complete full-circle
+    service.
+  </p>
+  <p>
+    Our grading and excavation services make use of our complete fleet of
+    tractors, excavators and dump trucks. It is us who will carry out the
+    project planning process with you, and us who know what the ultimate vision
+    of your project is. It only makes sense that we handle any excavation and
+    grading that may be needed to prepare for laying foundation, reshaping the
+    lay of your land, or anything else.
+  </p>
+
+  <h3>The part nobody photographs</h3>
+  <p>
+    Excavation is the work that decides whether everything after it holds. A
+    <a href={withBase('/masonry/')}>retaining wall</a> fails at its footing and
+    its drainage far more often than at its face, and a
+    <a href={withBase('/custom-concrete-driveways/')}>driveway</a> cracks
+    because of what is under it rather than what was done to the surface. Both
+    of those are settled before any concrete or block arrives on site.
+  </p>
+  <p>
+    It is also the stage where the awkward realities surface — access for the
+    machine, where the spoil goes, and what is actually buried in the yard. A
+    contractor who is doing the whole job has every reason to find those on day
+    one rather than hand them to whoever comes next.
+  </p>
+
+  <h2>Owner supervised, fully insured</h2>
+  <p>
+    Heavy equipment works next to the house, the fence and the street.
+    <strong>Each project is owner supervised</strong>, and CPF is
+    <strong>licensed, insured and bonded</strong> under C-29 masonry and C-8
+    concrete.
+  </p>
+</ServiceLayout>

@@ -12,9 +12,9 @@ interface Props {
   intro: string;
   description: string;
   headerAsset: Asset;
-  /** 678px tier — capped at 500px rendered, never clickable. */
+  /** Captioned three-up grid. Enlargeable where the source supports it. */
   showcase: { asset: Asset; caption: string }[];
-  /** Yelp/large tier — clickable. */
+  /** Masonry-column gallery. Enlargeable where the source supports it. */
   gallery: Asset[];
   galleryHeading: string;
   serviceName: string;
@@ -53,15 +53,17 @@ const { title, eyebrow, intro, description, headerAsset, showcase, gallery, gall
           {showcase.map((item, i) => (
             <li>
               {/*
-                678px source. Capped at 500px rendered and deliberately NOT
-                clickable — enlarging it would only show the reader the
-                compression. See src/lib/images.ts.
+                lightbox is a request, not a guarantee: canLightbox() in
+                src/lib/images.ts ignores it below 1000px native, so the
+                remaining salvaged files stay unclickable on their own without
+                anyone having to remember which ones they are.
               */}
               <Img
                 asset={item.asset}
                 displayW={500}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 label={`${title} showcase ${i}`}
+                lightbox
                 imgClass="aspect-[3/2] w-full object-cover"
               />
               <p class="mt-3 text-sm leading-relaxed text-muted">{item.caption}</p>

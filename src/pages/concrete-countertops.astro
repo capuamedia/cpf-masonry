@@ -1,0 +1,97 @@
+---
+/**
+ * Legacy URL: /concrete-countertops/ (WP page ID 80).
+ *
+ * The prose is the owner's, from the recovered page, lightly reset for the new
+ * layout — his argument, his claims, his voice. Two details preserved
+ * deliberately: "since long before they became the new trend", and the 1993
+ * date for custom concrete specifically. 1993 is not in conflict with
+ * BUSINESS.founded (1991) — the business predates the countertop work.
+ */
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { A } from '../lib/assets';
+import { withBase } from '../lib/urls';
+
+const showcase = [
+  { asset: A.blackConcreteCountertops,
+    caption: 'Black concrete countertops, cast and polished.' },
+  { asset: A.blackConcreteCountertopsWithBarbecue,
+    caption: 'The same run carried through an outdoor barbecue counter.' },
+  { asset: A.kitchenConcreteCountertopsReadyForSinkInstall,
+    caption: 'Kitchen countertops cast in place and ready for the sink to drop in.' },
+  { asset: A.polishedStoneCountertops,
+    caption: 'Polished stone countertops — the largest file in the archive, at 1920px.' },
+  { asset: A.backyardCustomConcreteCountertopBarbecueSetup,
+    caption: 'Backyard barbecue counter with a cast concrete top.' },
+  { asset: A.concreteCountertopCloseup,
+    caption: 'Close on the finish: concrete takes a polish that reads as stone.' },
+];
+
+const gallery = [
+  A.closeupOutdoorConcreteCountertop,
+  A.concreteKitchenCounterCloseup,
+  A.backyardConcreteCountertopFireFeature,
+  A.backyardConcreteCountertopFireFeature2,
+  A.outdoorConcreteCountertopProgressShot,
+  A.outdoorConcreteCountertopProgressShot2,
+];
+---
+
+<ServiceLayout
+  title="Concrete Countertops"
+  eyebrow="Custom Concrete"
+  intro="Most people are only now hearing about concrete as an option for countertops. CPF has been building them from scratch since long before they became the new trend in modern luxury."
+  description="Custom concrete countertops in Thousand Oaks, Newbury Park and Ventura County: cast kitchen counters, polished finishes, outdoor barbecue and fire-feature tops. Building them from scratch since 1993. CA License #878989, C-29 / C-8."
+  headerAsset={A.blackConcreteCountertops}
+  serviceName="Custom concrete countertop design and casting"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Kitchen, barbecue and fire-feature tops"
+>
+  <h2>The sky is the limit</h2>
+  <p>
+    Rest assured that we at CPF have been building concrete countertops from
+    scratch since long before they became the new trend in modern luxury. The
+    sky is the limit, so let us help you design something that stands above the
+    rest.
+  </p>
+  <p>
+    <strong>The skill of the contractor is everything in this trade.</strong>
+    Below are examples of projects that have made some very happy customers.
+  </p>
+
+  <h2>Granite versus custom concrete</h2>
+  <p>
+    If you have spent any time researching remodeling options lately, then
+    surely you have seen all the rage about concrete countertops — more
+    specifically, the debate over who wins: granite or custom concrete. There
+    are a lot of factors at play, and in the end it all comes down to
+    preference. But one thing is unarguably true: concrete countertops are the
+    most durable and versatile choice that your money can buy.
+  </p>
+  <p>
+    CPF has been pushing the envelope of what can be done with custom concrete
+    since 1993, and has the track record you are looking for in a contractor you
+    can trust with your custom concrete countertop job.
+  </p>
+
+  <h3>Why versatility is the real argument</h3>
+  <p>
+    A slab of granite is quarried and then you work around what it is. A
+    concrete top is cast, which means the shape, the edge profile, the color and
+    the thickness are all decisions rather than constraints — including shapes a
+    slab cannot do at all. The serpentine outdoor bar on the
+    <a href={withBase('/featured-project-dos-vientos-villa/')}>Dos Vientos Villa</a>
+    project is the clearest example: a continuous curved counter with an
+    integrated sink, cooler and barbecue, which is simply not a thing you cut
+    out of stone.
+  </p>
+
+  <h2>Owner supervised, fully insured</h2>
+  <p>
+    Countertop work happens inside a kitchen that somebody is trying to live in.
+    <strong>Each project is owner supervised</strong>, and CPF is
+    <strong>licensed, insured and bonded</strong> under C-29 masonry and C-8
+    concrete.
+  </p>
+</ServiceLayout>

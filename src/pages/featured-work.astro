@@ -10,6 +10,17 @@ import { CONFIRMED_PAIRS } from '../lib/pairs';
 
 const featured = [
   {
+    /* Residential leads. Two of the three featured projects are ballfields,
+       which prove scale but answer a question most visitors are not asking —
+       the homeowner wants to see this happen at a house. */
+    href: '/featured-project-dos-vientos-villa/',
+    eyebrow: 'Residential',
+    title: 'Dos Vientos Villa',
+    blurb:
+      'A full exterior remodel in Newbury Park — stamped concrete driveway, custom stone walls and pillars, a stone-pillared patio and a serpentine tiled outdoor kitchen.',
+    asset: A.dosVientosStampedDrivewayStoneWalls,
+  },
+  {
     href: '/featured-project-triunfo-ymca-baseball-fields/',
     eyebrow: 'Community project',
     title: 'Triunfo YMCA Baseball Fields',
@@ -27,7 +38,7 @@ const featured = [
   },
 ];
 
-/** Tier 1 + 2 only. These are the files that survive being enlarged. */
+/** Files with the resolution to survive being enlarged. */
 const enlargeable = [
   A.pergolaLounge, A.roseWalkway, A.poolWaterFeature, A.herringboneClose,
   A.patioSteps, A.curvedRoseWalk, A.gazeboLawn, A.stoneEntry,
@@ -38,8 +49,8 @@ const enlargeable = [
 ];
 
 /**
- * Tier 4 — the company's own old site. Better subjects, worse pixels. Rendered
- * at 500px and NOT clickable, and deliberately not styled to look clickable:
+ * The remaining 678px salvage. Better subjects, worse pixels. Rendered at 500px
+ * and NOT clickable, and deliberately not styled to look clickable:
  * no zoom cursor, no hover scale, no ring.
  */
 const archive = [

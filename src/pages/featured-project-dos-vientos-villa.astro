@@ -1,0 +1,162 @@
+---
+/**
+ * Legacy URL: /featured-project-dos-vientos-villa/ (WP page ID 168).
+ *
+ * The third featured project. It was invisible to the previous build — the page
+ * was never recovered from cache — and it is the only residential showcase of
+ * the three, which is exactly what a homeowner arriving from a search for
+ * "stone retaining wall Newbury Park" needs to see. The two ballfields prove
+ * scale; this one proves it happens at a house.
+ *
+ * The copy is the owner's, section for section, from the recovered page.
+ *
+ * IMAGES: the original page linked the outdoor-kitchen shots as 400x300
+ * hard-crops. The full-size originals were still in the media library filed
+ * under 2016/01 rather than 2016/04, so this page carries the same photographs
+ * at 1024px — and five more of them that the old page never showed.
+ */
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import { A } from '../lib/assets';
+import { SITE_URL } from '../lib/site';
+import { withBase } from '../lib/urls';
+
+const description =
+  'Dos Vientos Villa, Newbury Park: a full residential exterior remodel by CPF — stamped concrete driveway, custom stone retaining walls and pillars, a stone-pillared patio enclosure and a serpentine tiled outdoor kitchen with pizza oven.';
+
+/** Front yard, patio, outdoor kitchen — the three areas the job was organised around. */
+const sections = [
+  {
+    id: 'front-yard',
+    heading: 'The Front Yard',
+    body: `The initial design is centered around the unique look of the stamped concrete
+      driveway. The villa is then framed by the custom stone retaining walls punctuated
+      by smooth boulders. The stone pillars draw the eye up to the custom stone, full
+      size walls surrounding the gate. Stamped concrete and stone accents pour out into
+      the sidewalk to truly utilize the available space.`,
+    /* The header already carries the driveway-and-gate shot; these are the rest
+       of the front yard, including the sidewalk accents the copy describes. */
+    images: [
+      A.stoneRetainingWallAndStampedConcreteDriveway,
+      A.closeUpWallWithCreativeStoneFeatures,
+      A.customStoneWallsAndVeneerFeatures,
+      A.customConcreteDrivewayWithStoneSidewalkFeatures,
+    ],
+  },
+  {
+    id: 'patio',
+    heading: 'The Patio',
+    body: `The client wanted to combine their love for entertaining with the outdoors.
+      The patio design allows the client to host in an intimate setting in any climate.
+      Custom stone walkways set the tone for the design. The patio is enclosed by custom
+      stone pillars and glass wall enclosure, supporting the retractable awning. This
+      set up affords the option to experience the lovely California sun while blocking
+      any potential wind.`,
+    images: [
+      A.dosVientosCoveredPatioStonePillars,
+      A.dosVientosPatioFountainSeating,
+      A.dosVientosPatioEnclosureAwning,
+    ],
+  },
+  {
+    id: 'outdoor-kitchen',
+    heading: 'The Outdoor Kitchen',
+    body: `Any host's dream. The custom BBQ kitchen features tiled counter tops and trim
+      details. The custom details include the integrated ice chest and drink cooler,
+      built in refrigerated storage, sinks, propane barbecue and stove top — all built
+      upon a CPF Masonry designed stone patio.`,
+    images: [
+      A.dosVientosOutdoorKitchenTiledCounter,
+      A.dosVientosBuiltInPizzaOven,
+      A.dosVientosBarbecueAndRefrigeratedStorage,
+      A.dosVientosSerpentineTiledCountertop,
+      A.dosVientosOutdoorKitchenCornerView,
+    ],
+  },
+];
+---
+
+<Layout
+  title="Dos Vientos Villa"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'CreativeWork',
+      name: 'Dos Vientos Villa',
+      about:
+        'Residential exterior remodel: stamped concrete driveway, custom stone retaining walls and pillars, stone-pillared patio enclosure and a custom tiled outdoor kitchen.',
+      creator: { '@id': `${SITE_URL}/#business` },
+      locationCreated: { '@type': 'Place', name: 'Dos Vientos, Newbury Park, CA' },
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Featured Work', item: `${SITE_URL}/featured-work/` },
+        { '@type': 'ListItem', position: 2, name: 'Dos Vientos Villa' },
+      ],
+    },
+  ]}
+>
+  <PageHeader
+    eyebrow="Featured project · Residential"
+    title="Dos Vientos Villa"
+    intro="A prime example of CPF Masonry's capabilities for an exterior residential remodel. This job primarily focused on three areas: the front yard, the patio, and the outdoor kitchen."
+    asset={A.dosVientosStampedDrivewayStoneWalls}
+    displayW={1024}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 pt-16 sm:px-6 prose-cpf">
+    <p>
+      Dos Vientos Villa is the residential counterpart to the two ballfield
+      projects: one house, one client, and every trade CPF offers turned on the
+      same address at the same time. The
+      <a href={withBase('/grading-and-excavation/')}>grading</a>, the
+      <a href={withBase('/custom-concrete-driveways/')}>stamped concrete</a>, the
+      <a href={withBase('/stonework/')}>stonework</a> and the
+      <a href={withBase('/fireplaces-and-barbecues/')}>outdoor kitchen</a> were
+      one job rather than four contractors, which is the reason the driveway, the
+      sidewalk accents and the wall line all resolve against each other.
+    </p>
+  </article>
+
+  {
+    sections.map((section, si) => (
+      <section id={section.id} class="mx-auto max-w-7xl px-4 py-12 sm:px-6">
+        <div class="mx-auto max-w-3xl prose-cpf">
+          <h2>{section.heading}</h2>
+          <p>{section.body}</p>
+        </div>
+
+        <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {section.images.map((asset, i) => (
+            <li>
+              <Img
+                asset={asset}
+                displayW={500}
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                label={`Dos Vientos ${section.id} ${i}`}
+                lightbox
+                imgClass="aspect-[3/2] w-full object-cover"
+              />
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+
+  <article class="mx-auto max-w-3xl px-4 pb-16 sm:px-6 prose-cpf">
+    <p>
+      This CPF Masonry remodel gave the home its own identity in the
+      neighborhood. The attention to detail in the design took a solid house and
+      made it an extraordinary home.
+    </p>
+  </article>
+
+  <CtaBand
+    heading="Schedule an estimate"
+    body="Contact us to schedule an estimate and discuss how we can accommodate your needs."
+  />
+</Layout>

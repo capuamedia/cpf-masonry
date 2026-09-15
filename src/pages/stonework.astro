@@ -1,0 +1,106 @@
+---
+/**
+ * Legacy URL: /stonework/ (WP page ID 45).
+ *
+ * The rubble-versus-ashlar explanation is the owner's own copy from the
+ * recovered page, kept close to verbatim. It is the best writing on the old
+ * site — genuinely useful, specific, and the kind of thing that earns a page
+ * its rankings honestly — so it is preserved rather than paraphrased.
+ */
+import ServiceLayout from '../layouts/ServiceLayout.astro';
+import { A } from '../lib/assets';
+import { withBase } from '../lib/urls';
+
+const showcase = [
+  { asset: A.customStoneWallLinedDriveway,
+    caption: 'Custom stone wall lining a driveway, Agoura Hills.' },
+  { asset: A.paversAndStoneVeneer,
+    caption: 'Pavers and stone veneer meeting at the porch.' },
+  { asset: A.gardenWallStoneVeneerAndPorchClose,
+    caption: 'Garden wall, stone veneer and porch, close in on the joint work.' },
+  { asset: A.cpfStoneMailbox,
+    caption: 'Custom stone mailbox pillar built to match the house.' },
+  { asset: A.stoneWalkwayWaterFeatureVeneerAndMore,
+    caption: 'Stone walkway, water feature and veneer on a single property.' },
+  { asset: A.porchWithPaversAndStoneVeneer,
+    caption: 'Porch with pavers and stone veneer, Thousand Oaks.' },
+];
+
+const gallery = [
+  A.stoneRetainingWallAndStampedConcreteDriveway,
+  A.customStoneworkVeneerAndGardenWall,
+  A.stoneDrivewayWall,
+  A.cpfCustomDrivewayAndStoneWalls,
+  A.customConcreteDrivewayWithStoneSidewalkFeatures,
+  A.stoneRetainingWallAndCustomConcreteDriveway,
+  A.sidewalkFeaturesWithStampedConcreteAndStone,
+  A.sidewalkFeaturesWithStampedConcreteAndStone2,
+  A.retainingWallWithCreativeStoneFeatures,
+  A.closeUpWallWithCreativeStoneFeatures,
+  A.customStoneWallsAndVeneerFeatures,
+  A.stampedConcreteDrivewayAndCustomStoneRetaining,
+];
+---
+
+<ServiceLayout
+  title="Custom Stonework"
+  eyebrow="Stonework"
+  intro="CPF specializes in custom stonework and stonemasonry features for your home or commercial space. Whatever your idea, we will make it a reality — and we offer design and conceptual drawings for upcoming projects."
+  description="Custom stonework and stonemasonry in Thousand Oaks, Newbury Park and Agoura Hills: stone veneer, retaining and garden walls, stone walkways, pillars and water features. Rubble and ashlar masonry since 1993. CA License #878989, C-29 / C-8."
+  headerAsset={A.customStoneWallLinedDriveway}
+  serviceName="Custom stonework and stonemasonry"
+  showcase={showcase}
+  gallery={gallery}
+  galleryHeading="Recent stonework in Thousand Oaks, Newbury Park and Agoura Hills"
+>
+  <h2>Whatever your idea, we will make it a reality</h2>
+  <p>
+    Here at CPF, we specialize in custom stonework and stonemasonry features for
+    your home or commercial space. We also offer design and conceptual drawings
+    for your upcoming projects. Below you will find some of our recent custom
+    stonework in Thousand Oaks, Newbury Park and Agoura Hills.
+  </p>
+
+  <h2>Rubble masonry and ashlar masonry</h2>
+  <p>
+    Custom stonework, also known as stonemasonry, has been around since the
+    human race first began using tools. Stonework can be divided into two main
+    category types: <strong>rubble masonry</strong> and <strong>ashlar
+    masonry</strong>. Rubble masonry is the art of using roughly dressed stones
+    and mortar, whereas ashlar masonry is that of using cut — neatly dressed —
+    stones and mortar to build features.
+  </p>
+  <p>
+    Some of the features you will commonly find are stone walkways, retaining
+    walls, garden walls and stone veneer. Stone veneer is a beautiful
+    alternative to traditional siding on a home: it can drastically improve the
+    home's aesthetic character for a reasonably low investment of time and
+    money.
+  </p>
+  <p>
+    We at CPF have hundreds of jobs under our belts for each type of stonework.
+    Pat Flaherty, founder of CPF Masonry, has been driving stonemasonry projects
+    of all sizes from concept to completion in Southern California since 1993,
+    and is your go-to resource for your next project.
+  </p>
+
+  <h3>Where stone meets everything else</h3>
+  <p>
+    Very little stonework stands on its own. A stone-faced retaining wall is
+    holding back real earth and needs the footing and drainage of a
+    <a href={withBase('/masonry/')}>structural wall</a>; sidewalk and driveway
+    features get poured with the
+    <a href={withBase('/custom-concrete-driveways/')}>concrete work</a>. The
+    <a href={withBase('/featured-project-dos-vientos-villa/')}>Dos Vientos Villa</a>
+    project is most of this page in one address.
+  </p>
+
+  <h2>Owner supervised, fully insured</h2>
+  <p>
+    Stonework is judged at arm's length for the life of the house — the joints
+    and the stone selection are the craft, and neither is recoverable after the
+    mortar sets. <strong>Each project is owner supervised</strong>, and CPF is
+    <strong>licensed, insured and bonded</strong> under C-29 masonry and C-8
+    concrete.
+  </p>
+</ServiceLayout>

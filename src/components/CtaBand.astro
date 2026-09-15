@@ -6,9 +6,14 @@ interface Props {
   heading?: string;
   body?: string;
 }
+/*
+ * Defaults are the owner's own CTA from the recovered site, which closed every
+ * page with it. The previous default — "Get a date, not a maybe" — was the
+ * guaranteed-completion-date angle he rejected, restated as a headline.
+ */
 const {
-  heading = 'Get a date, not a maybe',
-  body = 'Tell us what you are building and where. You will get a straight answer on scope, price and when it will be finished.',
+  heading = 'Schedule an estimate',
+  body = 'Contact us to schedule an estimate and discuss how we can accommodate your needs. Tell us what you are building and where, and you will get a straight answer on scope and price.',
 } = Astro.props;
 ---
 

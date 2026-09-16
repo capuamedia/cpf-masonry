@@ -11,8 +11,27 @@
  * never goes stale.
  */
 import ServiceLayout from '../layouts/ServiceLayout.astro';
+import Img from '../components/Img.astro';
 import { A } from '../lib/assets';
 import { withBase } from '../lib/urls';
+
+/*
+  The lit tops get a band of their own rather than a slot in the gallery grid.
+  Two reasons. The photographs are 95% black, so dropped into the white
+  showcase grid they read as underexposed mistakes; on black they read as the
+  product. And the owner rates this as the thing that sells the trade, which a
+  thumbnail in row three does not say.
+*/
+const lit = [
+  {
+    asset: A.fiberOpticConcreteCountertopLitAtNight,
+    caption: 'Lights down: the slab holds the whole room.',
+  },
+  {
+    asset: A.colorChangingFiberOpticConcreteCountertop,
+    caption: 'Three colors running at once across one top.',
+  },
+];
 
 const showcase = [
   { asset: A.blackConcreteCountertops,
@@ -43,13 +62,61 @@ const gallery = [
   title="Concrete Countertops"
   eyebrow="Custom Concrete"
   intro="Most people are only now hearing about concrete as an option for countertops. CPF has been building them from scratch since long before they became the new trend in modern luxury."
-  description="Custom concrete countertops in Thousand Oaks, Newbury Park and Ventura County: cast kitchen counters, polished finishes, outdoor barbecue and fire-feature tops. Building them from scratch since 1991. CA License #878989, C-29 / C-8."
+  description="Custom concrete countertops in Thousand Oaks, Newbury Park and Ventura County: cast kitchen counters, polished finishes, lit tops with the lights set into the slab, outdoor barbecue and fire-feature counters. Building them from scratch since 1991. CA License #878989, C-29 / C-8."
   headerAsset={A.blackConcreteCountertops}
   serviceName="Custom concrete countertop design and casting"
   showcase={showcase}
   gallery={gallery}
   galleryHeading="Kitchen, barbecue and fire-feature tops"
 >
+  <section slot="feature" class="bg-[#08080b] py-20">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6">
+      <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cpf-yellow">
+        Lights in the concrete
+      </p>
+      <h2 class="mt-3 max-w-2xl text-[var(--text-h2)] font-semibold uppercase text-white">
+        A countertop that turns into a night sky
+      </h2>
+      <hr class="rule-red mt-4" />
+
+      <div class="mt-6 grid gap-x-10 gap-y-4 lg:grid-cols-2">
+        <p class="text-lg leading-relaxed text-white/80">
+          Hundreds of individual points of light are set into the slab as it is
+          cast, not fixed underneath it afterwards. In daylight it is a polished
+          concrete counter and the lights are invisible. Turn the kitchen lights
+          off and the top is the only thing in the room.
+        </p>
+        <p class="text-lg leading-relaxed text-white/80">
+          The points are laid out in zones, so one top can run more than one
+          color at a time. Nothing about it is off-the-shelf — the layout, the
+          density and the colors are decided before a single pour, which is the
+          whole argument for a cast top over a quarried slab.
+        </p>
+      </div>
+
+      <ul class="mt-12 grid gap-6 lg:grid-cols-2 lg:gap-8">
+        {lit.map((item, i) => (
+          <li>
+            {/* Blue cast under the frame so the photograph reads as emitting
+                light rather than sitting in a hole cut out of the band. */}
+            <div class="shadow-[0_0_90px_-25px_rgba(60,105,255,0.75)]">
+              <Img
+                asset={item.asset}
+                displayW={620}
+                sizes="(max-width: 1024px) 100vw, 600px"
+                label={`lit countertop ${i}`}
+                lightbox
+                class="!bg-black ring-1 ring-white/10"
+                imgClass="aspect-[3/2] w-full object-cover"
+              />
+            </div>
+            <p class="mt-3 text-sm leading-relaxed text-white/60">{item.caption}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <h2>The sky is the limit</h2>
   <p>
     Rest assured that we at CPF have been building concrete countertops from

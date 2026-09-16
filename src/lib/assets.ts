@@ -10,7 +10,6 @@ import gbp06tex from '../assets/large/gbp-06-paving-texture.jpg';
 import y03 from '../assets/yelp-finished/yelp-03.jpg';
 import y04 from '../assets/yelp-finished/yelp-04.jpg';
 import y05 from '../assets/yelp-finished/yelp-05.jpg';
-import y08 from '../assets/yelp-finished/yelp-08.jpg';
 import y13 from '../assets/yelp-finished/yelp-13.jpg';
 import y14 from '../assets/yelp-finished/yelp-14.jpg';
 import y15 from '../assets/yelp-finished/yelp-15.jpg';
@@ -147,6 +146,8 @@ import cBlockRetainingWallBrickCapDriveway from '../assets/current/block-retaini
 import cBlockWallBrickCapRaisedPlanter from '../assets/current/block-wall-brick-cap-raised-planter.jpg';
 import cBrickEntryWalkwayCurvedPlanterWalls from '../assets/current/brick-entry-walkway-curved-planter-walls.jpg';
 import cCurvedStructuralRetainingWallFinishedFace from '../assets/current/curved-structural-retaining-wall-finished-face.jpg';
+import cColorChangingFiberOpticConcreteCountertop from '../assets/current/color-changing-fiber-optic-concrete-countertop.jpg';
+import cFiberOpticConcreteCountertopLitAtNight from '../assets/current/fiber-optic-concrete-countertop-lit-at-night.jpg';
 import cFlagstoneCappedSeatWallDetail from '../assets/current/flagstone-capped-seat-wall-detail.jpg';
 import cFlagstonePatioBackyardDiningArea from '../assets/current/flagstone-patio-backyard-dining-area.jpg';
 import cFlagstonePatioNaturalStonePaving from '../assets/current/flagstone-patio-natural-stone-paving.jpg';
@@ -201,8 +202,6 @@ export const A = {
     'Landscaped water feature edged in stone with aquatic planting'),
   roseWalkway: a(y23,
     'Paver walkway running between beds of flowering roses to a side gate'),
-  gazeboLawn: a(y08,
-    'Gazebo on a lawn with a circular gravel bed and a brick paver path'),
   herringboneClose: a(y13,
     'Red brick paving laid in a herringbone pattern, photographed close'),
   herringboneWet: a(y16,
@@ -472,6 +471,17 @@ export const A = {
     'Sandstone landing and flagstone path meeting a stacked-stone wall'),
   tallStructuralRetainingWallHillside: a(cTallStructuralRetainingWallHillside,
     'Structural retaining wall running the length of a hillside cut'),
+
+  /*
+    Fibre-optic tops, shot at night on a phone in a room with a lit doorway in
+    it. Both crops are the slab only, with the remaining room shaded off — the
+    concrete itself is untouched. They are the only photographs on the site of
+    the lit work, which the owner rates as the thing that sells the trade.
+  */
+  fiberOpticConcreteCountertopLitAtNight: a(cFiberOpticConcreteCountertopLitAtNight,
+    'Cast concrete countertop lit from inside the slab at night, hundreds of points of light reading as a field of blue and white stars'),
+  colorChangingFiberOpticConcreteCountertop: a(cColorChangingFiberOpticConcreteCountertop,
+    'Lit concrete countertop running three colors at once, green, blue and white points set into the polished slab'),
 
 } as const;
 

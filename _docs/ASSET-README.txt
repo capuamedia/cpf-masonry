@@ -28,7 +28,13 @@ source can carry. THIS ORDERING IS THE POINT — see the build prompt.
                                JPEG q80-85. Cleaner encoding than the 678px set.
                                Strongest: yelp-27, 28, 29 (pool + patio),
                                yelp-30 (water feature), yelp-23 (paver walkway),
-                               yelp-08 (gazebo), yelp-13 / 16 (brick herringbone).
+                               yelp-13 / 16 (brick herringbone).
+                               yelp-08 (gazebo) was DELETED from the site on
+                               2026-09-15: the owner reads it as a before shot
+                               of brickwork CPF replaced, and no after frame of
+                               that job exists in any source pool, so it was
+                               pulled rather than left published as a finished
+                               job that invites the question.
 
 03-yelp-before-during/         11 before / in-progress shots — bare dirt, trenches,
                                half-built block walls. Not filler. Pair these with

@@ -46,6 +46,13 @@ const { title, eyebrow, intro, description, headerAsset, showcase, gallery, gall
     <slot />
   </article>
 
+  {/*
+    Optional full-bleed band between the prose and the showcase grid, for a page
+    that has one thing worth breaking the layout for. Pages that pass nothing
+    render nothing — no empty section, no stray padding.
+  */}
+  <slot name="feature" />
+
   {
     showcase.length > 0 && (
       <section class="mx-auto max-w-7xl px-4 pb-16 sm:px-6">

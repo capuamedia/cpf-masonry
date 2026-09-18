@@ -1,4 +1,4 @@
-# HANDOFF — cpf-masonry.com
+# HANDOFF — cpfmasonry.com
 
 **Written for an AI agent picking this project up.** If you started from the
 original build prompt, read this first: several of its assumptions no longer
@@ -14,7 +14,7 @@ hold. Facts here supersede the build prompt wherever they conflict.
 > | This doc says | Now |
 > |---|---|
 > | Publish `(805) 402-4211`; old numbers fail the build | **Publish `(805) 498-4852`** — the business line. 402-4211 is Pat's cell and appears on the contact page only. The audit guard is inverted. |
-> | Canonicals pin `cpf-masonry.com`; new domain, zero equity | **`cpfmasonry.com`** — the rebuild replaces the old site in place and inherits its indexing. `cpf-masonry.com` is dropped. |
+> | New domain, zero equity | **`cpfmasonry.com`** — recovered 2026-09-07. The rebuild replaces the old site in place and inherits its indexing. |
 > | Image resolution is the binding constraint (§4) | **Largely lifted.** 191 recovered originals, 48 of them at 1900–1920px. The tier system and the 500px display cap are being retired. |
 > | Email unknown (§7) | **`cpfman11@gmail.com`**, recovered from the live contact page. |
 >
@@ -30,10 +30,11 @@ deployed.
 
 ## 1. What this is
 
-A new website for **CPF Custom Concrete and Masonry**, a masonry/concrete
+A rebuilt website for **CPF Custom Concrete and Masonry**, a masonry/concrete
 contractor in Thousand Oaks, California. The original site at `cpfmasonry.com`
-was lost when the hosting account was suspended — this is a brand-new domain
-launch, **not** a migration, and there is no redirect from the old domain.
+went down when the hosting account was suspended; the domain was recovered on
+2026-09-07, so this rebuilds on it in place and keeps its indexing. Every
+legacy URL is preserved — see `REBUILD-PLAN-v2.md` section 6.
 
 Every photograph on the site was salvaged from Google's cache, Yelp, the Google
 Business Profile and Instagram. **Image resolution is the binding constraint on
@@ -48,7 +49,7 @@ the entire design** and is enforced in code — see §4.
 | Working dir | `C:\Users\mgiod\Projects\cpf-masonry` |
 | Repo | `github.com/capuamedia/cpf-masonry` (**public**) |
 | Live demo | `https://capuamedia.github.io/cpf-masonry/` (noindexed) |
-| Production | `https://cpf-masonry.com` — **not launched yet** |
+| Production | `https://cpfmasonry.com` — **not cut over yet**, still serving the old WordPress install |
 | Local dev | `npm run dev` → `http://localhost:4321` |
 
 ### Commands
@@ -151,10 +152,10 @@ text written from the contact sheets in `_docs/` describing the actual work
 - **`github-pages`** → `base: '/cpf-masonry'`, sitemap off, `noindex`,
   `robots.txt` = `Disallow: /`
 
-**Canonicals always point at `https://cpf-masonry.com`, from every target.** The
-new domain starts with zero search equity; a `github.io` copy competing for the
-brand name would actively hurt it. Three independent guards keep the demo out of
-the index: generated `robots.txt`, `noindex` meta, and pinned canonicals.
+**Canonicals always point at `https://cpfmasonry.com`, from every target.** A
+`github.io` copy competing with the real site for its own brand name would
+actively hurt it. Three independent guards keep the demo out of the index:
+generated `robots.txt`, `noindex` meta, and pinned canonicals.
 
 **Every internal link must go through `withBase()`** from `src/lib/urls.ts`, or
 it 404s on the demo subpath while working fine locally. Canonicals must use

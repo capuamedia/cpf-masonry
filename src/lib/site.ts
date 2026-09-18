@@ -5,8 +5,8 @@
  *
  * This is NOT a new-domain launch. The site carries twenty years of indexing
  * and every legacy URL is preserved (see REBUILD-PLAN-v2 section 6), so the
- * rebuild inherits that equity rather than starting from zero. The interim
- * cpf-masonry.com domain has been dropped.
+ * rebuild inherits that equity rather than starting from zero. This is the one
+ * production domain; there is no second one.
  */
 export const SITE_URL = 'https://cpfmasonry.com';
 

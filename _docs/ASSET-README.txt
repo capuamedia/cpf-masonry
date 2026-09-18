@@ -1,5 +1,5 @@
 CPF Custom Concrete and Masonry — complete recovered asset set
-Assembled 2026-09-01.  New site: cpf-masonry.com
+Assembled 2026-09-01.  Site: cpfmasonry.com
 
 Everything below was salvaged after the original cpfmasonry.com hosting
 account was suspended. Folders are ordered by how much resolution each

@@ -153,20 +153,21 @@ but shows completed work.
 > **Now live on the site:** trading since **1991**, and the arithmetic
 > (35 years) is computed at build time so it stays current. It appears in the
 > hero, the trust strip, the About page headline, the footer and the
-> `foundingDate` structured data. For a brand-new domain with no search history,
-> this is the strongest single trust signal available — and unlike a review
-> count, a visitor can verify it against the CSLB license record.
+> `foundingDate` structured data. It is the strongest single trust signal
+> available — and unlike a review count, a visitor can verify it against the
+> CSLB license record.
 
 
-Do this **at launch, the same day**. Section 8 of the brief is right: the old
-domain is gone and its search equity is not recoverable, so cpf-masonry.com
-starts from zero. These three listings are the fastest route back.
+Do this **at cutover, the same day**. cpfmasonry.com was recovered on
+2026-09-07 and the rebuild replaces the old site in place, so the indexing
+survives — but the listings below still disagree with the site on at least one
+field each, and that inconsistency is its own ranking problem.
 
 **Three separate corrections have accumulated. Do them in one pass per listing:**
 
 | | Google Business Profile | Yelp | Houzz |
 |---|---|---|---|
-| Website URL → cpf-masonry.com | needed | needed | needed |
+| Website URL → cpfmasonry.com | needed | needed | needed |
 | Phone → (805) 402-4211 | needed | needed | needed |
 | Address → 1210 Calle Tulipan, Thousand Oaks 91360 | needed | already correct | check |
 
@@ -175,7 +176,7 @@ and right now all three fields disagree with the site on at least one listing.
 The phone is the most urgent of the three — a wrong address costs a visit, a
 wrong number costs the enquiry entirely.
 
-1. **Google Business Profile → cpf-masonry.com.** Highest value single action on
+1. **Google Business Profile → cpfmasonry.com.** Highest value single action on
    this list. It is a direct authoritative signal and it feeds the local pack.
    **Fix the address in the same visit** — it still shows the old Newbury Park
    one (item 8). Two corrections, one login, and access is currently blocked, so
@@ -183,25 +184,28 @@ wrong number costs the enquiry entirely.
 2. **Yelp** — the listing already outranks the dead site for the brand name.
 3. **Houzz** — same, and check which phone number it shows while you are in there
    (see item 1).
-4. **Search Console** — add cpf-masonry.com and submit
-   `https://cpf-masonry.com/sitemap-index.xml` on day one.
+4. **Search Console** — add cpfmasonry.com and submit
+   `https://cpfmasonry.com/sitemap-index.xml` on day one.
 
 ---
 
-## 6. Check whether cpfmasonry.com can be re-registered
+## 6. cpfmasonry.com — RESOLVED, recovered 2026-09-07
 
-Worth ten minutes before assuming it is gone. **The hosting account was
-suspended — that is not the same as the domain registration lapsing.**
+The hosting account had been suspended; the domain registration had not lapsed.
+It is back, and it is the only domain this project uses. There is no second
+domain and no 301 bridge to build.
 
-- Run a WHOIS on `cpfmasonry.com` and look at the expiry date and registrar.
-- If it is still registered to the business, it may just need the registrar
-  login — no purchase at all.
-- If it has lapsed and is buyable, buying it back and 301-redirecting every URL
-  to cpf-masonry.com would recover most of the lost equity for the price of a
-  domain. That is the cheapest SEO available here by a wide margin.
-- Old URLs worth redirecting are listed in `_docs/_SITE-STRUCTURE.txt`
-  (`/masonry/`, `/custom-concrete/`, `/services/`, `/contact-us/`, and the two
-  featured-project pages).
+What that changes:
+
+- The rebuild goes onto cpfmasonry.com **in place**, inheriting the indexing
+  rather than starting from zero.
+- Every legacy URL must keep working. They are listed in
+  `_docs/_SITE-STRUCTURE.txt` (`/masonry/`, `/custom-concrete/`, `/services/`,
+  `/contact-us/`, and the two featured-project pages) and the rebuild already
+  matches them — see `REBUILD-PLAN-v2.md` section 6.
+- **Still outstanding:** the domain serves the old WordPress install to this
+  day (checked 2026-09-17). Cutting it over to the Astro build is the open
+  task; until then the rebuild is visible only at the noindexed demo URL.
 
 ---
 

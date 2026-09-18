@@ -5,29 +5,47 @@ Two targets, deliberately asymmetric.
 | | Demo / review | Production |
 |---|---|---|
 | Host | GitHub Pages | Cloudflare Pages |
-| URL | `capuamedia.github.io/cpf-masonry/` | `cpf-masonry.com` |
-| Trigger | push to `main` (Actions) | push to `main` (Cloudflare) |
+| URL | `capuamedia.github.io/cpf-masonry/` | `cpfmasonry.com` |
+| Trigger | **`npm run deploy:demo`, by hand** | not cut over yet |
 | Base path | `/cpf-masonry` | `/` |
 | Indexable | **No** — `Disallow: /` + `noindex` | Yes |
 | Sitemap | not generated | `/sitemap-index.xml` |
 
+> **Nothing here deploys on push.** Pushing to `main` updates the source and
+> changes no published page. The demo goes out only when someone runs
+> `npm run deploy:demo`, which force-pushes `dist/` to the `gh-pages` branch.
+> The Actions workflow that *would* make it automatic is parked, inactive, at
+> `deploy/github-pages.yml` — see below.
+>
+> As of 2026-09-17 `cpfmasonry.com` is still served by the old WordPress
+> install. The Astro build is published only to the noindexed demo URL;
+> cutting the domain over to Cloudflare Pages has not been done.
+
 ## Why the demo is noindexed
 
-cpf-masonry.com is a brand-new domain. The old cpfmasonry.com was suspended and
-its search equity is not recoverable, so the new domain starts from zero
-(build brief section 8). A `github.io` copy of the same content ranking for
-"CPF masonry" would compete with the real site for its own brand name.
+cpfmasonry.com was recovered on 2026-09-07 and the rebuild replaces the old
+site in place, so it inherits twenty years of indexing rather than starting
+from zero. A `github.io` copy of the same content ranking for "CPF masonry"
+would compete with the real site for its own brand name.
 
 Three independent guards, so no single mistake exposes the demo:
 
 1. `src/pages/robots.txt.ts` emits `Disallow: /` when `DEPLOY_TARGET=github-pages`.
 2. The layout emits `<meta name="robots" content="noindex,nofollow">` on the same flag.
-3. Canonical tags point at `https://cpf-masonry.com` from **every** build.
+3. Canonical tags point at `https://cpfmasonry.com` from **every** build.
 
-## GitHub Pages — one-time setup
+## GitHub Pages — how it publishes today
 
-Settings → Pages → Source → **GitHub Actions**. Nothing else; the workflow at
-`.github/workflows/deploy-pages.yml` handles the rest.
+Pages serves the `gh-pages` branch, and `npm run deploy:demo` (see
+`tools/deploy-demo.mjs`) builds with the demo flags and force-pushes `dist/`
+there. No OAuth `workflow` scope needed, which is the whole reason it exists.
+Pages takes 60–90s to rebuild after the push.
+
+**To make it automatic instead**, which is the better setup:
+
+1. `gh auth refresh -h github.com -s workflow` (needs a human at a terminal)
+2. move `deploy/github-pages.yml` to `.github/workflows/`
+3. Settings → Pages → Source → **GitHub Actions**
 
 The base path is derived from `GITHUB_REPOSITORY` at build time, not hardcoded.
 If the repo is ever renamed, the demo URL follows automatically.

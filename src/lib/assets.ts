@@ -477,11 +477,13 @@ export const A = {
     it. Both crops are the slab only, with the remaining room shaded off — the
     concrete itself is untouched. They are the only photographs on the site of
     the lit work, which the owner rates as the thing that sells the trade.
+
+    Owner-confirmed fiber optic on 2026-09-18, so the copy names it outright.
   */
   fiberOpticConcreteCountertopLitAtNight: a(cFiberOpticConcreteCountertopLitAtNight,
-    'Cast concrete countertop lit from inside the slab at night, hundreds of points of light reading as a field of blue and white stars'),
+    'Fiber-optic concrete countertop lit at night, hundreds of fiber ends cast into the slab reading as a field of blue and white stars'),
   colorChangingFiberOpticConcreteCountertop: a(cColorChangingFiberOpticConcreteCountertop,
-    'Lit concrete countertop running three colors at once, green, blue and white points set into the polished slab'),
+    'Fiber-optic concrete countertop running three colors at once, green, blue and white zones set into the polished slab'),
 
 } as const;
 

@@ -5,39 +5,33 @@ Items 1–6 were requested in the build brief; 7–10 came up during the build.
 
 ---
 
-## 1. Confirm the email address and which phone number is current
+## 1. The published number and email — both RESOLVED
 
-**Email is not published anywhere on the site.** Google's index preserved only a
-fragment ending `11@GMAIL.COM`, and a guessed address on a contractor's site is
-worse than none — enquiries would vanish silently and the sender would think they
-had made contact.
+**Email: `cpfman11@gmail.com`**, recovered from the live contact page on
+2026-09-15 and set in `src/lib/site.ts` → `BUSINESS.email`. The footer and
+contact page branch on it and show it automatically. Nothing to do.
 
-- Set it in `src/lib/site.ts` → `BUSINESS.email`. The footer and contact page
-  already branch on it and will start showing it automatically.
+**Phone: `(805) 498-4852` is the standard**, confirmed by the user on
+2026-09-19. It is the business line, it is what the listings already carry, and
+it is published sitewide.
 
-**The phone number is settled. The listings are not.**
-
-Current number, confirmed by the owner 2026-09-01 and published sitewide:
-**(805) 402-4211**.
-
-| Number | Where it still appears | Action |
+| Number | What it is | Rule |
 |---|---|---|
-| **(805) 402-4211** | this website | correct — nothing to do |
-| (805) 498-4852 | Google Business Profile, Yelp, Houzz | **superseded — replace** |
-| (805) 496-3766 | Houzz | **superseded — replace** |
+| **(805) 498-4852** | the business line | **the one published number**, everywhere |
+| (805) 402-4211 | Pat's direct cell | contact page **only** — never a second NAP number |
+| (805) 885-8269 / 496-3766 / 214-1705 | genuinely dead | `phoneFormer`; the build fails if any reappears |
 
-Every listing on the web currently points at a number the business no longer
-uses. That is worse than a stale address: an address sends someone to the wrong
-street, a dead phone number loses the enquiry outright, and paid or organic
-traffic that finds CPF through the local pack will hit the old line first.
+> **This reverses an earlier note in this file** that had 402-4211 as the
+> published number and 498-4852 as superseded. That was wrong and is what the
+> listings pass in section 5 was built on — do not restore it from `HANDOFF.md`
+> or from any older draft.
 
-Both superseded numbers are recorded in `src/lib/site.ts` as `phoneFormer`, and
-`tools/audit.mjs` now **fails the build** if either reappears anywhere in the
-output — so a stale number cannot creep back in from an old listing or a
-copy-paste. Verified: reinstating the old number breaks the build on all ten
-pages.
+`tools/audit.mjs` enforces both halves: it fails the build if a dead number
+appears anywhere, and if the cell appears on any route other than
+`/contact-us/`. Two published numbers split the name-address-phone signal,
+which is a direct local ranking input.
 
-To change the number again, edit `BUSINESS.phone` and `BUSINESS.phoneHref` in
+To change the number later, edit `BUSINESS.phone` and `BUSINESS.phoneHref` in
 `src/lib/site.ts`. Nothing else hardcodes it.
 
 ---
@@ -200,13 +194,14 @@ field each, and that inconsistency is its own ranking problem.
 | | Google Business Profile | Yelp | Houzz |
 |---|---|---|---|
 | Website URL → cpfmasonry.com | needed | needed | needed |
-| Phone → (805) 402-4211 | needed | needed | needed |
+| Phone → (805) 498-4852 | check | check | check |
 | Address → 1210 Calle Tulipan, Thousand Oaks 91360 | needed | already correct | check |
 
-Consistent name/address/phone across the web is a direct local ranking factor,
-and right now all three fields disagree with the site on at least one listing.
-The phone is the most urgent of the three — a wrong address costs a visit, a
-wrong number costs the enquiry entirely.
+Consistent name/address/phone across the web is a direct local ranking factor.
+The phone is likely already correct on all three — (805) 498-4852 is what the
+listings carry and, as of 2026-09-19, what the site publishes — so this is a
+verification pass on that field, not a rewrite. The URL and the address are the
+two that actually need changing.
 
 1. **Google Business Profile → cpfmasonry.com.** Highest value single action on
    this list. It is a direct authoritative signal and it feeds the local pack.
@@ -214,8 +209,8 @@ wrong number costs the enquiry entirely.
    one (item 8). Two corrections, one login, and access is currently blocked, so
    this is the item to unblock first.
 2. **Yelp** — the listing already outranks the dead site for the brand name.
-3. **Houzz** — same, and check which phone number it shows while you are in there
-   (see item 1).
+3. **Houzz** — same, and check which phone number it shows while you are in
+   there. Houzz historically carried (805) 496-3766, which is dead.
 4. **Search Console** — add cpfmasonry.com and submit
    `https://cpfmasonry.com/sitemap-index.xml` on day one.
 

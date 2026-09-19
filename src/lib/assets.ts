@@ -334,29 +334,35 @@ export const A = {
 
   // ---- concrete-countertops ----
   blackConcreteCountertops: a(r_blackConcreteCountertops,
-    "Black Concrete Countertops"),
+    'Black cast concrete countertop with a hand-chiseled rock-face edge, running along a stucco wall'),
   blackConcreteCountertopsWithBarbecue: a(r_blackConcreteCountertopsWithBarbecue,
-    "Black Concrete Countertops with Barbecue"),
+    'The same black concrete counter carried past a built-in stainless barbecue, block wall and paver patio behind'),
   kitchenConcreteCountertopsReadyForSinkInstall: a(r_kitchenConcreteCountertopsReadyForSinkInstall,
-    "Kitchen Concrete Countertops Ready for Sink Install"),
+    'Polished concrete countertop cast in place with its sink and appliance openings already formed'),
   concreteCountertopCloseup: a(r_concreteCountertopCloseup,
-    "Concrete Countertop Closeup"),
+    'Close on a concrete top polished to a wet look, the aggregate showing through the surface'),
   outdoorConcreteCountertopProgressShot2: a(r_outdoorConcreteCountertopProgressShot2,
-    "Outdoor Concrete Countertop Progress Shot 2"),
+    'The same freeform slab from the side, showing the cast edge profile and the polished glass aggregate'),
   outdoorConcreteCountertopProgressShot: a(r_outdoorConcreteCountertopProgressShot,
-    "Outdoor Concrete Countertop Progress Shot"),
+    'Freeform concrete countertop slab cast with colored glass aggregate, on site before it was set in place'),
   backyardCustomConcreteCountertopBarbecueSetup: a(r_backyardCustomConcreteCountertopBarbecueSetup,
-    "Backyard Custom Concrete Countertop Barbecue Setup"),
+    'L-shaped backyard kitchen counter in acid-stained concrete with an integrated sink, built-in grill and bar seating'),
   backyardConcreteCountertopFireFeature: a(r_backyardConcreteCountertopFireFeature,
-    "Backyard Concrete Countertop Fire Feature"),
+    'Backyard concrete counter with a fire trough cast into it and filled with fire glass, raised bar top behind'),
   closeupOutdoorConcreteCountertop: a(r_closeupOutdoorConcreteCountertop,
-    "Closeup Outdoor Concrete Countertop"),
+    'Long outdoor bar counter cast in concrete with exposed aggregate, set on a stacked stone base'),
   concreteKitchenCounterCloseup: a(r_concreteKitchenCounterCloseup,
-    "Concrete Kitchen Counter Closeup"),
+    'Corner of a concrete kitchen counter in an amber stain, fine aggregate showing in the finish'),
   backyardConcreteCountertopFireFeature2: a(r_backyardConcreteCountertopFireFeature2,
-    "Backyard Concrete Countertop Fire Feature"),
-  polishedStoneCountertops: a(r_polishedStoneCountertops,
-    "Polished Stone Countertops"),
+    'Close on the cast fire trough and the counter returns, copper-stained concrete over a tiled base'),
+  /*
+    NOT a concrete countertop — this is a flagstone bar top on a brick base, and
+    it sat in the concrete-countertops showcase under the filename's own title
+    until 2026-09-19. Renamed off that name so it cannot drift back there.
+    Stonework page if anywhere; the frame has a spray bottle in it.
+  */
+  flagstoneBarTop: a(r_polishedStoneCountertops,
+    'Outdoor bar counter topped with cut flagstone over a red brick base'),
 
   // ---- stonework ----
   cpfStoneMailbox: a(r_cpfStoneMailbox,

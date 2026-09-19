@@ -142,6 +142,7 @@ import cFlagstonePatioBackyardDiningArea from '../assets/current/flagstone-patio
 import cFlagstonePatioNaturalStonePaving from '../assets/current/flagstone-patio-natural-stone-paving.jpg';
 import cFlagstonePatioStepsAndSeatWall from '../assets/current/flagstone-patio-steps-and-seat-wall.jpg';
 import cHillsideBlockRetainingWallConstruction from '../assets/current/hillside-block-retaining-wall-construction.jpg';
+import cLedLitCurvedConcreteWalkway from '../assets/current/led-lit-curved-concrete-walkway.jpg';
 import cNaturalStoneStepsStackedStoneRetainingWall from '../assets/current/natural-stone-steps-stacked-stone-retaining-wall.jpg';
 import cReinforcedRetainingWallFootingAndDrainage from '../assets/current/reinforced-retaining-wall-footing-and-drainage.jpg';
 import cRiverRockFeatureWallBathroomStoneTile from '../assets/current/river-rock-feature-wall-bathroom-stone-tile.jpg';
@@ -434,6 +435,8 @@ export const A = {
     'Flagstone patio with stepped changes of level and a rendered seat wall'),
   hillsideBlockRetainingWallConstruction: a(cHillsideBlockRetainingWallConstruction,
     'Tall reinforced block retaining wall built into a hillside above a valley view'),
+  ledLitCurvedConcreteWalkway: a(cLedLitCurvedConcreteWalkway,
+    'Curved concrete walkway with lighting run under the edge, washing the path and the planted beds at dusk'),
   naturalStoneStepsStackedStoneRetainingWall: a(cNaturalStoneStepsStackedStoneRetainingWall,
     'Sandstone steps rising between curved stacked-stone retaining walls'),
   reinforcedRetainingWallFootingAndDrainage: a(cReinforcedRetainingWallFootingAndDrainage,

@@ -72,6 +72,38 @@ Drop new files into `src/assets/`, add them to `src/lib/assets.ts` with a real
 alt description, and raise the `displayW` at the call site. The build guard will
 tell you immediately if a slot asks for more than the file can carry.
 
+### Fiber-optic tops — what to shoot to earn a gallery
+
+There are exactly **two** photographs of the lit work, both of the same kitchen,
+both shot hand-held at night. They carry the band on the countertops page and
+they carry it well, but two frames of one job is not a gallery, and it is not
+enough to justify a feature on the homepage pointing at one.
+
+That is the plan once there are more: **a lit-work gallery of its own, with a
+homepage feature pointing into it.** Six to eight frames across at least two
+jobs would do it. What to bring back:
+
+- **Both states of the same top, from the same spot.** Lights on, then lights
+  off, tripod or phone braced on something so the framing does not shift. This
+  is the single most valuable shot on the list — it is the whole pitch in two
+  images, and there is currently no daylight frame of either lit top.
+- **Shoot at dusk, not in a blacked-out room.** A little ambient light keeps the
+  kitchen readable around the slab, so it reads as a countertop in a home rather
+  than an abstract. Both existing frames had to be cropped hard and shaded off
+  to hide a lit doorway.
+- **Brace the phone.** Both current frames are soft. Night mode on a modern
+  phone holds a 1–3 second exposure — anything resting on the counter edge or a
+  chair back beats hand-held, and sharp fiber ends are the entire subject.
+- **Get the edge and the corner in.** A frame that shows the slab edge, the
+  cabinet and the floor proves it is a countertop. Straight down at the surface
+  is a beautiful abstract and tells a buyer nothing.
+- **One frame per color state**, if the illuminators can be switched — the
+  three-color shot is the one that makes people realize it is configurable.
+- **Landscape, and leave room around the slab.** A homepage feature needs width.
+
+Do not clean up the room first at the cost of the shot; a real kitchen with a
+bowl on the counter sells better than a staged one. But move the power cords.
+
 ### Drone footage for the hero — what to bring back
 
 The homepage hero is flagged with a placeholder on the review build. A few

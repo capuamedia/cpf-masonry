@@ -149,6 +149,8 @@ import cBlockWallBrickCapRaisedPlanter from '../assets/current/block-wall-brick-
 import cBrickEntryWalkwayCurvedPlanterWalls from '../assets/current/brick-entry-walkway-curved-planter-walls.jpg';
 import cCurvedStructuralRetainingWallFinishedFace from '../assets/current/curved-structural-retaining-wall-finished-face.jpg';
 import cColorChangingFiberOpticConcreteCountertop from '../assets/current/color-changing-fiber-optic-concrete-countertop.jpg';
+import cFiberOpticConcreteCountertopDaylightEdge from '../assets/current/fiber-optic-concrete-countertop-daylight-edge.jpg';
+import cFiberOpticConcreteCountertopDaylightSurface from '../assets/current/fiber-optic-concrete-countertop-daylight-surface.jpg';
 import cFiberOpticConcreteCountertopLitAtNight from '../assets/current/fiber-optic-concrete-countertop-lit-at-night.jpg';
 import cFlagstoneCappedSeatWallDetail from '../assets/current/flagstone-capped-seat-wall-detail.jpg';
 import cFlagstonePatioBackyardDiningArea from '../assets/current/flagstone-patio-backyard-dining-area.jpg';
@@ -481,6 +483,10 @@ export const A = {
 
     Owner-confirmed fiber optic on 2026-09-18, so the copy names it outright.
   */
+  fiberOpticConcreteCountertopDaylightEdge: a(cFiberOpticConcreteCountertopDaylightEdge,
+    'Fiber-optic concrete countertop in daylight, lit points scattered across the polished gray slab above a chiseled rock-face edge and an oak cabinet'),
+  fiberOpticConcreteCountertopDaylightSurface: a(cFiberOpticConcreteCountertopDaylightSurface,
+    'Close on the polished concrete surface in daylight, exposed aggregate and lit fiber ends sitting flush in the finish'),
   fiberOpticConcreteCountertopLitAtNight: a(cFiberOpticConcreteCountertopLitAtNight,
     'Fiber-optic concrete countertop lit at night, hundreds of fiber ends cast into the slab reading as a field of blue and white stars'),
   colorChangingFiberOpticConcreteCountertop: a(cColorChangingFiberOpticConcreteCountertop,

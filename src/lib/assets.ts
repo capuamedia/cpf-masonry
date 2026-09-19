@@ -1,9 +1,9 @@
 import type { ImageMetadata } from 'astro';
 
 // -- recovered originals / GBP, 822-2322px ------------------------------------
-import gbp01 from '../assets/large/gbp-01-stone-entry.jpg';
-import gbp04 from '../assets/large/gbp-04-pergola-patio.jpg';
-import gbp05 from '../assets/large/gbp-05-brick-wall-railing.jpg';
+import gbp01 from '../assets/recovered/custom-stone-walls-and-veneer-features.jpg';
+import gbp04 from '../assets/recovered/dos-vientos-covered-patio-stone-pillars.jpg';
+import gbp05 from '../assets/large/brick-dugout-wall-steel-screen-baseball-field.jpg';
 import gbp06tex from '../assets/large/gbp-06-paving-texture.jpg';
 
 // -- Yelp finished work, 1000px long side -------------------------------------
@@ -40,25 +40,24 @@ import b22 from '../assets/yelp-before/yelp-22.jpg';
 import b24 from '../assets/yelp-before/yelp-24.jpg';
 
 // -- old-site salvage at 678px; superseded as the originals are reinstated -----
-import s01 from '../assets/site-photos/01-Dos-Vientos-Property-Retaining-Wall-and-Driveway.jpg';
+import s01 from '../assets/recovered/dos-vientos-stamped-concrete-driveway-stone-retaining-wall.jpg';
 import s02 from '../assets/site-photos/02-CPF-Backstop.jpg';
 import s03 from '../assets/site-photos/03-cpf-viewpoint-school-5.jpg';
-import s04 from '../assets/site-photos/04-cpf-custom-concrete-5.jpg';
-import s05 from '../assets/site-photos/05-Dos-Vientos-Property-Line-Retaining-Wall.jpg';
+import s04 from '../assets/recovered/oaks-mall-custom-concrete-sign.jpg';
+import s05 from '../assets/recovered/dos-vientos-stamped-driveway-stone-walls.jpg';
 import s06 from '../assets/site-photos/06-cpf-viewpoint-school-10.jpg';
-import s07 from '../assets/site-photos/07-CPF-Beautiful-Stamped-Concrete-Driveway.jpg';
+import s07 from '../assets/recovered/beautiful-stamped-concrete-driveway.jpg';
 import s08 from '../assets/site-photos/08-cpf-viewpoint-school-7.jpg';
 import s09 from '../assets/site-photos/09-outdoor-kitchen-fireplace-7.jpg';
 import s10 from '../assets/site-photos/10-outdoor-kitchen-fireplace-6.jpg';
-import s11 from '../assets/site-photos/11-cpf-custom-concrete-driveway-4.jpg';
-import s12 from '../assets/site-photos/12-cpf-custom-concrete-driveway-1.jpg';
+import s11 from '../assets/recovered/stamped-concrete-driveway-and-sidewalk-features.jpg';
+import s12 from '../assets/recovered/paver-driveway-with-custom-concrete-water-feature.jpg';
 import s13 from '../assets/site-photos/13-CPF-Shed.jpg';
 import s14 from '../assets/site-photos/14-outdoor-kitchen-fireplace-8.jpg';
 import s15 from '../assets/site-photos/15-CPF-Outfield-Wall.jpg';
 import s16 from '../assets/site-photos/16-outdoor-kitchen-fireplace-3.jpg';
 import s17 from '../assets/site-photos/17-CPF-Dugout-Front.jpg';
 import s18 from '../assets/site-photos/18-CPF-Dugout-Footer.jpg';
-import s19 from '../assets/site-photos/19-CPF-Dugout-Back.jpg';
 import sCounter from '../assets/site-photos/extra-IMG_0763.jpg';
 import sVilla from '../assets/site-photos/extra-cpf-stone-work-villa.jpg';
 import sSlab from '../assets/site-photos/extra-slider-cpf-concrete-counter.jpg';
@@ -69,20 +68,16 @@ import sSlab from '../assets/site-photos/extra-slider-cpf-concrete-counter.jpg';
 // Reinstated 2026-09-15 from the live site's media library. Alt text is the
 // owner's own wherever the old page markup carried it; the Dos Vientos and
 // excavation sets had none worth keeping and are described from the photographs.
-import r_beautifulStampedConcreteDriveway from '../assets/recovered/beautiful-stamped-concrete-driveway.jpg';
 import r_stampedConcreteWalkwayProgressShot from '../assets/recovered/stamped-concrete-walkway-progress-shot.jpg';
 import r_stampedConcreteProgressShot from '../assets/recovered/stamped-concrete-progress-shot.jpg';
-import r_paverDrivewayWithCustomConcreteWaterFeature from '../assets/recovered/paver-driveway-with-custom-concrete-water-feature.jpg';
 import r_paverDrivewayWithCustomConcretePillars from '../assets/recovered/paver-driveway-with-custom-concrete-pillars.jpg';
 import r_concreteDrivewayWithStoneRetainingWalls from '../assets/recovered/concrete-driveway-with-stone-retaining-walls.jpg';
-import r_stampedConcreteDrivewayAndSidewalkFeatures from '../assets/recovered/stamped-concrete-driveway-and-sidewalk-features.jpg';
 import r_stampedConcreteDrivewayWithStoneRetainingWall from '../assets/recovered/stamped-concrete-driveway-with-stone-retaining-wall.jpg';
 import r_stampedConcreteDrivewayAndRetainingWall from '../assets/recovered/stamped-concrete-driveway-and-retaining-wall.jpg';
 import r_cpfPaverDriveway from '../assets/recovered/cpf-paver-driveway.jpg';
 import r_customCommercialSignAtOaksMall from '../assets/recovered/custom-commercial-sign-at-oaks-mall.jpg';
 import r_concreteCommercialSignAtMonteVistaChurch from '../assets/recovered/concrete-commercial-sign-at-monte-vista-church.jpg';
 import r_newburyParkMonteVistaConcreteSign from '../assets/recovered/newbury-park-monte-vista-concrete-sign.jpg';
-import r_oaksMallCustomConcreteSign from '../assets/recovered/oaks-mall-custom-concrete-sign.jpg';
 import r_concreteAndStoneworkPoolProgressShot from '../assets/recovered/concrete-and-stonework-pool-progress-shot.jpg';
 import r_blackConcreteCountertops from '../assets/recovered/black-concrete-countertops.jpg';
 import r_blackConcreteCountertopsWithBarbecue from '../assets/recovered/black-concrete-countertops-with-barbecue.jpg';
@@ -106,14 +101,10 @@ import r_customStoneworkVeneerAndGardenWall from '../assets/recovered/custom-sto
 import r_stoneDrivewayWall from '../assets/recovered/stone-driveway-wall.jpg';
 import r_porchWithPaversAndStoneVeneer from '../assets/recovered/porch-with-pavers-and-stone-veneer.jpg';
 import r_stoneRetainingWallAndStampedConcreteDriveway from '../assets/recovered/stone-retaining-wall-and-stamped-concrete-driveway.jpg';
-import r_customConcreteDrivewayWithStoneSidewalkFeatures from '../assets/recovered/custom-concrete-driveway-with-stone-sidewalk-features.jpg';
-import r_stoneRetainingWallAndCustomConcreteDriveway from '../assets/recovered/stone-retaining-wall-and-custom-concrete-driveway.jpg';
 import r_sidewalkFeaturesWithStampedConcreteAndStone from '../assets/recovered/sidewalk-features-with-stamped-concrete-and-stone.jpg';
 import r_sidewalkFeaturesWithStampedConcreteAndStone2 from '../assets/recovered/sidewalk-features-with-stamped-concrete-and-stone-2.jpg';
 import r_retainingWallWithCreativeStoneFeatures from '../assets/recovered/retaining-wall-with-creative-stone-features.jpg';
 import r_closeUpWallWithCreativeStoneFeatures from '../assets/recovered/close-up-wall-with-creative-stone-features.jpg';
-import r_customStoneWallsAndVeneerFeatures from '../assets/recovered/custom-stone-walls-and-veneer-features.jpg';
-import r_stampedConcreteDrivewayAndCustomStoneRetaining from '../assets/recovered/stamped-concrete-driveway-and-custom-stone-retaining.jpg';
 import r_kubotaTrackLoaderOnSite from '../assets/recovered/kubota-track-loader-on-site.jpg';
 import r_excavatorAndLoaderStrippingFrontYard from '../assets/recovered/excavator-and-loader-stripping-front-yard.jpg';
 import r_trackLoaderCarryingSpoilFromTrench from '../assets/recovered/track-loader-carrying-spoil-from-trench.jpg';
@@ -126,8 +117,6 @@ import r_concreteStockpiledDuringDrivewayDemolition from '../assets/recovered/co
 import r_gradedSlopeWithCobbleDrainageCourse from '../assets/recovered/graded-slope-with-cobble-drainage-course.jpg';
 import r_excavatorLiftingBrokenConcreteSlabs from '../assets/recovered/excavator-lifting-broken-concrete-slabs.jpg';
 import r_barricadedDrivewayDemolitionSpoil from '../assets/recovered/barricaded-driveway-demolition-spoil.jpg';
-import r_dosVientosStampedDrivewayStoneWalls from '../assets/recovered/dos-vientos-stamped-driveway-stone-walls.jpg';
-import r_dosVientosCoveredPatioStonePillars from '../assets/recovered/dos-vientos-covered-patio-stone-pillars.jpg';
 import r_dosVientosPatioFountainSeating from '../assets/recovered/dos-vientos-patio-fountain-seating.jpg';
 import r_dosVientosPatioEnclosureAwning from '../assets/recovered/dos-vientos-patio-enclosure-awning.jpg';
 import r_dosVientosOutdoorKitchenTiledCounter from '../assets/recovered/dos-vientos-outdoor-kitchen-tiled-counter.jpg';
@@ -290,8 +279,6 @@ export const A = {
     'Front of the completed dugout with bench seating behind a perforated steel screen'),
   dugoutFooter: a(s18,
     'Poured concrete footing and brick base course of the dugout during construction'),
-  dugoutBack: a(s19,
-    'Rear elevation of the finished brick dugout with concrete steps and railing'),
   concreteCounter: a(sCounter,
     'Poured concrete outdoor kitchen counter with a stainless steel built-in'),
   stoneVilla: a(sVilla,
@@ -301,20 +288,14 @@ export const A = {
 
 
   // ---- custom-concrete-driveways ----
-  beautifulStampedConcreteDriveway: a(r_beautifulStampedConcreteDriveway,
-    "Beautiful Stamped Concrete Driveway"),
   stampedConcreteWalkwayProgressShot: a(r_stampedConcreteWalkwayProgressShot,
     "Stamped Concrete Walkway Progress Shot"),
   stampedConcreteProgressShot: a(r_stampedConcreteProgressShot,
     "Stamped Concrete Progress Shot"),
-  paverDrivewayWithCustomConcreteWaterFeature: a(r_paverDrivewayWithCustomConcreteWaterFeature,
-    "Paver Driveway with Custom Concrete Water Feature"),
   paverDrivewayWithCustomConcretePillars: a(r_paverDrivewayWithCustomConcretePillars,
     "Paver Driveway with Custom Concrete Pillars"),
   concreteDrivewayWithStoneRetainingWalls: a(r_concreteDrivewayWithStoneRetainingWalls,
     "Concrete Driveway with Stone Retaining Walls"),
-  stampedConcreteDrivewayAndSidewalkFeatures: a(r_stampedConcreteDrivewayAndSidewalkFeatures,
-    "Stamped Concrete Driveway and sidewalk features"),
   stampedConcreteDrivewayWithStoneRetainingWall: a(r_stampedConcreteDrivewayWithStoneRetainingWall,
     "Stamped Concrete Driveway with Stone Retaining Wall"),
   stampedConcreteDrivewayAndRetainingWall: a(r_stampedConcreteDrivewayAndRetainingWall,
@@ -327,8 +308,6 @@ export const A = {
     "Concrete Commercial Sign at Monte Vista Church"),
   newburyParkMonteVistaConcreteSign: a(r_newburyParkMonteVistaConcreteSign,
     "Newbury Park Monte Vista Concrete Sign"),
-  oaksMallCustomConcreteSign: a(r_oaksMallCustomConcreteSign,
-    "Oaks mall custom concrete sign"),
   concreteAndStoneworkPoolProgressShot: a(r_concreteAndStoneworkPoolProgressShot,
     "Concrete and Stonework Pool Progress Shot"),
 
@@ -385,10 +364,6 @@ export const A = {
     "Porch with Pavers and Stone Veneer in Thousand Oaks"),
   stoneRetainingWallAndStampedConcreteDriveway: a(r_stoneRetainingWallAndStampedConcreteDriveway,
     "Stone Retaining wall and Stamped Concrete Driveway in Newbury Park"),
-  customConcreteDrivewayWithStoneSidewalkFeatures: a(r_customConcreteDrivewayWithStoneSidewalkFeatures,
-    "Custom Concrete Driveway with Stone Sidewalk Features in Newbury Park"),
-  stoneRetainingWallAndCustomConcreteDriveway: a(r_stoneRetainingWallAndCustomConcreteDriveway,
-    "Stone Retaining Wall and Custom Concrete Driveway in Dos Vientos Newbury Park"),
   sidewalkFeaturesWithStampedConcreteAndStone: a(r_sidewalkFeaturesWithStampedConcreteAndStone,
     "Sidewalk Features with stamped concrete and stone"),
   sidewalkFeaturesWithStampedConcreteAndStone2: a(r_sidewalkFeaturesWithStampedConcreteAndStone2,
@@ -397,10 +372,6 @@ export const A = {
     "Retaining wall with Creative Stone Features in Dos Vientos Newbury Park"),
   closeUpWallWithCreativeStoneFeatures: a(r_closeUpWallWithCreativeStoneFeatures,
     "Close-up wall with Creative Stone Features in Dos Vientos Newbury Park"),
-  customStoneWallsAndVeneerFeatures: a(r_customStoneWallsAndVeneerFeatures,
-    "Custom Stone Walls and Veneer Features"),
-  stampedConcreteDrivewayAndCustomStoneRetaining: a(r_stampedConcreteDrivewayAndCustomStoneRetaining,
-    "Stamped Concrete Driveway and Custom Stone Retaining Wall"),
 
   // ---- grading-and-excavation ----
   kubotaTrackLoaderOnSite: a(r_kubotaTrackLoaderOnSite,
@@ -429,10 +400,6 @@ export const A = {
     "Barricaded driveway with demolition spoil awaiting haul-off"),
 
   // ---- dos-vientos-villa ----
-  dosVientosStampedDrivewayStoneWalls: a(r_dosVientosStampedDrivewayStoneWalls,
-    "Stamped concrete driveway edged with stacked stone retaining walls, rising to a wrought-iron entry gate"),
-  dosVientosCoveredPatioStonePillars: a(r_dosVientosCoveredPatioStonePillars,
-    "Covered patio on flagstone paving, enclosed by stone pillars under a retractable awning"),
   dosVientosPatioFountainSeating: a(r_dosVientosPatioFountainSeating,
     "Stone pillars framing a tiered fountain, with built-in sectional seating beneath the awning"),
   dosVientosPatioEnclosureAwning: a(r_dosVientosPatioEnclosureAwning,

@@ -26,30 +26,30 @@ import { withBase } from '../lib/urls';
 import { SITE_URL } from '../lib/site';
 
 const driveways = [
-  { asset: A.beautifulStampedConcreteDriveway,
-    caption: 'Stamped concrete driveway, colored and sealed, running the full width of the frontage.' },
   { asset: A.stampedConcreteDrivewayWithStoneRetainingWall,
     caption: 'Stamped driveway tied into a stone-faced retaining wall on the same job.' },
   { asset: A.paverDrivewayWithCustomConcretePillars,
     caption: 'Paver driveway framed by custom concrete pillars at the entry.' },
-  { asset: A.stampedConcreteDrivewayAndSidewalkFeatures,
-    caption: 'Sidewalk banding and borders poured as part of the driveway, not added afterwards.' },
-  { asset: A.paverDrivewayWithCustomConcreteWaterFeature,
-    caption: 'Paver driveway with an integrated custom concrete water feature.' },
-  { asset: A.concreteDrivewayWithStoneRetainingWalls,
-    caption: 'Driveway held by stone retaining walls where the grade falls away.' },
-  { asset: A.stampedDriveway,
-    caption: 'Stamped and colored driveway with a scored border, Conejo Valley.' },
   { asset: A.spanishDrive,
     caption: 'Poured driveway and flagstone walkway to a Spanish-style frontage.' },
+  { asset: A.fountainPavers,
+    caption: 'Paver motor court with a custom concrete water feature set into it.' },
+  { asset: A.concreteDrivewayWithStoneRetainingWalls,
+    caption: 'Driveway held by stone retaining walls where the grade falls away.' },
   { asset: A.dosVientosDrive,
     caption: 'Stamped driveway running beside a stone-faced retaining wall, Dos Vientos.' },
+  { asset: A.stoneRetainingWallAndStampedConcreteDriveway,
+    caption: 'Stamped driveway and stone retaining wall poured as one job, Newbury Park.' },
+  { asset: A.sidewalkFeaturesWithStampedConcreteAndStone,
+    caption: 'Sidewalk banding and borders poured as part of the driveway, not added afterwards.' },
   { asset: A.cpfPaverDriveway,
     caption: 'Paver driveway laid on a compacted base, borders cut to the curve.' },
   { asset: A.stampedConcreteDrivewayAndRetainingWall,
     caption: 'Driveway and retaining wall set out and poured as one sequence.' },
   { asset: A.curvedDrive,
     caption: 'Curved paver driveway sweeping in front of a residence.' },
+  { asset: A.paverDrive,
+    caption: 'Paver driveway with planted borders in front of a home.' },
 ];
 
 const flatwork = [
@@ -61,29 +61,31 @@ const flatwork = [
     caption: 'Herringbone paving with a damp finish, showing the clay color variation.' },
   { asset: A.curvedRoseWalk,
     caption: 'Curving paver walkway alongside rose beds leading to a side entry.' },
-  { asset: A.fountainPavers,
-    caption: 'Tiered fountain set into a paver surround with planted beds.' },
+  { asset: A.brickEntryWalkwayCurvedPlanterWalls,
+    caption: 'Brick entry walkway laid in herringbone between curved brick planter walls.' },
   { asset: A.potteryEntry,
     caption: 'Home entry with potted plants set over paver flooring.' },
+  { asset: A.fencedWalkway,
+    caption: 'Paver walkway with a black metal fence and a clipped hedge.' },
   { asset: A.driveApron,
     caption: 'Paved driveway apron and walkway at a residential garage.' },
   { asset: A.stampedConcreteWalkwayProgressShot,
     caption: 'Stamped walkway mid-pour — the stamp goes in during a window measured in minutes.' },
   { asset: A.stampedConcreteProgressShot,
     caption: 'Flatwork being finished before the stamp, with the joints already set out.' },
+  { asset: A.concreteAndStoneworkPoolProgressShot,
+    caption: 'Concrete and stonework around a pool deck, part-complete.' },
 ];
 
 const commercial = [
   { asset: A.customCommercialSignAtOaksMall,
     caption: 'Cast concrete monument sign at The Oaks, Thousand Oaks.' },
-  { asset: A.oaksMallCustomConcreteSign,
+  { asset: A.oaksMonument,
     caption: 'The same monument from the approach, set into its planted surround.' },
   { asset: A.concreteCommercialSignAtMonteVistaChurch,
     caption: 'Commercial concrete signage for Monte Vista, Newbury Park.' },
   { asset: A.newburyParkMonteVistaConcreteSign,
     caption: 'The Monte Vista sign in its finished landscaping.' },
-  { asset: A.concreteAndStoneworkPoolProgressShot,
-    caption: 'Concrete and stonework around a pool, part-complete.' },
 ];
 
 const description =
@@ -110,7 +112,7 @@ const description =
     eyebrow="Concrete"
     title="Custom & Stamped Concrete"
     intro="Stamped and colored concrete driveways, paver driveways, patios, walkways and commercial flatwork — poured across Newbury Park, Thousand Oaks and the wider Conejo Valley."
-    asset={A.beautifulStampedConcreteDriveway}
+    asset={A.stampedDriveway}
   />
 
   <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">

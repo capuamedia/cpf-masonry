@@ -107,7 +107,14 @@ const gallery = [
                 label={`lit countertop ${i}`}
                 lightbox
                 class="!bg-black ring-1 ring-white/10"
-                imgClass="aspect-[3/2] w-full object-cover"
+                {/*
+                  Natural aspect, not the 3:2 object-cover the rest of the site
+                  uses. These two are framed wide on purpose so the slab edge,
+                  the timber base and the stone veneer stay in shot — cropping
+                  them back to 3:2 throws away exactly the context that tells a
+                  viewer this is a countertop rather than an abstract.
+                */}
+                imgClass="w-full h-auto"
               />
             </div>
             <p class="mt-3 text-sm leading-relaxed text-white/60">{item.caption}</p>

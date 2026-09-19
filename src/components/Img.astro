@@ -8,7 +8,7 @@
  */
 import { Picture } from 'astro:assets';
 import type { Asset } from '../lib/assets';
-import { plan, canLightbox } from '../lib/images';
+import { plan } from '../lib/images';
 
 interface Props {
   asset: Asset;
@@ -21,7 +21,7 @@ interface Props {
   class?: string;
   /** Hero only — everything else stays lazy. */
   eager?: boolean;
-  /** Opt in to click-to-enlarge. Ignored for sources too small to be worth it. */
+  /** Opt in to click-to-enlarge. */
   lightbox?: boolean;
   /** Tailwind aspect/object classes applied to the <img> itself. */
   imgClass?: string;
@@ -39,7 +39,7 @@ const {
 } = Astro.props;
 
 const widths = plan(asset.img, displayW, label, asset.maxDisplay);
-const enlargeable = lightbox && canLightbox(asset.img);
+const enlargeable = lightbox;
 ---
 
 {

@@ -1,0 +1,52 @@
+---
+/**
+ * A headed band of photographs.
+ *
+ * Exists because consolidating two service pages into one means the page can
+ * no longer be "prose, then every photograph in a single grid". A visitor who
+ * arrives searching for a driveway has to land on a heading that says driveway
+ * and see driveway work under it, and a search engine has to be able to tell
+ * the sections apart. So each topic gets its own H2, its own anchor and its
+ * own photographs.
+ *
+ * `id` is what makes the heading linkable from elsewhere on the site — keep it
+ * stable, it is a public URL fragment the moment anyone links to it.
+ */
+import Img from './Img.astro';
+import type { Asset } from '../lib/assets';
+
+interface Props {
+  id: string;
+  heading: string;
+  lede?: string;
+  items: { asset: Asset; caption: string }[];
+  /** Alternate the ground so consecutive sections read as separate blocks. */
+  tone?: 'ground' | 'surface';
+}
+
+const { id, heading, lede, items, tone = 'ground' } = Astro.props;
+---
+
+<section id={id} class={`scroll-mt-24 border-t border-line py-16 ${tone === 'surface' ? 'bg-surface' : ''}`}>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <h2 class="text-[var(--text-h2)] font-semibold uppercase">{heading}</h2>
+    <hr class="rule-red mt-4" />
+    {lede && <p class="mt-5 max-w-2xl text-lg leading-relaxed text-ink-soft">{lede}</p>}
+
+    <ul class="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      {items.map((item, i) => (
+        <li>
+          <Img
+            asset={item.asset}
+            displayW={500}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            label={`${id} ${i}`}
+            lightbox
+            imgClass="aspect-[3/2] w-full object-cover"
+          />
+          <p class="mt-3 text-sm leading-relaxed text-muted">{item.caption}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

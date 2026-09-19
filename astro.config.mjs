@@ -45,7 +45,15 @@ export default defineConfig({
   build: { format: 'directory' },
 
   // The demo build is noindexed, so keep it out of the sitemap entirely.
-  integrations: isGitHubPages ? [] : [sitemap()],
+  integrations: isGitHubPages ? [] : [sitemap({
+      /*
+        Retired URLs stay reachable and keep their canonical pointing at the
+        page that replaced them, but they must not be advertised for indexing —
+        submitting a URL that immediately redirects asks Google to crawl a page
+        we are telling it not to keep. Consolidated 2026-09-19.
+      */
+      filter: (page) => !/\/custom-concrete-driveways\/?$/.test(page),
+    })],
 
   vite: { plugins: [tailwindcss()] },
 

@@ -59,12 +59,6 @@ const { title, eyebrow, intro, description, headerAsset, showcase, gallery, gall
         <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {showcase.map((item, i) => (
             <li>
-              {/*
-                lightbox is a request, not a guarantee: canLightbox() in
-                src/lib/images.ts ignores it below 1000px native, so the
-                remaining salvaged files stay unclickable on their own without
-                anyone having to remember which ones they are.
-              */}
               <Img
                 asset={item.asset}
                 displayW={500}

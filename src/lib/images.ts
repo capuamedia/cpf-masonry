@@ -39,13 +39,20 @@ import type { ImageMetadata } from 'astro';
 export const MAX_DISPLAY_UPSCALE = 2;
 
 /**
- * Below this, a file is not worth opening full-size: the lightbox would
- * present a viewer with something no larger than the thumbnail they clicked.
+ * RETIRED 2026-09-19. There used to be a 1000px floor here: below it, a file
+ * was judged not worth opening because the lightbox would show the viewer
+ * something no bigger than the thumbnail they clicked.
  *
- * 1000px preserves the previous behaviour exactly — the old `large` and `yelp`
- * tiers were the ones allowed to enlarge, and both sat at 1000px or above.
+ * Two things killed it. It tested `img.width`, so every PORTRAIT photograph —
+ * 750x1000, 669x1000, a full 1000px on its long side — failed a test written
+ * for landscape, and silently refused to open. And the premise is gone: the
+ * originals came back with the domain, 24 assets were repointed at them, and
+ * five files in the whole set are now under 1000px.
+ *
+ * Everything opens. The lightbox clamps to the source's natural size instead
+ * (see Layout.astro), so a small file opens small and sharp rather than blown
+ * up — which is the honest version of what the floor was protecting against.
  */
-export const LIGHTBOX_MIN_NATIVE = 1000;
 
 /**
  * Below this, a file is a thumbnail, not a photograph. The recovered media
@@ -53,10 +60,6 @@ export const LIGHTBOX_MIN_NATIVE = 1000;
  * that will happily render into a feature slot and look like a mistake.
  */
 export const FEATURE_MIN_NATIVE = 800;
-
-export function canLightbox(img: ImageMetadata): boolean {
-  return img.width >= LIGHTBOX_MIN_NATIVE;
-}
 
 export class ImagePolicyError extends Error {
   constructor(message: string) {

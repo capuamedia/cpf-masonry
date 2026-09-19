@@ -102,6 +102,18 @@ p { text-wrap: pretty; }
   }
 }
 
+/*
+  A modal <dialog> centres itself through the UA stylesheet's `margin: auto`
+  against `inset: 0`. Tailwind's preflight sets `margin: 0` on every element,
+  which silently wins — the dialog then resolves to the inset origin and opens
+  pinned to the TOP-LEFT of the viewport with the rest of the screen empty.
+  Nothing in the component markup looks wrong, which is what makes it hard to
+  spot. Put the centring back, once, where it cannot be dropped by a refactor.
+*/
+dialog:modal {
+  margin: auto;
+}
+
 /* --- small shared primitives ---------------------------------------------- */
 
 .eyebrow {

@@ -1,72 +1,210 @@
 ---
-import ServiceLayout from '../layouts/ServiceLayout.astro';
+/**
+ * Legacy URL: /custom-concrete/ (WP page ID 78).
+ *
+ * CONSOLIDATED 2026-09-19. This page absorbed /custom-concrete-driveways/
+ * (WP page ID 192), which now 301s here — see public/_redirects and
+ * src/pages/custom-concrete-driveways.astro.
+ *
+ * Why the merge, and why this URL: driveways sit under custom stamped concrete
+ * rather than beside it, and two pages competing for the same stamped-concrete
+ * terms split the signal between them. The driveway keyword does not live in
+ * the slug any more, so it has to carry in the H1, the section H2s and the
+ * anchors instead — which is what the PhotoSection ids are for. Do not rename
+ * #driveways; it is linked from /services/ and is a public fragment.
+ *
+ * This page does NOT use ServiceLayout. The other service pages are one prose
+ * block and one photo grid; this one is four topics that each need their own
+ * heading and their own photographs, which is a different shape.
+ */
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import PhotoSection from '../components/PhotoSection.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { A } from '../lib/assets';
+import { withBase } from '../lib/urls';
+import { SITE_URL } from '../lib/site';
 
-const showcase = [
-  { asset: A.stampedDriveway, caption: 'Stamped and colored driveway with a scored border, Conejo Valley.' },
-  { asset: A.spanishDrive, caption: 'Poured driveway and flagstone walkway to a Spanish-style frontage.' },
-  { asset: A.dosVientosDrive, caption: 'Stamped driveway running beside a stone-faced retaining wall, Dos Vientos.' },
-  { asset: A.fountainPavers, caption: 'Tiered fountain set into a paver surround with planted beds.' },
-  { asset: A.concreteCounter, caption: 'Poured outdoor kitchen counter with a stainless built-in.' },
-  { asset: A.polishedCounter, caption: 'Polished concrete counter finished to a wet look.' },
+const driveways = [
+  { asset: A.beautifulStampedConcreteDriveway,
+    caption: 'Stamped concrete driveway, colored and sealed, running the full width of the frontage.' },
+  { asset: A.stampedConcreteDrivewayWithStoneRetainingWall,
+    caption: 'Stamped driveway tied into a stone-faced retaining wall on the same job.' },
+  { asset: A.paverDrivewayWithCustomConcretePillars,
+    caption: 'Paver driveway framed by custom concrete pillars at the entry.' },
+  { asset: A.stampedConcreteDrivewayAndSidewalkFeatures,
+    caption: 'Sidewalk banding and borders poured as part of the driveway, not added afterwards.' },
+  { asset: A.paverDrivewayWithCustomConcreteWaterFeature,
+    caption: 'Paver driveway with an integrated custom concrete water feature.' },
+  { asset: A.concreteDrivewayWithStoneRetainingWalls,
+    caption: 'Driveway held by stone retaining walls where the grade falls away.' },
+  { asset: A.stampedDriveway,
+    caption: 'Stamped and colored driveway with a scored border, Conejo Valley.' },
+  { asset: A.spanishDrive,
+    caption: 'Poured driveway and flagstone walkway to a Spanish-style frontage.' },
+  { asset: A.dosVientosDrive,
+    caption: 'Stamped driveway running beside a stone-faced retaining wall, Dos Vientos.' },
+  { asset: A.cpfPaverDriveway,
+    caption: 'Paver driveway laid on a compacted base, borders cut to the curve.' },
+  { asset: A.stampedConcreteDrivewayAndRetainingWall,
+    caption: 'Driveway and retaining wall set out and poured as one sequence.' },
+  { asset: A.curvedDrive,
+    caption: 'Curved paver driveway sweeping in front of a residence.' },
 ];
 
-const gallery = [
-  A.herringboneClose, A.roseWalkway, A.curvedDrive,
-  A.paverDrive, A.herringboneWet, A.driveApron, A.potteryEntry,
+const flatwork = [
+  { asset: A.herringboneClose,
+    caption: 'Red brick paving laid in a herringbone pattern, photographed close.' },
+  { asset: A.roseWalkway,
+    caption: 'Paver walkway running between beds of flowering roses to a side gate.' },
+  { asset: A.herringboneWet,
+    caption: 'Herringbone paving with a damp finish, showing the clay color variation.' },
+  { asset: A.curvedRoseWalk,
+    caption: 'Curving paver walkway alongside rose beds leading to a side entry.' },
+  { asset: A.fountainPavers,
+    caption: 'Tiered fountain set into a paver surround with planted beds.' },
+  { asset: A.potteryEntry,
+    caption: 'Home entry with potted plants set over paver flooring.' },
+  { asset: A.driveApron,
+    caption: 'Paved driveway apron and walkway at a residential garage.' },
+  { asset: A.stampedConcreteWalkwayProgressShot,
+    caption: 'Stamped walkway mid-pour — the stamp goes in during a window measured in minutes.' },
+  { asset: A.stampedConcreteProgressShot,
+    caption: 'Flatwork being finished before the stamp, with the joints already set out.' },
 ];
+
+const commercial = [
+  { asset: A.customCommercialSignAtOaksMall,
+    caption: 'Cast concrete monument sign at The Oaks, Thousand Oaks.' },
+  { asset: A.oaksMallCustomConcreteSign,
+    caption: 'The same monument from the approach, set into its planted surround.' },
+  { asset: A.concreteCommercialSignAtMonteVistaChurch,
+    caption: 'Commercial concrete signage for Monte Vista, Newbury Park.' },
+  { asset: A.newburyParkMonteVistaConcreteSign,
+    caption: 'The Monte Vista sign in its finished landscaping.' },
+  { asset: A.concreteAndStoneworkPoolProgressShot,
+    caption: 'Concrete and stonework around a pool, part-complete.' },
+];
+
+const description =
+  'Custom and stamped concrete in Newbury Park, Thousand Oaks and the Conejo Valley: stamped and colored concrete driveways, paver driveways, patios, walkways and commercial concrete. Family owned, owner supervised, licensed and insured. CA License #878989, C-29 / C-8.';
 ---
 
-<ServiceLayout
+<Layout
   title="Custom & Stamped Concrete"
-  eyebrow="Concrete"
-  intro="Custom designed and poured concrete driveways, pavers, water features and more — across Newbury Park, Thousand Oaks and the wider Conejo Valley."
-  description="Stamped concrete Newbury Park and custom poured concrete across Thousand Oaks and the Conejo Valley: driveways, pavers, patios, countertops and water features. Family owned, owner supervised, licensed and insured."
-  headerAsset={A.curvedRoseWalk}
-  serviceName="Custom and stamped concrete"
-  showcase={showcase}
-  gallery={gallery}
-  galleryHeading="Flatwork, pavers and finishes"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'Service',
+      name: 'Custom and stamped concrete, including concrete driveways',
+      serviceType: 'Custom and stamped concrete',
+      description,
+      provider: { '@id': `${SITE_URL}/#business` },
+      areaServed: ['Newbury Park', 'Thousand Oaks', 'Westlake Village', 'Calabasas', 'Camarillo'].map(
+        (n) => ({ '@type': 'City', name: n }),
+      ),
+    },
+  ]}
 >
-  <h2>Stamped concrete in Newbury Park and Thousand Oaks</h2>
-  <p>
-    Concrete is the largest single surface most homes have, and it is the one
-    people look at every day on the way to the front door. A driveway that cracks
-    along the wrong line, or a patio that holds water in the middle, is expensive
-    to put right — so the value sits in the sub-base, the reinforcement and the
-    joint layout long before anyone sees a finish.
-  </p>
-  <p>
-    CPF designs and pours custom concrete: driveways and aprons, patios, paver
-    walkways, poured countertops, and water features. Stamped and colored
-    finishes are chosen against the house — the roof tile, the stone, the render —
-    rather than off a chart, because a stamp that fights the elevation reads as
-    obviously applied.
-  </p>
+  <PageHeader
+    eyebrow="Concrete"
+    title="Custom & Stamped Concrete"
+    intro="Stamped and colored concrete driveways, paver driveways, patios, walkways and commercial flatwork — poured across Newbury Park, Thousand Oaks and the wider Conejo Valley."
+    asset={A.beautifulStampedConcreteDriveway}
+  />
 
-  <h3>What that covers</h3>
-  <ul>
-    <li><strong>Driveways and aprons</strong> — formed, reinforced and poured, with jointing set out to control where it cracks.</li>
-    <li><strong>Stamped and colored flatwork</strong> — patterns and release colors matched to the house.</li>
-    <li><strong>Patios and paver walkways</strong> — laid on a proper base so they stay flat.</li>
-    <li><strong>Poured countertops</strong> — indoor and outdoor, sealed for the weather they will actually see.</li>
-    <li><strong>Water features and fountains</strong> — formed, plumbed and finished.</li>
-  </ul>
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <h2>Stamped concrete in Newbury Park and Thousand Oaks</h2>
+    <p>
+      Concrete is the largest single surface most homes have, and it is the one
+      people look at every day on the way to the front door. A driveway that
+      cracks along the wrong line, or a patio that holds water in the middle, is
+      expensive to put right — so the value sits in the sub-base, the
+      reinforcement and the joint layout long before anyone sees a finish.
+    </p>
+    <p>
+      Stamping takes a poured slab and gives it the pattern and texture of
+      stone, brick or tile at a fraction of the cost of laying the real material
+      over that area. The result is only as good as the timing: stamps go in
+      during a window measured in minutes, and a crew that misses it leaves the
+      evidence in the surface permanently. Colors are chosen against the house —
+      the roof tile, the stone, the render — rather than off a chart, because a
+      stamp that fights the elevation reads as obviously applied.
+    </p>
 
-  <h3>Working on a slope</h3>
-  <p>
-    Much of the Conejo Valley is built on grade. Flatwork on a slope is a drainage
-    problem before it is a concrete problem: where the water goes at the bottom of
-    a driveway decides whether the slab lasts. Falls, drains and the transition
-    into the retaining structure get designed together, not bolted on afterwards.
-  </p>
+    <h3>What that covers</h3>
+    <ul>
+      <li><strong><a href="#driveways">Driveways and aprons</a></strong> — formed, reinforced and poured, with jointing set out to control where it cracks.</li>
+      <li><strong>Stamped and colored flatwork</strong> — patterns and release colors matched to the house.</li>
+      <li><strong><a href="#flatwork">Patios and paver walkways</a></strong> — laid on a proper base so they stay flat.</li>
+      <li><strong><a href="#commercial">Commercial concrete</a></strong> — monument signage and site flatwork.</li>
+      <li><strong><a href={withBase('/concrete-countertops/')}>Poured countertops</a></strong> — indoor and outdoor, on their own page.</li>
+    </ul>
+  </article>
 
-  <h2>Owner supervised, fully insured</h2>
-  <p>
-    A concrete pour takes the driveway out of use, and an open form is not
-    something anyone wants sitting for a fortnight. <strong>Each project is owner
-    supervised</strong> — we are the first in and the last out — and CPF is
-    <strong>licensed, insured and bonded</strong> under C-29 masonry and C-8
-    concrete, which is the part homeowners actually worry about.
-  </p>
-</ServiceLayout>
+  <PhotoSection
+    id="driveways"
+    heading="Concrete driveways"
+    lede="A driveway is the largest single piece of concrete on most properties and the first thing anyone sees. It is also the piece that takes the most abuse: vehicle loads, a full temperature swing every day, and whatever the ground underneath decides to do over twenty years. A driveway that cracks in its third summer was almost never a finishing problem — it was the base, the thickness, or the control joints."
+    items={driveways}
+    tone="surface"
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <h3>Paver driveways</h3>
+    <p>
+      Pavers buy you something concrete cannot: individual units that can be
+      lifted and re-laid. If a utility has to come up, or a section settles, the
+      repair is invisible. The tradeoff is the base preparation, which is more
+      exacting than for a slab, not less.
+    </p>
+
+    <h3>Everything the driveway touches</h3>
+    <p>
+      Most of these jobs are not only a driveway. The grade has to be resolved
+      where it meets the street, the garage slab and the front walk, and on a
+      sloping lot that usually means a retaining wall in the same pour sequence.
+      Doing it as one job is why the banding, the borders and the wall all line
+      up — see the <a href={withBase('/stonework/')}>stonework</a> and
+      <a href={withBase('/grading-and-excavation/')}>grading and excavation</a>
+      pages for the parts of that work that happen before any concrete arrives.
+    </p>
+
+    <h3>Working on a slope</h3>
+    <p>
+      Much of the Conejo Valley is built on grade. Flatwork on a slope is a
+      drainage problem before it is a concrete problem: where the water goes at
+      the bottom of a driveway decides whether the slab lasts. Falls, drains and
+      the transition into the retaining structure get designed together, not
+      bolted on afterwards.
+    </p>
+  </article>
+
+  <PhotoSection
+    id="flatwork"
+    heading="Patios, walkways and paver flatwork"
+    lede="The same base work decides whether a patio or a walkway stays flat. These are laid on a compacted base with the falls set before anything is placed, so the surface drains where it is supposed to."
+    items={flatwork}
+    tone="surface"
+  />
+
+  <PhotoSection
+    id="commercial"
+    heading="Commercial concrete and monument signage"
+    lede="Cast concrete signage and site flatwork for commercial clients across Ventura County, including The Oaks in Thousand Oaks and Monte Vista in Newbury Park."
+    items={commercial}
+  />
+
+  <article class="mx-auto max-w-3xl px-4 py-16 sm:px-6 prose-cpf">
+    <h2>Owner supervised, fully insured</h2>
+    <p>
+      A concrete pour takes the driveway out of use, and an open form is not
+      something anyone wants sitting for a fortnight. <strong>Each project is
+      owner supervised</strong> — we are the first in and the last out — and CPF
+      is <strong>licensed, insured and bonded</strong> under C-29 masonry and
+      C-8 concrete, which is the part homeowners actually worry about.
+    </p>
+  </article>
+
+  <CtaBand />
+</Layout>

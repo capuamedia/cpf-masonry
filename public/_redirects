@@ -1,0 +1,7 @@
+# Cloudflare Pages redirects. GitHub Pages ignores this file — the retired URLs
+# also render a meta-refresh page (see Layout's redirectTo prop), which is what
+# carries the demo build and any visitor who arrives before the 301 is hit.
+#
+# Consolidated 2026-09-19: driveways moved under custom & stamped concrete.
+/custom-concrete-driveways/  /custom-concrete/  301
+/custom-concrete-driveways   /custom-concrete/  301

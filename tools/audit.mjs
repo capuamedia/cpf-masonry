@@ -1,6 +1,6 @@
 /** Post-build audit. Checks the shipped HTML, not the source. */
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
-import { join } from 'node:path';
+import { join, basename } from 'node:path';
 import { LEGACY_URLS } from './legacy-urls.mjs';
 
 const walk = (d, out = []) => {
@@ -116,26 +116,43 @@ for (const f of astro) {
   const known = SOURCE_W[base];
   if (!known) continue;
 }
-// 678px tier: no generated file may exceed 678 wide.
+// Formerly "the 678px tier": files salvaged from the old site's rendered pages.
+// Twenty-four of them were repointed at the recovered full-size originals on
+// 2026-09-19, so a hardcoded native width per filename pattern is no longer
+// true — and a stale one here would either miss a real upscale or invent one.
+// The source file on disk is the only thing that cannot drift.
 const tier4 = astro.filter((f) => /^(0\d|1\d)-|^extra-/.test(f));
 
 // The real assertion: nothing derived from the 678px tier may have been
 // UPSCALED. Measure every generated file rather than trusting the widths array.
 const { default: sharp } = await import('sharp');
-const TIER4_NATIVE = { dugout: 320, slider: 738, square: 447, standard: 678 };
-let widest = 0, over = 0;
+// basename before Astro's content hash -> real source width, read from src/assets.
+const sourceWidths = new Map();
+{
+  const srcWalk = (d, out = []) => {
+    for (const e of readdirSync(d, { withFileTypes: true })) {
+      const p = join(d, e.name);
+      e.isDirectory() ? srcWalk(p, out) : /\.(jpe?g|png)$/i.test(e.name) && out.push(p);
+    }
+    return out;
+  };
+  for (const p of srcWalk('src/assets')) {
+    const meta = await sharp(p).metadata();
+    sourceWidths.set(basename(p).replace(/\.[^.]+$/, ''), meta.width);
+  }
+}
+let widest = 0, over = 0, unmatched = 0;
 for (const f of tier4) {
   if (!/\.(jpe?g|webp|avif|png)$/i.test(f)) continue;
   const meta = await sharp(join('dist/_astro', f)).metadata();
-  const native = /Dugout/i.test(f) ? TIER4_NATIVE.dugout
-    : /^extra-IMG_0763/.test(f) ? TIER4_NATIVE.square
-    : /^extra-/.test(f) ? TIER4_NATIVE.slider
-    : TIER4_NATIVE.standard;
+  const native = sourceWidths.get(f.split('.')[0]);
+  if (native === undefined) { unmatched++; continue; }
   if (meta.width > widest) widest = meta.width;
   if (meta.width > native) { over++; bad(`UPSCALED: ${f} is ${meta.width}px from a ${native}px source`); }
 }
-console.log(`_astro: ${astro.length} files, ${tier4.length} from the 678px tier`);
-console.log(`widest 678px-tier variant: ${widest}px (native ceiling 678) — upscaled: ${over}`);
+if (unmatched) bad(`${unmatched} salvaged variants had no source file to measure against`);
+console.log(`_astro: ${astro.length} files, ${tier4.length} from the salvaged set`);
+console.log(`widest salvaged variant: ${widest}px — upscaled beyond its source: ${over}`);
 
 // --- every legacy URL must still resolve -------------------------------------
 // The rebuild replaces cpfmasonry.com in place. A slug that quietly stops

@@ -2,98 +2,50 @@
 /**
  * Legacy URL: /custom-concrete-driveways/ (WP page ID 192).
  *
- * The original page carried no prose at all — sixteen images and nothing else.
- * The images and their alt text are the owner's; the copy here is new, written
- * to give the page something for a search engine and a homeowner to read. It
- * makes no claim the old page did not support: every statement is about work
- * visible in these photographs.
+ * RETIRED 2026-09-19 — consolidated into /custom-concrete/, which now carries
+ * the driveway photographs under its own #driveways heading. Two pages chasing
+ * the same stamped-concrete terms were splitting the signal between them.
+ *
+ * This file stays, and must keep staying. The URL is one of the fifteen the
+ * old site published (tools/legacy-urls.mjs), it carries twenty years of
+ * indexing, and deleting it would drop that on the floor. It redirects instead:
+ *
+ *   - Cloudflare (production) issues a real 301 from public/_redirects.
+ *   - GitHub Pages cannot redirect, so this page's meta refresh carries it.
+ *   - The canonical points at /custom-concrete/ on every target, which is what
+ *     actually moves the ranking signal across.
+ *
+ * The visible copy is for the rare visitor who lands here with JavaScript and
+ * meta refresh both disabled, and for anyone reading a cached copy.
  */
-import ServiceLayout from '../layouts/ServiceLayout.astro';
-import { A } from '../lib/assets';
+import Layout from '../layouts/Layout.astro';
 import { withBase } from '../lib/urls';
 
-const showcase = [
-  { asset: A.beautifulStampedConcreteDriveway,
-    caption: 'Stamped concrete driveway, colored and sealed, running the full width of the frontage.' },
-  { asset: A.stampedConcreteDrivewayWithStoneRetainingWall,
-    caption: 'Stamped driveway tied into a stone-faced retaining wall on the same job.' },
-  { asset: A.paverDrivewayWithCustomConcretePillars,
-    caption: 'Paver driveway framed by custom concrete pillars at the entry.' },
-  { asset: A.stampedConcreteDrivewayAndSidewalkFeatures,
-    caption: 'Sidewalk banding and borders poured as part of the driveway, not added afterwards.' },
-  { asset: A.paverDrivewayWithCustomConcreteWaterFeature,
-    caption: 'Paver driveway with an integrated custom concrete water feature.' },
-  { asset: A.concreteDrivewayWithStoneRetainingWalls,
-    caption: 'Driveway held by stone retaining walls where the grade falls away.' },
-];
-
-const gallery = [
-  A.stampedConcreteProgressShot,
-  A.cpfPaverDriveway,
-  A.stampedConcreteWalkwayProgressShot,
-  A.stampedConcreteDrivewayAndRetainingWall,
-  A.concreteAndStoneworkPoolProgressShot,
-  A.customCommercialSignAtOaksMall,
-  A.oaksMallCustomConcreteSign,
-  A.concreteCommercialSignAtMonteVistaChurch,
-  A.newburyParkMonteVistaConcreteSign,
-];
+const TO = '/custom-concrete/';
 ---
 
-<ServiceLayout
+<Layout
   title="Custom Concrete Driveways"
-  eyebrow="Custom Concrete"
-  intro="A driveway is the largest single piece of concrete on most properties and the first thing anyone sees. CPF pours stamped, colored and paver driveways across Thousand Oaks, Newbury Park and the wider Ventura County area."
-  description="Custom concrete driveways in Thousand Oaks, Newbury Park and Ventura County: stamped concrete, colored and sealed finishes, paver driveways, sidewalk banding and integrated retaining walls. Family owned, owner supervised. CA License #878989, C-29 / C-8."
-  headerAsset={A.beautifulStampedConcreteDriveway}
-  serviceName="Custom concrete driveway construction"
-  showcase={showcase}
-  gallery={gallery}
-  galleryHeading="Driveways, walkways and commercial concrete"
+  description="Custom concrete driveways in Thousand Oaks, Newbury Park and Ventura County — stamped, colored and paver driveways. Now part of the custom and stamped concrete page."
+  redirectTo={TO}
 >
-  <h2>The driveway is the first thing anyone sees</h2>
-  <p>
-    It is also the piece of concrete that takes the most abuse: vehicle loads,
-    a full temperature swing every day, and whatever the ground underneath
-    decides to do over twenty years. A driveway that cracks in its third summer
-    was almost never a finishing problem. It was the base, the thickness, or
-    the control joints.
-  </p>
-
-  <h3>Stamped and colored concrete</h3>
-  <p>
-    Stamping takes a poured slab and gives it the pattern and texture of stone,
-    brick or tile at a fraction of the cost of laying the real material over
-    that area. The result is only as good as the timing — stamps go in during a
-    window measured in minutes, and a crew that misses it leaves the evidence in
-    the surface permanently.
-  </p>
-
-  <h3>Paver driveways</h3>
-  <p>
-    Pavers buy you something concrete cannot: individual units that can be
-    lifted and re-laid. If a utility has to come up, or a section settles, the
-    repair is invisible. The tradeoff is the base preparation, which is more
-    exacting than for a slab, not less.
-  </p>
-
-  <h3>Everything the driveway touches</h3>
-  <p>
-    Most of these jobs are not only a driveway. The grade has to be resolved
-    where it meets the street, the garage slab and the front walk, and on a
-    sloping lot that usually means a retaining wall in the same pour sequence.
-    Doing it as one job is why the banding, the borders and the wall all line
-    up — see the <a href={withBase('/stonework/')}>stonework</a> and
-    <a href={withBase('/grading-and-excavation/')}>grading and excavation</a>
-    pages for the parts of that work that happen before any concrete arrives.
-  </p>
-
-  <h2>Owner supervised, fully insured</h2>
-  <p>
-    A concrete pour takes the driveway out of use, and an open form is not
-    something anyone wants sitting for a fortnight. <strong>Each project is owner
-    supervised</strong> — we are the first in and the last out — and CPF is
-    <strong>licensed, insured and bonded</strong> under C-29 masonry and C-8
-    concrete.
-  </p>
-</ServiceLayout>
+  <section class="mx-auto flex min-h-[50svh] max-w-3xl flex-col justify-center px-4 py-24 sm:px-6">
+    <p class="eyebrow">Custom Concrete</p>
+    <h1 class="mt-3 text-[var(--text-h1)] font-semibold uppercase">
+      Concrete driveways have moved
+    </h1>
+    <hr class="rule-red mt-5" />
+    <p class="mt-6 text-lg leading-relaxed text-ink-soft">
+      Driveway work now sits with the rest of the stamped and poured concrete,
+      on one page. If you are not taken there automatically:
+    </p>
+    <p class="mt-6">
+      <a
+        href={withBase(TO + '#driveways')}
+        class="inline-flex items-center gap-2 bg-cpf-red px-6 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white transition-colors hover:bg-cpf-red-dark"
+      >
+        Custom &amp; stamped concrete driveways
+      </a>
+    </p>
+  </section>
+</Layout>

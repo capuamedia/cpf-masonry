@@ -49,9 +49,9 @@ const enlargeable = [
 ];
 
 /**
- * The remaining 678px salvage. Better subjects, worse pixels. Rendered at 500px
- * and NOT clickable, and deliberately not styled to look clickable:
- * no zoom cursor, no hover scale, no ring.
+ * Older jobs. These were the 678px salvage — rendered small and deliberately
+ * not clickable — until the originals came back with the domain and the files
+ * were repointed at them on 2026-09-19. They enlarge like everything else now.
  */
 const archive = [
   { asset: A.stoneFireplaceTall, caption: 'Stacked-stone fireplace with arched firebox' },
@@ -159,8 +159,8 @@ const description =
       <hr class="rule-red mt-4" />
       <p class="mt-4 max-w-2xl text-lg leading-relaxed text-ink-soft">
         Earlier jobs — outdoor kitchens, fireplaces, retaining walls and stamped
-        driveways. These are shown small because they survive only as low-resolution
-        copies; the work itself is still standing across the Conejo Valley.
+        driveways, still standing across the Conejo Valley. Click any of them to
+        open it full size.
       </p>
       <ul class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {
@@ -171,6 +171,7 @@ const description =
                 displayW={500}
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 280px"
                 label={`projects archive ${i}`}
+                lightbox
                 imgClass="aspect-[3/2] w-full object-cover"
               />
               <p class="mt-2 text-sm text-muted">{item.caption}</p>

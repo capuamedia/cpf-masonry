@@ -12,10 +12,22 @@ interface Props {
   description: string;
   /** Adds BreadcrumbList + a page-specific graph node. */
   extraSchema?: Record<string, unknown>[];
+  /**
+   * Site-relative path this URL has been consolidated into, e.g.
+   * '/custom-concrete/'. Emits a zero-delay meta refresh and points the
+   * canonical at the destination instead of at this page.
+   *
+   * Needed because both hosts are static. Cloudflare can issue a real 301 from
+   * public/_redirects, but GitHub Pages cannot redirect at all, and every
+   * legacy URL has to keep resolving on both. A full page is rendered rather
+   * than a bare stub so the retired URL still carries the header, the phone
+   * number and the LocalBusiness schema the audit requires of every route.
+   */
+  redirectTo?: string;
 }
 
-const { title, description, extraSchema = [] } = Astro.props;
-const canonical = canonicalURL(Astro.url.pathname);
+const { title, description, extraSchema = [], redirectTo } = Astro.props;
+const canonical = canonicalURL(redirectTo ?? Astro.url.pathname);
 const fullTitle = title === 'home' ? `${BUSINESS.name} | Conejo Valley` : `${title} | ${BUSINESS.name}`;
 
 /**
@@ -94,6 +106,7 @@ const schema = {
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {redirectTo && <meta http-equiv="refresh" content={`0; url=${withBase(redirectTo)}`} />}
 
     {/* The GitHub Pages review build must never compete with the new domain. */}
     {IS_DEMO && <meta name="robots" content="noindex, nofollow" />}
@@ -156,8 +169,9 @@ const schema = {
     <!-- Floating reviews badge, sitewide. Kept clear of the call bar above. -->
     <ReviewsBadge />
 
-    <!-- Lightbox. Vanilla, ~1KB, and only ever attached to buttons emitted by
-         Img.astro — which refuses to emit one for the 678px tier. -->
+    <!-- Lightbox. Vanilla, ~1KB, attached to every button Img.astro emits.
+         Centred by dialog:modal { margin: auto } in global.css — Tailwind's
+         preflight zeroes the margin the UA stylesheet centres a modal with. -->
     <dialog
       id="lb"
       class="max-h-[92dvh] max-w-[94vw] border-0 bg-transparent p-0 backdrop:bg-black/85"
@@ -193,6 +207,20 @@ const schema = {
         document.addEventListener('click', (e) => {
           const btn = e.target.closest('[data-lightbox]');
           if (btn) {
+            /*
+              Clamp to the file's own pixels. Every photograph opens now, and a
+              few are small — an 822px source stretched across a desktop looks
+              soft on a page whose whole job is to prove careful work. So the
+              viewport caps stay, and natural size is the other half of the
+              min(): a small file opens small and sharp, a large one fills the
+              screen. Set on load, because naturalWidth is 0 until then.
+            */
+            img.style.maxWidth = '';
+            img.style.maxHeight = '';
+            img.onload = () => {
+              img.style.maxWidth = 'min(' + img.naturalWidth + 'px, 94vw)';
+              img.style.maxHeight = 'min(' + img.naturalHeight + 'px, 80dvh)';
+            };
             img.src = btn.dataset.full;
             img.alt = btn.dataset.alt || '';
             cap.textContent = btn.dataset.alt || '';

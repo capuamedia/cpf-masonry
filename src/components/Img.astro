@@ -25,6 +25,13 @@ interface Props {
   lightbox?: boolean;
   /** Tailwind aspect/object classes applied to the <img> itself. */
   imgClass?: string;
+  /**
+   * Encoder quality override. Leave unset for Astro's default, which is right
+   * for daylight masonry. Raise it for a frame whose subject is fine points of
+   * light on a dark, noisy ground — exactly what a lossy encoder spends its
+   * bits smoothing away.
+   */
+  quality?: number;
 }
 
 const {
@@ -36,6 +43,7 @@ const {
   eager = false,
   lightbox = false,
   imgClass = '',
+  quality,
 } = Astro.props;
 
 const widths = plan(asset.img, displayW, label, asset.maxDisplay);
@@ -58,6 +66,7 @@ const enlargeable = lightbox;
         sizes={sizes ?? `${displayW}px`}
         formats={['avif', 'webp']}
         fallbackFormat="jpg"
+        {...(quality === undefined ? {} : { quality })}
         alt={asset.alt}
         loading={eager ? 'eager' : 'lazy'}
         decoding={eager ? 'sync' : 'async'}
@@ -73,6 +82,7 @@ const enlargeable = lightbox;
         sizes={sizes ?? `${displayW}px`}
         formats={['avif', 'webp']}
         fallbackFormat="jpg"
+        {...(quality === undefined ? {} : { quality })}
         alt={asset.alt}
         loading={eager ? 'eager' : 'lazy'}
         decoding={eager ? 'sync' : 'async'}

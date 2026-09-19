@@ -92,6 +92,19 @@ import r_concreteKitchenCounterCloseup from '../assets/recovered/concrete-kitche
 import r_backyardConcreteCountertopFireFeature2 from '../assets/recovered/backyard-concrete-countertop-fire-feature-2.jpg';
 import r_polishedStoneCountertops from '../assets/recovered/polished-stone-countertops.jpg';
 import r_cpfStoneMailbox from '../assets/recovered/cpf-stone-mailbox.jpg';
+/*
+  Viewpoint School, 2026-09-19. Six more frames of the Robertson Family Field
+  build, pulled from the recovered media library at their full 1900px and named
+  for the work. The page had three photographs and no header because the only
+  copies on hand were 678px off the old site's rendered pages; that has not been
+  true since the originals came back.
+*/
+import r_viewpointDiamondCalabasas from '../assets/recovered/viewpoint-school-baseball-diamond-calabasas.jpg';
+import r_robertsonFamilyFieldScoreboard from '../assets/recovered/robertson-family-field-scoreboard-viewpoint-school.jpg';
+import r_viewpointBackstopSurround from '../assets/recovered/viewpoint-school-backstop-and-concrete-surround.jpg';
+import r_viewpointInfieldWarningTrack from '../assets/recovered/viewpoint-school-infield-warning-track.jpg';
+import r_viewpointOutfieldBlockWall from '../assets/recovered/viewpoint-school-outfield-block-wall.jpg';
+import r_viewpointOutfieldFoulLine from '../assets/recovered/viewpoint-school-outfield-turf-and-foul-line.jpg';
 import r_gardenWallStoneVeneerAndPorchClose from '../assets/recovered/garden-wall-stone-veneer-and-porch-close.jpg';
 import r_paversAndStoneVeneer from '../assets/recovered/pavers-and-stone-veneer.jpg';
 import r_customStoneWallLinedDriveway from '../assets/recovered/custom-stone-wall-lined-driveway.jpg';
@@ -290,27 +303,27 @@ export const A = {
 
   // ---- custom-concrete-driveways ----
   stampedConcreteWalkwayProgressShot: a(r_stampedConcreteWalkwayProgressShot,
-    "Stamped Concrete Walkway Progress Shot"),
+    'Freshly stamped concrete walkway in a tan ashlar pattern, the curved border banding scored in before the slab cured'),
   stampedConcreteProgressShot: a(r_stampedConcreteProgressShot,
-    "Stamped Concrete Progress Shot"),
+    'Large-format stamped concrete flatwork with saw-cut joints, the release color still damp from the pour'),
   paverDrivewayWithCustomConcretePillars: a(r_paverDrivewayWithCustomConcretePillars,
-    "Paver Driveway with Custom Concrete Pillars"),
+    'Paver driveway running under a tile-roofed entry carried on custom concrete pillars'),
   concreteDrivewayWithStoneRetainingWalls: a(r_concreteDrivewayWithStoneRetainingWalls,
-    "Concrete Driveway with Stone Retaining Walls"),
+    'Concrete driveway curving down to the street between low stone retaining walls and a ranch fence'),
   stampedConcreteDrivewayWithStoneRetainingWall: a(r_stampedConcreteDrivewayWithStoneRetainingWall,
-    "Stamped Concrete Driveway with Stone Retaining Wall"),
+    'Driveway climbing to an iron gate between stacked stone retaining walls on a Spanish-style property'),
   stampedConcreteDrivewayAndRetainingWall: a(r_stampedConcreteDrivewayAndRetainingWall,
-    "Stamped Concrete Driveway and Retaining Wall"),
+    'Broad stamped concrete driveway laid out in saw-cut panels, edged by a stone retaining wall with a cut cap'),
   cpfPaverDriveway: a(r_cpfPaverDriveway,
-    "CPF Paver Driveway"),
+    'Paver driveway in tumbled gray and tan units, laid the full width of the lot and running back to the lawn'),
   customCommercialSignAtOaksMall: a(r_customCommercialSignAtOaksMall,
-    "Custom commercial sign at oaks mall"),
+    'Cast concrete and stucco monument sign for The Oaks shopping center in Thousand Oaks'),
   concreteCommercialSignAtMonteVistaChurch: a(r_concreteCommercialSignAtMonteVistaChurch,
-    "Concrete Commercial Sign at Monte Vista Church"),
+    'Monument sign for Monte Vista Presbyterian Church, cast and finished in stucco with a cross finial'),
   newburyParkMonteVistaConcreteSign: a(r_newburyParkMonteVistaConcreteSign,
-    "Newbury Park Monte Vista Concrete Sign"),
+    'The Monte Vista Presbyterian Church monument sign in Newbury Park, seen head-on from the street'),
   concreteAndStoneworkPoolProgressShot: a(r_concreteAndStoneworkPoolProgressShot,
-    "Concrete and Stonework Pool Progress Shot"),
+    'Crew finishing a pool shell with artificial rock coping built up around the waterline'),
 
   // ---- concrete-countertops ----
   blackConcreteCountertops: a(r_blackConcreteCountertops,
@@ -345,34 +358,46 @@ export const A = {
     'Outdoor bar counter topped with cut flagstone over a red brick base'),
 
   // ---- stonework ----
+  viewpointDiamondCalabasas: a(r_viewpointDiamondCalabasas,
+    'The finished Robertson Family Field diamond at Viewpoint School, Calabasas, red clay-colored infield and green turf under the hills'),
+  robertsonFamilyFieldScoreboard: a(r_robertsonFamilyFieldScoreboard,
+    'Scoreboard reading Robertson Family Field, standing over the outfield turf at Viewpoint School'),
+  viewpointBackstopSurround: a(r_viewpointBackstopSurround,
+    'Backstop netting and rail on their poured concrete surround, looking out over the Viewpoint School diamond'),
+  viewpointInfieldWarningTrack: a(r_viewpointInfieldWarningTrack,
+    'Infield turf meeting the red warning track at Viewpoint School, with the pitching rubber set in'),
+  viewpointOutfieldBlockWall: a(r_viewpointOutfieldBlockWall,
+    'Block outfield wall running the boundary of the Viewpoint School field, capped and rendered'),
+  viewpointOutfieldFoulLine: a(r_viewpointOutfieldFoulLine,
+    'Outfield turf and painted foul line running out toward the trees at Viewpoint School'),
   cpfStoneMailbox: a(r_cpfStoneMailbox,
-    "CPF Stone Mailbox"),
+    'Stone veneer mailbox pillar with a slate cap and house numbers, built to match the home behind it'),
   gardenWallStoneVeneerAndPorchClose: a(r_gardenWallStoneVeneerAndPorchClose,
-    "Garden Wall, Stone Veneer, and Porch close-up"),
+    'Stacked stone garden wall running alongside the concrete path up to a white-railed porch'),
   paversAndStoneVeneer: a(r_paversAndStoneVeneer,
-    "Pavers and Stone Veneer"),
+    'Curving paver walkway crossing the front lawn to a ranch house skirted in stone veneer'),
   customStoneWallLinedDriveway: a(r_customStoneWallLinedDriveway,
-    "Custom Stone Wall Lined Driveway"),
+    'Long concrete driveway climbing a hillside lot between stacked stone retaining walls'),
   cpfCustomDrivewayAndStoneWalls: a(r_cpfCustomDrivewayAndStoneWalls,
-    "CPF Custom Driveway and Stone Walls in Agoura Hills"),
+    'Driveway rising from the street to a gated entry between stone-faced walls, Agoura Hills'),
   stoneWalkwayWaterFeatureVeneerAndMore: a(r_stoneWalkwayWaterFeatureVeneerAndMore,
-    "Stone walkway, water feature, veneer and more"),
+    'Stone veneer frontage with a stepped entry, iron handrail and a boulder water feature set into the planting'),
   customStoneworkVeneerAndGardenWall: a(r_customStoneworkVeneerAndGardenWall,
-    "Custom Stonework Veneer and Garden Wall"),
+    'Stacked stone garden wall running the length of a front lawn, capped flat along the top'),
   stoneDrivewayWall: a(r_stoneDrivewayWall,
-    "Stone Driveway Wall"),
+    'Low stone garden wall with a flat cut cap, edging the lawn in front of a ranch house'),
   porchWithPaversAndStoneVeneer: a(r_porchWithPaversAndStoneVeneer,
-    "Porch with Pavers and Stone Veneer in Thousand Oaks"),
+    'Porch floored in pavers with stone veneer carried up the column bases, Thousand Oaks'),
   stoneRetainingWallAndStampedConcreteDriveway: a(r_stoneRetainingWallAndStampedConcreteDriveway,
-    "Stone Retaining wall and Stamped Concrete Driveway in Newbury Park"),
+    'Wide driveway with a stone-faced retaining wall running along the sidewalk, Newbury Park'),
   sidewalkFeaturesWithStampedConcreteAndStone: a(r_sidewalkFeaturesWithStampedConcreteAndStone,
-    "Sidewalk Features with stamped concrete and stone"),
+    'Flagstone panels set into the sidewalk and concrete steps rising to the entry, between stone walls and drought planting'),
   sidewalkFeaturesWithStampedConcreteAndStone2: a(r_sidewalkFeaturesWithStampedConcreteAndStone2,
-    "Sidewalk Features with stamped concrete and stone, plus stone retaining wall."),
+    'Flagstone inset sidewalk with a boulder-set stone retaining wall running across the frontage'),
   retainingWallWithCreativeStoneFeatures: a(r_retainingWallWithCreativeStoneFeatures,
-    "Retaining wall with Creative Stone Features in Dos Vientos Newbury Park"),
+    'Stacked stone retaining wall with boulders set into the face, Dos Vientos, Newbury Park'),
   closeUpWallWithCreativeStoneFeatures: a(r_closeUpWallWithCreativeStoneFeatures,
-    "Close-up wall with Creative Stone Features in Dos Vientos Newbury Park"),
+    'Close on the boulders set into the face of the stacked stone retaining wall, Dos Vientos'),
 
   // ---- grading-and-excavation ----
   kubotaTrackLoaderOnSite: a(r_kubotaTrackLoaderOnSite,

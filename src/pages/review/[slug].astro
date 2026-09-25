@@ -17,6 +17,8 @@
 import Layout from '../../layouts/Layout.astro';
 import Img from '../../components/Img.astro';
 import BeforeAfter from '../../components/BeforeAfter.astro';
+import Hero from '../../components/Hero.astro';
+import { A } from '../../lib/assets';
 import { PAIRS, CANDIDATE_PAIRS, CONFIRMED_PAIRS, type Pair } from '../../lib/pairs';
 import { IS_DEMO, withBase } from '../../lib/urls';
 
@@ -29,6 +31,34 @@ const FRAME_W = 620;
 const isPortrait = (p: Pair) => p.before.img.height > p.before.img.width;
 const sliderW = (p: Pair) => (isPortrait(p) ? 460 : 900);
 const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
+
+/**
+ * Hero candidates, rendered through the same <Hero> the homepage uses so the
+ * only variable is the photograph.
+ *
+ * stoneEntry is the shot asked for by name (gbp-01). It is also the softest
+ * file in play: 1024x682 is everything that survived of it — no larger
+ * original exists in the repo or in either local photo drop, because it was
+ * salvaged from the Google Business Profile at display size. It sat in a
+ * folder called `large/`, which was the old tier-01 label for "above 1000px",
+ * not a statement about its size.
+ */
+const HERO_CANDIDATES = [
+  {
+    key: 'A',
+    asset: A.stoneEntry,
+    name: 'stoneEntry (gbp-01)',
+    note: 'The shot you picked. Stone veneer entry columns, iron door, drought planting. Every pixel that survived of it.',
+  },
+  {
+    key: 'B',
+    asset: A.gardenWallStoneVeneerAndPorchClose,
+    name: 'gardenWallStoneVeneerAndPorchClose',
+    note: 'Nearly double the pixels, and a CPF yard sign in frame carrying the current number. Different composition, and it is already doing work on /stonework/.',
+  },
+];
+const heroDims = (a: typeof HERO_CANDIDATES[number]) =>
+  `${a.asset.img.width}x${a.asset.img.height}`;
 ---
 
 <Layout
@@ -41,15 +71,14 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
         Internal — not part of the site
       </p>
       <h1 class="mt-3 max-w-4xl text-[var(--text-h1)] font-bold uppercase text-white">
-        Before / after pairings
+        Two things need your eye
       </h1>
       <p class="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">
-        {CANDIDATE_PAIRS.length} candidate pairings are built and working but held
-        back from the site. Each one below shows both photographs at full size,
-        then the slider exactly as it would publish. The only question is whether
-        the two frames are genuinely the same job — a mismatched pair reads as
-        passing off someone else&rsquo;s work, so these wait on your eye rather
-        than mine.
+        First, which photograph carries the homepage hero. Second, which of the
+        {CANDIDATE_PAIRS.length} staged before/after pairings can go live. Both are
+        judgement calls about photographs, which is why they are on a page instead
+        of in a message — a mismatched pair reads as passing off someone
+        else&rsquo;s work, and no amount of describing it substitutes for looking.
       </p>
       <p class="mt-4 max-w-3xl text-white/70">
         This page exists only on the review build. It is noindexed, unlinked, and
@@ -58,7 +87,49 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
     </div>
   </section>
 
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6">
+      <p class="eyebrow">Decision 1</p>
+      <h2 class="mt-2 text-[var(--text-h2)] font-semibold uppercase text-ink">
+        Which photograph carries the hero?
+      </h2>
+      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-ink-soft">
+        Both render through the same <code>&lt;Hero&gt;</code> component the homepage
+        uses, at full bleed, so the photograph is the only thing that differs.
+        Scroll each one the way you would the real page — the difference shows
+        up in the wall texture at the edges, not in a thumbnail.
+      </p>
+    </div>
+
+    {HERO_CANDIDATES.map((c) => (
+      <div class="mb-4">
+        <div class="mx-auto flex max-w-7xl flex-wrap items-baseline gap-x-4 gap-y-1 px-4 pb-3 sm:px-6">
+          <span class="bg-cpf-red px-2.5 py-1 font-display text-xs font-semibold uppercase tracking-[0.14em] text-white">
+            Option {c.key}
+          </span>
+          <code class="text-sm text-muted">{c.name} &middot; {heroDims(c)}</code>
+          <p class="w-full max-w-3xl text-sm leading-relaxed text-muted">{c.note}</p>
+        </div>
+        {/* Not eager: the real homepage hero is, but three eager heroes on one
+            review page would fight each other and trip the audit's limit. */}
+        <Hero asset={c.asset} label={`hero candidate ${c.key}`} eager={false} />
+      </div>
+    ))}
+
+    <div class="mx-auto max-w-7xl px-4 pb-16 pt-6 sm:px-6">
+      <p class="max-w-3xl text-sm leading-relaxed text-muted">
+        Option A is committed and live on this build&rsquo;s homepage. Say the word
+        and B becomes a one-line change.
+      </p>
+    </div>
+  </section>
+
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
+    <p class="eyebrow">Decision 2</p>
+    <h2 class="mt-2 mb-12 text-[var(--text-h2)] font-semibold uppercase text-ink">
+      Which pairings can go live?
+    </h2>
+
     <ol class="space-y-20">
       {CANDIDATE_PAIRS.map((pair, i) => (
         <li class="scroll-mt-8" id={`candidate-${i + 1}`}>

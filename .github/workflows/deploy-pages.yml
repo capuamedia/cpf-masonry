@@ -37,6 +37,27 @@ jobs:
       - name: Install
         run: npm ci
 
+      # Astro writes generated image variants to node_modules/.astro/assets and
+      # reuses them on the next build. Locally that directory is ~444MB across
+      # ~2400 files, which is why a laptop build finishes in seconds.
+      #
+      # Without this the runner starts cold every time and regenerates all of
+      # them with sharp. That is the entire difference between the old
+      # gh-pages route (47-51s, because the images were built on the laptop and
+      # only the publish was remote) and this workflow's ~10 minutes. Restoring
+      # a few hundred MB takes seconds; regenerating them does not.
+      #
+      # The cache is content-addressed by Astro itself, so a partial hit is
+      # safe and useful: unchanged photographs reuse their variants and only
+      # new or edited ones are generated. Hence the loose restore-key.
+      - name: Restore generated images
+        uses: actions/cache@v4
+        with:
+          path: node_modules/.astro
+          key: astro-assets-${{ runner.os }}-${{ hashFiles('src/assets/**') }}
+          restore-keys: |
+            astro-assets-${{ runner.os }}-
+
       - name: Build
         env:
           # Drives the /cpf-masonry base path, the noindex meta, the

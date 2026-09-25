@@ -207,8 +207,15 @@ prefixed into `pathname` and has to be stripped.
 ### The demo deploys from Actions, on every push to `main`
 
 Activated 2026-09-20. `.github/workflows/deploy-pages.yml` builds with
-`DEPLOY_TARGET=github-pages` and publishes via `actions/deploy-pages`. A run
-takes about ten minutes, nearly all of it generating image variants.
+`DEPLOY_TARGET=github-pages` and publishes via `actions/deploy-pages`.
+
+**Deploys used to take 47-51 seconds and now take minutes**, which surprises
+anyone who used the old route. The old route built images on the laptop, where
+`node_modules/.astro/assets` caches ~444MB of variants, and only published
+remotely. A CI runner starts cold and regenerates all of them with sharp;
+`cache: npm` caches the npm download cache, not the generated output. The
+workflow restores `node_modules/.astro` via `actions/cache` (added 2026-09-24)
+to claw most of that back. A run after a big photo drop will still be slow.
 
 **The `gh-pages` branch is dead. Do not deploy to it.** Pages stopped reading it
 the moment Source became "GitHub Actions", but `tools/deploy-demo.mjs` was left

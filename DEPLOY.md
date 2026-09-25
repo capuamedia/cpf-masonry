@@ -38,8 +38,25 @@ Three independent guards, so no single mistake exposes the demo:
 
 `.github/workflows/deploy-pages.yml` builds with `DEPLOY_TARGET=github-pages`
 and publishes through `actions/deploy-pages`. It runs on every push to `main`,
-and on `workflow_dispatch`. A run takes roughly ten minutes, nearly all of it
-generating image variants.
+and on `workflow_dispatch`.
+
+### Why this got slower than it used to be
+
+The old `gh-pages` route deployed in **47-51 seconds**. This workflow's first
+runs took **~10 minutes**. That is not GitHub being slow — it is where the
+images are generated.
+
+Astro writes generated variants to `node_modules/.astro/assets` and reuses
+them. On the laptop that directory holds ~444MB across ~2400 files, so a local
+build finishes in seconds and the old route only did the *publish* remotely.
+A CI runner starts cold and regenerates all 1,235 variants with sharp.
+`cache: npm` does not help — it caches the npm download cache, not the output.
+
+The workflow now restores `node_modules/.astro` with `actions/cache`, keyed on
+`hashFiles('src/assets/**')` with a loose restore-key so a partial hit still
+works: unchanged photographs reuse their variants, only new or edited ones are
+generated. **The first run after adding a batch of photographs still pays full
+price.**
 
 `npm run deploy:demo` (`tools/deploy-demo.mjs`) dispatches that workflow. It no
 longer builds or pushes anything itself.

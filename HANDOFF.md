@@ -23,8 +23,21 @@ hold. Facts here supersede the build prompt wherever they conflict.
 
 ---
 
-Last updated: 2026-09-01. 14 commits. Site builds clean, audit passes, demo is
-deployed.
+Last updated: 2026-09-24. Site builds clean, audit passes on both targets,
+demo deploys from `main` on every push.
+
+> **How to read this document.** It has been edited in layers, and the banner
+> above corrects the 2026-09-15 layer. Sections 2, 4, 5, 7, 8 and 9 were
+> corrected again on 2026-09-24. Where a section contradicts `src/lib/site.ts`,
+> `src/lib/images.ts` or `DEPLOY.md`, **the code wins** — those are executable
+> and this is not.
+>
+> Cautionary tale, 2026-09-24: an agent picked this project up against a clone
+> 22 commits behind, read `src/lib/site.ts` *before* pulling, and then kept
+> asserting the old phone number and the old domain after pulling. It reported
+> a live page as publishing a dead number, and a live production domain as
+> offline. Both were wrong. **Run `git pull` and then `git log --oneline -20`
+> before trusting any date-stamped claim in here, including this one.**
 
 ---
 
@@ -58,7 +71,7 @@ the entire design** and is enforced in code — see §4.
 npm run dev           # dev server
 npm run build         # production build
 npm run audit         # build + full post-build audit  <- run before every push
-npm run deploy:demo   # build demo + push to gh-pages (Pages rebuilds in 60-90s)
+npm run deploy:demo   # dispatch the Pages workflow (~10 min; see DEPLOY.md)
 npm run logo          # regenerate logo SVGs + favicons from the source JPEG
 ```
 
@@ -108,16 +121,28 @@ Two limits, routinely confused:
 2. **Generation cap** — how large a file sharp may *emit*. Never above native.
    Upscaling in sharp adds bytes and zero detail.
 
-Plus per-tier ceilings on CSS layout width:
+**The five-way tier enum is gone** (retired 2026-09-15). It classified files by
+which salvage operation produced them, because the originals were missing and
+provenance was the only proxy for quality. The originals came back — 191 of
+them, 48 at 1900–1920px — so provenance stopped predicting anything, and the
+enum became a tax: every new file hand-classified, a misfiled one silently
+capped wrong.
 
-| Tier | Dir | Count | Native | Rendered cap | Lightbox? |
-|---|---|---|---|---|---|
-| `large` | `src/assets/large/` | 5 | 822–2322px | 2× only | yes |
-| `yelp` | `src/assets/yelp-finished/` | 19 | 1000px | 2× only | yes |
-| `yelp` (before) | `src/assets/yelp-before/` | 11 | 1000px | 2× only | yes |
-| `site` | `src/assets/site-photos/` | 22 | 678px | **500px** | **no** |
-| `tiny` | 3 dugout frames | — | 320px | **300px** | **no** |
-| `slider` | 2 crops | — | 738×264 | 738px | no |
+Limits now derive from `img.width`, which is ground truth and cannot drift out
+of sync with the asset. A better scan of the same photograph relaxes its own
+limits the moment it lands. An asset may carry an optional `maxDisplay` for a
+file softer than its pixel count suggests — rarely needed.
+
+Current asset directories:
+
+| Dir | Files | Notes |
+|---|---|---|
+| `src/assets/current/` | 19 | 2026 photography, up to 4284px |
+| `src/assets/recovered/` | 70 | recovered originals, many at 1900–1920px |
+| `src/assets/yelp-finished/` | 18 | 1000px |
+| `src/assets/yelp-before/` | 11 | 1000px, before / in-progress |
+| `src/assets/site-photos/` | 15 | the old 678px set |
+| `src/assets/large/` | 3 | **legacy folder name.** It meant "tier 01 — above 1000px", not "big". `gbp-01` cleared that bar by 24 pixels and was the smallest file in it. Nothing infers anything from this folder now. |
 
 ### Rules you must not break
 
@@ -162,22 +187,33 @@ it 404s on the demo subpath while working fine locally. Canonicals must use
 `canonicalURL()`, not `new URL(Astro.url.pathname, Astro.site)` — `base` is
 prefixed into `pathname` and has to be stripped.
 
-### The demo deploy is a branch push, not Actions
+### The demo deploys from Actions, on every push to `main`
 
-`npm run deploy:demo` builds locally and force-pushes `dist/` to `gh-pages`.
-It writes a `.nojekyll` file — **without it Pages runs Jekyll, which silently
-skips any directory starting with an underscore, dropping the whole `/_astro/`
-folder: every image and stylesheet, with no error.**
+Activated 2026-09-20. `.github/workflows/deploy-pages.yml` builds with
+`DEPLOY_TARGET=github-pages` and publishes via `actions/deploy-pages`. A run
+takes about ten minutes, nearly all of it generating image variants.
 
-A proper Actions workflow exists at `deploy/github-pages.yml` but is **not
-active** — it needs to move to `.github/workflows/`, which requires the
-`workflow` OAuth scope the current token lacks:
+**The `gh-pages` branch is dead. Do not deploy to it.** Pages stopped reading it
+the moment Source became "GitHub Actions", but `tools/deploy-demo.mjs` was left
+force-pushing there — building, committing, pushing, printing the URL and
+exiting 0 while deploying nothing at all. That cost a full debugging cycle on
+2026-09-24. The only visible signal was `build_type: "workflow"` in
+`gh api repos/capuamedia/cpf-masonry/pages`. **If a deploy reports success and
+the site does not change, check that first.** `deploy:demo` now dispatches the
+workflow and reports its real conclusion instead of the fact that it managed to
+send a request.
 
-```
-gh auth refresh -h github.com -s workflow
-```
+**Only `main` and `gh-pages` may deploy.** The `github-pages` environment carries
+a deployment branch policy. Dispatching from a feature branch **builds green and
+then fails at the deploy step**, which reads as success until the page 404s.
+Merge to `main`, or add the branch — command in `DEPLOY.md`.
 
-Then `git mv`, push, and set Settings → Pages → Source → GitHub Actions.
+Pushing again while a run is in flight **cancels it**: the workflow's concurrency
+group sets `cancel-in-progress: true`.
+
+The workflow runs `npm run build`, **not** `npm run audit`. Nothing gates a
+deploy on the audit that exists to catch dead numbers and upscaled images. Open
+question — §8.
 
 ---
 
@@ -216,18 +252,45 @@ any output, in formatted or `tel:` form. Verified to fire. Don't work around it.
   project is 678px; a 1400px header would need a 2.1× upscale or a borrowed
   residential patio photo on a school ballfield page. Type-led header instead.
   Fixed permanently by one drone pass.
-- **`gbp-05` is used twice** — homepage hero and Triunfo YMCA header. It is
-  genuinely a photo of that project and the only file that can fill a
-  full-width hero.
+- **The homepage hero is unsettled, and the review build A/Bs it in place.**
+  `HeroSwitcher.astro` renders two candidates through the same `Hero.astro` and
+  toggles between them from a control pinned to the bottom of the screen — demo
+  build only, and the production homepage contains no trace of it. Option A is
+  `A.stoneEntry` (1024×682, the file formerly called `gbp-01`; **no larger copy
+  exists anywhere** — verified against the repo and both local photo drops in
+  `~/Downloads`). Option B is `A.gardenWallStoneVeneerAndPorchClose`
+  (1920×1278). It is deliberately on the home page rather than a review page,
+  because a hero is judged with the trust strip under it and the page scrolling
+  the way it really scrolls. **This is scaffolding: once the owner picks, delete
+  `HeroSwitcher.astro` and the `IS_DEMO` branch in `index.astro` reverts to a
+  plain `<Hero asset={...} />`.**
+- **The drone-footage placeholder is gone** from the hero (2026-09-24, owner's
+  call: the recovered photography now fills the slot without looking cheap).
+  `PlaceholderNote.astro` still exists and still works, it is simply no longer
+  mounted anywhere. Drone footage is still wanted eventually — §8.
 - **One before/after pair is live**, `yelp-11 → yelp-07`, confirmed visually
   (same house, chimney, palms, cypresses, gazebo; new wall on the old fence
   line). Three candidates are staged with `confirmed: false` in
   `src/lib/pairs.ts` and **do not render**. Folder names are unreliable —
   `yelp-07` sits in `yelp-before/` but shows finished work.
+  The three are laid out for the owner's verdict at **`/review/pairings/`**
+  (`src/pages/review/[slug].astro`), demo build only: `getStaticPaths` returns
+  `[]` off `IS_DEMO`, so production emits no such route at all. Each pair also
+  carries a `sources` field naming its frames, so owner and code refer to the
+  same photograph. Flip `confirmed` to `true` to publish one.
 - **No email is published.** Only a fragment ending `11@GMAIL.COM` survived.
-  `BUSINESS.email` is `null` and the UI branches on it.
+  `BUSINESS.email` is `null` and the UI branches on it. (The banner at the top
+  of this file reports `cpfman11@gmail.com` recovered on 2026-09-15 — check
+  `src/lib/site.ts` for which is actually true before acting on either.)
+- **`/reviews/` is a dedicated page** (added 2026-09-24) carrying the two
+  listings cited separately and the Elfsight widget, linked from the nav and
+  from the reviews section on the home and contact pages. **No listing URL is
+  published anywhere**, because no canonical Yelp or Google Business Profile URL
+  survived the loss of the old site — see `TODO_LISTING_URLS` in
+  `src/pages/reviews.astro`. Do not guess one. The Yelp review count is cited as
+  "about 26" on purpose; Yelp filters some reviews and the visible count moves.
 - **The contact form is built but dormant** behind `FORM_ENDPOINT = null` in
-  `src/pages/contact.astro`. A form that silently drops enquiries is worse for a
+  `src/pages/contact-us.astro`. A form that silently drops enquiries is worse for a
   contractor than no form.
 - **Brand restraint:** the logo's hot-rod flames stay *inside* the logo. Red is
   an accent on actions only; the ground is warm neutral and the photography
@@ -252,7 +315,11 @@ client-facing document:
 1. Email address still unknown.
 2. Listings cleanup: URL, phone **and** address all need correcting on Google
    Business Profile / Yelp / Houzz. GBP account access is currently blocked.
-3. Confirm the three staged before/after pairings.
+3. Confirm the three staged before/after pairings — laid out at
+   `/review/pairings/` on the review build.
+   Also waiting on the owner: **pick hero option A or B** on the review build's
+   home page, and supply the **Yelp and Google listing URLs** so `/reviews/`
+   can link out.
 4. Check whether `cpfmasonry.com` can be re-registered and 301'd.
 
 **Ready to build when assets arrive:**
@@ -264,7 +331,9 @@ client-facing document:
 6. Fresh photography — the single highest-value item. Would lift most of §4's
    constraints.
 7. Elfsight badge on mobile, if a stable hook exists.
-8. Activate the GitHub Actions workflow (§5).
+8. ~~Activate the GitHub Actions workflow~~ — **done 2026-09-20** (§5).
+   Still open: make the workflow run `npm run audit` rather than `npm run
+   build`, so a deploy cannot ship what the audit would have caught.
 9. Cloudflare Pages production deploy — configured in their dashboard, not in
    this repo. `sharp`'s Linux binaries are present in the lockfile; unverified
    on a real Linux build.
@@ -273,8 +342,8 @@ client-facing document:
 
 ## 9. Working agreements
 
-- Run `npm run audit` before every push. It checks JSON-LD parses on all 10
-  pages, canonicals, `tel:` links, license number, alt text, dimensions, AVIF +
+- Run `npm run audit` before every push. It checks JSON-LD parses on all 16
+  production pages (17 on the demo target, which adds `/review/pairings/`), canonicals, `tel:` links, license number, alt text, dimensions, AVIF +
   WebP output, superseded phone numbers, and measures every generated image to
   prove nothing was upscaled.
 - This machine is **Windows with PowerShell 5.1** — no `&&`, no `||`, no

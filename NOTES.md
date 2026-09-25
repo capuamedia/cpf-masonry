@@ -100,9 +100,17 @@ bowl on the counter sells better than a staged one. But move the power cords.
 
 ### Drone footage for the hero — what to bring back
 
-The homepage hero is flagged with a placeholder on the review build. A few
-things decide whether the footage actually works there, and they are cheap to
-get right on the day and impossible to fix afterwards:
+**Update, 2026-09-24:** the placeholder note has been taken off the hero. The
+recovered photography fills the slot well enough that flagging it on every visit
+was costing more than it was buying. The hero now carries a real photograph, and
+two candidates are being compared on the review build's home page — switch
+between them with the control at the bottom of the screen and say which you
+prefer.
+
+None of that closes this item. A still photograph is still the weakest thing on
+an otherwise strong page, and drone footage is still the single biggest
+available upgrade. A few things decide whether the footage actually works there,
+and they are cheap to get right on the day and impossible to fix afterwards:
 
 - **Shoot landscape, 4K, 24 or 30fps.** Delivered at ~1920px wide. Vertical
   footage cannot fill a full-width hero.
@@ -146,6 +154,14 @@ ballfield projects, which cannot be re-shot as they were.
 ---
 
 ## 4. Confirm the before/after pairings
+
+> **Look at them here:**
+> `https://capuamedia.github.io/cpf-masonry/review/pairings/`
+>
+> Each candidate shows both photographs at full size — click either one to open
+> it at full resolution — then the slider exactly as it would appear on the
+> site. That page exists only on the review build; it is not on the live site
+> and never will be.
 
 The comparison slider is built and working. **One pair is live; three more are
 staged but switched off.**

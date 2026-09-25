@@ -3,11 +3,10 @@ import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import Hero from '../components/Hero.astro';
-import HeroSwitcher from '../components/HeroSwitcher.astro';
 import Reviews from '../components/Reviews.astro';
 import { A } from '../lib/assets';
 import { BUSINESS, YEARS_IN_BUSINESS } from '../lib/site';
-import { withBase, IS_DEMO } from '../lib/urls';
+import { withBase } from '../lib/urls';
 import { CONFIRMED_PAIRS } from '../lib/pairs';
 
 const services = [
@@ -87,9 +86,7 @@ const description =
 
 <Layout title="home" description={description}>
   <!-- ================= HERO ================= -->
-  {/* Review build shows both candidates in place; production gets one hero.
-      Drop HeroSwitcher and this branch once the choice is made. */}
-  {IS_DEMO ? <HeroSwitcher /> : <Hero asset={A.stoneEntry} />}
+  <Hero asset={A.stoneEntry} />
 
   <!-- ================= TRUST STRIP ================= -->
   <section class="border-b border-line bg-surface">

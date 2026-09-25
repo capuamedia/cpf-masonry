@@ -102,10 +102,8 @@ bowl on the counter sells better than a staged one. But move the power cords.
 
 **Update, 2026-09-24:** the placeholder note has been taken off the hero. The
 recovered photography fills the slot well enough that flagging it on every visit
-was costing more than it was buying. The hero now carries a real photograph, and
-two candidates are being compared on the review build's home page — switch
-between them with the control at the bottom of the screen and say which you
-prefer.
+was costing more than it was buying. The hero now carries the stone veneer entry
+photograph — your pick, after seeing it against a higher-resolution alternative.
 
 None of that closes this item. A still photograph is still the weakest thing on
 an otherwise strong page, and drone footage is still the single biggest

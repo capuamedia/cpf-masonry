@@ -252,18 +252,19 @@ any output, in formatted or `tel:` form. Verified to fire. Don't work around it.
   project is 678px; a 1400px header would need a 2.1× upscale or a borrowed
   residential patio photo on a school ballfield page. Type-led header instead.
   Fixed permanently by one drone pass.
-- **The homepage hero is unsettled, and the review build A/Bs it in place.**
-  `HeroSwitcher.astro` renders two candidates through the same `Hero.astro` and
-  toggles between them from a control pinned to the bottom of the screen — demo
-  build only, and the production homepage contains no trace of it. Option A is
-  `A.stoneEntry` (1024×682, the file formerly called `gbp-01`; **no larger copy
-  exists anywhere** — verified against the repo and both local photo drops in
-  `~/Downloads`). Option B is `A.gardenWallStoneVeneerAndPorchClose`
-  (1920×1278). It is deliberately on the home page rather than a review page,
-  because a hero is judged with the trust strip under it and the page scrolling
-  the way it really scrolls. **This is scaffolding: once the owner picks, delete
-  `HeroSwitcher.astro` and the `IS_DEMO` branch in `index.astro` reverts to a
-  plain `<Hero asset={...} />`.**
+- **The homepage hero is `A.stoneEntry`** — owner-confirmed 2026-09-24, chosen
+  over a 1920×1278 alternative after seeing both in place. It is the file
+  formerly called `gbp-01`, now
+  `src/assets/recovered/custom-stone-walls-and-veneer-features.jpg`.
+  **At 1024×682 it is the softest source on the page**, and no larger copy of it
+  exists anywhere — verified against the repo and both photo drops in
+  `~/Downloads`. It clears the 2× display guard at the slot's declared 1900px.
+  This was a deliberate trade of resolution for composition, not an oversight;
+  do not "fix" it by swapping the photograph. Replace it only with a better
+  frame of comparable subject, or with the drone footage (§8).
+  `Hero.astro` stays extracted — it is a clean component and the next hero
+  change is a one-line prop swap. The `HeroSwitcher.astro` scaffolding used to
+  make this decision has been deleted.
 - **The drone-footage placeholder is gone** from the hero (2026-09-24, owner's
   call: the recovered photography now fills the slot without looking cheap).
   `PlaceholderNote.astro` still exists and still works, it is simply no longer

@@ -1,0 +1,139 @@
+---
+/**
+ * /reviews/ — the dedicated social-proof page.
+ *
+ * Nothing on this page is written by CPF about CPF. The rating figures are
+ * cited from the two listings, and the review text comes from the Elfsight
+ * widget, which reads Yelp and Google live. That is the whole point: a new
+ * domain with no history has to borrow its credibility from somewhere
+ * checkable, and invented testimonials would be both dishonest and, for a
+ * licensed contractor, genuinely risky.
+ *
+ * The Yelp count is carried as approximate — see NOTES.md. It is labelled as
+ * such here rather than quietly rounded into a claim.
+ *
+ * TODO_LISTING_URLS — no canonical Yelp or Google Business Profile URL survived
+ * the loss of the old site, so this page deliberately links to neither. Do not
+ * guess them: a review link that lands on the wrong business is worse than no
+ * link. Once the GBP account access is resolved (NOTES.md), add them here and
+ * turn the closing section into a real "leave a review" button.
+ */
+import Layout from '../layouts/Layout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import Reviews from '../components/Reviews.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { A } from '../lib/assets';
+import { BUSINESS, AGGREGATE_RATING, YEARS_IN_BUSINESS, SITE_URL } from '../lib/site';
+
+const description = `CPF Custom Concrete and Masonry is rated ${AGGREGATE_RATING.value.toFixed(1)} stars across ${AGGREGATE_RATING.count} Yelp and Google reviews. Read what homeowners across the Conejo Valley say about our concrete, masonry and hardscape work.`;
+
+/** Both listings are 5.0, so these are ordered by review count. */
+const LISTINGS = [
+  {
+    name: 'Yelp',
+    rating: BUSINESS.ratings.yelp.value,
+    count: BUSINESS.ratings.yelp.count,
+    approximate: BUSINESS.ratings.yelp.approximate,
+  },
+  {
+    name: 'Google',
+    rating: BUSINESS.ratings.google.value,
+    count: BUSINESS.ratings.google.count,
+    approximate: BUSINESS.ratings.google.approximate,
+  },
+];
+
+const STARS = 5;
+---
+
+<Layout
+  title="Reviews"
+  description={description}
+  extraSchema={[
+    {
+      '@type': 'WebPage',
+      name: `Reviews of ${BUSINESS.name}`,
+      description,
+      mainEntity: { '@id': `${SITE_URL}/#business` },
+    },
+  ]}
+>
+  <PageHeader
+    eyebrow="Reviews"
+    title="Rated 5.0 by the people we built for"
+    intro={`${AGGREGATE_RATING.count} reviews across Yelp and Google, every one of them five stars, over ${YEARS_IN_BUSINESS} years of work in the Conejo Valley.`}
+    asset={A.waterGarden}
+  />
+
+  <section class="border-b border-line bg-surface py-16">
+    <div class="mx-auto max-w-5xl px-4 sm:px-6">
+      <div class="grid gap-8 sm:grid-cols-2">
+        {
+          LISTINGS.map((l) => (
+            <div class="border border-line bg-ground p-8 text-center">
+              <p class="font-display text-sm font-semibold uppercase tracking-[0.18em] text-muted">
+                {l.name}
+              </p>
+              <p class="mt-3 font-display text-6xl font-bold leading-none text-ink">
+                {l.rating.toFixed(1)}
+              </p>
+              <p class="mt-3 text-cpf-yellow" aria-label={`${l.rating} out of ${STARS} stars`}>
+                {Array.from({ length: STARS }).map(() => (
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="inline-block"
+                    aria-hidden="true"
+                  >
+                    <path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2Z" />
+                  </svg>
+                ))}
+              </p>
+              <p class="mt-4 text-ink-soft">
+                {l.approximate ? 'about ' : ''}
+                {l.count} reviews
+              </p>
+            </div>
+          ))
+        }
+      </div>
+
+      <p class="mx-auto mt-10 max-w-2xl text-center leading-relaxed text-muted">
+        Combined, that is {AGGREGATE_RATING.value.toFixed(1)} stars from{' '}
+        {AGGREGATE_RATING.count} reviews. The Yelp total is marked approximate
+        because Yelp hides some reviews behind its filter and the visible count
+        moves; we cite what the listing shows rather than round it up.
+      </p>
+    </div>
+  </section>
+
+  <Reviews
+    eyebrow="In their words"
+    heading="Every review, straight from the source"
+    intro="These load live from the Yelp and Google listings. Nothing here is written, selected or edited by us — if a review is on the listing, it is on this page."
+    tinted={false}
+  />
+
+  <section class="border-t border-line bg-sand py-16">
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
+      <h2 class="text-[var(--text-h2)] font-semibold uppercase text-ink">
+        Worked with us before?
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-soft">
+        A review on Yelp or Google is the single most useful thing a past customer
+        can do for a contractor. If we built something for you, we would be glad of
+        a few lines about how it went.
+      </p>
+      <p class="mt-6 text-muted">
+        Call {BUSINESS.phone} and we will send you the link.
+      </p>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Hire the crew they are talking about"
+    body={`Family owned and owner supervised since ${BUSINESS.founded} — CA License #${BUSINESS.license}. Tell us what you are building and where, and you will get a straight answer on scope and price.`}
+  />
+</Layout>

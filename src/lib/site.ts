@@ -168,6 +168,7 @@ export const AGGREGATE_RATING = {
 export const NAV = [
   { href: '/services/', label: 'Services' },
   { href: '/featured-work/', label: 'Featured Work' },
+  { href: '/reviews/', label: 'Reviews' },
   { href: '/about-us/', label: 'About' },
   { href: '/contact-us/', label: 'Contact' },
 ] as const;

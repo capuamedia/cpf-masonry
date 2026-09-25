@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
 import Reviews from '../components/Reviews.astro';
 import { BUSINESS, SITE_URL } from '../lib/site';
+import { withBase } from '../lib/urls';
 
 /**
  * TODO_FORM — no form endpoint is configured, so no form is rendered.
@@ -151,5 +152,6 @@ const description =
     eyebrow="Before you call"
     heading="Read the reviews first"
     intro="Every review below comes straight from the Yelp and Google listings."
+    moreHref={withBase('/reviews/')}
   />
 </Layout>

@@ -3,7 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
 import Reviews from '../components/Reviews.astro';
-import PlaceholderNote from '../components/PlaceholderNote.astro';
 import { A } from '../lib/assets';
 import { BUSINESS, YEARS_IN_BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
@@ -88,7 +87,7 @@ const description =
   <!-- ================= HERO ================= -->
   <section class="relative isolate">
     <Img
-      asset={A.brickWallRailing}
+      asset={A.stoneEntry}
       displayW={1900}
       sizes="100vw"
       label="homepage hero"
@@ -97,24 +96,12 @@ const description =
       imgClass="h-full w-full object-cover object-center"
     />
     <!-- Scrim from the bottom so the headline holds contrast over a bright,
-         high-key photograph without washing the brickwork out. -->
+         high-key photograph without washing the stonework out. -->
     <div
       class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15"
       aria-hidden="true"
     >
     </div>
-
-    {/*
-      Sits in the upper band of the hero, which is empty — the headline block is
-      bottom-aligned — so it flags the slot without covering the thing being
-      reviewed. Demo build only; see PlaceholderNote.astro.
-    */}
-    <PlaceholderNote
-      id="hero"
-      label="Review build"
-      headline="Drone footage still wanted here"
-      detail="The resolution problem is solved — the 2026 photographs run to 4284px and the recovered originals to 1920px. But they are all portrait or tight, and a hero letterboxes them to a narrow band. This slot wants one wide moving shot; the brief is in NOTES.md."
-    />
 
     <div class="relative mx-auto flex min-h-[78svh] max-w-7xl flex-col justify-end px-4 pb-14 pt-28 sm:px-6 md:min-h-[82svh]">
       <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cpf-yellow">
@@ -388,7 +375,7 @@ const description =
   <!-- ================= REVIEWS ================= -->
   <!-- Placed immediately before the call-to-action: social proof lands hardest
        at the point someone is deciding whether to pick up the phone. -->
-  <Reviews />
+  <Reviews moreHref={withBase('/reviews/')} />
 
   <!-- ================= CTA ================= -->
   <section class="bg-cpf-black py-16 text-center text-white">

@@ -14,9 +14,14 @@ import type { Pair } from '../lib/pairs';
 interface Props {
   pair: Pair;
   id: string;
+  /**
+   * Largest CSS width this slider is laid out at. 900px suits the landscape
+   * frames. The portrait pairs are 750x1000 and would stand 1200px tall at
+   * that width, so those call sites pass something narrower.
+   */
+  width?: number;
 }
-const { pair, id } = Astro.props;
-const W = 900; // section 4 slot table: before/after pairs cap at 900px
+const { pair, id, width: W = 900 } = Astro.props;
 ---
 
 <figure class="not-prose">
@@ -29,7 +34,7 @@ const W = 900; // section 4 slot table: before/after pairs cap at 900px
     <Img
       asset={pair.after}
       displayW={W}
-      sizes="(max-width: 900px) 100vw, 900px"
+      sizes={`(max-width: ${W}px) 100vw, ${W}px`}
       label={`before-after after (${id})`}
       imgClass="block w-full h-auto"
     />
@@ -42,7 +47,7 @@ const W = 900; // section 4 slot table: before/after pairs cap at 900px
       <Img
         asset={pair.before}
         displayW={W}
-        sizes="(max-width: 900px) 100vw, 900px"
+        sizes={`(max-width: ${W}px) 100vw, ${W}px`}
         label={`before-after before (${id})`}
         class="h-full"
         imgClass="block w-full h-full object-cover"

@@ -10,6 +10,8 @@ import { A, type Asset } from './assets';
  * else waits for the owner's eye.
  *
  * To publish a candidate: verify it is one job, then flip `confirmed` to true.
+ * The candidates are laid out for exactly that call on the demo-only page at
+ * /review/pairings/ — see src/pages/review/[slug].astro.
  */
 export interface Pair {
   before: Asset;
@@ -19,12 +21,19 @@ export interface Pair {
   caption: string;
   /** Why this pairing is believed to be one job. Kept for the owner's review. */
   evidence: string;
+  /**
+   * Source filenames, so the owner and the code refer to the same frame. These
+   * were trailing comments; they are data now because the review page at
+   * /review/pairings/ prints them for the owner to quote back.
+   */
+  sources: { before: string; after: string };
 }
 
 export const PAIRS: Pair[] = [
   {
-    before: A.beforePalmsDirt, // yelp-11
-    after: A.beforeLongWall, // yelp-07
+    before: A.beforePalmsDirt,
+    after: A.beforeLongWall,
+    sources: { before: 'yelp-11', after: 'yelp-07' },
     confirmed: true,
     title: 'Block wall replacing a failing fence',
     caption:
@@ -35,8 +44,9 @@ export const PAIRS: Pair[] = [
 
   // ---- candidates: NOT confirmed, NOT rendered -------------------------------
   {
-    before: A.beforeYardDirt, // yelp-01
-    after: A.beforeYardPoured, // yelp-02
+    before: A.beforeYardDirt,
+    after: A.beforeYardPoured,
+    sources: { before: 'yelp-01', after: 'yelp-02' },
     confirmed: false,
     title: 'Concrete flatwork on a bare lot',
     caption: 'Graded dirt yard through to finished concrete flatwork.',
@@ -44,8 +54,9 @@ export const PAIRS: Pair[] = [
       'Strong candidate. Same hills, same tile-roofed houses and the same fence line in both frames. Unconfirmed only because both frames are mid-job, so which is genuinely "after" needs the owner to say.',
   },
   {
-    before: A.beforeFenceDirt, // yelp-09
-    after: A.duringBlockWall, // yelp-10
+    before: A.beforeFenceDirt,
+    after: A.duringBlockWall,
+    sources: { before: 'yelp-09', after: 'yelp-10' },
     confirmed: false,
     title: 'Block wall along a side yard',
     caption: 'Side yard before work, and the block wall going in.',
@@ -53,8 +64,9 @@ export const PAIRS: Pair[] = [
       'Both portrait, both a narrow side yard with similar planting. Weaker: no single landmark appears in both frames.',
   },
   {
-    before: A.duringBrickWall, // yelp-12
-    after: A.brickWallTrees, // yelp-03
+    before: A.duringBrickWall,
+    after: A.brickWallTrees,
+    sources: { before: 'yelp-12', after: 'yelp-03' },
     confirmed: false,
     title: 'Brick garden wall',
     caption: 'Brick wall part-built, and the finished run.',
@@ -64,3 +76,6 @@ export const PAIRS: Pair[] = [
 ];
 
 export const CONFIRMED_PAIRS = PAIRS.filter((p) => p.confirmed);
+
+/** Still awaiting the owner's verdict. Rendered on the review build only. */
+export const CANDIDATE_PAIRS = PAIRS.filter((p) => !p.confirmed);

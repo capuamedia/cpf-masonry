@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import Img from '../components/Img.astro';
 import BeforeAfter from '../components/BeforeAfter.astro';
+import Hero from '../components/Hero.astro';
 import Reviews from '../components/Reviews.astro';
-import PlaceholderNote from '../components/PlaceholderNote.astro';
 import { A } from '../lib/assets';
 import { BUSINESS, YEARS_IN_BUSINESS } from '../lib/site';
 import { withBase } from '../lib/urls';
@@ -86,72 +86,7 @@ const description =
 
 <Layout title="home" description={description}>
   <!-- ================= HERO ================= -->
-  <section class="relative isolate">
-    <Img
-      asset={A.brickWallRailing}
-      displayW={1900}
-      sizes="100vw"
-      label="homepage hero"
-      eager
-      class="absolute inset-0 h-full w-full"
-      imgClass="h-full w-full object-cover object-center"
-    />
-    <!-- Scrim from the bottom so the headline holds contrast over a bright,
-         high-key photograph without washing the brickwork out. -->
-    <div
-      class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/15"
-      aria-hidden="true"
-    >
-    </div>
-
-    {/*
-      Sits in the upper band of the hero, which is empty — the headline block is
-      bottom-aligned — so it flags the slot without covering the thing being
-      reviewed. Demo build only; see PlaceholderNote.astro.
-    */}
-    <PlaceholderNote
-      id="hero"
-      label="Review build"
-      headline="Drone footage still wanted here"
-      detail="The resolution problem is solved — the 2026 photographs run to 4284px and the recovered originals to 1920px. But they are all portrait or tight, and a hero letterboxes them to a narrow band. This slot wants one wide moving shot; the brief is in NOTES.md."
-    />
-
-    <div class="relative mx-auto flex min-h-[78svh] max-w-7xl flex-col justify-end px-4 pb-14 pt-28 sm:px-6 md:min-h-[82svh]">
-      <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cpf-yellow">
-        Newbury Park &middot; Thousand Oaks &middot; Conejo Valley
-      </p>
-      <h1 class="mt-3 max-w-3xl text-[var(--text-hero)] font-bold uppercase text-white">
-        Concrete and masonry that gets finished
-      </h1>
-      <p class="mt-4 max-w-xl text-lg leading-relaxed text-white/90">
-        Foundations, stamped concrete, natural stone, block walls and brick.
-        <strong class="font-semibold text-white">Family owned and operated</strong>,
-        <strong class="font-semibold text-white">owner supervised</strong> on every
-        job, and fully insured.
-      </p>
-
-      <div class="mt-7 flex flex-wrap items-center gap-3">
-        <a
-          href={BUSINESS.phoneHref}
-          class="inline-flex items-center gap-2 bg-cpf-red px-6 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white transition-colors hover:bg-cpf-red-dark"
-        >
-          Call {BUSINESS.phone}
-        </a>
-        <a
-          href={withBase('/featured-work/')}
-          class="inline-flex items-center gap-2 border-2 border-white/70 px-6 py-3.5 font-display text-lg font-semibold uppercase tracking-wide text-white transition-colors hover:bg-white hover:text-ink"
-        >
-          See the work
-        </a>
-      </div>
-
-      <p class="mt-6 font-display text-sm uppercase tracking-[0.16em] text-white/75">
-        Building in the Conejo Valley since {BUSINESS.founded}
-        <span class="mx-2 text-white/40">&middot;</span>
-        {BUSINESS.licenseLabel}
-      </p>
-    </div>
-  </section>
+  <Hero asset={A.stoneEntry} />
 
   <!-- ================= TRUST STRIP ================= -->
   <section class="border-b border-line bg-surface">
@@ -388,7 +323,7 @@ const description =
   <!-- ================= REVIEWS ================= -->
   <!-- Placed immediately before the call-to-action: social proof lands hardest
        at the point someone is deciding whether to pick up the phone. -->
-  <Reviews />
+  <Reviews moreHref={withBase('/reviews/')} />
 
   <!-- ================= CTA ================= -->
   <section class="bg-cpf-black py-16 text-center text-white">

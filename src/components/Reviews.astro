@@ -24,6 +24,13 @@ interface Props {
   intro?: string;
   /** Set false on a surface that already sits on --color-surface. */
   tinted?: boolean;
+  /**
+   * Internal href for a "read them all" link under the widget. Omitted on
+   * /reviews/ itself — the widget there is already the full set, and a link
+   * back to the page you are standing on is noise.
+   */
+  moreHref?: string;
+  moreLabel?: string;
 }
 
 const {
@@ -31,6 +38,8 @@ const {
   eyebrow = 'Reviews',
   intro = 'Rated 5.0 on both Yelp and Google. These come straight from those listings — nothing on this page is written by us.',
   tinted = true,
+  moreHref,
+  moreLabel = 'Read all the reviews',
 } = Astro.props;
 ---
 
@@ -49,6 +58,16 @@ const {
     >
       <div class="elfsight-app-2039d26f-733e-4d1f-9c68-4bdaa8e5a85e" data-elfsight-app-lazy></div>
     </div>
+
+    {moreHref && (
+      <p class="mt-8 text-center">
+        <a
+          class="inline-block border-2 border-cpf-black px-6 py-3 font-display text-base font-semibold uppercase tracking-wide text-ink transition-colors hover:bg-cpf-black hover:text-white"
+          href={moreHref}
+          >{moreLabel}</a
+        >
+      </p>
+    )}
 
     <noscript>
       <p class="mt-6 text-center text-muted">

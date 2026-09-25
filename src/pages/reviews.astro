@@ -109,11 +109,18 @@ const STARS = 5;
     </div>
   </section>
 
+  {/*
+    The "CPF Full Reviews" widget, not the compact duo used on the home and
+    contact pages. This page exists to carry the whole set, so it gets the
+    taller embed and a matching height reservation.
+  */}
   <Reviews
     eyebrow="In their words"
     heading="Every review, straight from the source"
     intro="These load live from the Yelp and Google listings. Nothing here is written, selected or edited by us — if a review is on the listing, it is on this page."
     tinted={false}
+    appId="75ef0de3-c2c7-4a3e-97ba-b83dfc658bfd"
+    minHeight={900}
   />
 
   <section class="border-t border-line bg-sand py-16">

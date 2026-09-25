@@ -1,7 +1,10 @@
 ---
 /**
- * Elfsight All-in-One Reviews — "CPF Duo" widget, pulling the Yelp and Google
- * listings together.
+ * Elfsight All-in-One Reviews, pulling the Yelp and Google listings together.
+ *
+ * Two widgets are configured in the Elfsight dashboard and this component
+ * renders whichever `appId` names. "CPF Duo" is the default and is the compact
+ * one; "CPF Full Reviews" is much taller and is used on /reviews/ only.
  *
  * Real reviews beat any claim the site can make about itself, so this sits
  * immediately before the call-to-action on the pages where someone is deciding
@@ -31,6 +34,23 @@ interface Props {
    */
   moreHref?: string;
   moreLabel?: string;
+  /**
+   * Elfsight widget id. Two exist, and they are not interchangeable:
+   *
+   *   CPF Duo           2039d26f-... the compact pair, for the section that
+   *                     sits at the foot of the home and contact pages.
+   *   CPF Full Reviews  75ef0de3-... the full set. Considerably taller, so it
+   *                     only belongs on /reviews/, where the reviews are the
+   *                     page rather than a closing note.
+   */
+  appId?: string;
+  /**
+   * Reserved height in px, to stop the embed shifting layout as it mounts.
+   * Third-party embeds are the usual cause of CLS on a page where everything
+   * else declares explicit dimensions. Match this to the widget: the full set
+   * needs far more room than the duo.
+   */
+  minHeight?: number;
 }
 
 const {
@@ -40,6 +60,8 @@ const {
   tinted = true,
   moreHref,
   moreLabel = 'Read all the reviews',
+  appId = '2039d26f-733e-4d1f-9c68-4bdaa8e5a85e',
+  minHeight = 420,
 } = Astro.props;
 ---
 
@@ -51,12 +73,9 @@ const {
       <p class="mt-4 text-lg leading-relaxed text-ink-soft">{intro}</p>
     </div>
 
-    <!-- Elfsight All-in-One Reviews | CPF Duo -->
-    <div
-      class="mt-10 min-h-[420px]"
-      data-elfsight-container
-    >
-      <div class="elfsight-app-2039d26f-733e-4d1f-9c68-4bdaa8e5a85e" data-elfsight-app-lazy></div>
+    <!-- Elfsight All-in-One Reviews. Which widget is the `appId` prop. -->
+    <div class="mt-10" style={`min-height:${minHeight}px`} data-elfsight-container>
+      <div class={`elfsight-app-${appId}`} data-elfsight-app-lazy></div>
     </div>
 
     {moreHref && (

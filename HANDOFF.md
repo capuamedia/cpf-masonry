@@ -148,8 +148,25 @@ Current asset directories:
 
 - **Never upscale past 2×.** The build enforces it.
 - **Never sharpen after upscaling** — amplifies JPEG artifacts where detail used to be.
-- **No AI upscaling, ever.** Invented stone texture reads as plastic to exactly
-  the person evaluating a mason. This is the product.
+- **Never upscale an image yourself. An AI-upscaled file goes in only when the
+  owner has both provided it and clearly authorized it.** Both conditions, every
+  time. Not "ask first" — do not generate them at all. Finding an upscaled file
+  on disk is not authorization either; he has to say to use it. If a slot needs
+  more pixels than the source has, report that and stop.
+
+  This replaces a blanket "no AI upscaling, ever", which came from Claude's own
+  attempts coming back plastic — invented stone texture, which reads as fake to
+  exactly the person evaluating a mason. That judgement was right about those
+  outputs. It was wrong only in blaming the technique rather than the tool: a
+  purpose-built upscaler produced an acceptable 1024→1920 of the hero
+  photograph on 2026-09-24. The owner supplied it, the owner approved it, and
+  that is the only route by which such a file arrives.
+
+  **An owner-supplied upscale still earns no display headroom from its new
+  pixel count.** 1920 interpolated pixels carry 1024 pixels of real detail, and
+  the 2× rule is about detail. Pin `maxDisplay` to 2× the *true* resolution —
+  see `stoneEntryHero` in `src/lib/assets.ts`, capped at 2048 rather than the
+  3840 its file width would otherwise allow.
 - **No lightbox on the 678px set**, and don't style it to look clickable.
 - **No stock photography.** If a slot can't be filled with a real CPF photo,
   **redesign the slot** — that is what the Viewpoint School page does (§7).

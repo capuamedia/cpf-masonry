@@ -2,6 +2,14 @@ import type { ImageMetadata } from 'astro';
 
 // -- recovered originals / GBP, 822-2322px ------------------------------------
 import gbp01 from '../assets/recovered/custom-stone-walls-and-veneer-features.jpg';
+/**
+ * THE SAME PHOTOGRAPH, MACHINE-UPSCALED 1024 -> 1920. Owner-supplied and
+ * owner-approved, 2026-09-24, for the homepage hero only.
+ *
+ * This is a deliberate, eyes-open exception to the "no AI upscaling" rule in
+ * HANDOFF.md §4. Read `stoneEntryHero` below before using it anywhere else.
+ */
+import gbp01up from '../assets/recovered/custom-stone-walls-and-veneer-features-1920w-upscaled.jpg';
 import gbp04 from '../assets/recovered/dos-vientos-covered-patio-stone-pillars.jpg';
 import gbp05 from '../assets/large/brick-dugout-wall-steel-screen-baseball-field.jpg';
 import gbp06tex from '../assets/large/gbp-06-paving-texture.jpg';
@@ -193,6 +201,37 @@ export const A = {
     'Close-up of red clay brick paving laid in a tight running bond'),
   stoneEntry: a(gbp01,
     'Stone veneer entry columns flanking a walkway with mature foundation planting'),
+
+  /**
+   * Hero-only upscale of `stoneEntry`. 1920x1279, machine-generated from the
+   * 1024x682 original. Owner-supplied and owner-approved 2026-09-24.
+   *
+   * WHY THE maxDisplay IS 2048 AND MUST NOT BE RAISED
+   *
+   * The image policy derives its display cap from `img.width`, on the sound
+   * assumption that pixels mean detail. That assumption is false for this one
+   * file. Its 1920 pixels carry 1024 pixels' worth of real optical detail; the
+   * rest is interpolation. Left alone the policy would happily lay it out at
+   * 3840px on the strength of invented data, which is precisely the failure
+   * the 2x rule exists to prevent.
+   *
+   * So the ceiling is pinned to 2x the REAL detail (1024 * 2 = 2048), not 2x
+   * the file. That keeps the guard honest about what is actually in here.
+   *
+   * WHAT THE UPSCALE ACTUALLY DID, measured at 1:1 against a plain Lanczos
+   * enlargement of the same crop: stone edges are crisper, and the faces are
+   * smoother. It traded surface grain for edge definition. It did not
+   * hallucinate stonework -- every stone and mortar joint is in the original --
+   * which is why it survives contact with HANDOFF.md §4 where a more
+   * aggressive upscale would not.
+   *
+   * Use it for the hero. Do not use it for a close crop of the stonework, and
+   * do not quietly repoint `stoneEntry` at it: the other five call sites want
+   * the untouched original.
+   */
+  stoneEntryHero: a(gbp01up,
+    'Stone veneer entry columns flanking a walkway with mature foundation planting',
+    2048),
   pergolaPatio: a(gbp04,
     'Timber pergola over a natural stone patio in a residential backyard'),
 

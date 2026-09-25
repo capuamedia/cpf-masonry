@@ -16,8 +16,21 @@ import type { ImageMetadata } from 'astro';
  *
  * Sharpening after upscaling is never enabled: it amplifies the JPEG artifacts
  * sitting where the detail used to be, and measurably worsened every test in
- * _docs/test-*.jpg. No AI upscaling either — invented stone texture reads as
- * plastic to exactly the person evaluating a mason. That is the product.
+ * _docs/test-*.jpg.
+ *
+ * DO NOT UPSCALE AN IMAGE YOURSELF. An AI-upscaled file enters this repo only
+ * when the owner has both PROVIDED it and CLEARLY AUTHORIZED it — both, every
+ * time, and finding one on disk is not authorization. If a slot wants more
+ * pixels than the source has, report that and stop — the decision to run a
+ * photograph through an upscaler is his, not yours. (Once a flat ban, written after
+ * Claude's own attempts came back plastic. A purpose-built tool cleared the bar
+ * on 2026-09-24, so the constraint is now about provenance rather than
+ * technique. See HANDOFF.md §4.)
+ *
+ * What does NOT change: an upscaled file earns no extra display headroom. Its
+ * pixel count no longer predicts its detail, so plan() would hand it a cap it
+ * has not earned. Such an asset must declare `maxDisplay` at 2x its TRUE
+ * resolution — that is what the parameter is for.
  *
  * WHAT CHANGED, 2026-09-15
  *

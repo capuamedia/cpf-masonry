@@ -86,7 +86,9 @@ const description =
 
 <Layout title="home" description={description}>
   <!-- ================= HERO ================= -->
-  <Hero asset={A.stoneEntry} />
+  {/* stoneEntryHero, not stoneEntry: the upscaled copy, hero slot only.
+      See the note on the asset before reusing it. */}
+  <Hero asset={A.stoneEntryHero} />
 
   <!-- ================= TRUST STRIP ================= -->
   <section class="border-b border-line bg-surface">

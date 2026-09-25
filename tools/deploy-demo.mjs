@@ -1,45 +1,94 @@
 /**
  * Publishes the noindexed review copy to https://capuamedia.github.io/cpf-masonry/
  *
- * This is the no-auth-scope route: it builds locally and force-pushes dist/ to
- * the gh-pages branch, which GitHub Pages serves directly. It needs no
- * `workflow` OAuth scope, which is why it exists.
+ * HOW THIS CHANGED, AND WHY IT MATTERS
  *
- * The better long-term setup is the Actions workflow parked at
- * deploy/github-pages.yml — it rebuilds on every push to main instead of
- * whenever someone remembers to run this. Activating it needs one command:
- *   gh auth refresh -h github.com -s workflow
- * then move that file into .github/workflows/ and set
- * Settings > Pages > Source = "GitHub Actions".
+ * This script used to build locally and force-push dist/ to the `gh-pages`
+ * branch, which GitHub Pages served directly. On 2026-09-20 the repo moved to
+ * Settings > Pages > Source = "GitHub Actions" (.github/workflows/
+ * deploy-pages.yml), and from that moment Pages stopped reading `gh-pages`.
+ *
+ * The old script kept "working" perfectly: it built, committed, force-pushed,
+ * printed the URL and exited 0. It just no longer deployed anything. A deploy
+ * script that reports success while changing nothing is worse than no script at
+ * all — it costs a round of "why isn't my change live" before anyone thinks to
+ * doubt the tool. It cost exactly that once; hence this rewrite.
+ *
+ * So this now dispatches the real workflow.
+ *
+ * IMPORTANT: the workflow builds from a ref on the REMOTE, not from your
+ * working tree. Uncommitted work does not ship. The guards below refuse to
+ * dispatch when local and remote disagree, precisely so this script cannot go
+ * back to quietly deploying something other than what you are looking at.
  */
 import { execSync } from 'node:child_process';
-import { writeFileSync, rmSync, existsSync } from 'node:fs';
 
-const REPO = 'https://github.com/capuamedia/cpf-masonry.git';
-const run = (cmd, opts = {}) => execSync(cmd, { stdio: 'inherit', ...opts });
+const WORKFLOW = 'deploy-pages.yml';
+const DEMO_URL = 'https://capuamedia.github.io/cpf-masonry/';
 
-console.log('> building demo (base=/cpf-masonry, noindex, no sitemap)');
-run('npx astro build', {
-  env: { ...process.env, DEPLOY_TARGET: 'github-pages', GITHUB_REPOSITORY: 'capuamedia/cpf-masonry' },
-});
+const sh = (cmd) => execSync(cmd, { encoding: 'utf8' }).trim();
+const run = (cmd) => execSync(cmd, { stdio: 'inherit' });
 
-// GitHub Pages runs Jekyll on legacy branch builds, and Jekyll silently skips
-// any directory starting with an underscore. Without this file the entire
-// /_astro/ folder - every image and stylesheet - is dropped from the deploy.
-writeFileSync('dist/.nojekyll', '');
+const die = (msg) => {
+  console.error('\n' + msg + '\n');
+  process.exit(1);
+};
 
-const stamp = new Date().toISOString().slice(0, 16).replace('T', ' ') + 'Z';
-if (existsSync('dist/.git')) rmSync('dist/.git', { recursive: true, force: true });
+try {
+  sh('gh --version');
+} catch {
+  die(
+    'The GitHub CLI (`gh`) is required to dispatch the Pages workflow.\n' +
+      'Install it, or simply push to main — the workflow also runs on every push.',
+  );
+}
 
-run('git init -q -b gh-pages', { cwd: 'dist' });
-run('git add -A', { cwd: 'dist' });
-run(
-  `git -c user.name="Capua Media" -c user.email="mike@capua.media" ` +
-    `commit -q -m "Demo build ${stamp} - noindexed review copy"`,
-  { cwd: 'dist' },
-);
-run(`git push -q -f ${REPO} gh-pages`, { cwd: 'dist' });
-rmSync('dist/.git', { recursive: true, force: true });
+const branch = sh('git rev-parse --abbrev-ref HEAD');
 
-console.log('\n> pushed. GitHub Pages takes 60-90s to rebuild.');
-console.log('> https://capuamedia.github.io/cpf-masonry/');
+if (sh('git status --porcelain')) {
+  die(
+    'Working tree is dirty. The workflow builds from the REMOTE, so uncommitted\n' +
+      'changes would not appear in the deploy. Commit and push them first.',
+  );
+}
+
+sh('git fetch origin --quiet');
+
+let behind = '0';
+let ahead = '0';
+try {
+  [behind, ahead] = sh(`git rev-list --left-right --count origin/${branch}...HEAD`).split(/\s+/);
+} catch {
+  die(`No remote branch origin/${branch}. Push it first:\n  git push -u origin ${branch}`);
+}
+
+if (ahead !== '0') {
+  die(
+    `Local ${branch} is ${ahead} commit(s) ahead of origin/${branch}.\n` +
+      'Those commits are not on the remote, so the workflow cannot build them.\n' +
+      `Push first:\n  git push origin ${branch}`,
+  );
+}
+
+if (behind !== '0') {
+  die(
+    `Local ${branch} is ${behind} commit(s) behind origin/${branch}.\n` +
+      'The deploy would include work you have not seen. Pull first.',
+  );
+}
+
+console.log(`> dispatching ${WORKFLOW} against ${branch} (${sh('git rev-parse --short HEAD')})`);
+run(`gh workflow run ${WORKFLOW} --ref ${branch}`);
+
+console.log('> queued. GitHub needs a moment to register the run.');
+try {
+  const id = sh(
+    `gh run list --workflow=${WORKFLOW} --limit 1 --json databaseId --jq ".[0].databaseId"`,
+  );
+  console.log(`> following run ${id} (Ctrl-C is safe, the deploy keeps going)\n`);
+  run(`gh run watch ${id} --exit-status`);
+} catch {
+  console.log(`> could not follow it. Check with:\n  gh run list --workflow=${WORKFLOW}`);
+}
+
+console.log(`\n> ${DEMO_URL}`);

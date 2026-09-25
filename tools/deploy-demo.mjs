@@ -14,7 +14,9 @@
  * all — it costs a round of "why isn't my change live" before anyone thinks to
  * doubt the tool. It cost exactly that once; hence this rewrite.
  *
- * So this now dispatches the real workflow.
+ * So this now dispatches the real workflow, and — just as importantly — it
+ * reports the run's real conclusion rather than the fact that it managed to
+ * send a request.
  *
  * IMPORTANT: the workflow builds from a ref on the REMOTE, not from your
  * working tree. Uncommitted work does not ship. The guards below refuse to
@@ -25,9 +27,12 @@ import { execSync } from 'node:child_process';
 
 const WORKFLOW = 'deploy-pages.yml';
 const DEMO_URL = 'https://capuamedia.github.io/cpf-masonry/';
+const REPO = 'capuamedia/cpf-masonry';
 
 const sh = (cmd) => execSync(cmd, { encoding: 'utf8' }).trim();
 const run = (cmd) => execSync(cmd, { stdio: 'inherit' });
+const sleep = (secs) =>
+  execSync(`powershell -NoProfile -Command "Start-Sleep -Seconds ${secs}"`, { stdio: 'ignore' });
 
 const die = (msg) => {
   console.error('\n' + msg + '\n');
@@ -77,18 +82,86 @@ if (behind !== '0') {
   );
 }
 
+/*
+ * The `github-pages` environment carries a deployment branch policy. Dispatching
+ * from a branch outside it BUILDS FINE and then fails at the deploy step — the
+ * build job goes green, so it reads as success right up until you load the page
+ * and get a 404. Catch it before spending ten minutes on a run that cannot
+ * publish. (Learned the hard way, 2026-09-24.)
+ */
+let allowed = [];
+try {
+  allowed = sh(
+    `gh api repos/${REPO}/environments/github-pages/deployment-branch-policies` +
+      ' --jq ".branch_policies[].name"',
+  )
+    .split('\n')
+    .map((b) => b.trim())
+    .filter(Boolean);
+} catch {
+  console.log('> could not read the environment branch policy; continuing without that check');
+}
+
+if (allowed.length && !allowed.includes(branch)) {
+  die(
+    `Branch "${branch}" may not deploy to Pages.\n` +
+      `The github-pages environment permits: ${allowed.join(', ')}.\n\n` +
+      'The build would succeed and the deploy would be rejected. Either merge to\n' +
+      'main, or allow this branch:\n' +
+      `  gh api repos/${REPO}/environments/github-pages/deployment-branch-policies ` +
+      `-f name='${branch}'`,
+  );
+}
+
 console.log(`> dispatching ${WORKFLOW} against ${branch} (${sh('git rev-parse --short HEAD')})`);
 run(`gh workflow run ${WORKFLOW} --ref ${branch}`);
 
 console.log('> queued. GitHub needs a moment to register the run.');
+sleep(6);
+
+let id = null;
 try {
-  const id = sh(
-    `gh run list --workflow=${WORKFLOW} --limit 1 --json databaseId --jq ".[0].databaseId"`,
-  );
-  console.log(`> following run ${id} (Ctrl-C is safe, the deploy keeps going)\n`);
-  run(`gh run watch ${id} --exit-status`);
+  id = sh(`gh run list --workflow=${WORKFLOW} --limit 1 --json databaseId --jq ".[0].databaseId"`);
 } catch {
-  console.log(`> could not follow it. Check with:\n  gh run list --workflow=${WORKFLOW}`);
+  die(`Dispatched, but could not find the run. Check it:\n  gh run list --workflow=${WORKFLOW}`);
 }
 
-console.log(`\n> ${DEMO_URL}`);
+console.log(`> following run ${id} (Ctrl-C is safe, the deploy keeps going)\n`);
+try {
+  run(`gh run watch ${id} --exit-status`);
+} catch {
+  /*
+   * `gh run watch` dropping is NOT the same as the deploy failing, and the two
+   * were conflated here once already: the watch died, the catch swallowed it,
+   * and the script printed the URL and exited 0 on a run that had actually
+   * failed at the deploy step. Whatever happened to the watch, the run's own
+   * conclusion is the only truth — go and ask for it below.
+   */
+  console.log('> lost the live log; asking GitHub for the result instead.');
+}
+
+let status = '';
+let conclusion = '';
+for (let i = 0; i < 120; i++) {
+  [status, conclusion] = sh(
+    `gh run view ${id} --json status,conclusion --jq ".status + \\" \\" + (.conclusion // \\"\\")"`,
+  ).split(' ');
+  if (status === 'completed') break;
+  sleep(15);
+}
+
+if (status !== 'completed') {
+  die(`Run ${id} is still "${status}" after 30 minutes. Check it:\n  gh run view ${id}`);
+}
+
+if (conclusion !== 'success') {
+  die(
+    `Deploy FAILED (${conclusion}). Nothing was published.\n` +
+      `  gh run view ${id} --log-failed\n\n` +
+      'If the build job passed and only deploy failed, it is almost certainly the\n' +
+      'environment branch policy — see DEPLOY.md.',
+  );
+}
+
+console.log(`\n> deployed (run ${id})`);
+console.log(`> ${DEMO_URL}`);

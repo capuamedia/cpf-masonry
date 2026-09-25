@@ -6,16 +6,16 @@ Two targets, deliberately asymmetric.
 |---|---|---|
 | Host | GitHub Pages | Cloudflare Pages |
 | URL | `capuamedia.github.io/cpf-masonry/` | `cpfmasonry.com` |
-| Trigger | **`npm run deploy:demo`, by hand** | not cut over yet |
+| Trigger | **push to `main`**, or `npm run deploy:demo` | not cut over yet |
 | Base path | `/cpf-masonry` | `/` |
 | Indexable | **No** — `Disallow: /` + `noindex` | Yes |
 | Sitemap | not generated | `/sitemap-index.xml` |
 
-> **Nothing here deploys on push.** Pushing to `main` updates the source and
-> changes no published page. The demo goes out only when someone runs
-> `npm run deploy:demo`, which force-pushes `dist/` to the `gh-pages` branch.
-> The Actions workflow that *would* make it automatic is parked, inactive, at
-> `deploy/github-pages.yml` — see below.
+> **The demo deploys on every push to `main`.** This changed on 2026-09-20,
+> when the Actions workflow was activated and Pages Source was switched to
+> "GitHub Actions". Before that date nothing deployed on push and the only
+> route was `npm run deploy:demo`; that is no longer true, and any instruction
+> saying otherwise is stale.
 >
 > As of 2026-09-17 `cpfmasonry.com` is still served by the old WordPress
 > install. The Astro build is published only to the noindexed demo URL;
@@ -36,16 +36,37 @@ Three independent guards, so no single mistake exposes the demo:
 
 ## GitHub Pages — how it publishes today
 
-Pages serves the `gh-pages` branch, and `npm run deploy:demo` (see
-`tools/deploy-demo.mjs`) builds with the demo flags and force-pushes `dist/`
-there. No OAuth `workflow` scope needed, which is the whole reason it exists.
-Pages takes 60–90s to rebuild after the push.
+`.github/workflows/deploy-pages.yml` builds with `DEPLOY_TARGET=github-pages`
+and publishes through `actions/deploy-pages`. It runs on every push to `main`,
+and on `workflow_dispatch`. A run takes roughly ten minutes, nearly all of it
+generating image variants.
 
-**To make it automatic instead**, which is the better setup:
+`npm run deploy:demo` (`tools/deploy-demo.mjs`) dispatches that workflow. It no
+longer builds or pushes anything itself.
 
-1. `gh auth refresh -h github.com -s workflow` (needs a human at a terminal)
-2. move `deploy/github-pages.yml` to `.github/workflows/`
-3. Settings → Pages → Source → **GitHub Actions**
+### The gh-pages branch is dead — do not deploy to it
+
+Until 2026-09-20 Pages served the `gh-pages` branch and `deploy:demo`
+force-pushed `dist/` there. Switching Source to "GitHub Actions" stopped Pages
+reading that branch, but the old script was left in place and carried on
+pushing to it: building, committing, force-pushing, printing the URL and
+exiting 0, while deploying nothing at all.
+
+That cost a full debugging cycle before anyone thought to doubt the tool. The
+only visible signal was `build_type: "workflow"` in
+`gh api repos/capuamedia/cpf-masonry/pages`. If a deploy ever seems to
+succeed while the site does not change, check that first.
+
+### Only `main` and `gh-pages` may deploy
+
+The `github-pages` environment carries a deployment branch policy naming those
+two. Dispatching the workflow against a feature branch **builds successfully
+and then fails at the deploy step** — the build job goes green, which makes it
+look like it worked. To publish a branch, either merge it to `main` or add it:
+
+```
+gh api repos/capuamedia/cpf-masonry/environments/github-pages/deployment-branch-policies   -f name='<branch>'
+```
 
 The base path is derived from `GITHUB_REPOSITORY` at build time, not hardcoded.
 If the repo is ever renamed, the demo URL follows automatically.

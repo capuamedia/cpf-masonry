@@ -134,6 +134,20 @@ export const BUSINESS = {
     'the San Fernando Valley',
   ],
 
+  /**
+   * NOT FOR DISPLAY. These counts are a dated snapshot and they go stale on
+   * their own: reviews arrive whenever a customer writes one, and nothing here
+   * finds out.
+   *
+   * `value` (5.0 on both) is stable and safe to publish. `count` exists only to
+   * satisfy schema.org, which requires a reviewCount on an AggregateRating.
+   * **Do not put a count in page copy.** Owner's call, 2026-09-26: "34 reviews"
+   * undersells thirty-five years of work, and a hardcoded number that drifts is
+   * worse than no number. Both pages that used to print these now say simply
+   * "five stars on Yelp and Google" and let the live widget carry the volume.
+   *
+   * Last checked against the listings: 2026-09-15. See NOTES.md.
+   */
   ratings: {
     yelp: { value: 5.0, count: 26, approximate: true },
     google: { value: 5.0, count: 8, approximate: false },
@@ -150,7 +164,11 @@ export const BUSINESS = {
  */
 export const YEARS_IN_BUSINESS = new Date().getFullYear() - BUSINESS.founded;
 
-/** Combined rating, honestly cited. 26 is approximate — see NOTES.md. */
+/**
+ * Structured-data only — consumed by the LocalBusiness node in Layout.astro and
+ * rendered on no page. `count` is a snapshot and will lag reality; see the note
+ * on BUSINESS.ratings. If you want it in copy, you want the live widget instead.
+ */
 export const AGGREGATE_RATING = {
   value: 5.0,
   count: BUSINESS.ratings.yelp.count + BUSINESS.ratings.google.count,

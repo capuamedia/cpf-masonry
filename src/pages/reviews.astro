@@ -9,8 +9,20 @@
  * checkable, and invented testimonials would be both dishonest and, for a
  * licensed contractor, genuinely risky.
  *
- * The Yelp count is carried as approximate — see NOTES.md. It is labelled as
- * such here rather than quietly rounded into a claim.
+ * NO REVIEW COUNTS ON THIS PAGE, deliberately. Owner's call, 2026-09-26: the
+ * totals are honest but small, and "34 reviews" undersells a contractor with
+ * thirty-five years of work behind him. Five stars on both listings is the
+ * claim worth making; the count is not. The page says "an aggregate across
+ * Yelp and Google" and leaves the arithmetic alone.
+ *
+ * This also retired a paragraph explaining that the Yelp total is approximate
+ * because Yelp filters some reviews. True, and exactly the kind of thing a
+ * prospect never asked and should not have to read. Caveats about how the
+ * numbers were sourced belong in NOTES.md, which is where they now live.
+ *
+ * `reviewCount` is still emitted in the LocalBusiness schema from Layout.astro
+ * — schema.org requires a count on an AggregateRating, and it is accurate. It
+ * is structured data for search engines, not copy for customers.
  *
  * TODO_LISTING_URLS — no canonical Yelp or Google Business Profile URL survived
  * the loss of the old site, so this page deliberately links to neither. Do not
@@ -23,24 +35,14 @@ import PageHeader from '../components/PageHeader.astro';
 import Reviews from '../components/Reviews.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { A } from '../lib/assets';
-import { BUSINESS, AGGREGATE_RATING, YEARS_IN_BUSINESS, SITE_URL } from '../lib/site';
+import { BUSINESS, YEARS_IN_BUSINESS, SITE_URL } from '../lib/site';
 
-const description = `CPF Custom Concrete and Masonry is rated ${AGGREGATE_RATING.value.toFixed(1)} stars across ${AGGREGATE_RATING.count} Yelp and Google reviews. Read what homeowners across the Conejo Valley say about our concrete, masonry and hardscape work.`;
+const description = `CPF Custom Concrete and Masonry is rated five stars on both Yelp and Google. Read what homeowners across the Conejo Valley say about our concrete, masonry and hardscape work.`;
 
-/** Both listings are 5.0, so these are ordered by review count. */
+/** Counts are deliberately not surfaced — see the note at the top of the file. */
 const LISTINGS = [
-  {
-    name: 'Yelp',
-    rating: BUSINESS.ratings.yelp.value,
-    count: BUSINESS.ratings.yelp.count,
-    approximate: BUSINESS.ratings.yelp.approximate,
-  },
-  {
-    name: 'Google',
-    rating: BUSINESS.ratings.google.value,
-    count: BUSINESS.ratings.google.count,
-    approximate: BUSINESS.ratings.google.approximate,
-  },
+  { name: 'Yelp', rating: BUSINESS.ratings.yelp.value },
+  { name: 'Google', rating: BUSINESS.ratings.google.value },
 ];
 
 const STARS = 5;
@@ -61,7 +63,7 @@ const STARS = 5;
   <PageHeader
     eyebrow="Reviews"
     title="Rated 5.0 by the people we built for"
-    intro={`${AGGREGATE_RATING.count} reviews across Yelp and Google, every one of them five stars, over ${YEARS_IN_BUSINESS} years of work in the Conejo Valley.`}
+    intro={`Five stars on Yelp. Five stars on Google. ${YEARS_IN_BUSINESS} years of concrete and masonry in the Conejo Valley, in the words of the people we built it for.`}
     asset={A.waterGarden}
   />
 
@@ -91,20 +93,14 @@ const STARS = 5;
                   </svg>
                 ))}
               </p>
-              <p class="mt-4 text-ink-soft">
-                {l.approximate ? 'about ' : ''}
-                {l.count} reviews
-              </p>
             </div>
           ))
         }
       </div>
 
-      <p class="mx-auto mt-10 max-w-2xl text-center leading-relaxed text-muted">
-        Combined, that is {AGGREGATE_RATING.value.toFixed(1)} stars from{' '}
-        {AGGREGATE_RATING.count} reviews. The Yelp total is marked approximate
-        because Yelp hides some reviews behind its filter and the visible count
-        moves; we cite what the listing shows rather than round it up.
+      <p class="mx-auto mt-10 max-w-2xl text-center text-lg leading-relaxed text-ink-soft">
+        An aggregate of our reviews across Yelp and Google, pulled live from both
+        listings.
       </p>
     </div>
   </section>
@@ -116,8 +112,8 @@ const STARS = 5;
   */}
   <Reviews
     eyebrow="In their words"
-    heading="Every review, straight from the source"
-    intro="These load live from the Yelp and Google listings. Nothing here is written, selected or edited by us — if a review is on the listing, it is on this page."
+    heading="What our customers say"
+    intro="Straight from the Yelp and Google listings — not a word of it written by us."
     tinted={false}
     appId="75ef0de3-c2c7-4a3e-97ba-b83dfc658bfd"
     minHeight={900}
@@ -129,12 +125,8 @@ const STARS = 5;
         Worked with us before?
       </h2>
       <p class="mt-4 text-lg leading-relaxed text-ink-soft">
-        A review on Yelp or Google is the single most useful thing a past customer
-        can do for a contractor. If we built something for you, we would be glad of
-        a few lines about how it went.
-      </p>
-      <p class="mt-6 text-muted">
-        Call {BUSINESS.phone} and we will send you the link.
+        If we built something for you, a few lines on Yelp or Google would mean a
+        great deal. Call {BUSINESS.phone} and we will send you the link.
       </p>
     </div>
   </section>

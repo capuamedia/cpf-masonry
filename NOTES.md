@@ -250,7 +250,24 @@ What that changes:
 
 ---
 
-## 7. The Yelp review count is approximate
+## 7. Review counts are no longer shown on the site
+
+**Nothing on the site states how many reviews you have**, as of 2026-09-26.
+The pages say you hold five stars on Yelp and Google, and the live widget shows
+the reviews themselves. That was a deliberate change: the totals are honest but
+modest, they undersell thirty-five years of work, and any number written into
+the site is wrong the moment a customer posts a new review.
+
+One number still exists in the code, in the structured data search engines read
+(`reviewCount`). Google requires a count there. It is a snapshot, last checked
+2026-09-15, and it drifts. It is worth refreshing occasionally — tell me the
+current Yelp and Google totals and it is a one-line change — but nothing on the
+page is wrong in the meantime.
+
+The original note follows, and still explains why the Yelp figure was never
+exact.
+
+### Why the Yelp figure is approximate
 
 The site publishes a combined 5.0 rating across 34 reviews (26 Yelp + 8 Google)
 in the `LocalBusiness` structured data. **The Yelp figure of ~26 came from the

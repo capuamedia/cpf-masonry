@@ -264,6 +264,10 @@ One number still exists in the code, in the structured data search engines read
 current Yelp and Google totals and it is a one-line change — but nothing on the
 page is wrong in the meantime.
 
+**Asking past customers for reviews is handled by the widget.** It carries its
+own write-a-review button, so the site does not need a separate panel telling
+people to call you for a link. There was one; it has been removed.
+
 The original note follows, and still explains why the Yelp figure was never
 exact.
 

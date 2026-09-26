@@ -24,11 +24,18 @@
  * — schema.org requires a count on an AggregateRating, and it is accurate. It
  * is structured data for search engines, not copy for customers.
  *
- * TODO_LISTING_URLS — no canonical Yelp or Google Business Profile URL survived
- * the loss of the old site, so this page deliberately links to neither. Do not
- * guess them: a review link that lands on the wrong business is worse than no
- * link. Once the GBP account access is resolved (NOTES.md), add them here and
- * turn the closing section into a real "leave a review" button.
+ * NO "LEAVE A REVIEW" SECTION HERE, AND IT IS NOT AN OVERSIGHT. The Elfsight
+ * widget ships its own write-a-review call to action, which is why you will not
+ * find one in this file — it is inside the embed, not the markup. This page
+ * used to close with a "worked with us before? call us and we will send you the
+ * link" panel, which sat directly under a button that already does the job and
+ * asked people to make a phone call to reach it. Removed 2026-09-26.
+ *
+ * Still true: no canonical Yelp or Google Business Profile URL survived the
+ * loss of the old site, so nothing here links out to either listing. Do not
+ * guess them — a review link landing on the wrong business is worse than no
+ * link — and check whether the widget has already made the question moot before
+ * adding any.
  */
 import Layout from '../layouts/Layout.astro';
 import PageHeader from '../components/PageHeader.astro';
@@ -118,18 +125,6 @@ const STARS = 5;
     appId="75ef0de3-c2c7-4a3e-97ba-b83dfc658bfd"
     minHeight={900}
   />
-
-  <section class="border-t border-line bg-sand py-16">
-    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6">
-      <h2 class="text-[var(--text-h2)] font-semibold uppercase text-ink">
-        Worked with us before?
-      </h2>
-      <p class="mt-4 text-lg leading-relaxed text-ink-soft">
-        If we built something for you, a few lines on Yelp or Google would mean a
-        great deal. Call {BUSINESS.phone} and we will send you the link.
-      </p>
-    </div>
-  </section>
 
   <CtaBand
     heading="Hire the crew they are talking about"

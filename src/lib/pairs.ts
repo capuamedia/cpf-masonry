@@ -10,8 +10,13 @@ import { A, type Asset } from './assets';
  * else waits for the owner's eye.
  *
  * To publish a candidate: verify it is one job, then flip `confirmed` to true.
- * The candidates are laid out for exactly that call on the demo-only page at
+ * Candidates awaiting that call are laid out on the demo-only page at
  * /review/pairings/ — see src/pages/review/[slug].astro.
+ *
+ * Both current pairs are owner-confirmed (2026-09-26). Two further candidates,
+ * yelp-09 -> yelp-10 and yelp-12 -> yelp-03, were reviewed and REJECTED: he
+ * looked at them and did not want them. Do not reinstate them from the git
+ * history on the assumption they were merely unfinished.
  */
 export interface Pair {
   before: Asset;
@@ -42,36 +47,16 @@ export const PAIRS: Pair[] = [
       'Same location, verified visually rather than by filename: identical tile-roofed house and chimney in the left-centre background, the same palm cluster and Italian cypresses to the right, the same white gazebo behind, and the same pine at far left. The new wall follows the exact line of the removed fence.',
   },
 
-  // ---- candidates: NOT confirmed, NOT rendered -------------------------------
   {
-    before: A.beforeYardDirt,
-    after: A.beforeYardPoured,
-    sources: { before: 'yelp-01', after: 'yelp-02' },
-    confirmed: false,
-    title: 'Concrete flatwork on a bare lot',
-    caption: 'Graded dirt yard through to finished concrete flatwork.',
+    before: A.yardFenceFailing,
+    after: A.yardWallFinished,
+    sources: { before: 'yelp-02', after: 'yelp-01' },
+    confirmed: true,
+    title: 'Block wall on a back property line',
+    caption:
+      'A leaning timber fence along the rear boundary, replaced with a tan block wall built on the same line.',
     evidence:
-      'Strong candidate. Same hills, same tile-roofed houses and the same fence line in both frames. Unconfirmed only because both frames are mid-job, so which is genuinely "after" needs the owner to say.',
-  },
-  {
-    before: A.beforeFenceDirt,
-    after: A.duringBlockWall,
-    sources: { before: 'yelp-09', after: 'yelp-10' },
-    confirmed: false,
-    title: 'Block wall along a side yard',
-    caption: 'Side yard before work, and the block wall going in.',
-    evidence:
-      'Both portrait, both a narrow side yard with similar planting. Weaker: no single landmark appears in both frames.',
-  },
-  {
-    before: A.duringBrickWall,
-    after: A.brickWallTrees,
-    sources: { before: 'yelp-12', after: 'yelp-03' },
-    confirmed: false,
-    title: 'Brick garden wall',
-    caption: 'Brick wall part-built, and the finished run.',
-    evidence:
-      'Both show a red brick wall of similar coursing with mature trees behind. Needs confirming that it is one job and not two brick walls at different addresses.',
+      'Owner-confirmed 2026-09-26. Same property in both frames: identical tile-roofed house and brick chimney, the same ridge line behind, the same shed at left. The order was originally reversed, and the job was originally described as concrete flatwork -- wrong on both counts. The concrete slab appears in BOTH frames, so it is not the work; the wall is. yelp-02 has the failing fence, yelp-01 has the wall on the same line.',
   },
 ];
 

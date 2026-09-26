@@ -274,10 +274,23 @@ export const A = {
     'Newly planted trees staked beside a finished block wall'),
 
   // ---- before / during -----------------------------------------------------
-  beforeYardDirt: a(b01,
-    'Bare graded dirt yard with a freshly poured concrete strip and the hills beyond'),
-  beforeYardPoured: a(b02,
-    'The same yard with concrete flatwork complete and the ground made up'),
+  /*
+   * These two are one job, and their old keys had the sequence backwards:
+   * `beforeYardDirt` (yelp-01) and `beforeYardPoured` (yelp-02) read as
+   * dirt-then-poured, so the pair was built in that order. It is wrong. The
+   * concrete strip is present in BOTH frames -- the work is the WALL. yelp-02
+   * still has the failing timber fence, yelp-01 has the new block wall on the
+   * same line. Owner-confirmed 2026-09-26.
+   *
+   * Renamed to name the wall, because the old names caused the error and would
+   * cause it again. The `before` prefix elsewhere in this file means "came out
+   * of the yelp-before/ folder", not "is the earlier frame" -- see
+   * `beforeLongWall`, which is an after.
+   */
+  yardFenceFailing: a(b02,
+    'Leaning timber boundary fence behind a lawn, with a poured concrete slab already in place'),
+  yardWallFinished: a(b01,
+    'Tan block wall built on the old fence line, the same concrete slab in the foreground and the hills beyond'),
   beforeWallShed: a(b06,
     'Block wall and shed standing on bare graded ground'),
   beforeLongWall: a(b07,

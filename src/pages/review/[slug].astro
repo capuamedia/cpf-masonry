@@ -45,11 +45,9 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
         Before / after pairings
       </h1>
       <p class="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">
-        {CANDIDATE_PAIRS.length} candidate pairings are built and working but held
-        back from the site. Each shows both photographs at full size, then the
-        slider exactly as it would publish. The only question is whether the two
-        frames are genuinely the same job — a mismatched pair reads as passing off
-        someone else&rsquo;s work, so these wait on your eye rather than mine.
+        {CANDIDATE_PAIRS.length > 0
+          ? `${CANDIDATE_PAIRS.length} candidate pairing${CANDIDATE_PAIRS.length === 1 ? ' is' : 's are'} built and working but held back from the site. Each shows both photographs at full size, then the slider exactly as it would publish. The only question is whether the two frames are genuinely the same job — a mismatched pair reads as passing off someone else's work, so these wait on your eye rather than mine.`
+          : 'Nothing is waiting on you here. Every staged pairing has been ruled on, and the confirmed ones are live on the site. This page stays because the next batch of photographs will need the same call.'}
       </p>
       <p class="mt-4 max-w-3xl text-white/70">
         The hero A/B is not here — it is on this build&rsquo;s home page, where a
@@ -64,10 +62,14 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
   </section>
 
   <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6">
-    <p class="eyebrow">The call</p>
-    <h2 class="mt-2 mb-12 text-[var(--text-h2)] font-semibold uppercase text-ink">
-      Which pairings can go live?
-    </h2>
+    {CANDIDATE_PAIRS.length > 0 && (
+      <>
+        <p class="eyebrow">The call</p>
+        <h2 class="mt-2 mb-12 text-[var(--text-h2)] font-semibold uppercase text-ink">
+          Which pairings can go live?
+        </h2>
+      </>
+    )}
 
     <ol class="space-y-20">
       {CANDIDATE_PAIRS.map((pair, i) => (
@@ -153,16 +155,15 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
     </ol>
 
     <section class="mt-24 border-t border-line pt-16">
-      <p class="eyebrow">Already live, for comparison</p>
+      <p class="eyebrow">Live on the site</p>
       <h2 class="mt-2 text-[var(--text-h2)] font-semibold uppercase text-ink">
-        The confirmed pairing
+        {CONFIRMED_PAIRS.length === 1 ? 'The confirmed pairing' : 'The confirmed pairings'}
       </h2>
       <p class="mt-4 max-w-3xl text-lg leading-relaxed text-ink-soft">
-        This one is on the homepage and the featured work page now. It cleared the
-        bar because several fixed landmarks appear in both frames — the tile roof
-        and chimney, the palm cluster, the cypresses, the white gazebo and the pine
-        at far left — and the new wall follows the exact line of the fence that was
-        removed. Worth a look if only to confirm you agree it belongs there.
+        These are on the home page and the featured work page now. Each cleared the
+        bar the same way — fixed landmarks visible in both frames, and new work
+        following the exact line of what it replaced — rather than on the strength
+        of filenames, which are not reliable here.
       </p>
 
       {CONFIRMED_PAIRS.map((pair, i) => (
@@ -181,8 +182,9 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
     </section>
 
     <p class="mt-16 border-t border-line pt-8 text-sm text-muted">
-      {PAIRS.length} pairings total &middot; {CONFIRMED_PAIRS.length} live &middot;{' '}
-      {CANDIDATE_PAIRS.length} awaiting a verdict. Back to the{' '}
+      {PAIRS.length} pairing{PAIRS.length === 1 ? '' : 's'} total &middot;{' '}
+      {CONFIRMED_PAIRS.length} live &middot; {CANDIDATE_PAIRS.length} awaiting a
+      verdict. Back to the{' '}
       <a class="text-cpf-red underline" href={withBase('/')}>review build home page</a>.
     </p>
   </div>

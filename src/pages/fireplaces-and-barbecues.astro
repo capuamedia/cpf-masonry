@@ -2,18 +2,35 @@
 import ServiceLayout from '../layouts/ServiceLayout.astro';
 import { A } from '../lib/assets';
 
+/*
+ * Until 2026-10-02 this page had no photographs of its own work: the showcase
+ * and gallery were patio, pool and planting frames borrowed from neighbouring
+ * pages, because every outdoor-kitchen photograph CPF had was sitting in the
+ * un-processed `new_assets/` drop. The fireplace and kitchen frames below are
+ * that gap closed.
+ *
+ * Fireplaces lead, kitchens follow. Someone landing here from "outdoor kitchen
+ * Westlake Village" should see a built kitchen above the fold of the grid, not
+ * a rose walkway.
+ */
 const showcase = [
+  { asset: A.castStoneFireplaceHerringboneFirebox, caption: 'Cast stone fireplace with a scrolled mantel and herringbone firebox, built into a curved seat wall.' },
+  { asset: A.castStoneFireplaceWithPizzaOven, caption: 'Fireplace and pizza oven built as one structure, in limestone on a raised hearth.' },
+  { asset: A.stuccoOutdoorKitchenGrillAndSink, caption: 'Stucco outdoor kitchen with a built-in grill, sink and undercounter fridge.' },
+  { asset: A.tiledOutdoorKitchenGrillAndRefrigerator, caption: 'Curved tiled counter with a built-in grill and refrigerator, set on flagstone.' },
   { asset: A.stoneFireplaceTall, caption: 'Stacked-stone fireplace with an arched firebox and raised hearth.' },
   { asset: A.poolFireplace, caption: 'Cast stone fireplace and chimney set beside the pool.' },
   { asset: A.brickFireplaceMantel, caption: 'Stone and brick fireplace with a timber mantel under a covered patio.' },
   { asset: A.firePitSeating, caption: 'Round fire pit with a curved stone seating wall, poolside.' },
-  { asset: A.concreteCounter, caption: 'Outdoor kitchen counter with a stainless built-in.' },
-  { asset: A.stoneVilla, caption: 'Stone columns carrying a covered outdoor living space.' },
+  { asset: A.stoneColumnCoveredPatioFountain, caption: 'Stone columns carrying a covered outdoor living room, looking out to a tiered fountain.' },
 ];
 
 const gallery = [
-  A.patioSteps, A.poolWaterFeature, A.flagstonePatioStepsAndSeatWall,
-  A.pergolaPatio, A.roseWalkway, A.waterGarden,
+  A.stackedStoneBbqIslandBrickPatio, A.tiledOutdoorKitchenWithPizzaOven,
+  A.stuccoOutdoorKitchenGraniteCounter, A.outdoorKitchenStainedConcreteCounter,
+  A.castStoneFireboxHerringboneDetail, A.stackedStoneBbqIslandRoseGarden,
+  A.concreteCounter, A.patioSteps, A.poolWaterFeature,
+  A.flagstonePatioStepsAndSeatWall, A.pergolaPatio, A.roseWalkway, A.waterGarden,
 ];
 ---
 

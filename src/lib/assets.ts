@@ -172,6 +172,27 @@ import cRiverRockFeatureWallBathroomStoneTile from '../assets/current/river-rock
 import cSandstoneStepLandingFlagstonePath from '../assets/current/sandstone-step-landing-flagstone-path.jpg';
 import cTallStructuralRetainingWallHillside from '../assets/current/tall-structural-retaining-wall-hillside.jpg';
 
+/*
+ * Recovered WordPress originals, placed 2026-10-02 from the image-coverage drop.
+ * These lived in `new_assets/` — gitignored and outside `src/` — so Astro never
+ * processed them and they rendered nowhere, for months. See
+ * `_docs/PROMPT-image-coverage.md` and `_docs/MISSING-ORIGINALS.tsv`.
+ */
+import rCastStoneFireplaceHerringboneFirebox from '../assets/recovered/cast-stone-fireplace-herringbone-firebox.jpg';
+import rCastStoneFireplaceWithPizzaOven from '../assets/recovered/cast-stone-fireplace-with-pizza-oven.jpg';
+import rCastStoneFireboxHerringboneDetail from '../assets/recovered/cast-stone-firebox-herringbone-detail.jpg';
+import rStuccoOutdoorKitchenGrillAndSink from '../assets/recovered/stucco-outdoor-kitchen-grill-and-sink.jpg';
+import rStuccoOutdoorKitchenGraniteCounter from '../assets/recovered/stucco-outdoor-kitchen-granite-counter.jpg';
+import rOutdoorKitchenStainedConcreteCounter from '../assets/recovered/outdoor-kitchen-stained-concrete-counter.jpg';
+import rTiledOutdoorKitchenGrillAndRefrigerator from '../assets/recovered/tiled-outdoor-kitchen-grill-and-refrigerator.jpg';
+import rTiledOutdoorKitchenWithPizzaOven from '../assets/recovered/tiled-outdoor-kitchen-with-pizza-oven.jpg';
+import rStackedStoneBbqIslandBrickPatio from '../assets/recovered/stacked-stone-bbq-island-brick-patio.jpg';
+import rStackedStoneBbqIslandRoseGarden from '../assets/recovered/stacked-stone-bbq-island-rose-garden.jpg';
+import rStoneColumnCoveredPatioFountain from '../assets/recovered/stone-column-covered-patio-fountain.jpg';
+import rDosVientosFrontYardStoneRetainingWalls from '../assets/recovered/dos-vientos-front-yard-stone-retaining-walls.jpg';
+import rBallfieldRestroomBlockAndBrickBuilding from '../assets/recovered/ballfield-restroom-block-and-brick-building.jpg';
+import rPaverDrivewayGatedEntryBlockRetainingWall from '../assets/recovered/paver-driveway-gated-entry-block-retaining-wall.jpg';
+
 import logoJpg from '../assets/logo/cpf-logo-1080.jpg';
 
 export interface Asset {
@@ -543,6 +564,57 @@ export const A = {
     'Fiber-optic concrete countertop lit at night, hundreds of fiber ends cast into the slab reading as a field of blue and white stars'),
   colorChangingFiberOpticConcreteCountertop: a(cColorChangingFiberOpticConcreteCountertop,
     'Fiber-optic concrete countertop running three colors at once, green, blue and white zones set into the polished slab'),
+
+  // ---- image-coverage drop, 2026-10-02 --------------------------------------
+  /*
+   * Outdoor kitchens and fireplaces. Until now /fireplaces-and-barbecues/ was
+   * the one service page with no photographs of its own work — it borrowed
+   * patio and pool frames from neighbouring pages. These are the real thing.
+   */
+  castStoneFireplaceHerringboneFirebox: a(rCastStoneFireplaceHerringboneFirebox,
+    'Cast stone outdoor fireplace with a scrolled mantel and herringbone brick firebox, flanked by a curved seat wall on a flagstone patio'),
+  castStoneFireplaceWithPizzaOven: a(rCastStoneFireplaceWithPizzaOven,
+    'Limestone outdoor fireplace with an arched firebox and a domed pizza oven built into the same structure, on a raised travertine hearth'),
+  castStoneFireboxHerringboneDetail: a(rCastStoneFireboxHerringboneDetail,
+    'Close on a cast stone fireplace surround, the moulded arch and fluted jambs framing a herringbone firebox'),
+  stuccoOutdoorKitchenGrillAndSink: a(rStuccoOutdoorKitchenGrillAndSink,
+    'Stucco outdoor kitchen with a stainless built-in grill, undercounter fridge and a sink set into a speckled stone counter'),
+  stuccoOutdoorKitchenGraniteCounter: a(rStuccoOutdoorKitchenGraniteCounter,
+    'L-shaped stucco outdoor kitchen run along a slatted timber fence, granite counter over stainless access doors'),
+  outdoorKitchenStainedConcreteCounter: a(rOutdoorKitchenStainedConcreteCounter,
+    'Outdoor kitchen wrapped around a stamped concrete patio, acid-stained concrete counter with a mosaic tile band and built-in grill'),
+  tiledOutdoorKitchenGrillAndRefrigerator: a(rTiledOutdoorKitchenGrillAndRefrigerator,
+    'Curved tiled outdoor kitchen counter with a built-in grill and refrigerator, laid out on a flagstone patio'),
+  tiledOutdoorKitchenWithPizzaOven: a(rTiledOutdoorKitchenWithPizzaOven,
+    'Curved outdoor kitchen counter in tile and stucco with a built-in pizza oven, bar seating and a flagstone patio'),
+  stackedStoneBbqIslandBrickPatio: a(rStackedStoneBbqIslandBrickPatio,
+    'Stacked stone barbecue island with a stone counter and stainless grill, set on a brick paver patio'),
+  stackedStoneBbqIslandRoseGarden: a(rStackedStoneBbqIslandRoseGarden,
+    'Stacked stone barbecue island on a brick patio with a rose garden and climbing roses behind'),
+  /*
+   * A real 1024px frame of the stone-column patio. `stoneVilla` is the same
+   * subject but is a 738x264 theme slider crop — a letterboxed band, not a
+   * photograph. This supersedes it wherever the full frame is wanted.
+   */
+  stoneColumnCoveredPatioFountain: a(rStoneColumnCoveredPatioFountain,
+    'Stacked stone columns carrying a covered outdoor living room, looking out past a tiered stone fountain'),
+
+  /* Masonry. */
+  dosVientosFrontYardStoneRetainingWalls: a(rDosVientosFrontYardStoneRetainingWalls,
+    'Front elevation of a Dos Vientos house with stone-faced retaining walls and pilasters, a stamped concrete drive and a flagstone apron at the kerb'),
+  /*
+   * Commercial block-and-brick work — a restroom building at a ballfield. The
+   * only photograph on the site of a free-standing structure rather than a
+   * garden wall, which is why it is worth having. TODO_PROJECT: the netting and
+   * bleachers put it at Viewpoint School or Triunfo YMCA; the owner needs to say
+   * which before it is claimed on either project page.
+   */
+  ballfieldRestroomBlockAndBrickBuilding: a(rBallfieldRestroomBlockAndBrickBuilding,
+    'Restroom building at a ballfield built in split-face block over a red brick wainscot, with a standing-seam roof'),
+
+  /* Driveways. */
+  paverDrivewayGatedEntryBlockRetainingWall: a(rPaverDrivewayGatedEntryBlockRetainingWall,
+    'Paver driveway rising to an iron gate between block retaining walls with a cut stone cap and a planted slope behind'),
 
 } as const;
 

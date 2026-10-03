@@ -603,14 +603,23 @@ export const A = {
   dosVientosFrontYardStoneRetainingWalls: a(rDosVientosFrontYardStoneRetainingWalls,
     'Front elevation of a Dos Vientos house with stone-faced retaining walls and pilasters, a stamped concrete drive and a flagstone apron at the kerb'),
   /*
-   * Commercial block-and-brick work — a restroom building at a ballfield. The
-   * only photograph on the site of a free-standing structure rather than a
-   * garden wall, which is why it is worth having. TODO_PROJECT: the netting and
-   * bleachers put it at Viewpoint School or Triunfo YMCA; the owner needs to say
-   * which before it is claimed on either project page.
+   * Triunfo YMCA, owner-confirmed 2026-10-02: he took the photograph himself,
+   * around 2015. Three things agreed before he confirmed it, and they are worth
+   * keeping because the next unassigned ballfield frame can be placed the same
+   * way: the file was uploaded in the same 2016/05 `CPF-*` batch as the
+   * backstop, the three dugout frames, the outfield wall and the shed, all of
+   * them Triunfo YMCA; the building itself appears behind the bleachers in
+   * `ymcaBackstop`; and the site furniture matches `ymcaShed`.
+   *
+   * The old site uploaded it and never published it on any page, which is why
+   * it arrived unassigned in the work order.
+   *
+   * This is the only free-standing building on the site. Everything else CPF
+   * shows is a wall, a counter or flatwork, so this is the photograph that
+   * carries the commercial-construction claim.
    */
-  ballfieldRestroomBlockAndBrickBuilding: a(rBallfieldRestroomBlockAndBrickBuilding,
-    'Restroom building at a ballfield built in split-face block over a red brick wainscot, with a standing-seam roof'),
+  ymcaRestroomBuilding: a(rBallfieldRestroomBlockAndBrickBuilding,
+    'Restroom building at the Triunfo YMCA baseball fields, built in split-face block over a red brick wainscot under a standing-seam roof'),
 
   /* Driveways. */
   paverDrivewayGatedEntryBlockRetainingWall: a(rPaverDrivewayGatedEntryBlockRetainingWall,

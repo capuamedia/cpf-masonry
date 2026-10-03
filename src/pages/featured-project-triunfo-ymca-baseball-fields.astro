@@ -11,6 +11,7 @@ const structures = [
   { asset: A.ymcaBackstop, caption: 'Red brick backstop wall carrying the chain-link behind home plate.' },
   { asset: A.outfieldWall, caption: 'Curved segmental block retaining wall along the outfield boundary.' },
   { asset: A.ymcaShed, caption: 'Equipment shed and enclosure at the edge of the field.' },
+  { asset: A.ymcaRestroomBuilding, caption: 'Restroom building in split-face block over a brick wainscot — a roofed structure, not a wall.' },
 ];
 
 /**
@@ -21,7 +22,7 @@ const structures = [
 const dugout = [A.dugoutFooter, A.dugoutFront];
 
 const description =
-  'Featured project: the Triunfo YMCA baseball fields. Brick backstops, dugouts, block outfield walls and concrete flatwork, delivered directly with the YMCA in the Conejo Valley.';
+  'Featured project: the Triunfo YMCA baseball fields. Brick backstops, dugouts, block outfield walls, a restroom building and concrete flatwork, delivered directly with the YMCA in the Conejo Valley.';
 ---
 
 <Layout
@@ -31,7 +32,7 @@ const description =
     {
       '@type': 'CreativeWork',
       name: 'Triunfo YMCA Baseball Fields',
-      about: 'Community baseball field construction: brick backstops, dugouts, block retaining walls and concrete flatwork.',
+      about: 'Community baseball field construction: brick backstops, dugouts, block retaining walls, a restroom building and concrete flatwork.',
       creator: { '@id': `${SITE_URL}/#business` },
     },
     {
@@ -72,6 +73,7 @@ const description =
       <li><strong>Dugouts</strong> — poured footings, brick base courses, and perforated screens over bench seating.</li>
       <li><strong>Block outfield walls</strong> — curved segmental retaining walls following the boundary grade.</li>
       <li><strong>Concrete flatwork</strong> — spectator walkways, steps and equipment pads.</li>
+      <li><strong>Restroom building</strong> — a roofed structure in split-face block over a brick wainscot, not a screen wall: footings, bearing walls and openings.</li>
     </ul>
 
     <h2>Why it matters for a residential client</h2>

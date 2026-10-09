@@ -79,7 +79,7 @@ const { title, eyebrow, intro, description, headerAsset, showcase, gallery, gall
     gallery.length > 0 && (
       <section class="border-t border-line bg-surface py-16">
         <div class="mx-auto max-w-7xl px-4 sm:px-6">
-          <h2 class="text-[var(--text-h2)] font-semibold uppercase">{galleryHeading}</h2>
+          <h2 class="text-(length:--text-h2) font-semibold uppercase">{galleryHeading}</h2>
           <hr class="rule-red mt-4" />
           <div class="mt-8 columns-2 gap-4 sm:gap-5 lg:columns-3">
             {gallery.map((asset, i) => (

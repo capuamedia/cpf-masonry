@@ -41,10 +41,10 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
       <p class="font-display text-sm font-semibold uppercase tracking-[0.2em] text-cpf-yellow">
         Internal — not part of the site
       </p>
-      <h1 class="mt-3 max-w-4xl text-(length:--text-h1) font-bold uppercase text-white">
+      <h1 class="mt-4 max-w-4xl text-(length:--text-h1) font-bold uppercase text-white">
         Before / after pairings
       </h1>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-white/85">
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-white/85">
         {CANDIDATE_PAIRS.length > 0
           ? `${CANDIDATE_PAIRS.length} candidate pairing${CANDIDATE_PAIRS.length === 1 ? ' is' : 's are'} built and working but held back from the site. Each shows both photographs at full size, then the slider exactly as it would publish. The only question is whether the two frames are genuinely the same job — a mismatched pair reads as passing off someone else's work, so these wait on your eye rather than mine.`
           : 'Nothing is waiting on you here. Every staged pairing has been ruled on, and the confirmed ones are live on the site. This page stays because the next batch of photographs will need the same call.'}
@@ -65,7 +65,7 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
     {CANDIDATE_PAIRS.length > 0 && (
       <>
         <p class="eyebrow">The call</p>
-        <h2 class="mt-2 mb-12 text-(length:--text-h2) font-semibold uppercase text-ink">
+        <h2 class="mt-4 mb-12 text-(length:--text-h2) font-semibold uppercase text-ink">
           Which pairings can go live?
         </h2>
       </>
@@ -156,10 +156,10 @@ const dims = (p: Pair) => `${p.before.img.width}x${p.before.img.height}`;
 
     <section class="mt-24 border-t border-line pt-16">
       <p class="eyebrow">Live on the site</p>
-      <h2 class="mt-2 text-(length:--text-h2) font-semibold uppercase text-ink">
+      <h2 class="mt-4 text-(length:--text-h2) font-semibold uppercase text-ink">
         {CONFIRMED_PAIRS.length === 1 ? 'The confirmed pairing' : 'The confirmed pairings'}
       </h2>
-      <p class="mt-4 max-w-3xl text-lg leading-relaxed text-ink-soft">
+      <p class="mt-6 max-w-3xl text-lg leading-relaxed text-ink-soft">
         These are on the home page and the featured work page now. Each cleared the
         bar the same way — fixed landmarks visible in both frames, and new work
         following the exact line of what it replaced — rather than on the strength
